@@ -14,3 +14,6 @@ C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProje
 C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
 C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
 C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
+C:\Users\Lino\Desktop\DotNetProjectOne\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe.config
+C:\Users\Lino\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
+C:\Users\Lino\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
