@@ -1,0 +1,16 @@
+c:\users\łukasz\desktop\DotNetProjectOne\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe.config
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\bin\Debug\DNPDB.mdf
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\bin\Debug\DNPDB_log.ldf
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\bin\Debug\DotNetProjectOne.pdb
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\MainWindow.baml
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\MainWindow.g.cs
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\App.g.cs
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne_Content.g.cs
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne_MarkupCompile.cache
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.g.resources
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.Properties.Resources.resources
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
+C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
