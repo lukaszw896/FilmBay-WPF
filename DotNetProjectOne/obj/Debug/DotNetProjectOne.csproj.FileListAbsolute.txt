@@ -17,3 +17,6 @@ C:\Users\Łukasz\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProje
 C:\Users\Lino\Desktop\DotNetProjectOne\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe.config
 C:\Users\Lino\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
 C:\Users\Lino\Desktop\DotNetProjectOne\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe.config
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
