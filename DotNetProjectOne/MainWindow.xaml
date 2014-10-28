@@ -3,6 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid Background="pink">
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="137*"/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="menu" HorizontalAlignment="Stretch"  Grid.Row="0"  Margin="0,0,0,26" Grid.Column="0"  Height="20" VerticalAlignment="Stretch">
+            <MenuItem Header="_Menu" >
+                <MenuItem Header="Add" Click="MenuItem_Click"/>
+                <MenuItem Header="Remove"/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="_Edit"/>
+            <MenuItem Header="_View">
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
