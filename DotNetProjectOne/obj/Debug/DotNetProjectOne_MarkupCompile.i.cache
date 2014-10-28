@@ -4,17 +4,26 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\
+=======
+C:\Users\Lino\Desktop\DotNet\DotNetProjectOne\obj\Debug\
+>>>>>>> 2df27d22333e094ebbed1f6578d83ae447bbab53
 DotNetProjectOne
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\App.xaml
 11151548125
+=======
+C:\Users\Lino\Desktop\DotNet\DotNetProjectOne\App.xaml
+2970212155
+>>>>>>> 2df27d22333e094ebbed1f6578d83ae447bbab53
 2-775192278
-9-766751249
-12-1401562060
-MainWindow.xaml;
+1129092577
+131721740678
+FilmWindow.xaml;MainWindow.xaml;
 
 False
 

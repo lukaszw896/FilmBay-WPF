@@ -20,9 +20,27 @@ namespace DotNetProjectOne
     /// </summary>
     public partial class MainWindow : Window
     {
+           #region
+        public static void AddFilm( film_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.film_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+            }
+        }
+
+        #endregion
         public MainWindow()
         {
             InitializeComponent();
+        }
+     
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FilmWindow w = new FilmWindow();
+            w.Show();
         }
     }
 }
