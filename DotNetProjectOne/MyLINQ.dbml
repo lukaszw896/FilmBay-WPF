@@ -21,6 +21,7 @@
       <Column Name="is_premium" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Association Name="user_table_favourites_films_table" Member="favourites_films_tables" ThisKey="id_user" OtherKey="id_user" Type="favourites_films_table" />
       <Association Name="user_table_comment_table" Member="comment_tables" ThisKey="id_user" OtherKey="id_user" Type="comment_table" />
+      <Association Name="user_table_bought_films_table" Member="bought_films_tables" ThisKey="id_user" OtherKey="id_user" Type="bought_films_table" />
     </Type>
   </Table>
   <Table Name="dbo.producer_table" Member="producer_tables">
@@ -87,6 +88,7 @@
       <Association Name="film_table_favourites_films_table" Member="favourites_films_tables" ThisKey="id_film" OtherKey="id_film" Type="favourites_films_table" />
       <Association Name="film_table_comment_table" Member="comment_tables" ThisKey="id_film" OtherKey="id_film" Type="comment_table" />
       <Association Name="film_table_actor_film_table" Member="actor_film_tables" ThisKey="id_film" OtherKey="id_film" Type="actor_film_table" />
+      <Association Name="film_table_bought_films_table" Member="bought_films_tables" ThisKey="id_film" OtherKey="id_film" Type="bought_films_table" />
     </Type>
   </Table>
   <Table Name="dbo.film_photos_table" Member="film_photos_tables">
@@ -175,6 +177,14 @@
       <Column Name="id_actor" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="actor_table_actor_film_table" Member="actor_table" ThisKey="id_actor" OtherKey="id_actor" Type="actor_table" IsForeignKey="true" />
       <Association Name="film_table_actor_film_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bought_films_table" Member="bought_films_tables">
+    <Type Name="bought_films_table">
+      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="film_table_bought_films_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
+      <Association Name="user_table_bought_films_table" Member="user_table" ThisKey="id_user" OtherKey="id_user" Type="user_table" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

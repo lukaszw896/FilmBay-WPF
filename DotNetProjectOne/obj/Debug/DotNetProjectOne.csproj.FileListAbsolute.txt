@@ -41,3 +41,18 @@ C:\Users\Lino\Desktop\DotNet\DotNetProjectOne\bin\Debug\DNPDB_log.ldf
 C:\Users\Lino\Desktop\DotNet\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe
 C:\Users\Lino\Desktop\DotNet\DotNetProjectOne\bin\Debug\DotNetProjectOne.pdb
 >>>>>>> 2df27d22333e094ebbed1f6578d83ae447bbab53
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\bin\Debug\DNPDB.mdf
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\bin\Debug\DNPDB_log.ldf
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\bin\Debug\DotNetProjectOne.pdb
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\FilmWindow.baml
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\MainWindow.baml
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\FilmWindow.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\MainWindow.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\App.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne_Content.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne_MarkupCompile.cache
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.g.resources
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.Properties.Resources.resources
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
