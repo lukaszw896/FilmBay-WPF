@@ -19,6 +19,10 @@ namespace DotNetProjectOne
     /// </summary>
     public partial class FilmWindow : Window
     {
+  
+             
+         List<Actor> actors = new List<Actor>();
+         List<Writer> writers = new List<Writer>();
         public FilmWindow()
         {
             InitializeComponent();
@@ -122,8 +126,53 @@ namespace DotNetProjectOne
                 {
                    dane.release_date = System.DateTime.Parse(Month.Text+"/" + Day.Text+"/" + Year.Text);
                 }
-                MainWindow.AddFilm(dane);
-              }
+              MainWindow.AddFilm(dane);
+             int filmid;
+             filmid = dane.id_film;
+
+
+            actor_film_table actorfilmtable = new actor_film_table();
+             actorfilmtable.id_film = filmid;
+
+           
+
+           foreach (Actor a in actors)
+           {
+                 actor_table actor = new actor_table();
+                 actor.actor_name = a.Name;
+                 actor.actor_surname = a.Surname;
+
+                 MyLINQDataContext con = new MyLINQDataContext();
+                 bool nameinDB = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname ==a.Surname select p).Count() > 0;
+                 MessageBox.Show(nameinDB.ToString());
+                 if (nameinDB == false)
+                 {
+                     MainWindow.AddActor(actor);
+                 }     
+                 int actorid = actor.id_actor;
+                 actorfilmtable.id_actor = actorid;
+             //    MainWindow.AddToActorFilmTable(actorfilmtable);
+
+           }
+           foreach (Writer w in writers)
+           {
+               writers_table writer = new writers_table();
+               writer.writer_name = w.WName;
+               writer.writer_surname = w.WSurname;
+
+               MyLINQDataContext con = new MyLINQDataContext();
+               bool nameinDB = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).Count() > 0;
+               MessageBox.Show(nameinDB.ToString());
+               if (nameinDB == false)
+               {
+                   MainWindow.AddWriter(writer);
+               }
+             //  int actorid = actor.id_actor;
+             //  actorfilmtable.id_actor = actorid;
+               //    MainWindow.AddToActorFilmTable(actorfilmtable);
+
+           }
+           }
               
         
         }
@@ -159,6 +208,61 @@ namespace DotNetProjectOne
         private void Duration_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             CheckIfNumeric(e);
+        }
+
+        private void AddActorButton_Click(object sender, RoutedEventArgs e)
+        {
+            ActorPopUp.IsOpen = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ActorPopUp.IsOpen = false;
+        }
+        public class Actor
+        {
+            public string Name { get; set; }
+            public string Surname { get; set; }
+        }
+
+        public class Writer
+        {
+            public string WName { get; set; }
+            public string WSurname { get; set; }
+        }
+
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+          
+        Actor a = new Actor();
+           a.Name=ActorName.Text;
+           a.Surname=ActorSurname.Text;
+           ActorsGrid.Items.Add(a);
+           actors.Add(a);
+            
+
+        //   MainWindow.AddActor(actor);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Writer w = new Writer();
+            w.WName = WriterName.Text;
+            w.WSurname = WriterSurname.Text;
+            WriterGrid.Items.Add(w);
+            writers.Add(w);
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            WriterPopUp.IsOpen = false;
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            WriterPopUp.IsOpen = true;
         }
 
     }

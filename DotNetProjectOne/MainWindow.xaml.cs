@@ -29,8 +29,32 @@ namespace DotNetProjectOne
                 conn.SubmitChanges();
             }
         }
-
-        #endregion
+        public static void AddActor(actor_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.actor_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+            }
+        }
+        public static void AddToActorFilmTable(actor_film_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.actor_film_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+            }
+        }
+        public static void AddWriter(writers_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.writers_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+            }
+        }
+       
+        #endregion*/
         public MainWindow()
         {
             InitializeComponent();
