@@ -23,6 +23,7 @@ namespace DotNetProjectOne
              
          List<Actor> actors = new List<Actor>();
          List<Writer> writers = new List<Writer>();
+         List<Producer> producers= new List<Producer>();
         public FilmWindow()
         {
             InitializeComponent();
@@ -33,6 +34,16 @@ namespace DotNetProjectOne
             int result;
 
             if (!(int.TryParse(e.Text, out result) || e.Text == "."))
+            {
+                e.Handled = true;
+            }
+
+        }
+        private void CheckIfLetters(TextCompositionEventArgs e)
+        {
+            int result;
+
+            if ((int.TryParse(e.Text, out result) || e.Text == "."))
             {
                 e.Handled = true;
             }
@@ -129,11 +140,8 @@ namespace DotNetProjectOne
               MainWindow.AddFilm(dane);
              int filmid;
              filmid = dane.id_film;
-
-
-            actor_film_table actorfilmtable = new actor_film_table();
-             actorfilmtable.id_film = filmid;
-
+         
+      //      actorfilmtable.film_table = dane;
            
 
            foreach (Actor a in actors)
@@ -141,35 +149,73 @@ namespace DotNetProjectOne
                  actor_table actor = new actor_table();
                  actor.actor_name = a.Name;
                  actor.actor_surname = a.Surname;
-
+                 int actorid;
                  MyLINQDataContext con = new MyLINQDataContext();
                  bool nameinDB = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname ==a.Surname select p).Count() > 0;
-                 MessageBox.Show(nameinDB.ToString());
+               //  MessageBox.Show(nameinDB.ToString());
                  if (nameinDB == false)
                  {
                      MainWindow.AddActor(actor);
+                     actorid = actor.id_actor;
                  }     
-                 int actorid = actor.id_actor;
-                 actorfilmtable.id_actor = actorid;
-             //    MainWindow.AddToActorFilmTable(actorfilmtable);
+                 else
+                 {
+         
+             actor_table x= (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).First();
+             actorid = x.id_actor;
+                 }
 
+                   // actor.id_actor;
+                    actor_film_table actorfilmtable = new actor_film_table();
+                    actorfilmtable.id_film = filmid;
+               //  actorfilmtable.actor_table = actor;
+                    actorfilmtable.id_actor = actorid;
+                MainWindow.AddToActorFilmTable(actorfilmtable);
            }
            foreach (Writer w in writers)
            {
                writers_table writer = new writers_table();
                writer.writer_name = w.WName;
                writer.writer_surname = w.WSurname;
-
+               int writerid;
                MyLINQDataContext con = new MyLINQDataContext();
                bool nameinDB = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).Count() > 0;
-               MessageBox.Show(nameinDB.ToString());
+             //  MessageBox.Show(nameinDB.ToString());
                if (nameinDB == false)
                {
                    MainWindow.AddWriter(writer);
+                   writerid = writer.id_writer;
                }
-             //  int actorid = actor.id_actor;
-             //  actorfilmtable.id_actor = actorid;
-               //    MainWindow.AddToActorFilmTable(actorfilmtable);
+               else
+               {
+                   writers_table x = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).First();
+                   writerid = x.id_writer;
+               }
+              film_writers_table filmwriterstable = new film_writers_table();
+               filmwriterstable.id_film = filmid;
+               //  actorfilmtable.actor_table = actor;
+               filmwriterstable.id_writer = writerid;
+               MainWindow.AddToWriterFilmTable(filmwriterstable);
+
+           }
+
+
+
+
+           foreach (Producer p in producers)
+           {
+               producer_table producer = new producer_table();
+               producer.producer_name = p.PName;
+               producer.producer_surname = p.PSurname;
+               producer.id_film = filmid;
+               MyLINQDataContext con = new MyLINQDataContext();
+               bool nameinDB = (from x in con.producer_tables where x.producer_name == p.PName && x.producer_surname == p.PSurname select x).Count() > 0;
+               //  MessageBox.Show(nameinDB.ToString());
+               if (nameinDB == false)
+               {
+                   MainWindow.AddProducer(producer);
+               }
+
 
            }
            }
@@ -230,6 +276,11 @@ namespace DotNetProjectOne
             public string WName { get; set; }
             public string WSurname { get; set; }
         }
+        public class Producer
+        {
+            public string PName { get; set; }
+            public string PSurname { get; set; }
+        }
 
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -263,6 +314,36 @@ namespace DotNetProjectOne
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             WriterPopUp.IsOpen = true;
+        }
+
+        private void WriterName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            CheckIfLetters(e);
+        }
+
+        private void WriterSurname_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            CheckIfLetters(e);
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            ProducerPopUp.IsOpen = true;
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            Producer a = new Producer();
+            a.PName = ProducerName.Text;
+            a.PSurname = ProducerSurname.Text;
+            ProducerGrid.Items.Add(a);
+            producers.Add(a);
+
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            ProducerPopUp.IsOpen= false;
         }
 
     }

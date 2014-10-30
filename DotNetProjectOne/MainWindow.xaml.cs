@@ -53,7 +53,22 @@ namespace DotNetProjectOne
                 conn.SubmitChanges();
             }
         }
-       
+        public static void AddProducer(producer_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.producer_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+            }
+        }
+        public static void AddToWriterFilmTable(film_writers_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.film_writers_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+            }
+        }
         #endregion*/
         public MainWindow()
         {

@@ -35,9 +35,9 @@
         <Button x:Name="Cancel" Content="Resign" HorizontalAlignment="Left" Margin="229,607,0,0" VerticalAlignment="Top" Width="103"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="42,176,0,0" VerticalAlignment="Top" Width="57"/>
         <TextBox MaxLength="15" x:Name="Duration" HorizontalAlignment="Left" Height="23" Margin="207,179,0,0" TextWrapping="Wrap" Text="1:30:59" VerticalAlignment="Top" Width="129"  />
-        <Button x:Name="AddActorButton" Content="AddActor" HorizontalAlignment="Left" Margin="367,179,0,0" VerticalAlignment="Top" Width="97" Height="25" Click="AddActorButton_Click"/>
+        <Button x:Name="AddActorButton" Content="AddActor" HorizontalAlignment="Left" Margin="367,143,0,0" VerticalAlignment="Top" Width="97" Height="25" Click="AddActorButton_Click"/>
 
-        <DataGrid x:Name="ActorsGrid" HorizontalAlignment="Left" Margin="367,30,0,0" VerticalAlignment="Top" Height="126" Width="215" AutoGenerateColumns="False">
+        <DataGrid x:Name="ActorsGrid" HorizontalAlignment="Left" Margin="367,12,0,0" VerticalAlignment="Top" Height="126" Width="215" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Width="105" Binding="{Binding Path=Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Surname" Width="105" Binding="{Binding Path=Surname}"></DataGridTextColumn>
@@ -77,13 +77,13 @@ Grid.Column="1" HorizontalAlignment="Left" Click="Button_Click" />
                 </StackPanel>
             </Border>
         </Popup>
-        <DataGrid x:Name="WriterGrid" HorizontalAlignment="Left" Margin="367,230,0,0" VerticalAlignment="Top" Height="126" Width="215" AutoGenerateColumns="False">
+        <DataGrid x:Name="WriterGrid" HorizontalAlignment="Left" Margin="367,184,0,0" VerticalAlignment="Top" Height="126" Width="215" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="WriterName" Width="105" Binding="{Binding WName}"/>
-                <DataGridTextColumn Header="WriterSurname" Width="105" Binding="{Binding WSurname}"/>
+                <DataGridTextColumn Header="Name" Width="105" Binding="{Binding WName}"/>
+                <DataGridTextColumn Header="Surname" Width="105" Binding="{Binding WSurname}"/>
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <Popup Name="WriterPopUp" Width="240" Height="200" Placement="Center" IsEnabled="True" IsOpen="False" >
             <Border BorderBrush="Orange" BorderThickness="3">
                 <StackPanel Background="Pink" VerticalAlignment="Center" Height="200">
@@ -100,14 +100,14 @@ Grid.Column="1" HorizontalAlignment="Left" Click="Button_Click" />
                                 <ColumnDefinition Width="100"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-                            <Label Content=" Writer Name:" HorizontalAlignment="Right" 
+                            <Label Content="Name:" HorizontalAlignment="Right" 
 Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
                             <TextBox Name="WriterName" Width=" 90" Height=" 20" Grid.Row="0" 
-Grid.Column="1" HorizontalAlignment="Left"/>
-                            <Label  Content=" Writer Surname:" Grid.Row="1"
+Grid.Column="1" HorizontalAlignment="Left" PreviewTextInput="WriterName_PreviewTextInput"/>
+                            <Label  Content="Surname:" Grid.Row="1"
 Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
                             <TextBox Name="WriterSurname" Width=" 90" Height="20" Grid.Row="1" 
-Grid.Column="1" HorizontalAlignment="Left" IsEnabled="True"/>
+Grid.Column="1" HorizontalAlignment="Left" IsEnabled="True" PreviewTextInput="WriterSurname_PreviewTextInput"/>
                             <Button Content="Add" Width="70" Height="35" Grid.Row="2" 
 Grid.Column="0" HorizontalAlignment="Right" Click="Button_Click_2"  />
                             <Button Content="Close" Width="70" Height="35" Grid.Row="2" 
@@ -117,6 +117,47 @@ Grid.Column="1" HorizontalAlignment="Left" Click="Button_Click_3" />
                 </StackPanel>
             </Border>
         </Popup>
-        <Button Content="AddWriter" HorizontalAlignment="Left" Margin="367,381,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_4"/>
+        <Button Content="AddWriter" HorizontalAlignment="Left" Margin="367,323,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_4"/>
+        <DataGrid x:Name="ProducerGrid" HorizontalAlignment="Left" Margin="367,383,0,0" VerticalAlignment="Top" Height="126" Width="215" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Width="105" Binding="{Binding PName}"/>
+                <DataGridTextColumn Header="Surname" Width="105" Binding="{Binding PSurname}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="AddProducer" HorizontalAlignment="Left" Margin="367,528,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_5"/>
+        
+        <Popup Name="ProducerPopUp" Width="240" Height="200" Placement="Center" IsEnabled="True" IsOpen="False" >
+            <Border BorderBrush="Orange" BorderThickness="3">
+                <StackPanel Background="Pink" VerticalAlignment="Center" Height="200">
+                    <StackPanel>
+                        <Grid Margin="0,40,0,20" >
+                            <Grid.RowDefinitions >
+                                <RowDefinition Height=" 35"></RowDefinition>
+                                <RowDefinition Height="35"></RowDefinition>
+                                <RowDefinition Height="35"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Name:" HorizontalAlignment="Right" 
+Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
+                            <TextBox Name="ProducerName" Width=" 90" Height=" 20" Grid.Row="0" 
+Grid.Column="1" HorizontalAlignment="Left" PreviewTextInput="WriterName_PreviewTextInput"/>
+                            <Label  Content="Surname:" Grid.Row="1"
+Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <TextBox Name="ProducerSurname" Width=" 90" Height="20" Grid.Row="1" 
+Grid.Column="1" HorizontalAlignment="Left" IsEnabled="True" PreviewTextInput="WriterSurname_PreviewTextInput"/>
+                            <Button Content="Add" Width="70" Height="35" Grid.Row="2" 
+Grid.Column="0" HorizontalAlignment="Right" Click="Button_Click_6" />
+                            <Button Content="Close" Width="70" Height="35" Grid.Row="2" 
+Grid.Column="1" HorizontalAlignment="Left" Click="Button_Click_7" />
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
     </Grid>
 </Window>
