@@ -130,13 +130,6 @@
       <Association Name="user_table_favourites_films_table" Member="user_table" ThisKey="id_user" OtherKey="id_user" Type="user_table" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.face_photo_table" Member="face_photo_tables">
-    <Type Name="face_photo_table">
-      <Column Name="id_face_photo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="face_photo_url" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="face_photo_table_actor_photo_table" Member="actor_photo_tables" ThisKey="id_face_photo" OtherKey="id_face_photo" Type="actor_photo_table" />
-    </Type>
-  </Table>
   <Table Name="dbo.comment_table" Member="comment_tables">
     <Type Name="comment_table">
       <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -159,16 +152,7 @@
       <Column Name="id_actor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="actor_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="actor_surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="actor_table_actor_photo_table" Member="actor_photo_tables" ThisKey="id_actor" OtherKey="id_actor" Type="actor_photo_table" />
       <Association Name="actor_table_actor_film_table" Member="actor_film_tables" ThisKey="id_actor" OtherKey="id_actor" Type="actor_film_table" />
-    </Type>
-  </Table>
-  <Table Name="dbo.actor_photo_table" Member="actor_photo_tables">
-    <Type Name="actor_photo_table">
-      <Column Name="id_actor" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_face_photo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="actor_table_actor_photo_table" Member="actor_table" ThisKey="id_actor" OtherKey="id_actor" Type="actor_table" IsForeignKey="true" />
-      <Association Name="face_photo_table_actor_photo_table" Member="face_photo_table" ThisKey="id_face_photo" OtherKey="id_face_photo" Type="face_photo_table" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.actor_film_table" Member="actor_film_tables">
