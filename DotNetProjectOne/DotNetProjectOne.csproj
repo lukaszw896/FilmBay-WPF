@@ -145,10 +145,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DNPDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DNPDB_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DNPDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
@@ -171,6 +171,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ActorPhotos\" />
+    <Folder Include="Photos\" />
+    <Folder Include="Posters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

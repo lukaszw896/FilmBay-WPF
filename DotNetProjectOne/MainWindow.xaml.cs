@@ -27,6 +27,7 @@ namespace DotNetProjectOne
             {
                 conn.film_tables.InsertOnSubmit(t);
                 conn.SubmitChanges();
+                conn.Dispose();
             }
         }
         public static void AddActor(actor_table t)
@@ -35,6 +36,43 @@ namespace DotNetProjectOne
             {
                 conn.actor_tables.InsertOnSubmit(t);
                 conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddMPhoto(photos_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.photos_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddOLang(other_language_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.other_language_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddToFilmOtherLangTable(film_other_language_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.film_other_language_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddToFilmPhotosTable(film_photos_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.film_photos_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
             }
         }
         public static void AddToActorFilmTable(actor_film_table t)
@@ -43,6 +81,7 @@ namespace DotNetProjectOne
             {
                 conn.actor_film_tables.InsertOnSubmit(t);
                 conn.SubmitChanges();
+                conn.Dispose();
             }
         }
         public static void AddWriter(writers_table t)
@@ -51,6 +90,7 @@ namespace DotNetProjectOne
             {
                 conn.writers_tables.InsertOnSubmit(t);
                 conn.SubmitChanges();
+                conn.Dispose();
             }
         }
         public static void AddProducer(producer_table t)
@@ -59,6 +99,16 @@ namespace DotNetProjectOne
             {
                 conn.producer_tables.InsertOnSubmit(t);
                 conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddComposer(music_creator_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.music_creator_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
             }
         }
         public static void AddToWriterFilmTable(film_writers_table t)
@@ -67,6 +117,16 @@ namespace DotNetProjectOne
             {
                 conn.film_writers_tables.InsertOnSubmit(t);
                 conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddToComposerFilmTable(film_music_creator t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.film_music_creators.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
             }
         }
         #endregion*/
