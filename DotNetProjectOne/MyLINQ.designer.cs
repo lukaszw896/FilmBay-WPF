@@ -51,12 +51,6 @@ namespace DotNetProjectOne
     partial void Insertfilm_writers_table(film_writers_table instance);
     partial void Updatefilm_writers_table(film_writers_table instance);
     partial void Deletefilm_writers_table(film_writers_table instance);
-    partial void Insertfilm_table(film_table instance);
-    partial void Updatefilm_table(film_table instance);
-    partial void Deletefilm_table(film_table instance);
-    partial void Insertfilm_photos_table(film_photos_table instance);
-    partial void Updatefilm_photos_table(film_photos_table instance);
-    partial void Deletefilm_photos_table(film_photos_table instance);
     partial void Insertfilm_other_language_table(film_other_language_table instance);
     partial void Updatefilm_other_language_table(film_other_language_table instance);
     partial void Deletefilm_other_language_table(film_other_language_table instance);
@@ -75,15 +69,24 @@ namespace DotNetProjectOne
     partial void Insertadmin_table(admin_table instance);
     partial void Updateadmin_table(admin_table instance);
     partial void Deleteadmin_table(admin_table instance);
-    partial void Insertactor_table(actor_table instance);
-    partial void Updateactor_table(actor_table instance);
-    partial void Deleteactor_table(actor_table instance);
     partial void Insertactor_film_table(actor_film_table instance);
     partial void Updateactor_film_table(actor_film_table instance);
     partial void Deleteactor_film_table(actor_film_table instance);
     partial void Insertbought_films_table(bought_films_table instance);
     partial void Updatebought_films_table(bought_films_table instance);
     partial void Deletebought_films_table(bought_films_table instance);
+    partial void Insertphotos_table(photos_table instance);
+    partial void Updatephotos_table(photos_table instance);
+    partial void Deletephotos_table(photos_table instance);
+    partial void Insertactor_table(actor_table instance);
+    partial void Updateactor_table(actor_table instance);
+    partial void Deleteactor_table(actor_table instance);
+    partial void Insertfilm_photos_table(film_photos_table instance);
+    partial void Updatefilm_photos_table(film_photos_table instance);
+    partial void Deletefilm_photos_table(film_photos_table instance);
+    partial void Insertfilm_table(film_table instance);
+    partial void Updatefilm_table(film_table instance);
+    partial void Deletefilm_table(film_table instance);
     #endregion
 		
 		public MyLINQDataContext() : 
@@ -172,22 +175,6 @@ namespace DotNetProjectOne
 			}
 		}
 		
-		public System.Data.Linq.Table<film_table> film_tables
-		{
-			get
-			{
-				return this.GetTable<film_table>();
-			}
-		}
-		
-		public System.Data.Linq.Table<film_photos_table> film_photos_tables
-		{
-			get
-			{
-				return this.GetTable<film_photos_table>();
-			}
-		}
-		
 		public System.Data.Linq.Table<film_other_language_table> film_other_language_tables
 		{
 			get
@@ -236,14 +223,6 @@ namespace DotNetProjectOne
 			}
 		}
 		
-		public System.Data.Linq.Table<actor_table> actor_tables
-		{
-			get
-			{
-				return this.GetTable<actor_table>();
-			}
-		}
-		
 		public System.Data.Linq.Table<actor_film_table> actor_film_tables
 		{
 			get
@@ -257,6 +236,38 @@ namespace DotNetProjectOne
 			get
 			{
 				return this.GetTable<bought_films_table>();
+			}
+		}
+		
+		public System.Data.Linq.Table<photos_table> photos_tables
+		{
+			get
+			{
+				return this.GetTable<photos_table>();
+			}
+		}
+		
+		public System.Data.Linq.Table<actor_table> actor_tables
+		{
+			get
+			{
+				return this.GetTable<actor_table>();
+			}
+		}
+		
+		public System.Data.Linq.Table<film_photos_table> film_photos_tables
+		{
+			get
+			{
+				return this.GetTable<film_photos_table>();
+			}
+		}
+		
+		public System.Data.Linq.Table<film_table> film_tables
+		{
+			get
+			{
+				return this.GetTable<film_table>();
 			}
 		}
 	}
@@ -1422,6 +1433,1784 @@ namespace DotNetProjectOne
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.film_other_language_table")]
+	public partial class film_other_language_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_film;
+		
+		private int _id_other_language;
+		
+		private EntityRef<other_language_table> _other_language_table;
+		
+		private EntityRef<film_table> _film_table;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_filmChanging(int value);
+    partial void Onid_filmChanged();
+    partial void Onid_other_languageChanging(int value);
+    partial void Onid_other_languageChanged();
+    #endregion
+		
+		public film_other_language_table()
+		{
+			this._other_language_table = default(EntityRef<other_language_table>);
+			this._film_table = default(EntityRef<film_table>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_film
+		{
+			get
+			{
+				return this._id_film;
+			}
+			set
+			{
+				if ((this._id_film != value))
+				{
+					if (this._film_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_filmChanging(value);
+					this.SendPropertyChanging();
+					this._id_film = value;
+					this.SendPropertyChanged("id_film");
+					this.Onid_filmChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_other_language", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_other_language
+		{
+			get
+			{
+				return this._id_other_language;
+			}
+			set
+			{
+				if ((this._id_other_language != value))
+				{
+					if (this._other_language_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_other_languageChanging(value);
+					this.SendPropertyChanging();
+					this._id_other_language = value;
+					this.SendPropertyChanged("id_other_language");
+					this.Onid_other_languageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="other_language_table_film_other_language_table", Storage="_other_language_table", ThisKey="id_other_language", OtherKey="id_other_language", IsForeignKey=true)]
+		public other_language_table other_language_table
+		{
+			get
+			{
+				return this._other_language_table.Entity;
+			}
+			set
+			{
+				other_language_table previousValue = this._other_language_table.Entity;
+				if (((previousValue != value) 
+							|| (this._other_language_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._other_language_table.Entity = null;
+						previousValue.film_other_language_tables.Remove(this);
+					}
+					this._other_language_table.Entity = value;
+					if ((value != null))
+					{
+						value.film_other_language_tables.Add(this);
+						this._id_other_language = value.id_other_language;
+					}
+					else
+					{
+						this._id_other_language = default(int);
+					}
+					this.SendPropertyChanged("other_language_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_film_other_language_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
+		public film_table film_table
+		{
+			get
+			{
+				return this._film_table.Entity;
+			}
+			set
+			{
+				film_table previousValue = this._film_table.Entity;
+				if (((previousValue != value) 
+							|| (this._film_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._film_table.Entity = null;
+						previousValue.film_other_language_tables.Remove(this);
+					}
+					this._film_table.Entity = value;
+					if ((value != null))
+					{
+						value.film_other_language_tables.Add(this);
+						this._id_film = value.id_film;
+					}
+					else
+					{
+						this._id_film = default(int);
+					}
+					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.film_music_creators")]
+	public partial class film_music_creator : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_film;
+		
+		private int _id_music_creator;
+		
+		private EntityRef<music_creator_table> _music_creator_table;
+		
+		private EntityRef<film_table> _film_table;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_filmChanging(int value);
+    partial void Onid_filmChanged();
+    partial void Onid_music_creatorChanging(int value);
+    partial void Onid_music_creatorChanged();
+    #endregion
+		
+		public film_music_creator()
+		{
+			this._music_creator_table = default(EntityRef<music_creator_table>);
+			this._film_table = default(EntityRef<film_table>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_film
+		{
+			get
+			{
+				return this._id_film;
+			}
+			set
+			{
+				if ((this._id_film != value))
+				{
+					if (this._film_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_filmChanging(value);
+					this.SendPropertyChanging();
+					this._id_film = value;
+					this.SendPropertyChanged("id_film");
+					this.Onid_filmChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_music_creator", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_music_creator
+		{
+			get
+			{
+				return this._id_music_creator;
+			}
+			set
+			{
+				if ((this._id_music_creator != value))
+				{
+					if (this._music_creator_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_music_creatorChanging(value);
+					this.SendPropertyChanging();
+					this._id_music_creator = value;
+					this.SendPropertyChanged("id_music_creator");
+					this.Onid_music_creatorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="music_creator_table_film_music_creator", Storage="_music_creator_table", ThisKey="id_music_creator", OtherKey="id_music_creator", IsForeignKey=true)]
+		public music_creator_table music_creator_table
+		{
+			get
+			{
+				return this._music_creator_table.Entity;
+			}
+			set
+			{
+				music_creator_table previousValue = this._music_creator_table.Entity;
+				if (((previousValue != value) 
+							|| (this._music_creator_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._music_creator_table.Entity = null;
+						previousValue.film_music_creators.Remove(this);
+					}
+					this._music_creator_table.Entity = value;
+					if ((value != null))
+					{
+						value.film_music_creators.Add(this);
+						this._id_music_creator = value.id_music_creator;
+					}
+					else
+					{
+						this._id_music_creator = default(int);
+					}
+					this.SendPropertyChanged("music_creator_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_film_music_creator", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
+		public film_table film_table
+		{
+			get
+			{
+				return this._film_table.Entity;
+			}
+			set
+			{
+				film_table previousValue = this._film_table.Entity;
+				if (((previousValue != value) 
+							|| (this._film_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._film_table.Entity = null;
+						previousValue.film_music_creators.Remove(this);
+					}
+					this._film_table.Entity = value;
+					if ((value != null))
+					{
+						value.film_music_creators.Add(this);
+						this._id_film = value.id_film;
+					}
+					else
+					{
+						this._id_film = default(int);
+					}
+					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.film_genere_table")]
+	public partial class film_genere_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_film;
+		
+		private int _id_genere;
+		
+		private EntityRef<genere_table> _genere_table;
+		
+		private EntityRef<film_table> _film_table;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_filmChanging(int value);
+    partial void Onid_filmChanged();
+    partial void Onid_genereChanging(int value);
+    partial void Onid_genereChanged();
+    #endregion
+		
+		public film_genere_table()
+		{
+			this._genere_table = default(EntityRef<genere_table>);
+			this._film_table = default(EntityRef<film_table>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_film
+		{
+			get
+			{
+				return this._id_film;
+			}
+			set
+			{
+				if ((this._id_film != value))
+				{
+					if (this._film_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_filmChanging(value);
+					this.SendPropertyChanging();
+					this._id_film = value;
+					this.SendPropertyChanged("id_film");
+					this.Onid_filmChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_genere", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_genere
+		{
+			get
+			{
+				return this._id_genere;
+			}
+			set
+			{
+				if ((this._id_genere != value))
+				{
+					if (this._genere_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_genereChanging(value);
+					this.SendPropertyChanging();
+					this._id_genere = value;
+					this.SendPropertyChanged("id_genere");
+					this.Onid_genereChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="genere_table_film_genere_table", Storage="_genere_table", ThisKey="id_genere", OtherKey="id_genere", IsForeignKey=true)]
+		public genere_table genere_table
+		{
+			get
+			{
+				return this._genere_table.Entity;
+			}
+			set
+			{
+				genere_table previousValue = this._genere_table.Entity;
+				if (((previousValue != value) 
+							|| (this._genere_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._genere_table.Entity = null;
+						previousValue.film_genere_tables.Remove(this);
+					}
+					this._genere_table.Entity = value;
+					if ((value != null))
+					{
+						value.film_genere_tables.Add(this);
+						this._id_genere = value.id_genere;
+					}
+					else
+					{
+						this._id_genere = default(int);
+					}
+					this.SendPropertyChanged("genere_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_film_genere_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
+		public film_table film_table
+		{
+			get
+			{
+				return this._film_table.Entity;
+			}
+			set
+			{
+				film_table previousValue = this._film_table.Entity;
+				if (((previousValue != value) 
+							|| (this._film_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._film_table.Entity = null;
+						previousValue.film_genere_tables.Remove(this);
+					}
+					this._film_table.Entity = value;
+					if ((value != null))
+					{
+						value.film_genere_tables.Add(this);
+						this._id_film = value.id_film;
+					}
+					else
+					{
+						this._id_film = default(int);
+					}
+					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.favourites_films_table")]
+	public partial class favourites_films_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_film;
+		
+		private int _id_user;
+		
+		private EntityRef<user_table> _user_table;
+		
+		private EntityRef<film_table> _film_table;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_filmChanging(int value);
+    partial void Onid_filmChanged();
+    partial void Onid_userChanging(int value);
+    partial void Onid_userChanged();
+    #endregion
+		
+		public favourites_films_table()
+		{
+			this._user_table = default(EntityRef<user_table>);
+			this._film_table = default(EntityRef<film_table>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_film
+		{
+			get
+			{
+				return this._id_film;
+			}
+			set
+			{
+				if ((this._id_film != value))
+				{
+					if (this._film_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_filmChanging(value);
+					this.SendPropertyChanging();
+					this._id_film = value;
+					this.SendPropertyChanged("id_film");
+					this.Onid_filmChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_user
+		{
+			get
+			{
+				return this._id_user;
+			}
+			set
+			{
+				if ((this._id_user != value))
+				{
+					if (this._user_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_userChanging(value);
+					this.SendPropertyChanging();
+					this._id_user = value;
+					this.SendPropertyChanged("id_user");
+					this.Onid_userChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_favourites_films_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
+		public user_table user_table
+		{
+			get
+			{
+				return this._user_table.Entity;
+			}
+			set
+			{
+				user_table previousValue = this._user_table.Entity;
+				if (((previousValue != value) 
+							|| (this._user_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_table.Entity = null;
+						previousValue.favourites_films_tables.Remove(this);
+					}
+					this._user_table.Entity = value;
+					if ((value != null))
+					{
+						value.favourites_films_tables.Add(this);
+						this._id_user = value.id_user;
+					}
+					else
+					{
+						this._id_user = default(int);
+					}
+					this.SendPropertyChanged("user_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_favourites_films_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
+		public film_table film_table
+		{
+			get
+			{
+				return this._film_table.Entity;
+			}
+			set
+			{
+				film_table previousValue = this._film_table.Entity;
+				if (((previousValue != value) 
+							|| (this._film_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._film_table.Entity = null;
+						previousValue.favourites_films_tables.Remove(this);
+					}
+					this._film_table.Entity = value;
+					if ((value != null))
+					{
+						value.favourites_films_tables.Add(this);
+						this._id_film = value.id_film;
+					}
+					else
+					{
+						this._id_film = default(int);
+					}
+					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.comment_table")]
+	public partial class comment_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_film;
+		
+		private int _id_user;
+		
+		private string _comment;
+		
+		private EntityRef<user_table> _user_table;
+		
+		private EntityRef<film_table> _film_table;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_filmChanging(int value);
+    partial void Onid_filmChanged();
+    partial void Onid_userChanging(int value);
+    partial void Onid_userChanged();
+    partial void OncommentChanging(string value);
+    partial void OncommentChanged();
+    #endregion
+		
+		public comment_table()
+		{
+			this._user_table = default(EntityRef<user_table>);
+			this._film_table = default(EntityRef<film_table>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_film
+		{
+			get
+			{
+				return this._id_film;
+			}
+			set
+			{
+				if ((this._id_film != value))
+				{
+					if (this._film_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_filmChanging(value);
+					this.SendPropertyChanging();
+					this._id_film = value;
+					this.SendPropertyChanged("id_film");
+					this.Onid_filmChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_user
+		{
+			get
+			{
+				return this._id_user;
+			}
+			set
+			{
+				if ((this._id_user != value))
+				{
+					if (this._user_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_userChanging(value);
+					this.SendPropertyChanging();
+					this._id_user = value;
+					this.SendPropertyChanged("id_user");
+					this.Onid_userChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comment", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string comment
+		{
+			get
+			{
+				return this._comment;
+			}
+			set
+			{
+				if ((this._comment != value))
+				{
+					this.OncommentChanging(value);
+					this.SendPropertyChanging();
+					this._comment = value;
+					this.SendPropertyChanged("comment");
+					this.OncommentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_comment_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
+		public user_table user_table
+		{
+			get
+			{
+				return this._user_table.Entity;
+			}
+			set
+			{
+				user_table previousValue = this._user_table.Entity;
+				if (((previousValue != value) 
+							|| (this._user_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_table.Entity = null;
+						previousValue.comment_tables.Remove(this);
+					}
+					this._user_table.Entity = value;
+					if ((value != null))
+					{
+						value.comment_tables.Add(this);
+						this._id_user = value.id_user;
+					}
+					else
+					{
+						this._id_user = default(int);
+					}
+					this.SendPropertyChanged("user_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_comment_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
+		public film_table film_table
+		{
+			get
+			{
+				return this._film_table.Entity;
+			}
+			set
+			{
+				film_table previousValue = this._film_table.Entity;
+				if (((previousValue != value) 
+							|| (this._film_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._film_table.Entity = null;
+						previousValue.comment_tables.Remove(this);
+					}
+					this._film_table.Entity = value;
+					if ((value != null))
+					{
+						value.comment_tables.Add(this);
+						this._id_film = value.id_film;
+					}
+					else
+					{
+						this._id_film = default(int);
+					}
+					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.admin_table")]
+	public partial class admin_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_admin;
+		
+		private string _login;
+		
+		private string _password;
+		
+		private string _e_mail;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_adminChanging(int value);
+    partial void Onid_adminChanged();
+    partial void OnloginChanging(string value);
+    partial void OnloginChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    partial void One_mailChanging(string value);
+    partial void One_mailChanged();
+    #endregion
+		
+		public admin_table()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_admin", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_admin
+		{
+			get
+			{
+				return this._id_admin;
+			}
+			set
+			{
+				if ((this._id_admin != value))
+				{
+					this.Onid_adminChanging(value);
+					this.SendPropertyChanging();
+					this._id_admin = value;
+					this.SendPropertyChanged("id_admin");
+					this.Onid_adminChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_login", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string login
+		{
+			get
+			{
+				return this._login;
+			}
+			set
+			{
+				if ((this._login != value))
+				{
+					this.OnloginChanging(value);
+					this.SendPropertyChanging();
+					this._login = value;
+					this.SendPropertyChanged("login");
+					this.OnloginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string password
+		{
+			get
+			{
+				return this._password;
+			}
+			set
+			{
+				if ((this._password != value))
+				{
+					this.OnpasswordChanging(value);
+					this.SendPropertyChanging();
+					this._password = value;
+					this.SendPropertyChanged("password");
+					this.OnpasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_e_mail", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string e_mail
+		{
+			get
+			{
+				return this._e_mail;
+			}
+			set
+			{
+				if ((this._e_mail != value))
+				{
+					this.One_mailChanging(value);
+					this.SendPropertyChanging();
+					this._e_mail = value;
+					this.SendPropertyChanged("e_mail");
+					this.One_mailChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.actor_film_table")]
+	public partial class actor_film_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_film;
+		
+		private int _id_actor;
+		
+		private EntityRef<actor_table> _actor_table;
+		
+		private EntityRef<film_table> _film_table;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_filmChanging(int value);
+    partial void Onid_filmChanged();
+    partial void Onid_actorChanging(int value);
+    partial void Onid_actorChanged();
+    #endregion
+		
+		public actor_film_table()
+		{
+			this._actor_table = default(EntityRef<actor_table>);
+			this._film_table = default(EntityRef<film_table>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_film
+		{
+			get
+			{
+				return this._id_film;
+			}
+			set
+			{
+				if ((this._id_film != value))
+				{
+					if (this._film_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_filmChanging(value);
+					this.SendPropertyChanging();
+					this._id_film = value;
+					this.SendPropertyChanged("id_film");
+					this.Onid_filmChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_actor", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_actor
+		{
+			get
+			{
+				return this._id_actor;
+			}
+			set
+			{
+				if ((this._id_actor != value))
+				{
+					if (this._actor_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_actorChanging(value);
+					this.SendPropertyChanging();
+					this._id_actor = value;
+					this.SendPropertyChanged("id_actor");
+					this.Onid_actorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="actor_table_actor_film_table", Storage="_actor_table", ThisKey="id_actor", OtherKey="id_actor", IsForeignKey=true)]
+		public actor_table actor_table
+		{
+			get
+			{
+				return this._actor_table.Entity;
+			}
+			set
+			{
+				actor_table previousValue = this._actor_table.Entity;
+				if (((previousValue != value) 
+							|| (this._actor_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._actor_table.Entity = null;
+						previousValue.actor_film_tables.Remove(this);
+					}
+					this._actor_table.Entity = value;
+					if ((value != null))
+					{
+						value.actor_film_tables.Add(this);
+						this._id_actor = value.id_actor;
+					}
+					else
+					{
+						this._id_actor = default(int);
+					}
+					this.SendPropertyChanged("actor_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_actor_film_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
+		public film_table film_table
+		{
+			get
+			{
+				return this._film_table.Entity;
+			}
+			set
+			{
+				film_table previousValue = this._film_table.Entity;
+				if (((previousValue != value) 
+							|| (this._film_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._film_table.Entity = null;
+						previousValue.actor_film_tables.Remove(this);
+					}
+					this._film_table.Entity = value;
+					if ((value != null))
+					{
+						value.actor_film_tables.Add(this);
+						this._id_film = value.id_film;
+					}
+					else
+					{
+						this._id_film = default(int);
+					}
+					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.bought_films_table")]
+	public partial class bought_films_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_film;
+		
+		private int _id_user;
+		
+		private EntityRef<user_table> _user_table;
+		
+		private EntityRef<film_table> _film_table;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_filmChanging(int value);
+    partial void Onid_filmChanged();
+    partial void Onid_userChanging(int value);
+    partial void Onid_userChanged();
+    #endregion
+		
+		public bought_films_table()
+		{
+			this._user_table = default(EntityRef<user_table>);
+			this._film_table = default(EntityRef<film_table>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_film
+		{
+			get
+			{
+				return this._id_film;
+			}
+			set
+			{
+				if ((this._id_film != value))
+				{
+					if (this._film_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_filmChanging(value);
+					this.SendPropertyChanging();
+					this._id_film = value;
+					this.SendPropertyChanged("id_film");
+					this.Onid_filmChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_user
+		{
+			get
+			{
+				return this._id_user;
+			}
+			set
+			{
+				if ((this._id_user != value))
+				{
+					if (this._user_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_userChanging(value);
+					this.SendPropertyChanging();
+					this._id_user = value;
+					this.SendPropertyChanged("id_user");
+					this.Onid_userChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_bought_films_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
+		public user_table user_table
+		{
+			get
+			{
+				return this._user_table.Entity;
+			}
+			set
+			{
+				user_table previousValue = this._user_table.Entity;
+				if (((previousValue != value) 
+							|| (this._user_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_table.Entity = null;
+						previousValue.bought_films_tables.Remove(this);
+					}
+					this._user_table.Entity = value;
+					if ((value != null))
+					{
+						value.bought_films_tables.Add(this);
+						this._id_user = value.id_user;
+					}
+					else
+					{
+						this._id_user = default(int);
+					}
+					this.SendPropertyChanged("user_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_bought_films_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
+		public film_table film_table
+		{
+			get
+			{
+				return this._film_table.Entity;
+			}
+			set
+			{
+				film_table previousValue = this._film_table.Entity;
+				if (((previousValue != value) 
+							|| (this._film_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._film_table.Entity = null;
+						previousValue.bought_films_tables.Remove(this);
+					}
+					this._film_table.Entity = value;
+					if ((value != null))
+					{
+						value.bought_films_tables.Add(this);
+						this._id_film = value.id_film;
+					}
+					else
+					{
+						this._id_film = default(int);
+					}
+					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.photos_table")]
+	public partial class photos_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_photo;
+		
+		private string _photo_url;
+		
+		private EntitySet<film_photos_table> _film_photos_tables;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_photoChanging(int value);
+    partial void Onid_photoChanged();
+    partial void Onphoto_urlChanging(string value);
+    partial void Onphoto_urlChanged();
+    #endregion
+		
+		public photos_table()
+		{
+			this._film_photos_tables = new EntitySet<film_photos_table>(new Action<film_photos_table>(this.attach_film_photos_tables), new Action<film_photos_table>(this.detach_film_photos_tables));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_photo", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_photo
+		{
+			get
+			{
+				return this._id_photo;
+			}
+			set
+			{
+				if ((this._id_photo != value))
+				{
+					this.Onid_photoChanging(value);
+					this.SendPropertyChanging();
+					this._id_photo = value;
+					this.SendPropertyChanged("id_photo");
+					this.Onid_photoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_photo_url", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string photo_url
+		{
+			get
+			{
+				return this._photo_url;
+			}
+			set
+			{
+				if ((this._photo_url != value))
+				{
+					this.Onphoto_urlChanging(value);
+					this.SendPropertyChanging();
+					this._photo_url = value;
+					this.SendPropertyChanged("photo_url");
+					this.Onphoto_urlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="photos_table_film_photos_table", Storage="_film_photos_tables", ThisKey="id_photo", OtherKey="id_photo")]
+		public EntitySet<film_photos_table> film_photos_tables
+		{
+			get
+			{
+				return this._film_photos_tables;
+			}
+			set
+			{
+				this._film_photos_tables.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_film_photos_tables(film_photos_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.photos_table = this;
+		}
+		
+		private void detach_film_photos_tables(film_photos_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.photos_table = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.actor_table")]
+	public partial class actor_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_actor;
+		
+		private string _actor_name;
+		
+		private string _actor_surname;
+		
+		private string _actor_photo_url;
+		
+		private EntitySet<actor_film_table> _actor_film_tables;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_actorChanging(int value);
+    partial void Onid_actorChanged();
+    partial void Onactor_nameChanging(string value);
+    partial void Onactor_nameChanged();
+    partial void Onactor_surnameChanging(string value);
+    partial void Onactor_surnameChanged();
+    partial void Onactor_photo_urlChanging(string value);
+    partial void Onactor_photo_urlChanged();
+    #endregion
+		
+		public actor_table()
+		{
+			this._actor_film_tables = new EntitySet<actor_film_table>(new Action<actor_film_table>(this.attach_actor_film_tables), new Action<actor_film_table>(this.detach_actor_film_tables));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_actor", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_actor
+		{
+			get
+			{
+				return this._id_actor;
+			}
+			set
+			{
+				if ((this._id_actor != value))
+				{
+					this.Onid_actorChanging(value);
+					this.SendPropertyChanging();
+					this._id_actor = value;
+					this.SendPropertyChanged("id_actor");
+					this.Onid_actorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actor_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string actor_name
+		{
+			get
+			{
+				return this._actor_name;
+			}
+			set
+			{
+				if ((this._actor_name != value))
+				{
+					this.Onactor_nameChanging(value);
+					this.SendPropertyChanging();
+					this._actor_name = value;
+					this.SendPropertyChanged("actor_name");
+					this.Onactor_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actor_surname", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string actor_surname
+		{
+			get
+			{
+				return this._actor_surname;
+			}
+			set
+			{
+				if ((this._actor_surname != value))
+				{
+					this.Onactor_surnameChanging(value);
+					this.SendPropertyChanging();
+					this._actor_surname = value;
+					this.SendPropertyChanged("actor_surname");
+					this.Onactor_surnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actor_photo_url", DbType="VarChar(50)")]
+		public string actor_photo_url
+		{
+			get
+			{
+				return this._actor_photo_url;
+			}
+			set
+			{
+				if ((this._actor_photo_url != value))
+				{
+					this.Onactor_photo_urlChanging(value);
+					this.SendPropertyChanging();
+					this._actor_photo_url = value;
+					this.SendPropertyChanged("actor_photo_url");
+					this.Onactor_photo_urlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="actor_table_actor_film_table", Storage="_actor_film_tables", ThisKey="id_actor", OtherKey="id_actor")]
+		public EntitySet<actor_film_table> actor_film_tables
+		{
+			get
+			{
+				return this._actor_film_tables;
+			}
+			set
+			{
+				this._actor_film_tables.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_actor_film_tables(actor_film_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.actor_table = this;
+		}
+		
+		private void detach_actor_film_tables(actor_film_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.actor_table = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.film_photos_table")]
+	public partial class film_photos_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_film;
+		
+		private int _id_photo;
+		
+		private EntityRef<photos_table> _photos_table;
+		
+		private EntityRef<film_table> _film_table;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_filmChanging(int value);
+    partial void Onid_filmChanged();
+    partial void Onid_photoChanging(int value);
+    partial void Onid_photoChanged();
+    #endregion
+		
+		public film_photos_table()
+		{
+			this._photos_table = default(EntityRef<photos_table>);
+			this._film_table = default(EntityRef<film_table>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_film
+		{
+			get
+			{
+				return this._id_film;
+			}
+			set
+			{
+				if ((this._id_film != value))
+				{
+					if (this._film_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_filmChanging(value);
+					this.SendPropertyChanging();
+					this._id_film = value;
+					this.SendPropertyChanged("id_film");
+					this.Onid_filmChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_photo", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_photo
+		{
+			get
+			{
+				return this._id_photo;
+			}
+			set
+			{
+				if ((this._id_photo != value))
+				{
+					if (this._photos_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_photoChanging(value);
+					this.SendPropertyChanging();
+					this._id_photo = value;
+					this.SendPropertyChanged("id_photo");
+					this.Onid_photoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="photos_table_film_photos_table", Storage="_photos_table", ThisKey="id_photo", OtherKey="id_photo", IsForeignKey=true)]
+		public photos_table photos_table
+		{
+			get
+			{
+				return this._photos_table.Entity;
+			}
+			set
+			{
+				photos_table previousValue = this._photos_table.Entity;
+				if (((previousValue != value) 
+							|| (this._photos_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._photos_table.Entity = null;
+						previousValue.film_photos_tables.Remove(this);
+					}
+					this._photos_table.Entity = value;
+					if ((value != null))
+					{
+						value.film_photos_tables.Add(this);
+						this._id_photo = value.id_photo;
+					}
+					else
+					{
+						this._id_photo = default(int);
+					}
+					this.SendPropertyChanged("photos_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_film_photos_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
+		public film_table film_table
+		{
+			get
+			{
+				return this._film_table.Entity;
+			}
+			set
+			{
+				film_table previousValue = this._film_table.Entity;
+				if (((previousValue != value) 
+							|| (this._film_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._film_table.Entity = null;
+						previousValue.film_photos_tables.Remove(this);
+					}
+					this._film_table.Entity = value;
+					if ((value != null))
+					{
+						value.film_photos_tables.Add(this);
+						this._id_film = value.id_film;
+					}
+					else
+					{
+						this._id_film = default(int);
+					}
+					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.film_table")]
 	public partial class film_table : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1458,11 +3247,11 @@ namespace DotNetProjectOne
 		
 		private string _film_studio;
 		
+		private string _poster_url;
+		
 		private EntitySet<producer_table> _producer_tables;
 		
 		private EntitySet<film_writers_table> _film_writers_tables;
-		
-		private EntityRef<film_photos_table> _film_photos_table;
 		
 		private EntitySet<film_other_language_table> _film_other_language_tables;
 		
@@ -1477,6 +3266,8 @@ namespace DotNetProjectOne
 		private EntitySet<actor_film_table> _actor_film_tables;
 		
 		private EntitySet<bought_films_table> _bought_films_tables;
+		
+		private EntitySet<film_photos_table> _film_photos_tables;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1512,13 +3303,14 @@ namespace DotNetProjectOne
     partial void Onfilm_priceChanged();
     partial void Onfilm_studioChanging(string value);
     partial void Onfilm_studioChanged();
+    partial void Onposter_urlChanging(string value);
+    partial void Onposter_urlChanged();
     #endregion
 		
 		public film_table()
 		{
 			this._producer_tables = new EntitySet<producer_table>(new Action<producer_table>(this.attach_producer_tables), new Action<producer_table>(this.detach_producer_tables));
 			this._film_writers_tables = new EntitySet<film_writers_table>(new Action<film_writers_table>(this.attach_film_writers_tables), new Action<film_writers_table>(this.detach_film_writers_tables));
-			this._film_photos_table = default(EntityRef<film_photos_table>);
 			this._film_other_language_tables = new EntitySet<film_other_language_table>(new Action<film_other_language_table>(this.attach_film_other_language_tables), new Action<film_other_language_table>(this.detach_film_other_language_tables));
 			this._film_music_creators = new EntitySet<film_music_creator>(new Action<film_music_creator>(this.attach_film_music_creators), new Action<film_music_creator>(this.detach_film_music_creators));
 			this._film_genere_tables = new EntitySet<film_genere_table>(new Action<film_genere_table>(this.attach_film_genere_tables), new Action<film_genere_table>(this.detach_film_genere_tables));
@@ -1526,6 +3318,7 @@ namespace DotNetProjectOne
 			this._comment_tables = new EntitySet<comment_table>(new Action<comment_table>(this.attach_comment_tables), new Action<comment_table>(this.detach_comment_tables));
 			this._actor_film_tables = new EntitySet<actor_film_table>(new Action<actor_film_table>(this.attach_actor_film_tables), new Action<actor_film_table>(this.detach_actor_film_tables));
 			this._bought_films_tables = new EntitySet<bought_films_table>(new Action<bought_films_table>(this.attach_bought_films_tables), new Action<bought_films_table>(this.detach_bought_films_tables));
+			this._film_photos_tables = new EntitySet<film_photos_table>(new Action<film_photos_table>(this.attach_film_photos_tables), new Action<film_photos_table>(this.detach_film_photos_tables));
 			OnCreated();
 		}
 		
@@ -1829,6 +3622,26 @@ namespace DotNetProjectOne
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_poster_url", DbType="NVarChar(50)")]
+		public string poster_url
+		{
+			get
+			{
+				return this._poster_url;
+			}
+			set
+			{
+				if ((this._poster_url != value))
+				{
+					this.Onposter_urlChanging(value);
+					this.SendPropertyChanging();
+					this._poster_url = value;
+					this.SendPropertyChanged("poster_url");
+					this.Onposter_urlChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_producer_table", Storage="_producer_tables", ThisKey="id_film", OtherKey="id_film")]
 		public EntitySet<producer_table> producer_tables
 		{
@@ -1852,35 +3665,6 @@ namespace DotNetProjectOne
 			set
 			{
 				this._film_writers_tables.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_film_photos_table", Storage="_film_photos_table", ThisKey="id_film", OtherKey="id_film", IsUnique=true, IsForeignKey=false)]
-		public film_photos_table film_photos_table
-		{
-			get
-			{
-				return this._film_photos_table.Entity;
-			}
-			set
-			{
-				film_photos_table previousValue = this._film_photos_table.Entity;
-				if (((previousValue != value) 
-							|| (this._film_photos_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._film_photos_table.Entity = null;
-						previousValue.film_table = null;
-					}
-					this._film_photos_table.Entity = value;
-					if ((value != null))
-					{
-						value.film_table = this;
-					}
-					this.SendPropertyChanged("film_photos_table");
-				}
 			}
 		}
 		
@@ -1972,6 +3756,19 @@ namespace DotNetProjectOne
 			set
 			{
 				this._bought_films_tables.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_film_photos_table", Storage="_film_photos_tables", ThisKey="id_film", OtherKey="id_film")]
+		public EntitySet<film_photos_table> film_photos_tables
+		{
+			get
+			{
+				return this._film_photos_tables;
+			}
+			set
+			{
+				this._film_photos_tables.Assign(value);
 			}
 		}
 		
@@ -2102,1604 +3899,17 @@ namespace DotNetProjectOne
 			this.SendPropertyChanging();
 			entity.film_table = null;
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.film_photos_table")]
-	public partial class film_photos_table : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_film;
-		
-		private string _photo_url;
-		
-		private EntityRef<film_table> _film_table;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_filmChanging(int value);
-    partial void Onid_filmChanged();
-    partial void Onphoto_urlChanging(string value);
-    partial void Onphoto_urlChanged();
-    #endregion
-		
-		public film_photos_table()
-		{
-			this._film_table = default(EntityRef<film_table>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_film
-		{
-			get
-			{
-				return this._id_film;
-			}
-			set
-			{
-				if ((this._id_film != value))
-				{
-					if (this._film_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_filmChanging(value);
-					this.SendPropertyChanging();
-					this._id_film = value;
-					this.SendPropertyChanged("id_film");
-					this.Onid_filmChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_photo_url", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string photo_url
-		{
-			get
-			{
-				return this._photo_url;
-			}
-			set
-			{
-				if ((this._photo_url != value))
-				{
-					this.Onphoto_urlChanging(value);
-					this.SendPropertyChanging();
-					this._photo_url = value;
-					this.SendPropertyChanged("photo_url");
-					this.Onphoto_urlChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_film_photos_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
-		public film_table film_table
-		{
-			get
-			{
-				return this._film_table.Entity;
-			}
-			set
-			{
-				film_table previousValue = this._film_table.Entity;
-				if (((previousValue != value) 
-							|| (this._film_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._film_table.Entity = null;
-						previousValue.film_photos_table = null;
-					}
-					this._film_table.Entity = value;
-					if ((value != null))
-					{
-						value.film_photos_table = this;
-						this._id_film = value.id_film;
-					}
-					else
-					{
-						this._id_film = default(int);
-					}
-					this.SendPropertyChanged("film_table");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.film_other_language_table")]
-	public partial class film_other_language_table : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_film;
-		
-		private int _id_other_language;
-		
-		private EntityRef<film_table> _film_table;
-		
-		private EntityRef<other_language_table> _other_language_table;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_filmChanging(int value);
-    partial void Onid_filmChanged();
-    partial void Onid_other_languageChanging(int value);
-    partial void Onid_other_languageChanged();
-    #endregion
-		
-		public film_other_language_table()
-		{
-			this._film_table = default(EntityRef<film_table>);
-			this._other_language_table = default(EntityRef<other_language_table>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_film
-		{
-			get
-			{
-				return this._id_film;
-			}
-			set
-			{
-				if ((this._id_film != value))
-				{
-					if (this._film_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_filmChanging(value);
-					this.SendPropertyChanging();
-					this._id_film = value;
-					this.SendPropertyChanged("id_film");
-					this.Onid_filmChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_other_language", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_other_language
-		{
-			get
-			{
-				return this._id_other_language;
-			}
-			set
-			{
-				if ((this._id_other_language != value))
-				{
-					if (this._other_language_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_other_languageChanging(value);
-					this.SendPropertyChanging();
-					this._id_other_language = value;
-					this.SendPropertyChanged("id_other_language");
-					this.Onid_other_languageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_film_other_language_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
-		public film_table film_table
-		{
-			get
-			{
-				return this._film_table.Entity;
-			}
-			set
-			{
-				film_table previousValue = this._film_table.Entity;
-				if (((previousValue != value) 
-							|| (this._film_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._film_table.Entity = null;
-						previousValue.film_other_language_tables.Remove(this);
-					}
-					this._film_table.Entity = value;
-					if ((value != null))
-					{
-						value.film_other_language_tables.Add(this);
-						this._id_film = value.id_film;
-					}
-					else
-					{
-						this._id_film = default(int);
-					}
-					this.SendPropertyChanged("film_table");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="other_language_table_film_other_language_table", Storage="_other_language_table", ThisKey="id_other_language", OtherKey="id_other_language", IsForeignKey=true)]
-		public other_language_table other_language_table
-		{
-			get
-			{
-				return this._other_language_table.Entity;
-			}
-			set
-			{
-				other_language_table previousValue = this._other_language_table.Entity;
-				if (((previousValue != value) 
-							|| (this._other_language_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._other_language_table.Entity = null;
-						previousValue.film_other_language_tables.Remove(this);
-					}
-					this._other_language_table.Entity = value;
-					if ((value != null))
-					{
-						value.film_other_language_tables.Add(this);
-						this._id_other_language = value.id_other_language;
-					}
-					else
-					{
-						this._id_other_language = default(int);
-					}
-					this.SendPropertyChanged("other_language_table");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.film_music_creators")]
-	public partial class film_music_creator : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_film;
-		
-		private int _id_music_creator;
-		
-		private EntityRef<film_table> _film_table;
-		
-		private EntityRef<music_creator_table> _music_creator_table;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_filmChanging(int value);
-    partial void Onid_filmChanged();
-    partial void Onid_music_creatorChanging(int value);
-    partial void Onid_music_creatorChanged();
-    #endregion
-		
-		public film_music_creator()
-		{
-			this._film_table = default(EntityRef<film_table>);
-			this._music_creator_table = default(EntityRef<music_creator_table>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_film
-		{
-			get
-			{
-				return this._id_film;
-			}
-			set
-			{
-				if ((this._id_film != value))
-				{
-					if (this._film_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_filmChanging(value);
-					this.SendPropertyChanging();
-					this._id_film = value;
-					this.SendPropertyChanged("id_film");
-					this.Onid_filmChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_music_creator", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_music_creator
-		{
-			get
-			{
-				return this._id_music_creator;
-			}
-			set
-			{
-				if ((this._id_music_creator != value))
-				{
-					if (this._music_creator_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_music_creatorChanging(value);
-					this.SendPropertyChanging();
-					this._id_music_creator = value;
-					this.SendPropertyChanged("id_music_creator");
-					this.Onid_music_creatorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_film_music_creator", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
-		public film_table film_table
-		{
-			get
-			{
-				return this._film_table.Entity;
-			}
-			set
-			{
-				film_table previousValue = this._film_table.Entity;
-				if (((previousValue != value) 
-							|| (this._film_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._film_table.Entity = null;
-						previousValue.film_music_creators.Remove(this);
-					}
-					this._film_table.Entity = value;
-					if ((value != null))
-					{
-						value.film_music_creators.Add(this);
-						this._id_film = value.id_film;
-					}
-					else
-					{
-						this._id_film = default(int);
-					}
-					this.SendPropertyChanged("film_table");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="music_creator_table_film_music_creator", Storage="_music_creator_table", ThisKey="id_music_creator", OtherKey="id_music_creator", IsForeignKey=true)]
-		public music_creator_table music_creator_table
-		{
-			get
-			{
-				return this._music_creator_table.Entity;
-			}
-			set
-			{
-				music_creator_table previousValue = this._music_creator_table.Entity;
-				if (((previousValue != value) 
-							|| (this._music_creator_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._music_creator_table.Entity = null;
-						previousValue.film_music_creators.Remove(this);
-					}
-					this._music_creator_table.Entity = value;
-					if ((value != null))
-					{
-						value.film_music_creators.Add(this);
-						this._id_music_creator = value.id_music_creator;
-					}
-					else
-					{
-						this._id_music_creator = default(int);
-					}
-					this.SendPropertyChanged("music_creator_table");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.film_genere_table")]
-	public partial class film_genere_table : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_film;
-		
-		private int _id_genere;
-		
-		private EntityRef<film_table> _film_table;
-		
-		private EntityRef<genere_table> _genere_table;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_filmChanging(int value);
-    partial void Onid_filmChanged();
-    partial void Onid_genereChanging(int value);
-    partial void Onid_genereChanged();
-    #endregion
-		
-		public film_genere_table()
-		{
-			this._film_table = default(EntityRef<film_table>);
-			this._genere_table = default(EntityRef<genere_table>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_film
-		{
-			get
-			{
-				return this._id_film;
-			}
-			set
-			{
-				if ((this._id_film != value))
-				{
-					if (this._film_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_filmChanging(value);
-					this.SendPropertyChanging();
-					this._id_film = value;
-					this.SendPropertyChanged("id_film");
-					this.Onid_filmChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_genere", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_genere
-		{
-			get
-			{
-				return this._id_genere;
-			}
-			set
-			{
-				if ((this._id_genere != value))
-				{
-					if (this._genere_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_genereChanging(value);
-					this.SendPropertyChanging();
-					this._id_genere = value;
-					this.SendPropertyChanged("id_genere");
-					this.Onid_genereChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_film_genere_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
-		public film_table film_table
-		{
-			get
-			{
-				return this._film_table.Entity;
-			}
-			set
-			{
-				film_table previousValue = this._film_table.Entity;
-				if (((previousValue != value) 
-							|| (this._film_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._film_table.Entity = null;
-						previousValue.film_genere_tables.Remove(this);
-					}
-					this._film_table.Entity = value;
-					if ((value != null))
-					{
-						value.film_genere_tables.Add(this);
-						this._id_film = value.id_film;
-					}
-					else
-					{
-						this._id_film = default(int);
-					}
-					this.SendPropertyChanged("film_table");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="genere_table_film_genere_table", Storage="_genere_table", ThisKey="id_genere", OtherKey="id_genere", IsForeignKey=true)]
-		public genere_table genere_table
-		{
-			get
-			{
-				return this._genere_table.Entity;
-			}
-			set
-			{
-				genere_table previousValue = this._genere_table.Entity;
-				if (((previousValue != value) 
-							|| (this._genere_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._genere_table.Entity = null;
-						previousValue.film_genere_tables.Remove(this);
-					}
-					this._genere_table.Entity = value;
-					if ((value != null))
-					{
-						value.film_genere_tables.Add(this);
-						this._id_genere = value.id_genere;
-					}
-					else
-					{
-						this._id_genere = default(int);
-					}
-					this.SendPropertyChanged("genere_table");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.favourites_films_table")]
-	public partial class favourites_films_table : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_film;
-		
-		private int _id_user;
-		
-		private EntityRef<film_table> _film_table;
-		
-		private EntityRef<user_table> _user_table;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_filmChanging(int value);
-    partial void Onid_filmChanged();
-    partial void Onid_userChanging(int value);
-    partial void Onid_userChanged();
-    #endregion
-		
-		public favourites_films_table()
-		{
-			this._film_table = default(EntityRef<film_table>);
-			this._user_table = default(EntityRef<user_table>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_film
-		{
-			get
-			{
-				return this._id_film;
-			}
-			set
-			{
-				if ((this._id_film != value))
-				{
-					if (this._film_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_filmChanging(value);
-					this.SendPropertyChanging();
-					this._id_film = value;
-					this.SendPropertyChanged("id_film");
-					this.Onid_filmChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_user
-		{
-			get
-			{
-				return this._id_user;
-			}
-			set
-			{
-				if ((this._id_user != value))
-				{
-					if (this._user_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_userChanging(value);
-					this.SendPropertyChanging();
-					this._id_user = value;
-					this.SendPropertyChanged("id_user");
-					this.Onid_userChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_favourites_films_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
-		public film_table film_table
-		{
-			get
-			{
-				return this._film_table.Entity;
-			}
-			set
-			{
-				film_table previousValue = this._film_table.Entity;
-				if (((previousValue != value) 
-							|| (this._film_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._film_table.Entity = null;
-						previousValue.favourites_films_tables.Remove(this);
-					}
-					this._film_table.Entity = value;
-					if ((value != null))
-					{
-						value.favourites_films_tables.Add(this);
-						this._id_film = value.id_film;
-					}
-					else
-					{
-						this._id_film = default(int);
-					}
-					this.SendPropertyChanged("film_table");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_favourites_films_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
-		public user_table user_table
-		{
-			get
-			{
-				return this._user_table.Entity;
-			}
-			set
-			{
-				user_table previousValue = this._user_table.Entity;
-				if (((previousValue != value) 
-							|| (this._user_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._user_table.Entity = null;
-						previousValue.favourites_films_tables.Remove(this);
-					}
-					this._user_table.Entity = value;
-					if ((value != null))
-					{
-						value.favourites_films_tables.Add(this);
-						this._id_user = value.id_user;
-					}
-					else
-					{
-						this._id_user = default(int);
-					}
-					this.SendPropertyChanged("user_table");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.comment_table")]
-	public partial class comment_table : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_film;
-		
-		private int _id_user;
-		
-		private string _comment;
-		
-		private EntityRef<film_table> _film_table;
-		
-		private EntityRef<user_table> _user_table;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_filmChanging(int value);
-    partial void Onid_filmChanged();
-    partial void Onid_userChanging(int value);
-    partial void Onid_userChanged();
-    partial void OncommentChanging(string value);
-    partial void OncommentChanged();
-    #endregion
-		
-		public comment_table()
-		{
-			this._film_table = default(EntityRef<film_table>);
-			this._user_table = default(EntityRef<user_table>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_film
-		{
-			get
-			{
-				return this._id_film;
-			}
-			set
-			{
-				if ((this._id_film != value))
-				{
-					if (this._film_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_filmChanging(value);
-					this.SendPropertyChanging();
-					this._id_film = value;
-					this.SendPropertyChanged("id_film");
-					this.Onid_filmChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_user
-		{
-			get
-			{
-				return this._id_user;
-			}
-			set
-			{
-				if ((this._id_user != value))
-				{
-					if (this._user_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_userChanging(value);
-					this.SendPropertyChanging();
-					this._id_user = value;
-					this.SendPropertyChanged("id_user");
-					this.Onid_userChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comment", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string comment
-		{
-			get
-			{
-				return this._comment;
-			}
-			set
-			{
-				if ((this._comment != value))
-				{
-					this.OncommentChanging(value);
-					this.SendPropertyChanging();
-					this._comment = value;
-					this.SendPropertyChanged("comment");
-					this.OncommentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_comment_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
-		public film_table film_table
-		{
-			get
-			{
-				return this._film_table.Entity;
-			}
-			set
-			{
-				film_table previousValue = this._film_table.Entity;
-				if (((previousValue != value) 
-							|| (this._film_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._film_table.Entity = null;
-						previousValue.comment_tables.Remove(this);
-					}
-					this._film_table.Entity = value;
-					if ((value != null))
-					{
-						value.comment_tables.Add(this);
-						this._id_film = value.id_film;
-					}
-					else
-					{
-						this._id_film = default(int);
-					}
-					this.SendPropertyChanged("film_table");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_comment_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
-		public user_table user_table
-		{
-			get
-			{
-				return this._user_table.Entity;
-			}
-			set
-			{
-				user_table previousValue = this._user_table.Entity;
-				if (((previousValue != value) 
-							|| (this._user_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._user_table.Entity = null;
-						previousValue.comment_tables.Remove(this);
-					}
-					this._user_table.Entity = value;
-					if ((value != null))
-					{
-						value.comment_tables.Add(this);
-						this._id_user = value.id_user;
-					}
-					else
-					{
-						this._id_user = default(int);
-					}
-					this.SendPropertyChanged("user_table");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.admin_table")]
-	public partial class admin_table : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_admin;
-		
-		private string _login;
-		
-		private string _password;
-		
-		private string _e_mail;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_adminChanging(int value);
-    partial void Onid_adminChanged();
-    partial void OnloginChanging(string value);
-    partial void OnloginChanged();
-    partial void OnpasswordChanging(string value);
-    partial void OnpasswordChanged();
-    partial void One_mailChanging(string value);
-    partial void One_mailChanged();
-    #endregion
-		
-		public admin_table()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_admin", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_admin
-		{
-			get
-			{
-				return this._id_admin;
-			}
-			set
-			{
-				if ((this._id_admin != value))
-				{
-					this.Onid_adminChanging(value);
-					this.SendPropertyChanging();
-					this._id_admin = value;
-					this.SendPropertyChanged("id_admin");
-					this.Onid_adminChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_login", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string login
-		{
-			get
-			{
-				return this._login;
-			}
-			set
-			{
-				if ((this._login != value))
-				{
-					this.OnloginChanging(value);
-					this.SendPropertyChanging();
-					this._login = value;
-					this.SendPropertyChanged("login");
-					this.OnloginChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string password
-		{
-			get
-			{
-				return this._password;
-			}
-			set
-			{
-				if ((this._password != value))
-				{
-					this.OnpasswordChanging(value);
-					this.SendPropertyChanging();
-					this._password = value;
-					this.SendPropertyChanged("password");
-					this.OnpasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_e_mail", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string e_mail
-		{
-			get
-			{
-				return this._e_mail;
-			}
-			set
-			{
-				if ((this._e_mail != value))
-				{
-					this.One_mailChanging(value);
-					this.SendPropertyChanging();
-					this._e_mail = value;
-					this.SendPropertyChanged("e_mail");
-					this.One_mailChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.actor_table")]
-	public partial class actor_table : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_actor;
-		
-		private string _actor_name;
-		
-		private string _actor_surname;
-		
-		private EntitySet<actor_film_table> _actor_film_tables;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_actorChanging(int value);
-    partial void Onid_actorChanged();
-    partial void Onactor_nameChanging(string value);
-    partial void Onactor_nameChanged();
-    partial void Onactor_surnameChanging(string value);
-    partial void Onactor_surnameChanged();
-    #endregion
-		
-		public actor_table()
-		{
-			this._actor_film_tables = new EntitySet<actor_film_table>(new Action<actor_film_table>(this.attach_actor_film_tables), new Action<actor_film_table>(this.detach_actor_film_tables));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_actor", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_actor
-		{
-			get
-			{
-				return this._id_actor;
-			}
-			set
-			{
-				if ((this._id_actor != value))
-				{
-					this.Onid_actorChanging(value);
-					this.SendPropertyChanging();
-					this._id_actor = value;
-					this.SendPropertyChanged("id_actor");
-					this.Onid_actorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actor_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string actor_name
-		{
-			get
-			{
-				return this._actor_name;
-			}
-			set
-			{
-				if ((this._actor_name != value))
-				{
-					this.Onactor_nameChanging(value);
-					this.SendPropertyChanging();
-					this._actor_name = value;
-					this.SendPropertyChanged("actor_name");
-					this.Onactor_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_actor_surname", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string actor_surname
-		{
-			get
-			{
-				return this._actor_surname;
-			}
-			set
-			{
-				if ((this._actor_surname != value))
-				{
-					this.Onactor_surnameChanging(value);
-					this.SendPropertyChanging();
-					this._actor_surname = value;
-					this.SendPropertyChanged("actor_surname");
-					this.Onactor_surnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="actor_table_actor_film_table", Storage="_actor_film_tables", ThisKey="id_actor", OtherKey="id_actor")]
-		public EntitySet<actor_film_table> actor_film_tables
-		{
-			get
-			{
-				return this._actor_film_tables;
-			}
-			set
-			{
-				this._actor_film_tables.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_actor_film_tables(actor_film_table entity)
+		private void attach_film_photos_tables(film_photos_table entity)
 		{
 			this.SendPropertyChanging();
-			entity.actor_table = this;
+			entity.film_table = this;
 		}
 		
-		private void detach_actor_film_tables(actor_film_table entity)
+		private void detach_film_photos_tables(film_photos_table entity)
 		{
 			this.SendPropertyChanging();
-			entity.actor_table = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.actor_film_table")]
-	public partial class actor_film_table : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_film;
-		
-		private int _id_actor;
-		
-		private EntityRef<actor_table> _actor_table;
-		
-		private EntityRef<film_table> _film_table;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_filmChanging(int value);
-    partial void Onid_filmChanged();
-    partial void Onid_actorChanging(int value);
-    partial void Onid_actorChanged();
-    #endregion
-		
-		public actor_film_table()
-		{
-			this._actor_table = default(EntityRef<actor_table>);
-			this._film_table = default(EntityRef<film_table>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_film
-		{
-			get
-			{
-				return this._id_film;
-			}
-			set
-			{
-				if ((this._id_film != value))
-				{
-					if (this._film_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_filmChanging(value);
-					this.SendPropertyChanging();
-					this._id_film = value;
-					this.SendPropertyChanged("id_film");
-					this.Onid_filmChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_actor", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_actor
-		{
-			get
-			{
-				return this._id_actor;
-			}
-			set
-			{
-				if ((this._id_actor != value))
-				{
-					if (this._actor_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_actorChanging(value);
-					this.SendPropertyChanging();
-					this._id_actor = value;
-					this.SendPropertyChanged("id_actor");
-					this.Onid_actorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="actor_table_actor_film_table", Storage="_actor_table", ThisKey="id_actor", OtherKey="id_actor", IsForeignKey=true)]
-		public actor_table actor_table
-		{
-			get
-			{
-				return this._actor_table.Entity;
-			}
-			set
-			{
-				actor_table previousValue = this._actor_table.Entity;
-				if (((previousValue != value) 
-							|| (this._actor_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._actor_table.Entity = null;
-						previousValue.actor_film_tables.Remove(this);
-					}
-					this._actor_table.Entity = value;
-					if ((value != null))
-					{
-						value.actor_film_tables.Add(this);
-						this._id_actor = value.id_actor;
-					}
-					else
-					{
-						this._id_actor = default(int);
-					}
-					this.SendPropertyChanged("actor_table");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_actor_film_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
-		public film_table film_table
-		{
-			get
-			{
-				return this._film_table.Entity;
-			}
-			set
-			{
-				film_table previousValue = this._film_table.Entity;
-				if (((previousValue != value) 
-							|| (this._film_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._film_table.Entity = null;
-						previousValue.actor_film_tables.Remove(this);
-					}
-					this._film_table.Entity = value;
-					if ((value != null))
-					{
-						value.actor_film_tables.Add(this);
-						this._id_film = value.id_film;
-					}
-					else
-					{
-						this._id_film = default(int);
-					}
-					this.SendPropertyChanged("film_table");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.bought_films_table")]
-	public partial class bought_films_table : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_film;
-		
-		private int _id_user;
-		
-		private EntityRef<film_table> _film_table;
-		
-		private EntityRef<user_table> _user_table;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_filmChanging(int value);
-    partial void Onid_filmChanged();
-    partial void Onid_userChanging(int value);
-    partial void Onid_userChanged();
-    #endregion
-		
-		public bought_films_table()
-		{
-			this._film_table = default(EntityRef<film_table>);
-			this._user_table = default(EntityRef<user_table>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_film
-		{
-			get
-			{
-				return this._id_film;
-			}
-			set
-			{
-				if ((this._id_film != value))
-				{
-					if (this._film_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_filmChanging(value);
-					this.SendPropertyChanging();
-					this._id_film = value;
-					this.SendPropertyChanged("id_film");
-					this.Onid_filmChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id_user
-		{
-			get
-			{
-				return this._id_user;
-			}
-			set
-			{
-				if ((this._id_user != value))
-				{
-					if (this._user_table.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_userChanging(value);
-					this.SendPropertyChanging();
-					this._id_user = value;
-					this.SendPropertyChanged("id_user");
-					this.Onid_userChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_bought_films_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
-		public film_table film_table
-		{
-			get
-			{
-				return this._film_table.Entity;
-			}
-			set
-			{
-				film_table previousValue = this._film_table.Entity;
-				if (((previousValue != value) 
-							|| (this._film_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._film_table.Entity = null;
-						previousValue.bought_films_tables.Remove(this);
-					}
-					this._film_table.Entity = value;
-					if ((value != null))
-					{
-						value.bought_films_tables.Add(this);
-						this._id_film = value.id_film;
-					}
-					else
-					{
-						this._id_film = default(int);
-					}
-					this.SendPropertyChanged("film_table");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_bought_films_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
-		public user_table user_table
-		{
-			get
-			{
-				return this._user_table.Entity;
-			}
-			set
-			{
-				user_table previousValue = this._user_table.Entity;
-				if (((previousValue != value) 
-							|| (this._user_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._user_table.Entity = null;
-						previousValue.bought_films_tables.Remove(this);
-					}
-					this._user_table.Entity = value;
-					if ((value != null))
-					{
-						value.bought_films_tables.Add(this);
-						this._id_user = value.id_user;
-					}
-					else
-					{
-						this._id_user = default(int);
-					}
-					this.SendPropertyChanged("user_table");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			entity.film_table = null;
 		}
 	}
 }

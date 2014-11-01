@@ -39,6 +39,42 @@ namespace DotNetProjectOne
                 conn.Dispose();
             }
         }
+        public static void AddMPhoto(photos_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.photos_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddOLang(other_language_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.other_language_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddToFilmOtherLangTable(film_other_language_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.film_other_language_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddToFilmPhotosTable(film_photos_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.film_photos_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
         public static void AddToActorFilmTable(actor_film_table t)
         {
             using (MyLINQDataContext conn = new MyLINQDataContext())

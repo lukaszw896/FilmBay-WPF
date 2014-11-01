@@ -62,6 +62,95 @@
       <Association Name="film_table_film_writers_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.film_other_language_table" Member="film_other_language_tables">
+    <Type Name="film_other_language_table">
+      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_other_language" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="other_language_table_film_other_language_table" Member="other_language_table" ThisKey="id_other_language" OtherKey="id_other_language" Type="other_language_table" IsForeignKey="true" />
+      <Association Name="film_table_film_other_language_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.film_music_creators" Member="film_music_creators">
+    <Type Name="film_music_creator">
+      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_music_creator" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="music_creator_table_film_music_creator" Member="music_creator_table" ThisKey="id_music_creator" OtherKey="id_music_creator" Type="music_creator_table" IsForeignKey="true" />
+      <Association Name="film_table_film_music_creator" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.film_genere_table" Member="film_genere_tables">
+    <Type Name="film_genere_table">
+      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_genere" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="genere_table_film_genere_table" Member="genere_table" ThisKey="id_genere" OtherKey="id_genere" Type="genere_table" IsForeignKey="true" />
+      <Association Name="film_table_film_genere_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.favourites_films_table" Member="favourites_films_tables">
+    <Type Name="favourites_films_table">
+      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="user_table_favourites_films_table" Member="user_table" ThisKey="id_user" OtherKey="id_user" Type="user_table" IsForeignKey="true" />
+      <Association Name="film_table_favourites_films_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.comment_table" Member="comment_tables">
+    <Type Name="comment_table">
+      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="comment" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="user_table_comment_table" Member="user_table" ThisKey="id_user" OtherKey="id_user" Type="user_table" IsForeignKey="true" />
+      <Association Name="film_table_comment_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.admin_table" Member="admin_tables">
+    <Type Name="admin_table">
+      <Column Name="id_admin" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="login" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="e_mail" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.actor_film_table" Member="actor_film_tables">
+    <Type Name="actor_film_table">
+      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_actor" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="actor_table_actor_film_table" Member="actor_table" ThisKey="id_actor" OtherKey="id_actor" Type="actor_table" IsForeignKey="true" />
+      <Association Name="film_table_actor_film_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bought_films_table" Member="bought_films_tables">
+    <Type Name="bought_films_table">
+      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="user_table_bought_films_table" Member="user_table" ThisKey="id_user" OtherKey="id_user" Type="user_table" IsForeignKey="true" />
+      <Association Name="film_table_bought_films_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.photos_table" Member="photos_tables">
+    <Type Name="photos_table">
+      <Column Name="id_photo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="photo_url" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="photos_table_film_photos_table" Member="film_photos_tables" ThisKey="id_photo" OtherKey="id_photo" Type="film_photos_table" />
+    </Type>
+  </Table>
+  <Table Name="dbo.actor_table" Member="actor_tables">
+    <Type Name="actor_table">
+      <Column Name="id_actor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="actor_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="actor_surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="actor_photo_url" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="actor_table_actor_film_table" Member="actor_film_tables" ThisKey="id_actor" OtherKey="id_actor" Type="actor_film_table" />
+    </Type>
+  </Table>
+  <Table Name="dbo.film_photos_table" Member="film_photos_tables">
+    <Type Name="film_photos_table">
+      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_photo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="photos_table_film_photos_table" Member="photos_table" ThisKey="id_photo" OtherKey="id_photo" Type="photos_table" IsForeignKey="true" />
+      <Association Name="film_table_film_photos_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.film_table" Member="film_tables">
     <Type Name="film_table">
       <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -79,9 +168,9 @@
       <Column Name="release_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="film_price" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="film_studio" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="poster_url" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="film_table_producer_table" Member="producer_tables" ThisKey="id_film" OtherKey="id_film" Type="producer_table" />
       <Association Name="film_table_film_writers_table" Member="film_writers_tables" ThisKey="id_film" OtherKey="id_film" Type="film_writers_table" />
-      <Association Name="film_table_film_photos_table" Member="film_photos_table" ThisKey="id_film" OtherKey="id_film" Type="film_photos_table" Cardinality="One" />
       <Association Name="film_table_film_other_language_table" Member="film_other_language_tables" ThisKey="id_film" OtherKey="id_film" Type="film_other_language_table" />
       <Association Name="film_table_film_music_creator" Member="film_music_creators" ThisKey="id_film" OtherKey="id_film" Type="film_music_creator" />
       <Association Name="film_table_film_genere_table" Member="film_genere_tables" ThisKey="id_film" OtherKey="id_film" Type="film_genere_table" />
@@ -89,86 +178,7 @@
       <Association Name="film_table_comment_table" Member="comment_tables" ThisKey="id_film" OtherKey="id_film" Type="comment_table" />
       <Association Name="film_table_actor_film_table" Member="actor_film_tables" ThisKey="id_film" OtherKey="id_film" Type="actor_film_table" />
       <Association Name="film_table_bought_films_table" Member="bought_films_tables" ThisKey="id_film" OtherKey="id_film" Type="bought_films_table" />
-    </Type>
-  </Table>
-  <Table Name="dbo.film_photos_table" Member="film_photos_tables">
-    <Type Name="film_photos_table">
-      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="photo_url" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="film_table_film_photos_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.film_other_language_table" Member="film_other_language_tables">
-    <Type Name="film_other_language_table">
-      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_other_language" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="film_table_film_other_language_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
-      <Association Name="other_language_table_film_other_language_table" Member="other_language_table" ThisKey="id_other_language" OtherKey="id_other_language" Type="other_language_table" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.film_music_creators" Member="film_music_creators">
-    <Type Name="film_music_creator">
-      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_music_creator" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="film_table_film_music_creator" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
-      <Association Name="music_creator_table_film_music_creator" Member="music_creator_table" ThisKey="id_music_creator" OtherKey="id_music_creator" Type="music_creator_table" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.film_genere_table" Member="film_genere_tables">
-    <Type Name="film_genere_table">
-      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_genere" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="film_table_film_genere_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
-      <Association Name="genere_table_film_genere_table" Member="genere_table" ThisKey="id_genere" OtherKey="id_genere" Type="genere_table" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.favourites_films_table" Member="favourites_films_tables">
-    <Type Name="favourites_films_table">
-      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="film_table_favourites_films_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
-      <Association Name="user_table_favourites_films_table" Member="user_table" ThisKey="id_user" OtherKey="id_user" Type="user_table" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.comment_table" Member="comment_tables">
-    <Type Name="comment_table">
-      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="comment" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="film_table_comment_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
-      <Association Name="user_table_comment_table" Member="user_table" ThisKey="id_user" OtherKey="id_user" Type="user_table" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.admin_table" Member="admin_tables">
-    <Type Name="admin_table">
-      <Column Name="id_admin" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="login" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="e_mail" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.actor_table" Member="actor_tables">
-    <Type Name="actor_table">
-      <Column Name="id_actor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="actor_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="actor_surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="actor_table_actor_film_table" Member="actor_film_tables" ThisKey="id_actor" OtherKey="id_actor" Type="actor_film_table" />
-    </Type>
-  </Table>
-  <Table Name="dbo.actor_film_table" Member="actor_film_tables">
-    <Type Name="actor_film_table">
-      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_actor" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="actor_table_actor_film_table" Member="actor_table" ThisKey="id_actor" OtherKey="id_actor" Type="actor_table" IsForeignKey="true" />
-      <Association Name="film_table_actor_film_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.bought_films_table" Member="bought_films_tables">
-    <Type Name="bought_films_table">
-      <Column Name="id_film" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="film_table_bought_films_table" Member="film_table" ThisKey="id_film" OtherKey="id_film" Type="film_table" IsForeignKey="true" />
-      <Association Name="user_table_bought_films_table" Member="user_table" ThisKey="id_user" OtherKey="id_user" Type="user_table" IsForeignKey="true" />
+      <Association Name="film_table_film_photos_table" Member="film_photos_tables" ThisKey="id_film" OtherKey="id_film" Type="film_photos_table" />
     </Type>
   </Table>
 </Database>

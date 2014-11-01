@@ -26,7 +26,10 @@ namespace DotNetProjectOne
         List<Writer> writers = new List<Writer>();
         List<Producer> producers = new List<Producer>();
         List<Composer> composers = new List<Composer>();
-        List<String> ActorPhots = new List<String>();
+        String APhoto;
+        String Poster;
+        List<String> MoviePhotos = new List<String>();
+        List<ALanguage> Languages = new List<ALanguage>();
         public FilmWindow()
         {
             InitializeComponent();
@@ -124,6 +127,7 @@ namespace DotNetProjectOne
                 dane.title_orginal = NTitle.Text;
                 dane.orginal_language = Language.Text;
                 dane.duration = TimeSpan.Parse(Duration.Text);
+                dane.poster_url = Poster;
                 if (Age.SelectedItem != null)
                 {
                     dane.age_restriction = int.Parse(((ComboBoxItem)Age.SelectedItem).Content.ToString());
@@ -152,6 +156,8 @@ namespace DotNetProjectOne
                     actor_table actor = new actor_table();
                     actor.actor_name = a.Name;
                     actor.actor_surname = a.Surname;
+
+                    actor.actor_photo_url = APhoto;
                     int actorid;
                     MyLINQDataContext con = new MyLINQDataContext();
                     bool nameinDB = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).Count() > 0;
@@ -243,6 +249,60 @@ namespace DotNetProjectOne
                         MainWindow.AddProducer(producer);
                     }
                 }
+                foreach (String x in MoviePhotos)
+                {
+                    photos_table photos = new photos_table();
+
+                    photos.photo_url = x;
+                    int photoid;
+                    MyLINQDataContext con = new MyLINQDataContext();
+                    bool nameinDB = (from p in con.photos_tables where p.photo_url == x select p).Count() > 0;
+                    //  MessageBox.Show(nameinDB.ToString());
+                    if (nameinDB == false)
+                    {
+                        MainWindow.AddMPhoto(photos);
+                        photoid = photos.id_photo;
+                    }
+                    else
+                    {
+                        photos_table z = (from p in con.photos_tables where p.photo_url == x select p).First();
+                        photoid = z.id_photo;
+                    }
+                    film_photos_table filmphoto = new film_photos_table();
+                    filmphoto.id_film = filmid;
+                    filmphoto.id_photo = photoid;
+                    MainWindow.AddToFilmPhotosTable(filmphoto);
+                    con.Dispose();
+                }
+
+                foreach (ALanguage c in Languages)
+                {
+                    other_language_table tab = new other_language_table();
+                    tab.other_language_name = c.LName;
+                    int langid;
+                    MyLINQDataContext con = new MyLINQDataContext();
+                    bool nameinDB = (from p in con.other_language_tables where p.other_language_name == Lang.Name select p).Count() > 0;
+                    //  MessageBox.Show(nameinDB.ToString());
+                    if (nameinDB == false)
+                    {
+                        MainWindow.AddOLang(tab);
+                        langid = tab.id_other_language;
+                    }
+                    else
+                    {
+                        other_language_table x = (from p in con.other_language_tables where p.other_language_name == c.LName select p).First();
+                        langid = x.id_other_language;
+                    }
+                    film_other_language_table filmotherlanguage = new film_other_language_table();
+                    filmotherlanguage.id_film = filmid;
+                    //  actorfilmtable.actor_table = actor;
+                    filmotherlanguage.id_other_language = langid;
+                    MainWindow.AddToFilmOtherLangTable(filmotherlanguage);
+                    con.Dispose();
+                }
+
+
+
             }
 
 
@@ -312,6 +372,11 @@ namespace DotNetProjectOne
             public string CName { get; set; }
             public string CSurname { get; set; }
         }
+        public class ALanguage
+        {
+            public string LName { get; set; }
+        }
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -333,6 +398,7 @@ namespace DotNetProjectOne
                 MessageBox.Show("Already added");
                 ActorName.Text = "";
                 ActorSurname.Text = "";
+                APhoto = null;
             }
 
 
@@ -454,18 +520,25 @@ namespace DotNetProjectOne
             op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
                 "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
                 "Portable Network Graphic (*.png)|*.png";
-           // op.Multiselect = true;
+            // op.Multiselect = true;
             if (op.ShowDialog() == true)
             {
-             //   string[] filePath = op.FileNames;
+                //   string[] filePath = op.FileNames;
                 string path = op.FileName;
-              //  foreach (string path in op.FileNames)
+                string name = op.SafeFileName;
+                //  foreach (string path in op.FileNames)
+                // MessageBox.Show(name);
                 {
                     try
                     {
                         Image myimage = new Image();
                         myimage.Source = new BitmapImage(new Uri(path));
                         ActorPhoto.Source = myimage.Source;
+                        // MessageBox.Show(APhoto);
+
+                        APhoto = name;
+
+                        //  MessageBox.Show(AppDomain.CurrentDomain.BaseDirectory.ToString());
 
                     }
                     catch
@@ -474,6 +547,98 @@ namespace DotNetProjectOne
                     }
                 }
             }
+        }
+
+        private void Button_Click_12(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show("You clicked 'New...'");
+
+            OpenFileDialog op = new OpenFileDialog();
+
+            op.Title = "Select a picture";
+            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+                "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                "Portable Network Graphic (*.png)|*.png";
+            op.Multiselect = true;
+            if (op.ShowDialog() == true)
+            {
+                string[] filePath = op.SafeFileNames;
+                foreach (string name in op.SafeFileNames)
+                {
+                    try
+                    {
+                        MoviePhotos.Add(name);
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+        }
+
+        private void Button_Click_13(object sender, RoutedEventArgs e)
+        {
+            LanguagePopUp.IsOpen = true;
+        }
+
+        private void Button_Click_14(object sender, RoutedEventArgs e)
+        {
+            LanguagePopUp.IsOpen = false;
+        }
+
+
+        private void Button_Click_15(object sender, RoutedEventArgs e)
+        {
+            ALanguage a = new ALanguage();
+            a.LName = Lang.Text;
+            bool alreadyExists = Languages.Any(x => x.LName == Lang.Text);
+            if (alreadyExists == false)
+            {
+
+                LanguageGrid.Items.Add(a);
+                Languages.Add(a);
+                Lang.Text = "";
+
+            }
+            else
+            {
+                MessageBox.Show("Already added");
+                Lang.Text = "";
+            }
+        }
+
+        private void Poster_Click(object sender, RoutedEventArgs e)
+        {
+
+            OpenFileDialog op = new OpenFileDialog();
+
+            op.Title = "Select a picture";
+            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+                "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                "Portable Network Graphic (*.png)|*.png";
+
+            if (op.ShowDialog() == true)
+            {
+
+                string path = op.FileName;
+                string name = op.SafeFileName;
+
+                {
+                    try
+                    {
+                        Image myimage = new Image();
+                        myimage.Source = new BitmapImage(new Uri(path));
+                        PosterImage.Source = myimage.Source;
+                        Poster = name;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+
         }
     }
 }

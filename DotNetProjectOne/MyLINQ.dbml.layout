@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 24.875" name="MyLINQ">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 20.25" name="MyLINQ">
   <DataContextMoniker Name="/MyLINQDataContext" />
   <nestedChildShapes>
     <classShape Id="6182789b-c8a2-4074-9dcf-129921242449" absoluteBounds="0.75, 3.625, 2, 1.3862939453125">
@@ -14,28 +14,28 @@
         <elementListCompartment Id="5575a1a6-31bd-4de0-a286-0223a7d0ed29" absoluteBounds="3.765, 3.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="5428ab81-0c13-47e2-9cef-7e9c543ff29b" absoluteBounds="3.5, 23.25, 2, 1.3862939453125023">
+    <classShape Id="5428ab81-0c13-47e2-9cef-7e9c543ff29b" absoluteBounds="3.125, 16.875, 2, 1.3862939453125023">
       <DataClassMoniker Name="/MyLINQDataContext/producer_table" />
       <nestedChildShapes>
-        <elementListCompartment Id="0afd3a57-d783-4c6f-8ca9-bd0dc3eaa614" absoluteBounds="3.515, 23.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0afd3a57-d783-4c6f-8ca9-bd0dc3eaa614" absoluteBounds="3.14, 17.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="02042d68-191d-4bad-b41e-f69e6d7c0d4c" absoluteBounds="0.625, 15.625, 2, 1.1939925130208344">
+    <classShape Id="02042d68-191d-4bad-b41e-f69e6d7c0d4c" absoluteBounds="0.625, 16.25, 2, 1.1939925130208344">
       <DataClassMoniker Name="/MyLINQDataContext/other_language_table" />
       <nestedChildShapes>
-        <elementListCompartment Id="402c01e6-d661-4190-b49c-3279a3a67635" absoluteBounds="0.64, 16.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="402c01e6-d661-4190-b49c-3279a3a67635" absoluteBounds="0.64, 16.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="14f31756-2af8-4935-a8dd-29f613a60fa5" absoluteBounds="3.75, 18.625, 2, 1.3862939453125023">
+    <classShape Id="14f31756-2af8-4935-a8dd-29f613a60fa5" absoluteBounds="2.625, 18.625, 2, 1.3862939453125023">
       <DataClassMoniker Name="/MyLINQDataContext/music_creator_table" />
       <nestedChildShapes>
-        <elementListCompartment Id="877dc47e-7af7-4fb2-ae86-b38da19903e9" absoluteBounds="3.765, 19.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="877dc47e-7af7-4fb2-ae86-b38da19903e9" absoluteBounds="2.64, 19.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c294eec4-0828-487e-bf12-b5606d535c99" absoluteBounds="5.625, 16.25, 2, 1.1939925130208344">
+    <classShape Id="c294eec4-0828-487e-bf12-b5606d535c99" absoluteBounds="5.625, 16.5, 2, 1.1939925130208344">
       <DataClassMoniker Name="/MyLINQDataContext/genere_table" />
       <nestedChildShapes>
-        <elementListCompartment Id="a256d3a9-37f1-4884-a69b-1468e31785a5" absoluteBounds="5.6400000000000006, 16.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a256d3a9-37f1-4884-a69b-1468e31785a5" absoluteBounds="5.6400000000000006, 16.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="c0bc5a99-ff61-40ce-8759-363347e95f96" absoluteBounds="3.5, 8.75, 2, 1.1939925130208344">
@@ -44,22 +44,10 @@
         <elementListCompartment Id="81b40cb5-7cc0-424d-bf7d-e0be85164f47" absoluteBounds="3.515, 9.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3d9cc5f1-7eb2-4c43-b1f9-9c461c038c23" absoluteBounds="0.75, 9.5, 2, 3.6939111328124987">
-      <DataClassMoniker Name="/MyLINQDataContext/film_table" />
-      <nestedChildShapes>
-        <elementListCompartment Id="66e25a80-240f-4e91-a93c-14e3a03b982f" absoluteBounds="0.765, 9.96, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="7eef800b-c46f-42e0-ad14-8c10188690b4" absoluteBounds="3.5, 11.625, 2, 1.1939925130208344">
-      <DataClassMoniker Name="/MyLINQDataContext/film_photos_table" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ce953428-ae7c-48a5-aea6-d28cb529dc75" absoluteBounds="3.515, 12.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="74a96bab-c5b1-440b-8eaa-f86f4286815c" absoluteBounds="3.5, 14.375, 2, 1.1939925130208344">
+    <classShape Id="74a96bab-c5b1-440b-8eaa-f86f4286815c" absoluteBounds="3.5, 14.75, 2, 1.1939925130208344">
       <DataClassMoniker Name="/MyLINQDataContext/film_other_language_table" />
       <nestedChildShapes>
-        <elementListCompartment Id="932fccd4-ce79-4c18-95ea-8f1a6e0a712f" absoluteBounds="3.515, 14.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="932fccd4-ce79-4c18-95ea-8f1a6e0a712f" absoluteBounds="3.515, 15.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="d9b240cf-f7dc-4fe6-95bb-89c7b353f19c" absoluteBounds="6.5, 10.75, 2, 1.1939925130208344">
@@ -80,22 +68,16 @@
         <elementListCompartment Id="f8dec392-a6ea-47e8-a483-14a58fbfb0aa" absoluteBounds="6.515, 13.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3b224dbe-3f5d-44e4-ac7c-f65893da1c6a" absoluteBounds="6.5, 5.625, 2, 1.3862939453125005">
+    <classShape Id="3b224dbe-3f5d-44e4-ac7c-f65893da1c6a" absoluteBounds="6.5, 5.625, 2, 1.3862939453124996">
       <DataClassMoniker Name="/MyLINQDataContext/comment_table" />
       <nestedChildShapes>
         <elementListCompartment Id="f5942b30-7491-4657-bee9-2b20bb8cfc16" absoluteBounds="6.515, 6.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ed55dadb-e20d-4761-963c-c9651b07aed6" absoluteBounds="8.75, 2, 2, 1.5785953776041666">
+    <classShape Id="ed55dadb-e20d-4761-963c-c9651b07aed6" absoluteBounds="7.375, 2.5, 2, 1.5785953776041666">
       <DataClassMoniker Name="/MyLINQDataContext/admin_table" />
       <nestedChildShapes>
-        <elementListCompartment Id="f255a7f7-306a-43c4-ad1a-f1959669bb5e" absoluteBounds="8.765, 2.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="1dba1ef1-171d-4fa7-9ae7-7c334f23c751" absoluteBounds="0.75, 6.625, 2, 1.3862939453125005">
-      <DataClassMoniker Name="/MyLINQDataContext/actor_table" />
-      <nestedChildShapes>
-        <elementListCompartment Id="37bc14df-d77a-45ad-8b92-a757489178ec" absoluteBounds="0.765, 7.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f255a7f7-306a-43c4-ad1a-f1959669bb5e" absoluteBounds="7.3900000000000006, 2.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="1944e6e8-751a-4170-a24d-e125b202dba6" absoluteBounds="3.5, 6.75, 2, 1.1939925130208344">
@@ -104,116 +86,46 @@
         <elementListCompartment Id="da25befd-17f8-4494-8852-cbb13bac5a54" absoluteBounds="3.515, 7.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 5.0112939453125); (3.125 : 5.3862939453125); (3.125 : 9.34699625651042); (3.5 : 9.34699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 5.0112939453125); (3.125 : 5.3862939453125); (3.125 : 9.34699625651042); (3.16236271784856 : 9.34699625651042 : JumpStart); (3.32902938451522 : 9.34699625651042 : JumpEnd); (3.5 : 9.34699625651042)]" fixedFrom="NotFixed" fixedTo="Algorithm">
       <AssociationMoniker Name="/MyLINQDataContext/writers_table/writers_table_film_writers_table" />
       <nodes>
         <classShapeMoniker Id="6182789b-c8a2-4074-9dcf-129921242449" />
         <classShapeMoniker Id="c0bc5a99-ff61-40ce-8759-363347e95f96" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.71875 : 13.1939111328125); (2.71875 : 23.9431469726563); (3.5 : 23.9431469726563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_producer_table" />
-      <nodes>
-        <classShapeMoniker Id="3d9cc5f1-7eb2-4c43-b1f9-9c461c038c23" />
-        <classShapeMoniker Id="5428ab81-0c13-47e2-9cef-7e9c543ff29b" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 9.72199625651042); (3.5 : 9.72199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_film_writers_table" />
-      <nodes>
-        <classShapeMoniker Id="3d9cc5f1-7eb2-4c43-b1f9-9c461c038c23" />
-        <classShapeMoniker Id="c0bc5a99-ff61-40ce-8759-363347e95f96" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 12.2219962565104); (3.5 : 12.2219962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_film_photos_table" />
-      <nodes>
-        <classShapeMoniker Id="3d9cc5f1-7eb2-4c43-b1f9-9c461c038c23" />
-        <classShapeMoniker Id="7eef800b-c46f-42e0-ad14-8c10188690b4" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(1.7031225 : 13.1939111328125); (1.7031225 : 14.9719962565104); (3.5 : 14.9719962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_film_other_language_table" />
-      <nodes>
-        <classShapeMoniker Id="3d9cc5f1-7eb2-4c43-b1f9-9c461c038c23" />
-        <classShapeMoniker Id="74a96bab-c5b1-440b-8eaa-f86f4286815c" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.625 : 16.2219962565104); (4.5 : 16.2219962565104); (4.5 : 15.5689925130208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.625 : 16.53125); (2.63541666666667 : 16.53125 : JumpStart); (2.80208333333333 : 16.53125 : JumpEnd); (5.34375 : 16.53125); (5.34375 : 15.9439925130208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MyLINQDataContext/other_language_table/other_language_table_film_other_language_table" />
       <nodes>
         <classShapeMoniker Id="02042d68-191d-4bad-b41e-f69e6d7c0d4c" />
         <classShapeMoniker Id="74a96bab-c5b1-440b-8eaa-f86f4286815c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 11.15625); (5.57291666666667 : 11.15625 : JumpStart); (5.73958333333333 : 11.15625 : JumpEnd); (6.13541416666667 : 11.15625 : JumpStart); (6.30208083333333 : 11.15625 : JumpEnd); (6.5 : 11.15625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_film_music_creator" />
-      <nodes>
-        <classShapeMoniker Id="3d9cc5f1-7eb2-4c43-b1f9-9c461c038c23" />
-        <classShapeMoniker Id="d9b240cf-f7dc-4fe6-95bb-89c7b353f19c" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.03125 : 18.625); (5.03125 : 15.8189925130208); (6 : 15.8189925130208); (6 : 11.3469962565104); (6.13541416666667 : 11.3469962565104 : JumpStart); (6.30208083333333 : 11.3469962565104 : JumpEnd); (6.5 : 11.3469962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.625 : 19.3181469726563); (7.6875 : 19.3181469726563); (7.6875 : 14.0064925130208); (6.4375 : 14.0064925130208); (6.4375 : 12.0377425130208); (7.5 : 12.0377425130208); (7.5 : 11.9439925130208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MyLINQDataContext/music_creator_table/music_creator_table_film_music_creator" />
       <nodes>
         <classShapeMoniker Id="14f31756-2af8-4935-a8dd-29f613a60fa5" />
         <classShapeMoniker Id="d9b240cf-f7dc-4fe6-95bb-89c7b353f19c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 9.55076823076923); (2.9375 : 9.36326823076923); (2.9375 : 8.375); (3.13541666666667 : 8.375 : JumpStart); (3.39583333333333 : 8.375 : JumpEnd); (5.57291666666667 : 8.375 : JumpStart); (5.73958333333333 : 8.375 : JumpEnd); (6.125 : 8.375); (6.5 : 8.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_film_genere_table" />
-      <nodes>
-        <classShapeMoniker Id="3d9cc5f1-7eb2-4c43-b1f9-9c461c038c23" />
-        <classShapeMoniker Id="b644672b-f75f-4583-8ae6-27bd0f517b32" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(6.2187475 : 16.25); (6.2187475 : 9.37824875651042); (6.5 : 9.37824875651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.859375 : 16.5); (5.859375 : 9.34699625651042); (6.5 : 9.34699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MyLINQDataContext/genere_table/genere_table_film_genere_table" />
       <nodes>
         <classShapeMoniker Id="c294eec4-0828-487e-bf12-b5606d535c99" />
         <classShapeMoniker Id="b644672b-f75f-4583-8ae6-27bd0f517b32" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 12.9895257459936); (5.57291666666667 : 12.9895257459936 : JumpStart); (5.73958333333333 : 12.9895257459936 : JumpEnd); (6.13541416666667 : 12.9895257459936 : JumpStart); (6.30208083333333 : 12.9895257459936 : JumpEnd); (6.5 : 12.9895257459936)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_favourites_films_table" />
-      <nodes>
-        <classShapeMoniker Id="3d9cc5f1-7eb2-4c43-b1f9-9c461c038c23" />
-        <classShapeMoniker Id="ffede6e3-aaa2-4edc-b325-482b24890d3e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.65625 : 5.6651025390625); (5.65625 : 13.3697653729968); (6.13541416666667 : 13.3697653729968 : JumpStart); (6.30208083333333 : 13.3697653729968 : JumpEnd); (6.5 : 13.3697653729968)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.71875 : 5.6651025390625); (5.71875 : 12.765625); (5.77604166666667 : 12.765625 : JumpStart); (5.94270833333333 : 12.765625 : JumpEnd); (6.5 : 12.765625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MyLINQDataContext/user_table/user_table_favourites_films_table" />
       <nodes>
         <classShapeMoniker Id="0949cf92-0f0d-4f0b-9130-16eb9337040f" />
         <classShapeMoniker Id="ffede6e3-aaa2-4edc-b325-482b24890d3e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.70076923076923 : 9.5); (3.3125 : 8.88826923076923); (3.3125 : 6.20755126953125); (5.57291666666667 : 6.20755126953125 : JumpStart); (5.73958333333333 : 6.20755126953125 : JumpEnd); (6.5 : 6.20755126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_comment_table" />
-      <nodes>
-        <classShapeMoniker Id="3d9cc5f1-7eb2-4c43-b1f9-9c461c038c23" />
-        <classShapeMoniker Id="3b224dbe-3f5d-44e4-ac7c-f65893da1c6a" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.6875025 : 5.6651025390625); (5.6875025 : 6.47877813476562); (6.5 : 6.47877813476562)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.75 : 4.53929631380208); (6.90625 : 4.53929631380208); (6.90625 : 5.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MyLINQDataContext/user_table/user_table_comment_table" />
       <nodes>
         <classShapeMoniker Id="0949cf92-0f0d-4f0b-9130-16eb9337040f" />
         <classShapeMoniker Id="3b224dbe-3f5d-44e4-ac7c-f65893da1c6a" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 7.34699625651042); (3.22916666666667 : 7.34699625651042 : JumpStart); (3.39583333333333 : 7.34699625651042 : JumpEnd); (3.5 : 7.34699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/MyLINQDataContext/actor_table/actor_table_actor_film_table" />
-      <nodes>
-        <classShapeMoniker Id="1dba1ef1-171d-4fa7-9ae7-7c334f23c751" />
-        <classShapeMoniker Id="1944e6e8-751a-4170-a24d-e125b202dba6" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 9.53230669230769); (3.21875 : 9.06355669230769); (3.21875 : 7.67674638476563); (3.5 : 7.67674638476563)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_actor_film_table" />
-      <nodes>
-        <classShapeMoniker Id="3d9cc5f1-7eb2-4c43-b1f9-9c461c038c23" />
-        <classShapeMoniker Id="1944e6e8-751a-4170-a24d-e125b202dba6" />
       </nodes>
     </associationConnector>
     <classShape Id="b11db143-5530-4531-8aca-fc49042392c0" absoluteBounds="7.875, 15.125, 2, 1.1939925130208333">
@@ -222,18 +134,119 @@
         <elementListCompartment Id="ab520f53-3aac-4564-928d-f42f1594b8f6" absoluteBounds="7.89, 15.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 10.3469962565104); (6.13541416666667 : 10.3469962565104 : JumpStart); (6.30208083333333 : 10.3469962565104 : JumpEnd); (9.21875 : 10.3469962565104); (9.21875 : 15.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_bought_films_table" />
-      <nodes>
-        <classShapeMoniker Id="3d9cc5f1-7eb2-4c43-b1f9-9c461c038c23" />
-        <classShapeMoniker Id="b11db143-5530-4531-8aca-fc49042392c0" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.75 : 4.78449625651042); (8.8593725 : 4.78449625651042); (8.8593725 : 15.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.75 : 5.00000225); (6.82291666666667 : 5.00000225 : JumpStart); (6.98958333333333 : 5.00000225 : JumpEnd); (8.59375 : 5.00000225); (8.59375 : 15.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MyLINQDataContext/user_table/user_table_bought_films_table" />
       <nodes>
         <classShapeMoniker Id="0949cf92-0f0d-4f0b-9130-16eb9337040f" />
         <classShapeMoniker Id="b11db143-5530-4531-8aca-fc49042392c0" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="05ecff8f-81f1-42a9-a155-4b957ce27408" absoluteBounds="0.5, 14.75, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/MyLINQDataContext/photos_table" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0edc0772-91e1-48e3-959f-71f842fb1bb1" absoluteBounds="0.51500000000000012, 15.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="003183ee-097d-41da-b8d5-fa78853977df" absoluteBounds="0.625, 6.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/MyLINQDataContext/actor_table" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5b499fb2-3d07-4b72-b53d-916adfdd030d" absoluteBounds="0.64000000000000012, 7.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 7.40949625651042); (2.63541666666667 : 7.40949625651042 : JumpStart); (2.81770833333333 : 7.40949625651042 : JumpEnd); (3.04166666666667 : 7.40949625651042 : JumpStart); (3.20833333333333 : 7.40949625651042 : JumpEnd); (3.5 : 7.40949625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MyLINQDataContext/actor_table/actor_table_actor_film_table" />
+      <nodes>
+        <classShapeMoniker Id="003183ee-097d-41da-b8d5-fa78853977df" />
+        <classShapeMoniker Id="1944e6e8-751a-4170-a24d-e125b202dba6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ca0dd734-dd3f-415f-9509-d36087ffbff7" absoluteBounds="3.625, 12.875, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/MyLINQDataContext/film_photos_table" />
+      <nestedChildShapes>
+        <elementListCompartment Id="113fc416-ba55-4299-a7b4-df870058e442" absoluteBounds="3.6399999999999997, 13.335, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(0.6406275 : 14.75); (0.6406275 : 13.9463525390625); (2.63541666666667 : 13.9463525390625 : JumpStart); (2.81770833333333 : 13.9463525390625 : JumpEnd); (2.851806640625 : 13.9463525390625 : JumpStart); (3.01847330729167 : 13.9463525390625 : JumpEnd); (3.625 : 13.9463525390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MyLINQDataContext/photos_table/photos_table_film_photos_table" />
+      <nodes>
+        <classShapeMoniker Id="05ecff8f-81f1-42a9-a155-4b957ce27408" />
+        <classShapeMoniker Id="ca0dd734-dd3f-415f-9509-d36087ffbff7" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="71bc5e1e-f571-4536-8b04-3a60f1434208" absoluteBounds="0.75, 9.875, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/MyLINQDataContext/film_table" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4d3e40b9-3c19-4e80-aca4-0bd865fe7ecf" absoluteBounds="0.76500000000000012, 10.335, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.71875 : 13.7612125651042); (2.71875 : 17.8838932291667); (3.125 : 17.8838932291667)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_producer_table" />
+      <nodes>
+        <classShapeMoniker Id="71bc5e1e-f571-4536-8b04-3a60f1434208" />
+        <classShapeMoniker Id="5428ab81-0c13-47e2-9cef-7e9c543ff29b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 11.3782467565104); (2.85416666666667 : 11.3782467565104 : JumpStart); (3.02083333333333 : 11.3782467565104 : JumpEnd); (3.53125 : 11.3782467565104); (3.53125 : 9.94399251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_film_writers_table" />
+      <nodes>
+        <classShapeMoniker Id="71bc5e1e-f571-4536-8b04-3a60f1434208" />
+        <classShapeMoniker Id="c0bc5a99-ff61-40ce-8759-363347e95f96" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 13.7612125651042); (3.125 : 14.1362125651042); (3.125 : 15.3469962565104); (3.5 : 15.3469962565104)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_film_other_language_table" />
+      <nodes>
+        <classShapeMoniker Id="71bc5e1e-f571-4536-8b04-3a60f1434208" />
+        <classShapeMoniker Id="74a96bab-c5b1-440b-8eaa-f86f4286815c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 11.0016233782552); (2.85416666666667 : 11.0016233782552 : JumpStart); (3.02083333333333 : 11.0016233782552 : JumpEnd); (3.44791666666667 : 11.0016233782552 : JumpStart); (3.61458333333333 : 11.0016233782552 : JumpEnd); (5.63541666666667 : 11.0016233782552 : JumpStart); (5.94270833333333 : 11.0016233782552 : JumpEnd); (6.5 : 11.0016233782552)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_film_music_creator" />
+      <nodes>
+        <classShapeMoniker Id="71bc5e1e-f571-4536-8b04-3a60f1434208" />
+        <classShapeMoniker Id="d9b240cf-f7dc-4fe6-95bb-89c7b353f19c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.71769230769231 : 9.875); (3.3125 : 9.28019230769231); (3.3125 : 10.3189925130208); (3.44791666666667 : 10.3189925130208 : JumpStart); (3.61458333333333 : 10.3189925130208 : JumpEnd); (5.63541666666667 : 10.3189925130208 : JumpStart); (5.94270833333333 : 10.3189925130208 : JumpEnd); (6.125 : 10.3189925130208); (6.5 : 9.94399251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_film_genere_table" />
+      <nodes>
+        <classShapeMoniker Id="71bc5e1e-f571-4536-8b04-3a60f1434208" />
+        <classShapeMoniker Id="b644672b-f75f-4583-8ae6-27bd0f517b32" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 9.97192207692308); (2.9375 : 9.78442207692308); (2.9375 : 12.375); (5.63541666666667 : 12.375 : JumpStart); (5.94270833333333 : 12.375 : JumpEnd); (6.125 : 12.375); (6.37857443490112 : 12.6285744349011 : JumpStart); (6.49642556509888 : 12.7464255650989 : JumpEnd); (6.5 : 12.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_favourites_films_table" />
+      <nodes>
+        <classShapeMoniker Id="71bc5e1e-f571-4536-8b04-3a60f1434208" />
+        <classShapeMoniker Id="ffede6e3-aaa2-4edc-b325-482b24890d3e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.71875 : 9.875); (2.71875 : 6.20755126953125); (3.04166666666667 : 6.20755126953125 : JumpStart); (3.20833333333333 : 6.20755126953125 : JumpEnd); (5.63541666666667 : 6.20755126953125 : JumpStart); (5.80208333333333 : 6.20755126953125 : JumpEnd); (6.5 : 6.20755126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_comment_table" />
+      <nodes>
+        <classShapeMoniker Id="71bc5e1e-f571-4536-8b04-3a60f1434208" />
+        <classShapeMoniker Id="3b224dbe-3f5d-44e4-ac7c-f65893da1c6a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.734375 : 9.875); (2.734375 : 6.78125); (3.04166666666667 : 6.78125 : JumpStart); (3.20833333333333 : 6.78125 : JumpEnd); (3.5 : 6.78125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_actor_film_table" />
+      <nodes>
+        <classShapeMoniker Id="71bc5e1e-f571-4536-8b04-3a60f1434208" />
+        <classShapeMoniker Id="1944e6e8-751a-4170-a24d-e125b202dba6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.734375 : 13.7612125651042); (2.734375 : 16.0969962565104); (5.26041666666667 : 16.0969962565104 : JumpStart); (5.42708333333333 : 16.0969962565104 : JumpEnd); (5.77604166666667 : 16.0969962565104 : JumpStart); (5.94270833333333 : 16.0969962565104 : JumpEnd); (7.60416666666667 : 16.0969962565104 : JumpStart); (7.77083333333333 : 16.0969962565104 : JumpEnd); (7.875 : 16.0969962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_bought_films_table" />
+      <nodes>
+        <classShapeMoniker Id="71bc5e1e-f571-4536-8b04-3a60f1434208" />
+        <classShapeMoniker Id="b11db143-5530-4531-8aca-fc49042392c0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 13.2868537825521); (3.625 : 13.2868537825521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MyLINQDataContext/film_table/film_table_film_photos_table" />
+      <nodes>
+        <classShapeMoniker Id="71bc5e1e-f571-4536-8b04-3a60f1434208" />
+        <classShapeMoniker Id="ca0dd734-dd3f-415f-9509-d36087ffbff7" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
