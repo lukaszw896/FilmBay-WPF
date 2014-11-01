@@ -28,5 +28,20 @@ namespace DotNetProjectOne
         {
             LoginPopUp.IsOpen = true;
         }
+
+        private void LoginSignInButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginPopUp.IsOpen = false;
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterPopUp.IsOpen = true;
+        }
+
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterPopUp.IsOpen = false;
+        }
     }
 }
