@@ -105,5 +105,11 @@ namespace DotNetProjectOne
             FilmWindow w = new FilmWindow();
             w.Show();
         }
+
+        private void Registration_Click(object sender, RoutedEventArgs e)
+        {
+
+            MainFrame.Navigate(new Uri("registrationPage.xaml", UriKind.Relative));
+        }
     }
 }

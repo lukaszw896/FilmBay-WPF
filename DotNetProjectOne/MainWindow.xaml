@@ -1,13 +1,15 @@
 ﻿<Window x:Class="DotNetProjectOne.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
         Title="MainWindow" Height="350" Width="525">
     <Grid Background="pink">
         <Grid.RowDefinitions>
-            <RowDefinition Height="23*"/>
-            <RowDefinition Height="137*"/>
+            
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Menu x:Name="menu" HorizontalAlignment="Stretch"  Grid.Row="0"  Margin="0,0,0,26" Grid.Column="0"  Height="20" VerticalAlignment="Stretch">
+        <Menu x:Name="menu" HorizontalAlignment="Stretch"   Grid.Row="0"  Margin="0,0,0,26" Grid.Column="0"  Height="20" VerticalAlignment="Stretch">
             <MenuItem Header="_Menu" >
                 <MenuItem Header="Add" Click="MenuItem_Click"/>
                 <MenuItem Header="Remove"/>
@@ -16,6 +18,9 @@
             <MenuItem Header="_Edit"/>
             <MenuItem Header="_View">
             </MenuItem>
+            <MenuItem Header="Registration" Click="Registration_Click"></MenuItem>
         </Menu>
+        <local:Frame Name="MainFrame"  NavigationUIVisibility="Hidden" >
+        </local:Frame>
     </Grid>
 </Window>

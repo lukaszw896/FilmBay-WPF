@@ -74,3 +74,9 @@ C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\DotNetProjectOne_MarkupC
 C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\DotNetProjectOne.g.resources
 C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\DotNetProjectOne.Properties.Resources.resources
 C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\registrationPage.baml
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\registrationPage.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\Window1.baml
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\Window1.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartWindow.baml
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartWindow.g.cs
