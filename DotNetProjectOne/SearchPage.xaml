@@ -28,7 +28,7 @@
                     <ColumnDefinition Width="12*"/>
                 </Grid.ColumnDefinitions>
                 <Border Margin="8" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
-                    <TextBox BorderThickness="0" Background="#333" VerticalAlignment="Center" Foreground="White" FontWeight="Light" FontSize="20" Margin="10,0,0,0">Type to search</TextBox>
+                    <TextBox x:Name="Search" BorderThickness="0" Background="#333" VerticalAlignment="Center" Foreground="White" FontWeight="Light" FontSize="20" Margin="10,0,0,0">Type to search</TextBox>
                 </Border>
                 <ComboBox Grid.Column="1"  Background="#333"></ComboBox>
                 <Button Grid.Column="2" BorderThickness="0" Background="Transparent" Click="searchButton_Click">

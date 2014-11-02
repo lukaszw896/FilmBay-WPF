@@ -61,7 +61,42 @@ namespace DotNetProjectOne
         }
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-  
+            MyLINQDataContext con = new MyLINQDataContext();
+            List<film_table> ft ;
+    //        List<actor_table> at;
+        //    List<writers_table> wt;
+        //    List<music_creator_table> ct;
+        //    List<producer_table> pt;
+
+          /*
+           ft = con.film_tables.AsParallel().Where(s => s.title==Search.Text).ToList();
+           ft = con.film_tables.AsParallel().Where(s => s.director_name == Search.Text).ToList();
+           ft = con.film_tables.AsParallel().Where(s => s.film_studio == Search.Text).ToList();
+           ft = (from a in con.actor_tables
+                 join at in con.actor_film_tables on a.id_actor equals at.id_actor
+                 join f in con.film_tables on at.id_film equals f.id_film
+                 where a.actor_name == Search.Text
+                 select f).ToList();
+
+           ft = (from a in con.writers_tables
+                 join at in con.film_writers_tables on a.id_writer equals at.id_writer
+                 join f in con.film_tables on at.id_film equals f.id_film
+                 where a.writer_name == Search.Text
+                 select f).ToList();
+
+           ft = (from a in con.music_creator_tables
+                 join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
+                 join f in con.film_tables on at.id_film equals f.id_film
+                 where a.music_creator_name == Search.Text
+                 select f).ToList();
+
+           ft = (from a in con.producer_tables 
+                 join f in con.film_tables on a.id_film equals f.id_film
+                 where a.producer_name == Search.Text
+                 select f).ToList();
+            
+           */
+
 
 
     }

@@ -155,7 +155,7 @@ namespace DotNetProjectOne
 
                     //      actorfilmtable.film_table = dane;
 
-
+                    //adding actors from the grid to the list, adding currents film ID to these actors.
                     foreach (Actor a in actors)
                     {
                         actor_table actor = new actor_table();
@@ -164,8 +164,11 @@ namespace DotNetProjectOne
 
                         actor.actor_photo_url = APhoto;
                         int actorid;
+                        int n;
                         MyLINQDataContext con = new MyLINQDataContext();
-                        bool nameinDB = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).Count() > 0;
+                     //   bool nameinDB = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).Count() > 0;
+                      bool nameinDB=  (con.actor_tables.AsParallel().Where(s => s.actor_name == a.Name && s.actor_surname==a.Surname).Count()) >0;
+
                         //  MessageBox.Show(nameinDB.ToString());
                         if (nameinDB == false)
                         {
@@ -174,9 +177,14 @@ namespace DotNetProjectOne
                         }
                         else
                         {
+                         //   var matchedStaff = from s  in allStaf where s.Matches(searchString) select s;
                             actor_table x = new actor_table();
-                            x = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).First();
-                            actorid = x.id_actor;
+                          //  x = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).First();
+                            actor_table z = con.actor_tables.AsParallel().Where(s => s.actor_name==a.Name && s.actor_surname==a.Surname).First();
+                            n = z.id_actor;
+                            actorid = n;
+                          //  MessageBox.Show("Pararelski:"+n.ToString());
+                         //   MessageBox.Show(actorid.ToString());
                         }
                         actor_film_table actorfilmtable = new actor_film_table();
                         actorfilmtable.id_film = filmid;
@@ -191,7 +199,8 @@ namespace DotNetProjectOne
                         writer.writer_surname = w.WSurname;
                         int writerid;
                         MyLINQDataContext con = new MyLINQDataContext();
-                        bool nameinDB = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).Count() > 0;
+                    //    bool nameinDB = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).Count() > 0;
+                        bool nameinDB = (con.writers_tables.AsParallel().Where(s => s.writer_name == w.WName && s.writer_name == w.WSurname).Count()) > 0;
                         //  MessageBox.Show(nameinDB.ToString());
                         if (nameinDB == false)
                         {
@@ -200,7 +209,8 @@ namespace DotNetProjectOne
                         }
                         else
                         {
-                            writers_table x = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).First();
+                           // writers_table x = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).First();
+                            writers_table x = con.writers_tables.AsParallel().Where(s => s.writer_name == w.WName && s.writer_surname == w.WSurname).First();
                             writerid = x.id_writer;
                         }
                         film_writers_table filmwriterstable = new film_writers_table();
@@ -218,7 +228,8 @@ namespace DotNetProjectOne
                         composer.music_creator_surname = c.CSurname;
                         int composerid;
                         MyLINQDataContext con = new MyLINQDataContext();
-                        bool nameinDB = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).Count() > 0;
+                     //   bool nameinDB = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).Count() > 0;
+                        bool nameinDB = (con.music_creator_tables.AsParallel().Where(s => s.music_creator_name == c.CName && s.music_creator_surname == c.CSurname).Count()) > 0;
                         //  MessageBox.Show(nameinDB.ToString());
                         if (nameinDB == false)
                         {
@@ -227,7 +238,8 @@ namespace DotNetProjectOne
                         }
                         else
                         {
-                            music_creator_table x = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).First();
+                          //  music_creator_table x = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).First();
+                           music_creator_table x = con.music_creator_tables.AsParallel().Where(s => s.music_creator_name == c.CName && s.music_creator_surname == c.CSurname).First();
                             composerid = x.id_music_creator;
                         }
                         film_music_creator filmcomposer = new film_music_creator();
@@ -247,7 +259,8 @@ namespace DotNetProjectOne
                         producer.producer_surname = p.PSurname;
                         producer.id_film = filmid;
                         MyLINQDataContext con = new MyLINQDataContext();
-                        bool nameinDB = (from x in con.producer_tables where x.producer_name == p.PName && x.producer_surname == p.PSurname select x).Count() > 0;
+                      //  bool nameinDB = (from x in con.producer_tables where x.producer_name == p.PName && x.producer_surname == p.PSurname select x).Count() > 0;
+                        bool nameinDB = (con.producer_tables.AsParallel().Where(s => s.producer_name == p.PName && s.producer_surname == p.PSurname).Count()) > 0;
                         //  MessageBox.Show(nameinDB.ToString());
                         if (nameinDB == false)
                         {
@@ -261,7 +274,8 @@ namespace DotNetProjectOne
                         photos.photo_url = x;
                         int photoid;
                         MyLINQDataContext con = new MyLINQDataContext();
-                        bool nameinDB = (from p in con.photos_tables where p.photo_url == x select p).Count() > 0;
+                       // bool nameinDB = (from p in con.photos_tables where p.photo_url == x select p).Count() > 0;
+                        bool nameinDB = (con.photos_tables.AsParallel().Where(s => s.photo_url == x).Count()) > 0;
                         //  MessageBox.Show(nameinDB.ToString());
                         if (nameinDB == false)
                         {
@@ -270,7 +284,8 @@ namespace DotNetProjectOne
                         }
                         else
                         {
-                            photos_table z = (from p in con.photos_tables where p.photo_url == x select p).First();
+                          //  photos_table z = (from p in con.photos_tables where p.photo_url == x select p).First();
+                            photos_table z = con.photos_tables.AsParallel().Where(s => s.photo_url == x).First();
                             photoid = z.id_photo;
                         }
                         film_photos_table filmphoto = new film_photos_table();
@@ -286,8 +301,9 @@ namespace DotNetProjectOne
                         tab.other_language_name = c.LName;
                         int langid;
                         MyLINQDataContext con = new MyLINQDataContext();
-                        bool nameinDB = (from p in con.other_language_tables where p.other_language_name == Lang.Name select p).Count() > 0;
-                        //  MessageBox.Show(nameinDB.ToString());
+                      //  bool nameinDB = (from p in con.other_language_tables where p.other_language_name == Lang.Name select p).Count() > 0;
+                        bool nameinDB = (con.other_language_tables.AsParallel().Where(s => s.other_language_name == c.LName ).Count()) > 0;
+                       
                         if (nameinDB == false)
                         {
                             MainWindow.AddOLang(tab);
@@ -295,7 +311,8 @@ namespace DotNetProjectOne
                         }
                         else
                         {
-                            other_language_table x = (from p in con.other_language_tables where p.other_language_name == c.LName select p).First();
+                           // other_language_table x = (from p in con.other_language_tables where p.other_language_name == c.LName select p).First();
+                            other_language_table x = con.other_language_tables.AsParallel().Where(s => s.other_language_name == c.LName).First();
                             langid = x.id_other_language;
                         }
                         film_other_language_table filmotherlanguage = new film_other_language_table();
@@ -311,7 +328,8 @@ namespace DotNetProjectOne
                         tab.genere_name = c.GName;
                         int genreid;
                         MyLINQDataContext con = new MyLINQDataContext();
-                        bool nameinDB = (from p in con.genere_tables  where p.genere_name == c.GName select p).Count() > 0;
+                     //   bool nameinDB = (from p in con.genere_tables  where p.genere_name == c.GName select p).Count() > 0;
+                        bool nameinDB = (con.genere_tables.AsParallel().Where(s => s.genere_name == c.GName).Count()) > 0;
                         if (nameinDB == false)
                         {
                             MainWindow.AddGenre(tab);
@@ -319,7 +337,8 @@ namespace DotNetProjectOne
                         }
                         else
                         {
-                            genere_table x = (from p in con.genere_tables where p.genere_name == c.GName select p).First();
+                        //    genere_table x = (from p in con.genere_tables where p.genere_name == c.GName select p).First();
+                            genere_table x = con.genere_tables.AsParallel().Where(s => s.genere_name == c.GName).First();
                             genreid = x.id_genere;
                         }
                         film_genere_table filmgenre = new film_genere_table();
