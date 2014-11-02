@@ -135,7 +135,7 @@ namespace DotNetProjectOne
                 dane.title = Title.Text;
                 dane.title_orginal = NTitle.Text;
                 dane.orginal_language = Language.Text;
-                dane.duration = TimeSpan.Parse(Duration_H.Text+Duration_M.Text+Duration_S.Text);
+                dane.duration = TimeSpan.Parse(Duration_H.Text+":"+Duration_M.Text+":"+Duration_S.Text);
                 dane.poster_url = Poster;
                 if (Age.SelectedItem != null)
                 {
@@ -558,7 +558,7 @@ namespace DotNetProjectOne
 
                 string path = op.FileName;
                 string name = op.SafeFileName;
-
+                MessageBox.Show(path);
              
                 {
                     try
@@ -567,6 +567,7 @@ namespace DotNetProjectOne
                        myimage.Source = new BitmapImage(new Uri(path));
                         ActorPhoto.Source = myimage.Source;
                         APhoto = name;
+                       
         
                     }
                     catch

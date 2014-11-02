@@ -20,7 +20,7 @@ namespace DotNetProjectOne
     /// </summary>
     public partial class StartPage : UserControl
     {
-        public user_table Myself = new user_table();
+        public static user_table Myself = new user_table();
         private void CheckIfNumeric(TextCompositionEventArgs e)
         {
             int result;
@@ -42,7 +42,6 @@ namespace DotNetProjectOne
         private void LoginSignInButton_Click(object sender, RoutedEventArgs e)
         {
             LoginPopUp.IsOpen = false;
-            StartWindow.SetPage(StartWindow.pages.searchPage);
             MyLINQDataContext con = new MyLINQDataContext();
             user_table x = new user_table();
             bool logininDB = (from p in con.user_tables where p.login == CheckLogin.Text select p).Count() > 0;

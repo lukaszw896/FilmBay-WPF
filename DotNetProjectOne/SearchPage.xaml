@@ -4,18 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
               xmlns:controls="clr-namespace:DotNetProjectOne"
+              xmlns:local="clr-namespace:DotNetProjectOne"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="700">
     <Border BorderBrush="Black" BorderThickness="3" Background="#333">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="174*"/>
+                <ColumnDefinition Width="173*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="12*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="40" FontWeight="Light">Search page</Label>
-            <controls:OptionsMinimizeDisposeControl VerticalAlignment="Top" HorizontalAlignment="Right"></controls:OptionsMinimizeDisposeControl>
-            <Grid Grid.Row="1">
+            <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="40" FontWeight="Light" Grid.ColumnSpan="2" Margin="0,12">Search page</Label>
+            <controls:OptionsMinimizeDisposeControl VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1"></controls:OptionsMinimizeDisposeControl>
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="15*"/>
@@ -30,7 +35,7 @@
                     <Image Margin="8" Grid.Column="2" Source="/Icons/search.png"/>
                 </Button>
             </Grid>
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="2" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -41,9 +46,28 @@
                         <RowDefinition Height="6*"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Your films</Label>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" >
-                        <!-- Here we have to make a data template  -->
-                    </ScrollViewer>
+
+                    <ListView ItemsSource="{Binding}"  Grid.Row="1" x:Name="lista"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False"
+                              >
+
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Vertical" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate >
+                            <DataTemplate DataType="{x:Type local:Img}" x:Name="mojadata">
+                                <Image x:Name="obraz" Source="{Binding Str}" MaxHeight="100" MaxWidth="174" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
+                                    <Image.ToolTip>
+                                        <ToolTip Content="{Binding Name}"/>
+                                    </Image.ToolTip>
+                                </Image>
+
+                            </DataTemplate>
+
+                        </ListView.ItemTemplate>
+                    </ListView >
+
                 </Grid>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
@@ -55,7 +79,7 @@
                         <!-- Here we have to make a data template  -->
                         <Border MaxHeight="100" BorderBrush="Black" BorderThickness="1">
                             <ListBox>
-                                
+
                             </ListBox>
                         </Border>
                     </ScrollViewer>
