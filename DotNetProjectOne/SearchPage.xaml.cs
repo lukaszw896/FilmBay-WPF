@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace DotNetProjectOne
 {
     /// <summary>
-    /// Interaction logic for registrationPage.xaml
+    /// Interaction logic for SearchPage.xaml
     /// </summary>
-    public partial class registrationPage : Page
+    public partial class SearchPage : UserControl
     {
-        public registrationPage()
+        public SearchPage()
         {
             InitializeComponent();
         }

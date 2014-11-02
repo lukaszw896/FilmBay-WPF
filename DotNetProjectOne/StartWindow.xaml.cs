@@ -17,16 +17,25 @@ namespace DotNetProjectOne
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public  partial class StartWindow : Window
     {
-        public Window1()
+        public static StartPage _startPage = new StartPage();
+        public static  StartWindow window;
+        public StartWindow()
         {
             InitializeComponent();
+            this.Content = _startPage;
+            window = this;
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        public static void SetPage(UserControl page)
         {
-            LoginPopUp.IsOpen = true;
+            window.Content = page;
+        }
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }
