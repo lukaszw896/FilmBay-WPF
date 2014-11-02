@@ -17,10 +17,10 @@ namespace DotNetProjectOne
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class StartWindow : Window
+    public  partial class StartWindow : Window
     {
         public static StartPage _startPage = new StartPage();
-        public static StartWindow window;
+        public static  StartWindow window;
         public StartWindow()
         {
             InitializeComponent();
@@ -31,6 +31,11 @@ namespace DotNetProjectOne
         public static void SetPage(UserControl page)
         {
             window.Content = page;
+        }
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }

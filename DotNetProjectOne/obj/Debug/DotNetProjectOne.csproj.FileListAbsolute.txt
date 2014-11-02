@@ -22,3 +22,7 @@ C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\SearchPage.baml
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\SearchPage.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartPage.baml
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartPage.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\UserControl1.baml
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\UserControl1.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne_MarkupCompile.lref

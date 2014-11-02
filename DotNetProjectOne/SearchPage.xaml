@@ -3,11 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:controls="clr-namespace:DotNetProjectOne"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="700">
     <Border BorderBrush="Black" BorderThickness="3" Background="#333">
         <Grid>
-
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="12*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="40" FontWeight="Light">Search page</Label>
+            <controls:UserControl1 VerticalAlignment="Top" HorizontalAlignment="Right"></controls:UserControl1>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="12*"/>
+                </Grid.ColumnDefinitions>
+                <Border Margin="8" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
+                    <TextBox BorderThickness="0" Background="#333" VerticalAlignment="Center" Foreground="White" FontWeight="Light" FontSize="20" Margin="10,0,0,0">Type to search</TextBox>
+                </Border>
+                <Image Margin="8" Grid.Column="1" Source="/Icons/search.png"/>
+            </Grid>
         </Grid>
     </Border>
 </UserControl>
