@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35"  Foreground="White">FilmBay</Label>
-        <controls:UserControl1 VerticalAlignment="Top" HorizontalAlignment="Right"></controls:UserControl1>
+        <controls:MinimizeDisposeControl VerticalAlignment="Top" HorizontalAlignment="Right"></controls:MinimizeDisposeControl>
         <!--Grid with login and register buttons-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

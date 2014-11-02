@@ -32,8 +32,8 @@ namespace DotNetProjectOne
         private void LoginSignInButton_Click(object sender, RoutedEventArgs e)
         {
             LoginPopUp.IsOpen = false;
-            Pages page = new Pages();
-            StartWindow.SetPage(page.searchPage);
+            
+            StartWindow.SetPage(StartWindow.pages.searchPage);
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)

@@ -14,17 +14,52 @@
                 <RowDefinition Height="12*"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="40" FontWeight="Light">Search page</Label>
-            <controls:UserControl1 VerticalAlignment="Top" HorizontalAlignment="Right"></controls:UserControl1>
+            <controls:OptionsMinimizeDisposeControl VerticalAlignment="Top" HorizontalAlignment="Right"></controls:OptionsMinimizeDisposeControl>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="15*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="12*"/>
                 </Grid.ColumnDefinitions>
                 <Border Margin="8" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
                     <TextBox BorderThickness="0" Background="#333" VerticalAlignment="Center" Foreground="White" FontWeight="Light" FontSize="20" Margin="10,0,0,0">Type to search</TextBox>
                 </Border>
-                <Image Margin="8" Grid.Column="1" Source="/Icons/search.png"/>
+                <ComboBox Grid.Column="1"  Background="#333"></ComboBox>
+                <Button Grid.Column="2" BorderThickness="0" Background="Transparent" Click="searchButton_Click">
+                    <Image Margin="8" Grid.Column="2" Source="/Icons/search.png"/>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="6*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Your films</Label>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" >
+                        <!-- Here we have to make a data template  -->
+                    </ScrollViewer>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="6*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Top 10 films</Label>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" >
+                        <!-- Here we have to make a data template  -->
+                        <Border MaxHeight="100" BorderBrush="Black" BorderThickness="1">
+                            <ListBox>
+                                
+                            </ListBox>
+                        </Border>
+                    </ScrollViewer>
+                </Grid>
             </Grid>
         </Grid>
     </Border>

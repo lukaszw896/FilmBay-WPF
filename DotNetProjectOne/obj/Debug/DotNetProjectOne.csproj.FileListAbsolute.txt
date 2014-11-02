@@ -17,12 +17,14 @@ C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.Prop
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
-C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\SearchPage.baml
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\SearchPage.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartPage.baml
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartPage.g.cs
-C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\UserControl1.baml
-C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\UserControl1.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne_MarkupCompile.lref
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\minimizeDisposeControl.baml
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\minimizeDisposeControl.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\OptionsMinimizeDisposeControl.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\OptionsMinimizeDisposeControl.baml
