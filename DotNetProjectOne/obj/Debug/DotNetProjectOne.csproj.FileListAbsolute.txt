@@ -22,8 +22,6 @@ C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\SearchPage.baml
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\SearchPage.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartPage.baml
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartPage.g.cs
-C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\UserControl1.baml
-C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\UserControl1.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne_MarkupCompile.lref
 C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe.config
@@ -54,3 +52,7 @@ C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\StartPage.baml
 C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\DotNetProjectOne.g.resources
 C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\DotNetProjectOne.Properties.Resources.resources
 C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\MinimizeDisposeControl.baml
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\OptionsMinimizeDisposeControl.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\MinimizeDisposeControl.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\OptionsMinimizeDisposeControl.baml
