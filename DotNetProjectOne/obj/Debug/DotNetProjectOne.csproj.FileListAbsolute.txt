@@ -5,11 +5,9 @@ C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\bin\Debug\DotNetProjectOne.pdb
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\FilmWindow.baml
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\MainWindow.baml
-C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\registrationPage.baml
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartWindow.baml
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\FilmWindow.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\MainWindow.g.cs
-C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\registrationPage.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartWindow.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\App.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne_Content.g.cs
@@ -22,3 +20,5 @@ C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\SearchPage.baml
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\SearchPage.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartPage.baml
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartPage.g.cs
