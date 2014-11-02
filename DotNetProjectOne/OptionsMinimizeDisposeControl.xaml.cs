@@ -16,29 +16,23 @@ using System.Windows.Shapes;
 namespace DotNetProjectOne
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for OptionsMinimizeDisposeControl.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class OptionsMinimizeDisposeControl : UserControl
     {
-        public UserControl1()
+        public OptionsMinimizeDisposeControl()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void optionsButton_click(object sender, RoutedEventArgs e)
         {
-
+            OptionPopUp.IsOpen = true;
         }
 
-        private void minimizeButton_click(object sender, RoutedEventArgs e)
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-            StartWindow.window.WindowState = WindowState.Minimized;
-            
-        }
-
-        private void closeButton_Click(object sender, RoutedEventArgs e)
-        {
-            StartWindow.window.Close();
+            StartWindow.SetPage(StartWindow.pages.startPage);
         }
     }
 }

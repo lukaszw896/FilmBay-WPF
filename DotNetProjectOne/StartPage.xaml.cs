@@ -42,6 +42,7 @@ namespace DotNetProjectOne
         private void LoginSignInButton_Click(object sender, RoutedEventArgs e)
         {
             LoginPopUp.IsOpen = false;
+            StartWindow.SetPage(StartWindow.pages.searchPage);
             MyLINQDataContext con = new MyLINQDataContext();
             user_table x = new user_table();
             bool logininDB = (from p in con.user_tables where p.login == CheckLogin.Text select p).Count() > 0;

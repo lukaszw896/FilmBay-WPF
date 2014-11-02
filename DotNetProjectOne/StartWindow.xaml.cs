@@ -21,11 +21,13 @@ namespace DotNetProjectOne
     {
         public static StartPage _startPage = new StartPage();
         public static  StartWindow window;
+        public static Pages pages;
         public StartWindow()
         {
             InitializeComponent();
             this.Content = _startPage;
             window = this;
+            pages = new Pages();
         }
 
         public static void SetPage(UserControl page)

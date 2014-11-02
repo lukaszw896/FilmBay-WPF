@@ -21,5 +21,12 @@ namespace DotNetProjectOne
                 return _searchPage;
             }
         }
+        public UserControl startPage
+        {
+            get
+            {
+                return _startPage;
+            }
+        }
     }
 }

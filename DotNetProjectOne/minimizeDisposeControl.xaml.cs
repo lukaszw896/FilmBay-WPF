@@ -16,18 +16,29 @@ using System.Windows.Shapes;
 namespace DotNetProjectOne
 {
     /// <summary>
-    /// Interaction logic for SearchPage.xaml
+    /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class SearchPage : UserControl
+    public partial class MinimizeDisposeControl : UserControl
     {
-        public SearchPage()
+        public MinimizeDisposeControl()
         {
             InitializeComponent();
         }
 
-        private void searchButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void minimizeButton_click(object sender, RoutedEventArgs e)
+        {
+            StartWindow.window.WindowState = WindowState.Minimized;
+            
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            StartWindow.window.Close();
         }
     }
 }
