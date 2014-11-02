@@ -57,10 +57,10 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Border Margin="20" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                                <TextBox Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Login</TextBox>
+                                <TextBox x:Name="CheckLogin"  Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Login</TextBox>
                             </Border>
                             <Border Margin="20"  Grid.Row="2" BorderBrush="Black" BorderThickness="1">
-                                <TextBox Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Password</TextBox>
+                                <TextBox x:Name="CheckPassword" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Password</TextBox>
                             </Border>
                             <Button Margin="20" FontSize="30" Grid.Row="3" Click="LoginSignInButton_Click">Sign in</Button>
                         </Grid>
@@ -108,34 +108,34 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <Border Grid.Column="0" Margin="20"  BorderBrush="Black" BorderThickness="1">
-                                        <TextBox  Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Name</TextBox>
+                                        <TextBox x:Name="UserName"  Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Name</TextBox>
                                     </Border>
                                     <Border Grid.Column="1" Margin="20"  BorderBrush="Black" BorderThickness="1">
-                                        <TextBox  Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Surname</TextBox>
+                                        <TextBox  x:Name="UserSurName" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Surname</TextBox>
                                     </Border>
                                 </Grid>
 
 
                                 <Border Margin="20"  Grid.Row="2" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Login</TextBox>
+                                    <TextBox  x:Name="Login" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Login</TextBox>
                                 </Border>
                                 <Border Margin="20"  Grid.Row="3" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Password</TextBox>
+                                    <TextBox x:Name="Password" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Password</TextBox>
                                 </Border>
                                 <Border Margin="20"  Grid.Row="4" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Confirm password</TextBox>
+                                    <TextBox x:Name ="PasswordConfirm" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Confirm password</TextBox>
                                 </Border>
                                 <Border Margin="20"  Grid.Row="5" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >E-mail</TextBox>
+                                    <TextBox x:Name="Email" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >E-mail</TextBox>
                                 </Border>
                                 <Border Margin="20"  Grid.Row="6" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Confirm e-mail</TextBox>
+                                    <TextBox x:Name="EmailConfirm" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Confirm e-mail</TextBox>
                                 </Border>
                                 <Border Margin="20"  Grid.Row="7" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Age</TextBox>
+                                    <TextBox x:Name="Age" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" PreviewTextInput="Age_PreviewTextInput" >Age</TextBox>
                                 </Border>
                                 <Border Margin="20"  Grid.Row="8" BorderBrush="Black" BorderThickness="1">
-                                    <TextBox Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Gender</TextBox>
+                                    <TextBox x:Name="Gender" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Gender</TextBox>
                                 </Border>
                                 <Button Margin="20" FontSize="30" Grid.Row="9" Click="SignUpButton_Click">Sign up</Button>
                             </Grid>

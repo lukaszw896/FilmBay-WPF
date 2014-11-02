@@ -30,6 +30,7 @@ namespace DotNetProjectOne
         String Poster;
         List<String> MoviePhotos = new List<String>();
         List<ALanguage> Languages = new List<ALanguage>();
+        List<Genre> genres = new List<Genre>();
         public FilmWindow()
         {
             InitializeComponent();
@@ -84,7 +85,15 @@ namespace DotNetProjectOne
             {
                 MessageBox.Show("Must Give Price");
             }
-            else if (string.IsNullOrWhiteSpace(this.Duration.Text))
+            else if (string.IsNullOrWhiteSpace(this.Duration_M.Text))
+            {
+                MessageBox.Show("Must give duration in minutes");
+            }
+            else if (string.IsNullOrWhiteSpace(this.Duration_H.Text))
+            {
+                MessageBox.Show("Must give duration in minutes");
+            }
+            else if (string.IsNullOrWhiteSpace(this.Duration_S.Text))
             {
                 MessageBox.Show("Must give duration in minutes");
             }
@@ -126,7 +135,7 @@ namespace DotNetProjectOne
                 dane.title = Title.Text;
                 dane.title_orginal = NTitle.Text;
                 dane.orginal_language = Language.Text;
-                dane.duration = TimeSpan.Parse(Duration.Text);
+                dane.duration = TimeSpan.Parse(Duration_H.Text+Duration_M.Text+Duration_S.Text);
                 dane.poster_url = Poster;
                 if (Age.SelectedItem != null)
                 {
@@ -135,177 +144,196 @@ namespace DotNetProjectOne
                 if (Publisher.Text.Trim() != "")
                 {
                     dane.publisher = Publisher.Text;
+
+                    if (Month.Text.Trim() != "" && Day.Text.Trim() != "" && Year.Text.Trim() != "")
+                    {
+                        dane.release_date = System.DateTime.Parse(Month.Text + "/" + Day.Text + "/" + Year.Text);
+                    }
+                    MainWindow.AddFilm(dane);
+                    int filmid;
+                    filmid = dane.id_film;
+
+                    //      actorfilmtable.film_table = dane;
+
+
+                    foreach (Actor a in actors)
+                    {
+                        actor_table actor = new actor_table();
+                        actor.actor_name = a.Name;
+                        actor.actor_surname = a.Surname;
+
+                        actor.actor_photo_url = APhoto;
+                        int actorid;
+                        MyLINQDataContext con = new MyLINQDataContext();
+                        bool nameinDB = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).Count() > 0;
+                        //  MessageBox.Show(nameinDB.ToString());
+                        if (nameinDB == false)
+                        {
+                            MainWindow.AddActor(actor);
+                            actorid = actor.id_actor;
+                        }
+                        else
+                        {
+                            actor_table x = new actor_table();
+                            x = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).First();
+                            actorid = x.id_actor;
+                        }
+                        actor_film_table actorfilmtable = new actor_film_table();
+                        actorfilmtable.id_film = filmid;
+
+                        actorfilmtable.id_actor = actorid;
+                        MainWindow.AddToActorFilmTable(actorfilmtable);
+                    }
+                    foreach (Writer w in writers)
+                    {
+                        writers_table writer = new writers_table();
+                        writer.writer_name = w.WName;
+                        writer.writer_surname = w.WSurname;
+                        int writerid;
+                        MyLINQDataContext con = new MyLINQDataContext();
+                        bool nameinDB = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).Count() > 0;
+                        //  MessageBox.Show(nameinDB.ToString());
+                        if (nameinDB == false)
+                        {
+                            MainWindow.AddWriter(writer);
+                            writerid = writer.id_writer;
+                        }
+                        else
+                        {
+                            writers_table x = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).First();
+                            writerid = x.id_writer;
+                        }
+                        film_writers_table filmwriterstable = new film_writers_table();
+                        filmwriterstable.id_film = filmid;
+                        //  actorfilmtable.actor_table = actor;
+                        filmwriterstable.id_writer = writerid;
+                        MainWindow.AddToWriterFilmTable(filmwriterstable);
+                        con.Dispose();
+
+                    }
+                    foreach (Composer c in composers)
+                    {
+                        music_creator_table composer = new music_creator_table();
+                        composer.music_creator_name = c.CName;
+                        composer.music_creator_surname = c.CSurname;
+                        int composerid;
+                        MyLINQDataContext con = new MyLINQDataContext();
+                        bool nameinDB = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).Count() > 0;
+                        //  MessageBox.Show(nameinDB.ToString());
+                        if (nameinDB == false)
+                        {
+                            MainWindow.AddComposer(composer);
+                            composerid = composer.id_music_creator;
+                        }
+                        else
+                        {
+                            music_creator_table x = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).First();
+                            composerid = x.id_music_creator;
+                        }
+                        film_music_creator filmcomposer = new film_music_creator();
+                        filmcomposer.id_film = filmid;
+                        //  actorfilmtable.actor_table = actor;
+                        filmcomposer.id_music_creator = composerid;
+                        MainWindow.AddToComposerFilmTable(filmcomposer);
+                        con.Dispose();
+                    }
+
+
+
+                    foreach (Producer p in producers)
+                    {
+                        producer_table producer = new producer_table();
+                        producer.producer_name = p.PName;
+                        producer.producer_surname = p.PSurname;
+                        producer.id_film = filmid;
+                        MyLINQDataContext con = new MyLINQDataContext();
+                        bool nameinDB = (from x in con.producer_tables where x.producer_name == p.PName && x.producer_surname == p.PSurname select x).Count() > 0;
+                        //  MessageBox.Show(nameinDB.ToString());
+                        if (nameinDB == false)
+                        {
+                            MainWindow.AddProducer(producer);
+                        }
+                    }
+                    foreach (String x in MoviePhotos)
+                    {
+                        photos_table photos = new photos_table();
+
+                        photos.photo_url = x;
+                        int photoid;
+                        MyLINQDataContext con = new MyLINQDataContext();
+                        bool nameinDB = (from p in con.photos_tables where p.photo_url == x select p).Count() > 0;
+                        //  MessageBox.Show(nameinDB.ToString());
+                        if (nameinDB == false)
+                        {
+                            MainWindow.AddMPhoto(photos);
+                            photoid = photos.id_photo;
+                        }
+                        else
+                        {
+                            photos_table z = (from p in con.photos_tables where p.photo_url == x select p).First();
+                            photoid = z.id_photo;
+                        }
+                        film_photos_table filmphoto = new film_photos_table();
+                        filmphoto.id_film = filmid;
+                        filmphoto.id_photo = photoid;
+                        MainWindow.AddToFilmPhotosTable(filmphoto);
+                        con.Dispose();
+                    }
+
+                    foreach (ALanguage c in Languages)
+                    {
+                        other_language_table tab = new other_language_table();
+                        tab.other_language_name = c.LName;
+                        int langid;
+                        MyLINQDataContext con = new MyLINQDataContext();
+                        bool nameinDB = (from p in con.other_language_tables where p.other_language_name == Lang.Name select p).Count() > 0;
+                        //  MessageBox.Show(nameinDB.ToString());
+                        if (nameinDB == false)
+                        {
+                            MainWindow.AddOLang(tab);
+                            langid = tab.id_other_language;
+                        }
+                        else
+                        {
+                            other_language_table x = (from p in con.other_language_tables where p.other_language_name == c.LName select p).First();
+                            langid = x.id_other_language;
+                        }
+                        film_other_language_table filmotherlanguage = new film_other_language_table();
+                        filmotherlanguage.id_film = filmid;
+                        //  actorfilmtable.actor_table = actor;
+                        filmotherlanguage.id_other_language = langid;
+                        MainWindow.AddToFilmOtherLangTable(filmotherlanguage);
+                        con.Dispose();
+                    }
+                    foreach (Genre c in genres)
+                    {
+                        genere_table tab = new genere_table();
+                        tab.genere_name = c.GName;
+                        int genreid;
+                        MyLINQDataContext con = new MyLINQDataContext();
+                        bool nameinDB = (from p in con.genere_tables  where p.genere_name == c.GName select p).Count() > 0;
+                        if (nameinDB == false)
+                        {
+                            MainWindow.AddGenre(tab);
+                            genreid = tab.id_genere;
+                        }
+                        else
+                        {
+                            genere_table x = (from p in con.genere_tables where p.genere_name == c.GName select p).First();
+                            genreid = x.id_genere;
+                        }
+                        film_genere_table filmgenre = new film_genere_table();
+                        filmgenre.id_film = filmid;
+                        //  actorfilmtable.actor_table = actor;
+                        filmgenre.id_genere= genreid;
+                       MainWindow.AddToFilmGenre(filmgenre);
+                        con.Dispose();
+                    }
+
+
                 }
-                if (Rating.Text.Trim() != "")
-                {
-                    dane.rating = int.Parse(Rating.Text);
-                }
-                if (Month.Text.Trim() != "" && Day.Text.Trim() != "" && Year.Text.Trim() != "")
-                {
-                    dane.release_date = System.DateTime.Parse(Month.Text + "/" + Day.Text + "/" + Year.Text);
-                }
-                MainWindow.AddFilm(dane);
-                int filmid;
-                filmid = dane.id_film;
-
-                //      actorfilmtable.film_table = dane;
-
-
-                foreach (Actor a in actors)
-                {
-                    actor_table actor = new actor_table();
-                    actor.actor_name = a.Name;
-                    actor.actor_surname = a.Surname;
-
-                    actor.actor_photo_url = APhoto;
-                    int actorid;
-                    MyLINQDataContext con = new MyLINQDataContext();
-                    bool nameinDB = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).Count() > 0;
-                    //  MessageBox.Show(nameinDB.ToString());
-                    if (nameinDB == false)
-                    {
-                        MainWindow.AddActor(actor);
-                        actorid = actor.id_actor;
-                    }
-                    else
-                    {
-                        actor_table x = new actor_table();
-                        x = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).First();
-                        actorid = x.id_actor;
-                    }
-                    actor_film_table actorfilmtable = new actor_film_table();
-                    actorfilmtable.id_film = filmid;
-
-                    actorfilmtable.id_actor = actorid;
-                    MainWindow.AddToActorFilmTable(actorfilmtable);
-                }
-                foreach (Writer w in writers)
-                {
-                    writers_table writer = new writers_table();
-                    writer.writer_name = w.WName;
-                    writer.writer_surname = w.WSurname;
-                    int writerid;
-                    MyLINQDataContext con = new MyLINQDataContext();
-                    bool nameinDB = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).Count() > 0;
-                    //  MessageBox.Show(nameinDB.ToString());
-                    if (nameinDB == false)
-                    {
-                        MainWindow.AddWriter(writer);
-                        writerid = writer.id_writer;
-                    }
-                    else
-                    {
-                        writers_table x = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).First();
-                        writerid = x.id_writer;
-                    }
-                    film_writers_table filmwriterstable = new film_writers_table();
-                    filmwriterstable.id_film = filmid;
-                    //  actorfilmtable.actor_table = actor;
-                    filmwriterstable.id_writer = writerid;
-                    MainWindow.AddToWriterFilmTable(filmwriterstable);
-                    con.Dispose();
-
-                }
-                foreach (Composer c in composers)
-                {
-                    music_creator_table composer = new music_creator_table();
-                    composer.music_creator_name = c.CName;
-                    composer.music_creator_surname = c.CSurname;
-                    int composerid;
-                    MyLINQDataContext con = new MyLINQDataContext();
-                    bool nameinDB = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).Count() > 0;
-                    //  MessageBox.Show(nameinDB.ToString());
-                    if (nameinDB == false)
-                    {
-                        MainWindow.AddComposer(composer);
-                        composerid = composer.id_music_creator;
-                    }
-                    else
-                    {
-                        music_creator_table x = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).First();
-                        composerid = x.id_music_creator;
-                    }
-                    film_music_creator filmcomposer = new film_music_creator();
-                    filmcomposer.id_film = filmid;
-                    //  actorfilmtable.actor_table = actor;
-                    filmcomposer.id_music_creator = composerid;
-                    MainWindow.AddToComposerFilmTable(filmcomposer);
-                    con.Dispose();
-                }
-
-
-
-                foreach (Producer p in producers)
-                {
-                    producer_table producer = new producer_table();
-                    producer.producer_name = p.PName;
-                    producer.producer_surname = p.PSurname;
-                    producer.id_film = filmid;
-                    MyLINQDataContext con = new MyLINQDataContext();
-                    bool nameinDB = (from x in con.producer_tables where x.producer_name == p.PName && x.producer_surname == p.PSurname select x).Count() > 0;
-                    //  MessageBox.Show(nameinDB.ToString());
-                    if (nameinDB == false)
-                    {
-                        MainWindow.AddProducer(producer);
-                    }
-                }
-                foreach (String x in MoviePhotos)
-                {
-                    photos_table photos = new photos_table();
-
-                    photos.photo_url = x;
-                    int photoid;
-                    MyLINQDataContext con = new MyLINQDataContext();
-                    bool nameinDB = (from p in con.photos_tables where p.photo_url == x select p).Count() > 0;
-                    //  MessageBox.Show(nameinDB.ToString());
-                    if (nameinDB == false)
-                    {
-                        MainWindow.AddMPhoto(photos);
-                        photoid = photos.id_photo;
-                    }
-                    else
-                    {
-                        photos_table z = (from p in con.photos_tables where p.photo_url == x select p).First();
-                        photoid = z.id_photo;
-                    }
-                    film_photos_table filmphoto = new film_photos_table();
-                    filmphoto.id_film = filmid;
-                    filmphoto.id_photo = photoid;
-                    MainWindow.AddToFilmPhotosTable(filmphoto);
-                    con.Dispose();
-                }
-
-                foreach (ALanguage c in Languages)
-                {
-                    other_language_table tab = new other_language_table();
-                    tab.other_language_name = c.LName;
-                    int langid;
-                    MyLINQDataContext con = new MyLINQDataContext();
-                    bool nameinDB = (from p in con.other_language_tables where p.other_language_name == Lang.Name select p).Count() > 0;
-                    //  MessageBox.Show(nameinDB.ToString());
-                    if (nameinDB == false)
-                    {
-                        MainWindow.AddOLang(tab);
-                        langid = tab.id_other_language;
-                    }
-                    else
-                    {
-                        other_language_table x = (from p in con.other_language_tables where p.other_language_name == c.LName select p).First();
-                        langid = x.id_other_language;
-                    }
-                    film_other_language_table filmotherlanguage = new film_other_language_table();
-                    filmotherlanguage.id_film = filmid;
-                    //  actorfilmtable.actor_table = actor;
-                    filmotherlanguage.id_other_language = langid;
-                    MainWindow.AddToFilmOtherLangTable(filmotherlanguage);
-                    con.Dispose();
-                }
-
-
 
             }
-
-
         }
 
         private void Rating_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -375,6 +403,10 @@ namespace DotNetProjectOne
         public class ALanguage
         {
             public string LName { get; set; }
+        }
+        public class Genre
+        {
+            public string GName { get; set; }
         }
 
 
@@ -523,23 +555,19 @@ namespace DotNetProjectOne
             // op.Multiselect = true;
             if (op.ShowDialog() == true)
             {
-                //   string[] filePath = op.FileNames;
+
                 string path = op.FileName;
                 string name = op.SafeFileName;
-                //  foreach (string path in op.FileNames)
-                // MessageBox.Show(name);
+
+             
                 {
                     try
                     {
                         Image myimage = new Image();
-                        myimage.Source = new BitmapImage(new Uri(path));
+                       myimage.Source = new BitmapImage(new Uri(path));
                         ActorPhoto.Source = myimage.Source;
-                        // MessageBox.Show(APhoto);
-
                         APhoto = name;
-
-                        //  MessageBox.Show(AppDomain.CurrentDomain.BaseDirectory.ToString());
-
+        
                     }
                     catch
                     {
@@ -623,7 +651,7 @@ namespace DotNetProjectOne
 
                 string path = op.FileName;
                 string name = op.SafeFileName;
-
+                MessageBox.Show(name);
                 {
                     try
                     {
@@ -639,6 +667,36 @@ namespace DotNetProjectOne
                 }
             }
 
+        }
+
+        private void Button_Click_16(object sender, RoutedEventArgs e)
+        {
+            GenrePopUp.IsOpen=true;
+        }
+
+        private void Button_Click_17(object sender, RoutedEventArgs e)
+        {
+            Genre g = new Genre();
+            g.GName= GenreName.Text;
+
+            bool alreadyExists = genres.Any(x => x.GName == GenreName.Text);
+            if (alreadyExists == false)
+            {
+                GenreGrid.Items.Add(g);
+                genres.Add(g);
+                GenreName.Text = "";
+ 
+            }
+            else
+            {
+                MessageBox.Show("Already added");
+                GenreName.Text = "";
+            }
+        }
+
+        private void Button_Click_18(object sender, RoutedEventArgs e)
+        {
+            GenrePopUp.IsOpen=false;
         }
     }
 }

@@ -30,6 +30,33 @@ namespace DotNetProjectOne
                 conn.Dispose();
             }
         }
+        public static void AddUser(user_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.user_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddGenre(genere_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.genere_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddToFilmGenre(film_genere_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.film_genere_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
         public static void AddActor(actor_table t)
         {
             using (MyLINQDataContext conn = new MyLINQDataContext())
