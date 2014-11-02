@@ -11,6 +11,7 @@ namespace DotNetProjectOne
     {
         private StartPage _startPage = StartWindow._startPage;
         private SearchPage _searchPage;
+        private FilmPage _filmpage;
 
         public UserControl searchPage
         {
@@ -26,6 +27,15 @@ namespace DotNetProjectOne
             get
             {
                 return _startPage;
+            }
+        }
+        public UserControl filmPage
+        {
+            get
+            {
+                if (_filmpage == null)
+                    _filmpage = new FilmPage();
+                return _filmpage;
             }
         }
     }

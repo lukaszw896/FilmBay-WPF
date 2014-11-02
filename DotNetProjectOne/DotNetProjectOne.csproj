@@ -69,6 +69,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FilmPage.xaml.cs">
+      <DependentUpon>FilmPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Img.cs" />
     <Compile Include="OptionsMinimizeDisposeControl.xaml.cs">
       <DependentUpon>OptionsMinimizeDisposeControl.xaml</DependentUpon>
@@ -86,6 +89,10 @@
     <Compile Include="MinimizeDisposeControl.xaml.cs">
       <DependentUpon>MinimizeDisposeControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="FilmPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FilmWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,6 +181,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>DNPDB.mdf</DependentUpon>
     </Content>
+    <Resource Include="Test\Avengers.jpg" />
     <Resource Include="Icons\option_button.png" />
     <Resource Include="Icons\minimize_button.png" />
     <Resource Include="Icons\close_button.png" />

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\
 DotNetProjectOne
 none
 false
 DEBUG;TRACE
-C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\App.xaml
-72044916437
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\App.xaml
+81008090170
 2-775192278
-181567366874
+19467301298
 131721740678
-FilmWindow.xaml;MainWindow.xaml;OptionsMinimizeDisposeControl.xaml;SearchPage.xaml;StartPage.xaml;StartWindow.xaml;MinimizeDisposeControl.xaml;
+FilmPage.xaml;FilmWindow.xaml;MainWindow.xaml;OptionsMinimizeDisposeControl.xaml;SearchPage.xaml;StartPage.xaml;StartWindow.xaml;MinimizeDisposeControl.xaml;
 
 False
 
