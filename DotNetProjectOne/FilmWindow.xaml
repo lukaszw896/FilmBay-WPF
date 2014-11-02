@@ -43,20 +43,20 @@
             <ComboBoxItem Content="13" HorizontalAlignment="Left" Width="131"/>
             <ComboBoxItem Content="18" HorizontalAlignment="Left" Width="131"/>
         </ComboBox>
-        <TextBox MaxLength="2" x:Name="Rating" HorizontalAlignment="Left" Height="23" Margin="14,16,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="37" PreviewTextInput="Rating_PreviewTextInput" Grid.Column="1" Grid.Row="7" />
-        <Label Content="IMBD rating" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="109" Grid.Row="7" Height="26"/>
-        <Label Content="Release Date" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="109" Grid.Row="8" Height="26"/>
-        <TextBox  MaxLength="2" x:Name="Day" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="33" PreviewTextInput="Month_PreviewTextInput" Grid.Column="1" Grid.Row="8"  />
-        <TextBox  MaxLength="4" x:Name="Year" HorizontalAlignment="Left" Height="23" Margin="107,10,0,0" TextWrapping="Wrap" Text="1111" VerticalAlignment="Top" Width="36" PreviewTextInput="Year_PreviewTextInput" Grid.Column="1" Grid.Row="8" />
-        <TextBox MaxLength="2" x:Name="Month" HorizontalAlignment="Left" Height="23" Margin="63,10,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="33" PreviewTextInput="Day_PreviewTextInput" Grid.Column="1" Grid.Row="8"/>
-        <Label Content="Price" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="109" Grid.Row="10" Height="26"/>
-        <Label Content="Studio" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="109" Grid.Row="9" Height="26"/>
-        <TextBox MaxLength="50" x:Name="Studio" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Lucas Arts" VerticalAlignment="Top" Width="133" RenderTransformOrigin="0.519,5.087" Grid.Column="1" Grid.Row="9"/>
-        <TextBox MaxLength="50" x:Name="Price" HorizontalAlignment="Left" Height="23" Margin="10,4,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="133" PreviewTextInput="TextBox_PreviewTextInput" Grid.Column="1" Grid.Row="10"/>
-        <Button x:Name="Save" Content="Commit" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="97" Click="Save_Click" Grid.Row="13" Height="22" />
-        <Button x:Name="Cancel" Content="Resign" HorizontalAlignment="Left" Margin="3,10,0,0" VerticalAlignment="Top" Width="103" Grid.Column="1" Grid.Row="13" Height="22"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="57" Grid.Row="3" Height="26"/>
-        <TextBox MaxLength="15" x:Name="Duration" HorizontalAlignment="Left" Height="23" Margin="14,19,0,0" TextWrapping="Wrap" Text="1:30:59" VerticalAlignment="Top" Width="129" Grid.Column="1" Grid.Row="3"  />
+        <Label Content="Release Date" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="109" Grid.Row="7" Height="26"/>
+        <TextBox  MaxLength="2" x:Name="Day" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="33" PreviewTextInput="Month_PreviewTextInput" Grid.Column="1" Grid.Row="7"  />
+        <TextBox  MaxLength="4" x:Name="Year" HorizontalAlignment="Left" Height="23" Margin="127,10,0,0" TextWrapping="Wrap" Text="1111" VerticalAlignment="Top" Width="36" PreviewTextInput="Year_PreviewTextInput" Grid.Column="1" Grid.Row="7" />
+        <TextBox MaxLength="2" x:Name="Month" HorizontalAlignment="Left" Height="23" Margin="63,10,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="33" PreviewTextInput="Day_PreviewTextInput" Grid.Column="1" Grid.Row="7"/>
+        <Label Content="Price" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="109" Grid.Row="9" Height="26"/>
+        <Label Content="Studio" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="109" Grid.Row="8" Height="26"/>
+        <TextBox MaxLength="50" x:Name="Studio" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Lucas Arts" VerticalAlignment="Top" Width="133" RenderTransformOrigin="0.519,5.087" Grid.Column="1" Grid.Row="8"/>
+        <TextBox MaxLength="50" x:Name="Price" HorizontalAlignment="Left" Height="23" Margin="10,9,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="133" PreviewTextInput="TextBox_PreviewTextInput" Grid.Column="1" Grid.Row="9"/>
+        <Button x:Name="Save" Content="Commit" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="97" Click="Save_Click" Grid.Row="13" Height="22" />
+        <Button x:Name="Cancel" Content="Resign" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="103" Grid.Column="1" Grid.Row="13" Height="22"/>
+        <Label Content="Duration" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="57" Grid.Row="3" Height="26"/>
+        <TextBox MaxLength="15" x:Name="Duration_H" HorizontalAlignment="Left" Height="23" Margin="63,19,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="29" Grid.Column="1" Grid.Row="3"  />
+        <TextBox MaxLength="2" x:Name="Duration_M" HorizontalAlignment="Left" Height="23" Margin="107,19,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="29" Grid.Column="1" Grid.Row="3"  />
+        <TextBox MaxLength="2" x:Name="Duration_S" HorizontalAlignment="Left" Height="23" Margin="21,19,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="29" Grid.Column="1" Grid.Row="3"  />
         <Button x:Name="AddActorButton" Content="Add Actor" HorizontalAlignment="Left" Margin="11,25,0,0" VerticalAlignment="Top" Width="97" Height="25" Click="AddActorButton_Click" Grid.Column="2" Grid.Row="1"/>
 
         <DataGrid x:Name="ActorsGrid" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" Height="90" Width="215" AutoGenerateColumns="False" Grid.Column="2" Grid.RowSpan="2">
@@ -144,13 +144,13 @@ Grid.Column="1" HorizontalAlignment="Left" Click="Button_Click_3" />
             </Border>
         </Popup>
         <Button Content="Add Writer" HorizontalAlignment="Left" Margin="13,10,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_4" Grid.Column="2" Grid.Row="4" Height="22"/>
-        <DataGrid x:Name="ProducerGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="107" Width="215" AutoGenerateColumns="False" Grid.Column="2" Grid.Row="5" Grid.RowSpan="2">
+        <DataGrid x:Name="ProducerGrid" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Height="107" Width="215" AutoGenerateColumns="False" Grid.Column="2" Grid.Row="5" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Width="105" Binding="{Binding PName}"/>
                 <DataGridTextColumn Header="Surname" Width="105" Binding="{Binding PSurname}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add Producer" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_5" Grid.Column="2" Grid.Row="7" Height="22"/>
+        <Button Content="Add Producer" HorizontalAlignment="Left" Margin="13,50,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_5" Grid.Column="2" Grid.Row="6" Height="22"/>
 
         <Popup Name="ProducerPopUp" Placement="Center" IsEnabled="True" IsOpen="False" Grid.Column="1" Margin="63,54,138,31" Grid.Row="5" Grid.RowSpan="4" Grid.ColumnSpan="2" >
             <Border BorderBrush="Orange" BorderThickness="3">
@@ -185,13 +185,13 @@ Grid.Column="1" HorizontalAlignment="Left" Click="Button_Click_7" />
                 </StackPanel>
             </Border>
         </Popup>
-        <DataGrid x:Name="ComposerGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="111" Width="215" AutoGenerateColumns="False" Grid.Column="2" Grid.Row="8" Grid.RowSpan="2">
+        <DataGrid x:Name="ComposerGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="111" Width="215" AutoGenerateColumns="False" Grid.Column="2" Grid.Row="7" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Width="105" Binding="{Binding CName}"/>
                 <DataGridTextColumn Header="Surname" Width="105" Binding="{Binding CSurname}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add Composer" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_10" Grid.Column="2" Grid.Row="10" Height="22" />
+        <Button Content="Add Composer" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_10" Grid.Column="2" Grid.Row="9" Height="22" />
         <Popup Name="ComposerrPopUp" Placement="Center" IsEnabled="True" IsOpen="False" Grid.Column="1" Margin="63,54,138,31" Grid.Row="5" Grid.RowSpan="4" Grid.ColumnSpan="2" >
             <Border BorderBrush="Orange" BorderThickness="3">
                 <StackPanel Background="Pink" VerticalAlignment="Center" Height="200">
@@ -225,14 +225,14 @@ Grid.Column="1" HorizontalAlignment="Left" Click="Button_Click_9"  />
                 </StackPanel>
             </Border>
         </Popup>
-        <Button Content="Add Galery" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Grid.Row="12" RenderTransformOrigin="0.515,2.955" Click="Button_Click_12" Height="22" Margin="0,24,0,0" />
-        <DataGrid x:Name="LanguageGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="97" Width="215" AutoGenerateColumns="False" Grid.Column="2" Grid.Row="11" Grid.RowSpan="2">
+        <Button Content="Add Galery" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Grid.Row="12" RenderTransformOrigin="0.515,2.955" Click="Button_Click_12" Height="22" Margin="10,10,0,0" />
+        <DataGrid x:Name="LanguageGrid" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="97" Width="215" AutoGenerateColumns="False" Grid.Column="2" Grid.Row="10" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Language" Width="205" Binding="{Binding LName}"/>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add Language" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97"  Grid.Column="2" Grid.Row="13" Click="Button_Click_13" Height="22" />
+        <Button Content="Add Language" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97"  Grid.Column="2" Grid.Row="11" Click="Button_Click_13" Height="22" Margin="10,58,0,0" />
         <Popup Name="LanguagePopUp" Placement="Center" IsEnabled="True" IsOpen="False" Grid.Column="1" Margin="63,54,138,31" Grid.Row="5" Grid.RowSpan="4" Grid.ColumnSpan="2" >
             <Border BorderBrush="Orange" BorderThickness="3">
                 <StackPanel Background="Pink" VerticalAlignment="Center" Height="200">
@@ -262,7 +262,46 @@ Grid.Column="1" HorizontalAlignment="Left" Click="Button_Click_14"   />
                 </StackPanel>
             </Border>
         </Popup>
-        <Button x:Name="AddPoster" Content="Add Poster" HorizontalAlignment="Left" Margin="0,33,0,0" Grid.Row="11" VerticalAlignment="Top" Width="75" Height="22" Click="Poster_Click"/>
-        <Image x:Name="PosterImage" Grid.Column="1" HorizontalAlignment="Left" Height="103" Margin="3,7,0,0" Grid.Row="11" VerticalAlignment="Top" Width="100" Grid.RowSpan="2"/>
+        <Button x:Name="AddPoster" Content="Add Poster" HorizontalAlignment="Left" Margin="0,10,0,0" Grid.Row="12" VerticalAlignment="Top" Width="103" Height="22" Click="Poster_Click" Grid.Column="1"/>
+        <Image x:Name="PosterImage" Grid.Column="1" HorizontalAlignment="Left" Height="103" Margin="83,10,0,0" Grid.Row="10" VerticalAlignment="Top" Width="100" Grid.RowSpan="2"/>
+        <Popup Name="GenrePopUp" Placement="Center" IsEnabled="True" IsOpen="False" Grid.Column="1" Margin="63,54,138,31" Grid.Row="5" Grid.RowSpan="4" Grid.ColumnSpan="2" >
+            <Border BorderBrush="Orange" BorderThickness="3">
+                <StackPanel Background="Pink" VerticalAlignment="Center" Height="200">
+                    <StackPanel>
+                        <Grid Margin="0,40,0,20" >
+                            <Grid.RowDefinitions >
+                                <RowDefinition Height=" 35"></RowDefinition>
+                                <RowDefinition Height="35"></RowDefinition>
+                                <RowDefinition Height="35"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Genre:" HorizontalAlignment="Right" 
+Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
+                            <TextBox Name="GenreName" Width=" 90" Height=" 20" Grid.Row="0" 
+Grid.Column="1" HorizontalAlignment="Left" PreviewTextInput="WriterName_PreviewTextInput"/>
+                            <Button Content="Add" Width="70" Height="35" Grid.Row="2" 
+Grid.Column="0" HorizontalAlignment="Right" Click="Button_Click_17"    />
+                            <Button Content="Close" Width="70" Height="35" Grid.Row="2" 
+Grid.Column="1" HorizontalAlignment="Left" Click="Button_Click_18"    />
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+        <DataGrid x:Name="GenreGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="97" Width="215" AutoGenerateColumns="False" Grid.Row="10" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="10,0,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Genre" Width="205" Binding="{Binding GName}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Add Genre" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Grid.Row="11"  Height="22" Margin="10,44,0,0" Click="Button_Click_16" />
+       
+        <Label Content=":" HorizontalAlignment="Left" Margin="50,19,0,0" Grid.Row="3" VerticalAlignment="Top" Width="15" Grid.Column="1" Height="23"/>
+        <Label Content=":" HorizontalAlignment="Left" Margin="92,18,0,0" Grid.Row="3" VerticalAlignment="Top" Width="15" Grid.Column="1" Height="23"/>
     </Grid>
 </Window>

@@ -160,10 +160,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DNPDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DNPDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>DNPDB.mdf</DependentUpon>
     </Content>
     <Resource Include="Icons\minimize_button.png" />
