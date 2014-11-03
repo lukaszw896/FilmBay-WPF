@@ -13,6 +13,7 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+            <Button Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Button_Click"></Button>
         <Label Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35"  Foreground="White">FilmBay</Label>
         <controls:MinimizeDisposeControl VerticalAlignment="Top" HorizontalAlignment="Right"></controls:MinimizeDisposeControl>
         <!--Grid with login and register buttons-->
