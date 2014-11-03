@@ -27,17 +27,17 @@
                             <ColumnDefinition Width="9*"/>
                         </Grid.ColumnDefinitions>
                         <Border Margin="10" Grid.Column="0" BorderBrush="Black" BorderThickness="3">
-                        <Image  Source="/Test/Avengers.jpg"></Image>
+                        <Image x:Name="Poster"  Source="/Test/Avengers.jpg"></Image>
                         </Border>
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="3*"/>
                             </Grid.RowDefinitions>
-                            <Label Margin="10,0,0,0" Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="27" FontWeight="Light" >The Avengers: Age of Ultron (2014)</Label>
+                            <Label x:Name="Title" Margin="10,0,0,0" Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="27" FontWeight="Light" >The Avengers: Age of Ultron (2014)</Label>
                             <Border Margin="10" Grid.Row="1" BorderBrush="Black" BorderThickness="3">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto"  >
-                                    <TextBlock Margin="10" TextWrapping="Wrap" Foreground="White" FontSize="15">When Tony Stark tries to jumpstart a dormant peacekeeping program, things go awry and it is up to The Avengers to stop the villainous Ultron from enacting his terrible plans.</TextBlock>
+                                    <TextBlock x:Name="Story" Margin="10" TextWrapping="Wrap" Foreground="White" FontSize="15">When Tony Stark tries to jumpstart a dormant peacekeeping program, things go awry and it is up to The Avengers to stop the villainous Ultron from enacting his terrible plans.</TextBlock>
                                 </ScrollViewer>
                             </Border>    
                         </Grid>

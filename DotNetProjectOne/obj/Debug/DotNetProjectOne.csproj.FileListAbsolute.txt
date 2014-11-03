@@ -60,3 +60,5 @@ C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\FilmPage.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\OptionsMinimizeDisposeControl.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\MinimizeDisposeControl.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\OptionsMinimizeDisposeControl.baml
+C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\FilmPage.g.cs
+C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\FilmPage.baml

@@ -18,11 +18,23 @@ namespace DotNetProjectOne
     /// <summary>
     /// Interaction logic for FilmPage.xaml
     /// </summary>
+    /// 
     public partial class FilmPage : UserControl
     {
+        int filmid = 1;
         public FilmPage()
         {
             InitializeComponent();
+             MyLINQDataContext con = new MyLINQDataContext();
+             film_table ft;
+             ft = con.film_tables.AsParallel().Where(s => s.id_film == filmid).First();
+             string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+           
+            
+             Poster.Source = new BitmapImage(new Uri(path));
+             Title.Content = ft.title;
+             Story.Text = ft.storyline;
+             con.Dispose();
         }
     }
 }

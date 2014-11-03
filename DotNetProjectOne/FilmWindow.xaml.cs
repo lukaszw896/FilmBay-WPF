@@ -132,6 +132,10 @@ namespace DotNetProjectOne
                 {
                     dane.film_studio = Studio.Text;
                 }
+                if (Storyline.Text.Trim() != "")
+                {
+                    dane.storyline = Storyline.Text;
+                }
                 dane.title = Title.Text;
                 dane.title_orginal = NTitle.Text;
                 dane.orginal_language = Language.Text;
