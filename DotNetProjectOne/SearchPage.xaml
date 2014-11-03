@@ -4,9 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
               xmlns:controls="clr-namespace:DotNetProjectOne"
+             xmlns:c="clr-namespace:DotNetProjectOne"
               xmlns:local="clr-namespace:DotNetProjectOne"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="700">
+             d:DesignHeight="500" d:DesignWidth="700"
+             >
+ 
     <Border BorderBrush="Black" BorderThickness="3" Background="#333">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -30,7 +33,14 @@
                 <Border Margin="8" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
                     <TextBox x:Name="Search" BorderThickness="0" Background="#333" VerticalAlignment="Center" Foreground="White" FontWeight="Light" FontSize="20" Margin="10,0,0,0">Type to search</TextBox>
                 </Border>
-                <ComboBox Grid.Column="1"  Background="#333"></ComboBox>
+                <ComboBox x:Name="SearchCombo" Grid.Column="1"  Background="#333">
+                    <ComboBoxItem Content="Title" HorizontalAlignment="Left" Width="206" IsSelected="True"/>
+                    <ComboBoxItem Content="Director" HorizontalAlignment="Left" Width="206"/>
+                    <ComboBoxItem Content="Writer" HorizontalAlignment="Left" Width="206"/>
+                    <ComboBoxItem Content="Producer" HorizontalAlignment="Left" Width="206"/>
+                    <ComboBoxItem Content="Actor" HorizontalAlignment="Left" Width="206"/>
+                    <ComboBoxItem Content="Composer" HorizontalAlignment="Left" Width="206"/>
+                </ComboBox>
                 <Button Grid.Column="2" BorderThickness="0" Background="Transparent" Click="searchButton_Click">
                     <Image Margin="8" Grid.Column="2" Source="/Icons/search.png"/>
                 </Button>
@@ -47,21 +57,34 @@
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Your films</Label>
 
-                    <ListView ItemsSource="{Binding}"  Grid.Row="1" x:Name="lista"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False"
+                    <ListView ItemsSource="{Binding Path=mymovies}"  Grid.Row="1" x:Name="MyMoviesList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="23,10,131,56"
                               >
 
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel Orientation="Vertical" />
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
                         <ListView.ItemTemplate >
+
                             <DataTemplate DataType="{x:Type local:Img}" x:Name="mojadata">
-                                <Image x:Name="obraz" Source="{Binding Str}" MaxHeight="100" MaxWidth="174" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
-                                    <Image.ToolTip>
-                                        <ToolTip Content="{Binding Name}"/>
-                                    </Image.ToolTip>
-                                </Image>
+                                <Grid x:Name="DataGrid" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150*"/>
+                                        <ColumnDefinition Width="100*"/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="23*"/>
+                                        <RowDefinition Height="23*"/>
+                                        <RowDefinition Height="23*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="100" MaxWidth="100" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
+                                        <Image.ToolTip>
+                                            <ToolTip Content="{Binding Name}"/>
+                                        </Image.ToolTip>
+                                    </Image>
+                                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
+                                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding Director}"/>
+                                    <Label Grid.Column="1" Grid.Row="2" Content="{Binding Year}"/>
+
+                                </Grid>
 
                             </DataTemplate>
 
@@ -69,6 +92,45 @@
                     </ListView >
 
                 </Grid>
+                <Popup Name="SearchPopUp"  Width="600" Height="600" Placement="Center" IsEnabled="True" IsOpen="False" >
+                    <Border BorderBrush="Black" BorderThickness="3">
+                        <Grid Background="#333" >
+                            <ListView ItemsSource="{Binding Path=searchmovies}"  Grid.Row="1" x:Name="SelectionList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="23,10,131,56" SelectionChanged="SelectionList_SelectionChanged"
+                              >
+
+                                <ListView.ItemTemplate >
+
+                                    <DataTemplate DataType="{x:Type local:Img}" >
+                                        <Grid x:Name="DataGrid" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="150*"/>
+                                                <ColumnDefinition Width="100*"/>
+
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="23*"/>
+                                                <RowDefinition Height="23*"/>
+                                                <RowDefinition Height="23*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="100" MaxWidth="100" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
+                                                <Image.ToolTip>
+                                                    <ToolTip Content="{Binding Name}"/>
+                                                </Image.ToolTip>
+                                            </Image>
+                                            <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
+                                            <Label Grid.Column="1" Grid.Row="1" Content="{Binding Director}"/>
+                                            <Label Grid.Column="1" Grid.Row="2" Content="{Binding Year}"/>
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView >
+                        
+                        </Grid>
+                      
+                    </Border>
+                </Popup>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
