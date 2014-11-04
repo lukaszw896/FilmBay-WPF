@@ -33,7 +33,12 @@ namespace DotNetProjectOne
             get { return _filmactors; }
             set { _filmactors = value; }
         }
-
+        private ObservableCollection<Img> _moviephotos = new ObservableCollection<Img>();
+        public ObservableCollection<Img> moviephotos
+        {
+            get { return _moviephotos; }
+            set { _moviephotos= value; }
+        }
 
         public FilmPage()
         {
@@ -61,9 +66,9 @@ namespace DotNetProjectOne
                 //MessageBox.Show(at.actor_name);
                 Image myimage = new Image();
                 string apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + at.actor_photo_url;
-                string title = at.actor_name;
-                string director = ft.director_name + " " + ft.director_surname;
-                string year = ft.release_date.Value.ToShortDateString();
+                string title = at.actor_name + " "+ at.actor_surname;
+                string director = "";
+                string year = "";
                 //   MessageBox.Show(path);
                 myimage.Source = new BitmapImage(new Uri(path));
 
@@ -128,6 +133,30 @@ namespace DotNetProjectOne
                     ProducerBlock.Text = ProducerBlock.Text + " " + p.producer_name + " " + p.producer_surname;
 
             }
+             List<photos_table> Photos = new List<photos_table>();
+            Photos = (from a in con.photos_tables
+                         join at in con.film_photos_tables on a.id_photo equals at.id_photo
+                         join f in con.film_tables on at.id_film equals f.id_film
+                         where f.id_film == filmid
+                         select a).ToList();
+            foreach(photos_table p in Photos)
+            {
+                Image myimage = new Image();
+                string apath = AppDomain.CurrentDomain.BaseDirectory + "Photos\\" + p.photo_url;
+           
+                //   MessageBox.Show(path);
+                myimage.Source = new BitmapImage(new Uri(path));
+
+                Img img = new Img(apath, "", "", "");
+
+                moviephotos.Add(img);
+
+            }
+
+
+          
+
+
 
 
             YearBlock.Text = ft.release_date.Value.ToShortDateString();

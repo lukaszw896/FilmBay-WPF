@@ -95,7 +95,7 @@
                                     <RowDefinition Height="9*"/>
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Actors</Label>
-                                    <ListView ItemsSource="{Binding Path=filmactors}"  Grid.Row="1" x:Name="SelectionList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
+                                    <ListView ItemsSource="{Binding Path=filmactors}"  Grid.Row="1" x:Name="ActorList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
                               >
 
                                         <ListView.ItemTemplate >
@@ -119,9 +119,7 @@
                                                         </Image.ToolTip>
                                                     </Image>
                                                     <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
-                                                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding Director}"/>
-                                                    <Label Grid.Column="1" Grid.Row="2" Content="{Binding Year}"/>
-
+                                                  
                                                 </Grid>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
@@ -131,8 +129,34 @@
                                 </Grid>
                         </Border>
                         <Border Grid.Column="1" Margin="10" BorderBrush="Black" BorderThickness="3">
-                            <!--Photos from film-->
-                        </Border>
+                                <ListView ItemsSource="{Binding Path=moviephotos}"  Grid.Row="1" x:Name="PhotoList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
+                              >
+
+                                    <ListView.ItemTemplate >
+
+                                        <DataTemplate DataType="{x:Type local:Img}" >
+                                            <Grid x:Name="DataGrid" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="150*"/>
+                                                    <ColumnDefinition Width="100*"/>
+
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="23*"/>
+                                                    <RowDefinition Height="23*"/>
+                                                    <RowDefinition Height="23*"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="100" MaxWidth="100" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
+                                                                                              </Image>
+                                              
+
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView >
+
+                            </Border>
                     </Grid>
                     <!-- More informations Grid-->
                     <Border Margin="10" Grid.Row="3" BorderBrush="Black" BorderThickness="3">
