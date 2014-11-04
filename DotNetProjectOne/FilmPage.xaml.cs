@@ -36,5 +36,16 @@ namespace DotNetProjectOne
              Story.Text = ft.storyline;
              con.Dispose();
         }
+
+        private void AddComment_Click(object sender, RoutedEventArgs e)
+        {
+            CommentWindow cw = new CommentWindow();
+            this.IsEnabled = false;
+            cw.ShowDialog();
+           
+            
+        }
+
+        
     }
 }

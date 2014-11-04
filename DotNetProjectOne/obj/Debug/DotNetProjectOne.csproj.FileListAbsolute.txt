@@ -17,7 +17,6 @@ C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.Prop
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
-C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\SearchPage.baml
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\SearchPage.g.cs
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\StartPage.baml
@@ -62,3 +61,6 @@ C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\MinimizeDisposeContro
 C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\OptionsMinimizeDisposeControl.baml
 C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\FilmPage.g.cs
 C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\FilmPage.baml
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\CommentWindow.baml
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\CommentWindow.g.cs
+C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Debug\App.baml
