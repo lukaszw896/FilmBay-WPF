@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:DotNetProjectOne"
              mc:Ignorable="d" 
-             d:DesignHeight="1700" d:DesignWidth="700" Name="filmPage">
+             d:DesignHeight="1700" d:DesignWidth="700" Name="filmPage"
+             xmlns:local="clr-namespace:DotNetProjectOne">
              <!--DesignHeight=500: -->
     <Border BorderBrush="Black" BorderThickness="3" Background="#333">
         <Grid>
@@ -94,10 +95,40 @@
                                     <RowDefinition Height="9*"/>
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Actors</Label>
-                                   <!--ListView with actors -->
-                            
-                            
-                        </Grid>
+                                    <ListView ItemsSource="{Binding Path=filmactors}"  Grid.Row="1" x:Name="SelectionList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
+                              >
+
+                                        <ListView.ItemTemplate >
+
+                                            <DataTemplate DataType="{x:Type local:Img}" >
+                                                <Grid x:Name="DataGrid" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="150*"/>
+                                                        <ColumnDefinition Width="100*"/>
+
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="23*"/>
+                                                        <RowDefinition Height="23*"/>
+                                                        <RowDefinition Height="23*"/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="100" MaxWidth="100" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
+                                                        <Image.ToolTip>
+                                                            <ToolTip Content="{Binding Name}"/>
+                                                        </Image.ToolTip>
+                                                    </Image>
+                                                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
+                                                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding Director}"/>
+                                                    <Label Grid.Column="1" Grid.Row="2" Content="{Binding Year}"/>
+
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView >
+
+
+                                </Grid>
                         </Border>
                         <Border Grid.Column="1" Margin="10" BorderBrush="Black" BorderThickness="3">
                             <!--Photos from film-->
@@ -127,15 +158,15 @@
                                 <Label Grid.Row="4" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Composers:</Label>
                                 <Label Grid.Row="5" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Studio:</Label>
 
-                                <TextBlock  Grid.Row="0" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="19" Foreground="White" FontWeight="Light" TextWrapping="Wrap">1 May 2015</TextBlock>
-                                <TextBlock Grid.Row="1" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="19" Foreground="White" FontWeight="Light" TextWrapping="Wrap">Joss Whedon</TextBlock>
-                                <TextBlock Grid.Row="2" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap">Test Test Test TestTest TestTest TestTest Test
+                                <TextBlock x:Name="YearBlock"  Grid.Row="0" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="19" Foreground="White" FontWeight="Light" TextWrapping="Wrap">1 May 2015</TextBlock>
+                                <TextBlock x:Name="DirectorBlock" Grid.Row="1" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="19" Foreground="White" FontWeight="Light" TextWrapping="Wrap">Joss Whedon</TextBlock>
+                                <TextBlock x:Name="WriterBlock" Grid.Row="2" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap">Test Test Test TestTest TestTest TestTest Test
                                 Test TestTest TestTest TestTest TestTest TestTest TestTest Test
                                 Test TestTest TestTest TestTest TestTest TestTest TestTest Test
                                 </TextBlock>
-                                <TextBlock Grid.Row="3" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
-                                <TextBlock Grid.Row="4" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
-                                <TextBlock Grid.Row="5" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
+                                <TextBlock x:Name="ProducerBlock" Grid.Row="3" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
+                                <TextBlock x:Name="ComposerBlock" Grid.Row="4" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
+                                <TextBlock x:Name="StudioBlock" Grid.Row="5" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
                             </Grid>
                         </Grid>
                     </Border>

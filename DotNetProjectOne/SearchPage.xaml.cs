@@ -94,6 +94,7 @@ namespace DotNetProjectOne
                 FilmTables = (from p in con.film_tables where p.title == searchedtitle select p).ToList();
                 foreach (film_table ft in FilmTables)
                 {
+                    MessageBox.Show("LOL");
                     try
                     {
                         Image myimage = new Image();
@@ -315,11 +316,11 @@ namespace DotNetProjectOne
             Img x = (Img)SelectionList.SelectedItem;
           
            
-            string FilmName = x.Name;
-            film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
+          //string FilmName = x.Name;
+         //   film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
 
-            filmid = ft.id_film;
-            MessageBox.Show(ft.title);
+           // filmid = ft.id_film;
+         //   MessageBox.Show(ft.title);
         
         }
 
