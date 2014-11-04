@@ -36,6 +36,13 @@ namespace DotNetProjectOne
             set { _searchmovies = value; }
         }
 
+        private ObservableCollection<Img> _topmovies = new ObservableCollection<Img>();
+        public ObservableCollection<Img> topmovies
+        {
+            get { return _topmovies; }
+            set { _topmovies = value; }
+        }
+
 
 
     public    user_table Myself=new user_table();
@@ -48,7 +55,7 @@ namespace DotNetProjectOne
             this.DataContext = this;
             InitializeComponent();
             Myself = StartPage.Myself;
-      //      MessageBox.Show(Myself.login);
+   
             myid = Myself.id_user;
             MyLINQDataContext con = new MyLINQDataContext();
            List< film_table> FilmTables = (from u in con.user_tables join bf in con.bought_films_tables on u.id_user equals bf.id_user 
@@ -63,7 +70,6 @@ namespace DotNetProjectOne
         string title = ft.title;
         string director = ft.director_name +" "+ ft.director_surname;
         string year = ft.release_date.Value.ToShortDateString();
-    //    MessageBox.Show(path);
         myimage.Source = new BitmapImage(new Uri(path));
      
         Img img = new Img(path, year, title, director);
@@ -72,6 +78,62 @@ namespace DotNetProjectOne
    
 
         }
+            
+            //filling up our top movies table
+         FilmTables= con.film_tables.AsParallel().Where(s => s.rating > 4 && s.rating <=5).ToList();
+          foreach(film_table ft in FilmTables)
+          {
+              string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+              string title = ft.title;
+              string director = ft.director_name + " " + ft.director_surname;
+              string year = ft.release_date.Value.ToShortDateString();
+               Img film = new Img(path, year, title, director);
+             
+               topmovies.Add(film);
+          }
+            if(topmovies.Count<6)
+            {
+                FilmTables = con.film_tables.AsParallel().Where(s => s.rating > 3 && s.rating <= 4).ToList();
+                foreach (film_table ft in FilmTables)
+                {
+                    string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+                    string title = ft.title;
+                    string director = ft.director_name + " " + ft.director_surname;
+                    string year = ft.release_date.Value.ToShortDateString();
+                    Img film = new Img(path, year, title, director);
+                    topmovies.Add(film);
+                }
+            }
+            if (topmovies.Count < 6)
+            {
+                FilmTables = con.film_tables.AsParallel().Where(s => s.rating > 2 && s.rating <= 3).ToList();
+                foreach (film_table ft in FilmTables)
+                {
+                    string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+                    string title = ft.title;
+                    string director = ft.director_name + " " + ft.director_surname;
+                    string year = ft.release_date.Value.ToShortDateString();
+                    Img film = new Img(path, year, title, director);
+                    topmovies.Add(film);
+                }
+            }
+            if (topmovies.Count < 6)
+            {
+                FilmTables = con.film_tables.AsParallel().Where(s => s.rating > 1 && s.rating <= 2).ToList();
+                foreach (film_table ft in FilmTables)
+                {
+                    string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+                    string title = ft.title;
+                    string director = ft.director_name + " " + ft.director_surname;
+                    string year = ft.release_date.Value.ToShortDateString();
+                    Img film = new Img(path, year, title, director);
+                    topmovies.Add(film);
+                }
+            }
+
+
+
+
         }
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -84,18 +146,18 @@ namespace DotNetProjectOne
             
             SearchPopUp.IsOpen = true;
             string selected = ((ComboBoxItem)SearchCombo.SelectedItem).Content.ToString();
-          MessageBox.Show(selected);
+       
 
             if (selected=="Title")
             {
                 string searchedtitle = Search.Text;
-           //     MessageBox.Show(Search.Text);
+
                 List<film_table> FilmTables = new List<film_table>();
           //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
                 FilmTables = (from p in con.film_tables where p.title == searchedtitle select p).ToList();
                 foreach (film_table ft in FilmTables)
                 {
-                    MessageBox.Show("LOL");
+              
                     try
                     {
                         Image myimage = new Image();

@@ -147,6 +147,50 @@ namespace DotNetProjectOne
                 conn.Dispose();
             }
         }
+        public static void AddToBoughtFilms(bought_films_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.bought_films_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void AddComment(comment_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.comment_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
+            }
+        }
+        public static void UpdateComment(comment_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+               comment_table table = conn.comment_tables.AsParallel().Where(s => s.id_film == t.id_film && s.id_user == t.id_user).FirstOrDefault();
+               
+                table.comment = t.comment;
+                    conn.SubmitChanges();
+                conn.Dispose();
+                
+            }
+        }
+        public static void UpdateRating(film_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                film_table table = conn.film_tables.AsParallel().Where(s => s.id_film == t.id_film).FirstOrDefault();
+                table.rating = t.rating;
+                table.nuber_of_votes = t.nuber_of_votes;
+                conn.SubmitChanges();
+                conn.Dispose();
+
+            }
+        }
+
+
         public static void AddToComposerFilmTable(film_music_creator t)
         {
             using (MyLINQDataContext conn = new MyLINQDataContext())

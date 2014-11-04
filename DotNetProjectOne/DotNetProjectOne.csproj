@@ -93,6 +93,7 @@
     <Compile Include="MinimizeDisposeControl.xaml.cs">
       <DependentUpon>MinimizeDisposeControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <Page Include="CommentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

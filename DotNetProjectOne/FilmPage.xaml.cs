@@ -22,7 +22,9 @@ namespace DotNetProjectOne
     /// 
     public partial class FilmPage : UserControl
     {
-        int filmid =SearchPage.Chosenfilmid;
+      //public static int filmid =SearchPage.Chosenfilmid;
+       public static int filmid = 2;
+
       //  List<FilmWindow.Actor> actors = new List<FilmWindow.Actor>();
       //  List<FilmWindow.Writer> writers = new List<FilmWindow.Writer>();
       //  List<FilmWindow.Producer> producers = new List<FilmWindow.Producer>();
@@ -39,11 +41,17 @@ namespace DotNetProjectOne
             get { return _moviephotos; }
             set { _moviephotos= value; }
         }
-
+        private ObservableCollection<UserComment> _usercomments = new ObservableCollection<UserComment>();
+        public ObservableCollection<UserComment> usercomments
+        {
+            get { return _usercomments; }
+            set { _usercomments = value; }
+        }
+        public user_table Myself = new user_table();
         public FilmPage()
         {
-            if (filmid == null)
-                filmid = 1;
+
+            Myself = StartPage.Myself;
             this.DataContext = this;
             InitializeComponent();
             DirectorBlock.Text = "";
@@ -55,8 +63,9 @@ namespace DotNetProjectOne
 
              MyLINQDataContext con = new MyLINQDataContext();
              film_table ft;
-             ft = con.film_tables.AsParallel().Where(s => s.id_film == filmid).First();
-             string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+             ft = con.film_tables.AsParallel().Where(s => s.id_film == filmid).FirstOrDefault();
+
+                    string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
           //   String[] split = Search.Text.Split(' ');
              List<actor_table> Actors = new List<actor_table>();
             Actors = (      from a in con.actor_tables
@@ -155,9 +164,23 @@ namespace DotNetProjectOne
 
             }
 
+            //Look for users that added comments, display comments
 
-          
-
+            List<comment_table> Comments = new List<comment_table>();
+            Comments = (from a in con.comment_tables
+                     join u in con.user_tables on a.id_film equals u.id_user
+                     join f in con.film_tables on a.id_film equals f.id_film
+                      where f.id_film == filmid
+                      select a).ToList();
+            foreach(comment_table comment in Comments)
+            {
+                String Comment = comment.comment;
+                String Name = comment.user_table.login+":";
+               
+                UserComment c = new UserComment(Name, Comment);
+                usercomments.Add(c);
+            
+            }
 
 
 
@@ -167,6 +190,7 @@ namespace DotNetProjectOne
              Story.Text = ft.storyline;
              StudioBlock.Text = ft.film_studio;
              DirectorBlock.Text = ft.director_name + " " + ft.director_surname;
+             RatingBox.Content = Math.Round(ft.rating.Value,2).ToString() ;
              con.Dispose();
         }
 
@@ -177,6 +201,72 @@ namespace DotNetProjectOne
             cw.ShowDialog();
            
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MyLINQDataContext con = new MyLINQDataContext();
+            bought_films_table bft = new bought_films_table();
+            bool Alreadybought= (con.bought_films_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user==Myself.id_user).Count()) > 0;
+            if(Alreadybought==true)
+            {
+                MessageBox.Show("You already have this movie!");
+                     con.Dispose();
+            }
+            else
+            { 
+            bft.id_film = filmid;
+            bft.id_user = Myself.id_user;
+            MainWindow.AddToBoughtFilms(bft);
+            MessageBox.Show("Have a nice day!");
+            con.Dispose();
+            }
+        }
+
+        private void FiveStars_Click(object sender, RoutedEventArgs e)
+        {
+            vote(5);
+        }
+
+        private void vote(int x)
+        {
+            MyLINQDataContext con = new MyLINQDataContext();
+            film_table ft;
+            ft = con.film_tables.AsParallel().Where(s => s.id_film == filmid).First();
+
+            if (ft.nuber_of_votes == null)
+            {
+                ft.nuber_of_votes = 1;
+            }
+            else
+            { ft.nuber_of_votes++; }
+            if (ft.rating == null)
+            { ft.rating = x; }
+            else
+            { ft.rating = (ft.rating * (ft.nuber_of_votes - 1) + x) / ft.nuber_of_votes; }
+
+            MainWindow.UpdateRating(ft);
+            con.Dispose();
+        }
+
+        private void FourStars_Click(object sender, RoutedEventArgs e)
+        {
+            vote(4);
+        }
+
+        private void ThreeStars_Click(object sender, RoutedEventArgs e)
+        {
+            vote(3);
+        }
+
+        private void TwoStars_Click(object sender, RoutedEventArgs e)
+        {
+            vote(2);
+        }
+
+        private void OneStar_Click(object sender, RoutedEventArgs e)
+        {
+            vote(1);
         }
 
         
