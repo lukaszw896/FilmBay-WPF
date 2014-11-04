@@ -5,10 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:DotNetProjectOne"
              mc:Ignorable="d" 
-             d:DesignHeight="1700" d:DesignWidth="700">
+             d:DesignHeight="1700" d:DesignWidth="700" Name="filmPage">
              <!--DesignHeight=500: -->
     <Border BorderBrush="Black" BorderThickness="3" Background="#333">
         <Grid>
+            <Canvas Name="GrayOutCanvas" Panel.ZIndex="3" Background="Gray" Opacity="{Binding ElementName=filmPage,Path=IsEnabled,Converter={StaticResource opacityConverter}}" IsHitTestVisible="False"></Canvas>
+            <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="9*"/>
@@ -125,7 +127,7 @@
                                 <Label Grid.Row="4" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Composers:</Label>
                                 <Label Grid.Row="5" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Studio:</Label>
 
-                                <TextBlock Grid.Row="0" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="19" Foreground="White" FontWeight="Light" TextWrapping="Wrap">1 May 2015</TextBlock>
+                                <TextBlock  Grid.Row="0" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="19" Foreground="White" FontWeight="Light" TextWrapping="Wrap">1 May 2015</TextBlock>
                                 <TextBlock Grid.Row="1" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="19" Foreground="White" FontWeight="Light" TextWrapping="Wrap">Joss Whedon</TextBlock>
                                 <TextBlock Grid.Row="2" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap">Test Test Test TestTest TestTest TestTest Test
                                 Test TestTest TestTest TestTest TestTest TestTest TestTest Test
@@ -145,12 +147,13 @@
                                 <RowDefinition Height="5*"/>
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="30" FontWeight="Light">Comments</Label>
-                            <Button BorderThickness="0" Margin="0,0,20,0" Height="40" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" Background="gray" FontSize="15" > Add comment</Button>
+                            <Button Click="AddComment_Click" BorderThickness="0" Margin="0,0,20,0" Height="40" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" Background="gray" FontSize="15" > Add comment</Button>
                         </Grid>
                     </Border>
 
                 </Grid>    
             </ScrollViewer>
+            </Grid>
         </Grid>
     </Border>    
 </UserControl>

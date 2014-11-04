@@ -69,10 +69,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CommentWindow.xaml.cs">
+      <DependentUpon>CommentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FilmPage.xaml.cs">
       <DependentUpon>FilmPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Img.cs" />
+    <Compile Include="OpacityConverter.cs" />
     <Compile Include="OptionsMinimizeDisposeControl.xaml.cs">
       <DependentUpon>OptionsMinimizeDisposeControl.xaml</DependentUpon>
     </Compile>
@@ -89,6 +93,10 @@
     <Compile Include="MinimizeDisposeControl.xaml.cs">
       <DependentUpon>MinimizeDisposeControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="CommentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FilmPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
