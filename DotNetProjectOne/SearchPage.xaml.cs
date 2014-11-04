@@ -40,6 +40,7 @@ namespace DotNetProjectOne
 
     public    user_table Myself=new user_table();
     int myid;
+    public static int Chosenfilmid;
   //  List<Img> films = new List<Img>();
 
         public SearchPage()
@@ -316,10 +317,12 @@ namespace DotNetProjectOne
             Img x = (Img)SelectionList.SelectedItem;
           
            
-          //string FilmName = x.Name;
-         //   film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
+          string FilmName = x.Name;
+           film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
+           Chosenfilmid = ft.id_film;
+           StartWindow.SetPage(StartWindow.pages.filmPage);
 
-           // filmid = ft.id_film;
+           SearchPopUp.IsOpen = false;
          //   MessageBox.Show(ft.title);
         
         }

@@ -129,9 +129,13 @@
                                 </Grid>
                         </Border>
                         <Border Grid.Column="1" Margin="10" BorderBrush="Black" BorderThickness="3">
-                                <ListView ItemsSource="{Binding Path=moviephotos}"  Grid.Row="1" x:Name="PhotoList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
+                                <ListView  ItemsSource="{Binding Path=moviephotos}"  Grid.Row="1" x:Name="PhotoList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
                               >
-
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
                                     <ListView.ItemTemplate >
 
                                         <DataTemplate DataType="{x:Type local:Img}" >
@@ -143,11 +147,10 @@
                                                 </Grid.ColumnDefinitions>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="23*"/>
-                                                    <RowDefinition Height="23*"/>
-                                                    <RowDefinition Height="23*"/>
+                                                  
                                                 </Grid.RowDefinitions>
 
-                                                <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="100" MaxWidth="100" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
+                                                <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="300" MaxWidth="300" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
                                                                                               </Image>
                                               
 

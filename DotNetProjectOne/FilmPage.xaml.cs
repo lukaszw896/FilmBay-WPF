@@ -22,7 +22,7 @@ namespace DotNetProjectOne
     /// 
     public partial class FilmPage : UserControl
     {
-        int filmid = 2;
+        int filmid =SearchPage.Chosenfilmid;
       //  List<FilmWindow.Actor> actors = new List<FilmWindow.Actor>();
       //  List<FilmWindow.Writer> writers = new List<FilmWindow.Writer>();
       //  List<FilmWindow.Producer> producers = new List<FilmWindow.Producer>();
@@ -42,6 +42,8 @@ namespace DotNetProjectOne
 
         public FilmPage()
         {
+            if (filmid == null)
+                filmid = 1;
             this.DataContext = this;
             InitializeComponent();
             DirectorBlock.Text = "";

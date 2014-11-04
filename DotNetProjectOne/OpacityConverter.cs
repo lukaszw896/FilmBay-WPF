@@ -11,10 +11,10 @@ namespace DotNetProjectOne
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (parameter != null)
+            if (value != null)
             {
-                bool isEnabled = (bool)parameter;
-                    if (isEnabled == true)
+                bool isEnabled = (bool)value;
+                    if (isEnabled == false)
                     {
                         return 0.7;
                     }
