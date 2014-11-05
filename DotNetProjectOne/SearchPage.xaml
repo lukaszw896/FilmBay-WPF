@@ -57,7 +57,7 @@
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Your films</Label>
 
-                    <ListView ItemsSource="{Binding Path=mymovies}"  Grid.Row="1" x:Name="MyMoviesList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="23,10,131,56"
+                    <ListView ItemsSource="{Binding Path=mymovies}"  Grid.Row="1" x:Name="MyMoviesList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="27,10,96,29"
                               >
 
                         <ListView.ItemTemplate >
@@ -137,14 +137,39 @@
                         <RowDefinition Height="6*"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Top 10 films</Label>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" >
-                        <!-- Here we have to make a data template  -->
-                        <Border MaxHeight="100" BorderBrush="Black" BorderThickness="1">
-                            <ListBox>
+                    <ListView ItemsSource="{Binding Path=topmovies}"  Grid.Row="1" x:Name="TopMoviesList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10,10,81,29"
+                              >
 
-                            </ListBox>
-                        </Border>
-                    </ScrollViewer>
+                        <ListView.ItemTemplate >
+
+                            <DataTemplate DataType="{x:Type local:Img}" x:Name="mzz">
+                                <Grid x:Name="DataGrid" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150*"/>
+                                        <ColumnDefinition Width="100*"/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="23*"/>
+                                        <RowDefinition Height="23*"/>
+                                        <RowDefinition Height="23*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="100" MaxWidth="100" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
+                                        <Image.ToolTip>
+                                            <ToolTip Content="{Binding Name}"/>
+                                        </Image.ToolTip>
+                                    </Image>
+                                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
+                                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding Director}"/>
+                                    <Label Grid.Column="1" Grid.Row="2" Content="{Binding Year}"/>
+
+                                </Grid>
+
+                            </DataTemplate>
+
+                        </ListView.ItemTemplate>
+                    </ListView >
                 </Grid>
             </Grid>
         </Grid>

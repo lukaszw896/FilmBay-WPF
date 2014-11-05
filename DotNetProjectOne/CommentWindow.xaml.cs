@@ -19,19 +19,46 @@ namespace DotNetProjectOne
     /// </summary>
     public partial class CommentWindow : Window
     {
+        user_table Myself = StartPage.Myself;
+        int filmid = FilmPage.filmid;
         public CommentWindow()
         {
             InitializeComponent();
+            
+
         }
         private void CloseCommentPopup_Click(object sender, RoutedEventArgs e)
         {
-            StartWindow.pages.filmPage.IsEnabled = true;
+         
             this.Close();
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MyLINQDataContext con = new MyLINQDataContext();
+            StartWindow.pages.filmPage.IsEnabled = true;
+            comment_table ct = new comment_table();
+            ct.id_film = filmid;
+            ct.id_user = Myself.id_user;
+            bool Alreadycommented = (con.comment_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user == Myself.id_user).Count()) > 0;
+            if (Alreadycommented == true)
+            {
+                ct.comment = CommentBox.Text;
+                MainWindow.UpdateComment(ct);
+                con.Dispose();
+            }
+            else
+            {
+                ct.comment = CommentBox.Text;
+                MainWindow.AddComment(ct);
+
+                con.Dispose();
+            }
         }
     }
 }

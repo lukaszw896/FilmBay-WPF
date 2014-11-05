@@ -7,94 +7,94 @@
              mc:Ignorable="d" 
              d:DesignHeight="1700" d:DesignWidth="700" Name="filmPage"
              xmlns:local="clr-namespace:DotNetProjectOne">
-             <!--DesignHeight=500: -->
+    <!--DesignHeight=500: -->
     <Border BorderBrush="Black" BorderThickness="3" Background="#333">
         <Grid>
-            <Canvas Name="GrayOutCanvas" Panel.ZIndex="3" Background="Gray" Opacity="{Binding ElementName=filmPage,Path=IsEnabled,Converter={StaticResource opacityConverter}}" IsHitTestVisible="False"></Canvas>
+            <Canvas Name="GrayOutCanvas" Panel.ZIndex="3" Background="Gray" Opacity="{Binding ElementName=filmPage,Path=IsEnabled,Converter={StaticResource opacityConverter}}" IsHitTestVisible="False" Margin="10,0,-10,0"/>
             <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="9*"/>
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="40" FontWeight="Light" Grid.ColumnSpan="2" Margin="0,12">Film page</Label>
-            <controls:OptionsMinimizeDisposeControl VerticalAlignment="Top" HorizontalAlignment="Right" ></controls:OptionsMinimizeDisposeControl>
-            <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="1" >
-                <!-- 1* is 25px high -->
-                <Grid VerticalAlignment="Top" Height="1275">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="10*"/>
-                        <RowDefinition Height="3*"/>
-                        <RowDefinition Height="12*"/>
-                        <RowDefinition Height="13*"/>
-                        <RowDefinition Height="15*"/>
-                    </Grid.RowDefinitions>
-                    <!-- Grid with poster,title and short description -->
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="9*"/>
-                        </Grid.ColumnDefinitions>
-                        <Border Margin="10" Grid.Column="0" BorderBrush="Black" BorderThickness="3">
-                        <Image x:Name="Poster"  Source="/Test/Avengers.jpg"></Image>
-                        </Border>
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="3*"/>
-                            </Grid.RowDefinitions>
-                            <Label x:Name="Title" Margin="10,0,0,0" Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="27" FontWeight="Light" >The Avengers: Age of Ultron (2014)</Label>
-                            <Border Margin="10" Grid.Row="1" BorderBrush="Black" BorderThickness="3">
-                                <ScrollViewer VerticalScrollBarVisibility="Auto"  >
-                                    <TextBlock x:Name="Story" Margin="10" TextWrapping="Wrap" Foreground="White" FontSize="15">When Tony Stark tries to jumpstart a dormant peacekeeping program, things go awry and it is up to The Avengers to stop the villainous Ultron from enacting his terrible plans.</TextBlock>
-                                </ScrollViewer>
-                            </Border>    
-                        </Grid>
-                    </Grid>
-                    <Border Margin="10" Grid.Row="1" BorderBrush="Black" BorderThickness="3">
-                        <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="9*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="40" FontWeight="Light" Grid.ColumnSpan="2" Margin="0,12">Film page</Label>
+                <controls:OptionsMinimizeDisposeControl VerticalAlignment="Top" HorizontalAlignment="Right" ></controls:OptionsMinimizeDisposeControl>
+                <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="1" >
+                    <!-- 1* is 25px high -->
+                    <Grid VerticalAlignment="Top" Height="1275">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="12*"/>
+                            <RowDefinition Height="13*"/>
+                            <RowDefinition Height="15*"/>
+                        </Grid.RowDefinitions>
+                        <!-- Grid with poster,title and short description -->
+                        <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="7*"/>                           
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="9*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Margin="3" Background="Transparent" Grid.Column="0" BorderThickness="0">
-                                <Image Source="/Icons/empty_star.png"></Image>
-                            </Button>
-                            <Button Margin="3" Background="Transparent" Grid.Column="1" BorderThickness="0">
-                                <Image Source="/Icons/empty_star.png"></Image>
-                            </Button>
-
-                            <Button Margin="3" Background="Transparent" Grid.Column="2" BorderThickness="0">
-                                <Image Source="/Icons/empty_star.png"></Image>
-                            </Button>
-
-                            <Button Margin="3" Background="Transparent" Grid.Column="3" BorderThickness="0">
-                                <Image Source="/Icons/empty_star.png"></Image>
-                            </Button>
-
-                            <Button Margin="3" Background="Transparent" Grid.Column="4" BorderThickness="0">
-                                <Image Source="/Icons/empty_star.png"></Image>
-                            </Button>
-                            <Label Grid.Column="5" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light" HorizontalAlignment="Right">Rating</Label>
-                        </Grid>
-                    </Border>
-                    <!--Grid with list of actors and film photos -->
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*" />
-                            <ColumnDefinition Width="6*" />
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.Column="0" Margin="10" BorderBrush="Black" BorderThickness="3">
-                            <!-- Grid with actors and their photos-->
-                        <Grid >
+                            <Border Margin="10" Grid.Column="0" BorderBrush="Black" BorderThickness="3">
+                                <Image x:Name="Poster"  Source="/Test/Avengers.jpg"></Image>
+                            </Border>
+                            <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="9*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="3*"/>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Actors</Label>
+                                <Label x:Name="Title" Margin="10,0,0,0" Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="27" FontWeight="Light" >The Avengers: Age of Ultron (2014)</Label>
+                                <Border Margin="10" Grid.Row="1" BorderBrush="Black" BorderThickness="3">
+                                    <ScrollViewer VerticalScrollBarVisibility="Auto"  >
+                                        <TextBlock x:Name="Story" Margin="10" TextWrapping="Wrap" Foreground="White" FontSize="15">When Tony Stark tries to jumpstart a dormant peacekeeping program, things go awry and it is up to The Avengers to stop the villainous Ultron from enacting his terrible plans.</TextBlock>
+                                    </ScrollViewer>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                        <Border Margin="10" Grid.Row="1" BorderBrush="Black" BorderThickness="3">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="7*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="OneStar" Margin="3" Background="Transparent" Grid.Column="0" BorderThickness="0" Click="OneStar_Click">
+                                    <Image Source="/Icons/empty_star.png"></Image>
+                                </Button>
+                                <Button x:Name="TwoStars" Margin="3" Background="Transparent" Grid.Column="1" BorderThickness="0" Click="TwoStars_Click">
+                                    <Image Source="/Icons/empty_star.png"></Image>
+                                </Button>
+
+                                <Button x:Name="ThreeStars" Margin="3" Background="Transparent" Grid.Column="2" BorderThickness="0" Click="ThreeStars_Click">
+                                    <Image Source="/Icons/empty_star.png"></Image>
+                                </Button>
+
+                                <Button x:Name="FourStars" Margin="3" Background="Transparent" Grid.Column="3" BorderThickness="0" Click="FourStars_Click">
+                                    <Image Source="/Icons/empty_star.png"></Image>
+                                </Button>
+
+                                <Button x:Name="FiveStars" Margin="3" Background="Transparent" Grid.Column="4" BorderThickness="0" Click="FiveStars_Click">
+                                    <Image Source="/Icons/empty_star.png"></Image>
+                                </Button>
+                                <Label x:Name="RatingBox" Grid.Column="5" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light" HorizontalAlignment="Right">Rating</Label>
+                            </Grid>
+                        </Border>
+                        <!--Grid with list of actors and film photos -->
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="6*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Margin="10" BorderBrush="Black" BorderThickness="3">
+                                <!-- Grid with actors and their photos-->
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="9*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Actors</Label>
                                     <ListView ItemsSource="{Binding Path=filmactors}"  Grid.Row="1" x:Name="ActorList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
                               >
 
@@ -119,7 +119,7 @@
                                                         </Image.ToolTip>
                                                     </Image>
                                                     <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
-                                                  
+
                                                 </Grid>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
@@ -127,8 +127,8 @@
 
 
                                 </Grid>
-                        </Border>
-                        <Border Grid.Column="1" Margin="10" BorderBrush="Black" BorderThickness="3">
+                            </Border>
+                            <Border Grid.Column="1" Margin="10" BorderBrush="Black" BorderThickness="3">
                                 <ListView  ItemsSource="{Binding Path=moviephotos}"  Grid.Row="1" x:Name="PhotoList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
                               >
                                     <ListView.ItemsPanel>
@@ -147,12 +147,12 @@
                                                 </Grid.ColumnDefinitions>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="23*"/>
-                                                  
+
                                                 </Grid.RowDefinitions>
 
                                                 <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="300" MaxWidth="300" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
-                                                                                              </Image>
-                                              
+                                                </Image>
+
 
                                             </Grid>
                                         </DataTemplate>
@@ -160,58 +160,91 @@
                                 </ListView >
 
                             </Border>
-                    </Grid>
-                    <!-- More informations Grid-->
-                    <Border Margin="10" Grid.Row="3" BorderBrush="Black" BorderThickness="3">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="3*"/>
-                                <RowDefinition Height="14*"/>
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">More informations</Label>
-                            <Grid Grid.Row="1">
+                        </Grid>
+                        <!-- More informations Grid-->
+                        <Border Margin="10" Grid.Row="3" BorderBrush="Black" BorderThickness="3">
+                            <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="4*"/>
-                                    <RowDefinition Height="4*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="4*"/>
+                                    <RowDefinition Height="3*"/>
+                                    <RowDefinition Height="14*"/>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Release Date:</Label>
-                                <Label Grid.Row="1" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Director:</Label>
-                                <Label Grid.Row="2" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Writers:</Label>
-                                <Label Grid.Row="3" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Producers:</Label>
-                                <Label Grid.Row="4" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Composers:</Label>
-                                <Label Grid.Row="5" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Studio:</Label>
+                                <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">More informations</Label>
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="5*"/>
+                                        <RowDefinition Height="5*"/>
+                                        <RowDefinition Height="5*"/>
+                                        <RowDefinition Height="4*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Release Date:</Label>
+                                    <Label Grid.Row="1" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Director:</Label>
+                                    <Label Grid.Row="2" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Writers:</Label>
+                                    <Label Grid.Row="3" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Producers:</Label>
+                                    <Label Grid.Row="4" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Composers:</Label>
+                                    <Label Grid.Row="5" VerticalAlignment="Center" Foreground="White" FontSize="18" FontWeight="Light">Studio:</Label>
 
-                                <TextBlock x:Name="YearBlock"  Grid.Row="0" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="19" Foreground="White" FontWeight="Light" TextWrapping="Wrap">1 May 2015</TextBlock>
-                                <TextBlock x:Name="DirectorBlock" Grid.Row="1" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="19" Foreground="White" FontWeight="Light" TextWrapping="Wrap">Joss Whedon</TextBlock>
-                                <TextBlock x:Name="WriterBlock" Grid.Row="2" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap">Test Test Test TestTest TestTest TestTest Test
+                                    <TextBlock x:Name="YearBlock"  Grid.Row="0" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="19" Foreground="White" FontWeight="Light" TextWrapping="Wrap">1 May 2015</TextBlock>
+                                    <TextBlock x:Name="DirectorBlock" Grid.Row="1" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="19" Foreground="White" FontWeight="Light" TextWrapping="Wrap">Joss Whedon</TextBlock>
+                                    <TextBlock x:Name="WriterBlock" Grid.Row="2" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap">Test Test Test TestTest TestTest TestTest Test
                                 Test TestTest TestTest TestTest TestTest TestTest TestTest Test
                                 Test TestTest TestTest TestTest TestTest TestTest TestTest Test
-                                </TextBlock>
-                                <TextBlock x:Name="ProducerBlock" Grid.Row="3" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
-                                <TextBlock x:Name="ComposerBlock" Grid.Row="4" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
-                                <TextBlock x:Name="StudioBlock" Grid.Row="5" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
+                                    </TextBlock>
+                                    <TextBlock x:Name="ProducerBlock" Grid.Row="3" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
+                                    <TextBlock x:Name="ComposerBlock" Grid.Row="4" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
+                                    <TextBlock x:Name="StudioBlock" Grid.Row="5" Margin="150,0,0,0" VerticalAlignment="Center" FontSize="15" Foreground="White" FontWeight="Light" TextWrapping="Wrap"></TextBlock>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </Border>
-                    <Border Margin="10" Grid.Row="4" BorderBrush="Black" BorderThickness="3">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="5*"/>
-                                <RowDefinition Height="23*"/>
-                                <RowDefinition Height="5*"/>
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="30" FontWeight="Light">Comments</Label>
-                            <Button Click="AddComment_Click" BorderThickness="0" Margin="0,0,20,0" Height="40" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" Background="gray" FontSize="15" > Add comment</Button>
-                        </Grid>
-                    </Border>
+                        </Border>
+                        <Border Margin="10" Grid.Row="4" BorderBrush="Black" BorderThickness="3">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="5*"/>
+                                    <RowDefinition Height="23*"/>
+                                    <RowDefinition Height="5*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="30" FontWeight="Light">Comments</Label>
 
-                </Grid>    
-            </ScrollViewer>
+
+
+
+
+
+
+                                <ListView ItemsSource="{Binding Path=usercomments}"  Grid.Row="1" x:Name="CommentrList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
+                              >
+
+                                    <ListView.ItemTemplate >
+
+                                        <DataTemplate DataType="{x:Type local:Img}" >
+                                            <Grid x:Name="DataGrid" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="150*"/>
+                                                    <ColumnDefinition Width="100*"/>
+
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="23*"/>
+                                                    <RowDefinition Height="23*"/>
+                                                    <RowDefinition Height="23*"/>
+                                                </Grid.RowDefinitions>
+                                             <Label Grid.Column="0" Grid.Row="0" Content="{Binding Login}" FontSize="16" FontWeight="Light"/>
+                                                <Label Grid.Column="1" Grid.Row="0" Content="{Binding Comment}" FontSize="16" FontWeight="Light"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView >
+
+
+                                <Button Click="AddComment_Click" BorderThickness="0" Margin="0,0,20,0" Height="40" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" Background="gray" FontSize="15" >Add comment</Button>
+                                <Button  BorderThickness="0" Margin="0,6,138,5" Height="40" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" Background="gray" FontSize="15" Width="56" Click="Button_Click" >Buy</Button>
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </ScrollViewer>
             </Grid>
         </Grid>
-    </Border>    
+    </Border>
 </UserControl>
