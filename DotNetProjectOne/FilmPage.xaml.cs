@@ -22,7 +22,7 @@ namespace DotNetProjectOne
     /// 
     public partial class FilmPage : UserControl
     {
-        int filmid =SearchPage.Chosenfilmid;
+        int filmid = 1;
       //  List<FilmWindow.Actor> actors = new List<FilmWindow.Actor>();
       //  List<FilmWindow.Writer> writers = new List<FilmWindow.Writer>();
       //  List<FilmWindow.Producer> producers = new List<FilmWindow.Producer>();

@@ -36,39 +36,42 @@ namespace DotNetProjectOne
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            LoginPopUp.IsOpen = true;
+            LoginWindow lw = new LoginWindow();
+            this.IsEnabled = false;
+            lw.ShowDialog();
+
         }
 
-        private void LoginSignInButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoginPopUp.IsOpen = false;
-            MyLINQDataContext con = new MyLINQDataContext();
-            user_table x = new user_table();
-            bool logininDB = (from p in con.user_tables where p.login == CheckLogin.Text select p).Count() > 0;
-            if(logininDB==false)
-            {
-                MessageBox.Show("Wrong login");
-            }
-            else if (logininDB == true)
-            {
-                x = (from p in con.user_tables where p.login == CheckLogin.Text select p).First();
-                if (x.password != CheckPassword.Text)
-                {
+        //private void LoginSignInButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    LoginPopUp.IsOpen = false;
+        //    MyLINQDataContext con = new MyLINQDataContext();
+        //    user_table x = new user_table();
+        //    bool logininDB = (from p in con.user_tables where p.login == CheckLogin.Text select p).Count() > 0;
+        //    if(logininDB==false)
+        //    {
+        //        MessageBox.Show("Wrong login");
+        //    }
+        //    else if (logininDB == true)
+        //    {
+        //        x = (from p in con.user_tables where p.login == CheckLogin.Text select p).First();
+        //        if (x.password != CheckPassword.Text)
+        //        {
 
-                    MessageBox.Show("Wrong Password");
-                }
-                else
-                {
-                    MessageBox.Show("Hello!");
-                    Myself= x;
-                    Pages page = new Pages();
-                    StartWindow.SetPage(page.searchPage);
+        //            MessageBox.Show("Wrong Password");
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Hello!");
+        //            Myself= x;
+        //            Pages page = new Pages();
+        //            StartWindow.SetPage(page.searchPage);
 
-                }
-            }
+        //        }
+        //    }
          
            
-        }
+        //}
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {

@@ -1,0 +1,42 @@
+﻿<Window x:Class="DotNetProjectOne.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LoginWindow" Width="450" Height="450" WindowStyle="None" AllowsTransparency="True" IsEnabled="True" MouseDown="Window_MouseDown">
+    <Border BorderBrush="Black" BorderThickness="3">
+        <Grid Background="#333" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="gray" >
+                <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Foreground="White">Login</Label>
+                <Button Click="CloseLoginPopup_Click" BorderThickness="0" Background="Transparent" Height="30" Width="30" VerticalAlignment="Top" HorizontalAlignment="Right" >
+                    <Image Source="/Icons/close_button.png"></Image>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="1*" />
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="20" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                        <TextBox x:Name="CheckLogin"  Margin="5" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="25" >Login</TextBox>
+                    </Border>
+                    <Border Margin="20"  Grid.Row="2" BorderBrush="Black" BorderThickness="1">
+                        <TextBox x:Name="CheckPassword" Margin="5" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="25" >Password</TextBox>
+                    </Border>
+                    <Button Margin="20" FontSize="30" Grid.Row="3" Click="LoginSignInButton_Click">Sign in</Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

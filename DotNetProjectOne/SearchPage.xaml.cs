@@ -48,7 +48,7 @@ namespace DotNetProjectOne
             this.DataContext = this;
             InitializeComponent();
             Myself = StartPage.Myself;
-      //      MessageBox.Show(Myself.login);
+            MessageBox.Show(Myself.login);
             myid = Myself.id_user;
             MyLINQDataContext con = new MyLINQDataContext();
            List< film_table> FilmTables = (from u in con.user_tables join bf in con.bought_films_tables on u.id_user equals bf.id_user 
@@ -58,6 +58,7 @@ namespace DotNetProjectOne
 
     foreach (film_table ft in FilmTables)
     {
+        MessageBox.Show("What the fuck");
         Image myimage = new Image();
         string path = AppDomain.CurrentDomain.BaseDirectory+"Posters\\"+ft.poster_url;
         string title = ft.title;
