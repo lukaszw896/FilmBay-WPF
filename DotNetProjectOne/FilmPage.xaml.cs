@@ -23,24 +23,28 @@ namespace DotNetProjectOne
     public partial class FilmPage : UserControl
     {
       //public static int filmid =SearchPage.Chosenfilmid;
-       public static int filmid = 2;
+       public static int filmid = 1;
 
-      //  List<FilmWindow.Actor> actors = new List<FilmWindow.Actor>();
-      //  List<FilmWindow.Writer> writers = new List<FilmWindow.Writer>();
-      //  List<FilmWindow.Producer> producers = new List<FilmWindow.Producer>();
-     //   List<FilmWindow.Composer> composers = new List<FilmWindow.Composer>();
+
+
+        //Collection of Actors and their names
         private ObservableCollection<Img> _filmactors= new ObservableCollection<Img>();
         public ObservableCollection<Img> filmactors
         {
             get { return _filmactors; }
             set { _filmactors = value; }
         }
+
+        //Collection of photos from the movie
         private ObservableCollection<Img> _moviephotos = new ObservableCollection<Img>();
         public ObservableCollection<Img> moviephotos
         {
             get { return _moviephotos; }
             set { _moviephotos= value; }
         }
+
+
+        //collection of comments
         private ObservableCollection<UserComment> _usercomments = new ObservableCollection<UserComment>();
         public ObservableCollection<UserComment> usercomments
         {
@@ -65,8 +69,14 @@ namespace DotNetProjectOne
              film_table ft;
              ft = con.film_tables.AsParallel().Where(s => s.id_film == filmid).FirstOrDefault();
 
-                    string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
-          //   String[] split = Search.Text.Split(' ');
+
+             string path;
+      
+               path=  AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+          
+           
+
+              Poster.Source = new BitmapImage(new Uri(path));
              List<actor_table> Actors = new List<actor_table>();
             Actors = (      from a in con.actor_tables
                            join at in con.actor_film_tables on a.id_actor equals at.id_actor
@@ -74,13 +84,24 @@ namespace DotNetProjectOne
                            where f.id_film==filmid select a).ToList();
                           foreach(actor_table at in Actors)
             {
-                //MessageBox.Show(at.actor_name);
+
                 Image myimage = new Image();
-                string apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + at.actor_photo_url;
+
+                string apath;
+                              if(at.actor_photo_url!=null)
+                              { 
+                apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + at.actor_photo_url;
+                              }
+                              else
+                              {
+                 apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + "stockphoto.jpg";
+                              }
+
+
                 string title = at.actor_name + " "+ at.actor_surname;
                 string director = "";
                 string year = "";
-                //   MessageBox.Show(path);
+  
                 myimage.Source = new BitmapImage(new Uri(path));
 
                 Img img = new Img(apath, year, title, director);
@@ -144,6 +165,8 @@ namespace DotNetProjectOne
                     ProducerBlock.Text = ProducerBlock.Text + " " + p.producer_name + " " + p.producer_surname;
 
             }
+
+            //List photos from the movie stored in local folder
              List<photos_table> Photos = new List<photos_table>();
             Photos = (from a in con.photos_tables
                          join at in con.film_photos_tables on a.id_photo equals at.id_photo
@@ -182,15 +205,18 @@ namespace DotNetProjectOne
             
             }
 
-
+            //Post basic info about the movie from the movie table
 
             YearBlock.Text = ft.release_date.Value.ToShortDateString();
-             Poster.Source = new BitmapImage(new Uri(path));
+
              Title.Content = ft.title;
              Story.Text = ft.storyline;
              StudioBlock.Text = ft.film_studio;
              DirectorBlock.Text = ft.director_name + " " + ft.director_surname;
+            if(ft.nuber_of_votes>0)
+            { 
              RatingBox.Content = Math.Round(ft.rating.Value,2).ToString() ;
+            }
              con.Dispose();
         }
 
@@ -203,6 +229,8 @@ namespace DotNetProjectOne
             
         }
 
+
+        // An event to buy a movie, checks users id and adds the film to users bought movies list
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MyLINQDataContext con = new MyLINQDataContext();
@@ -223,11 +251,7 @@ namespace DotNetProjectOne
             }
         }
 
-        private void FiveStars_Click(object sender, RoutedEventArgs e)
-        {
-            vote(5);
-        }
-
+     //Function to vote for the movie, depending on which star you clicked
         private void vote(int x)
         {
             MyLINQDataContext con = new MyLINQDataContext();
@@ -247,6 +271,10 @@ namespace DotNetProjectOne
 
             MainWindow.UpdateRating(ft);
             con.Dispose();
+        }
+        private void FiveStars_Click(object sender, RoutedEventArgs e)
+        {
+            vote(5);
         }
 
         private void FourStars_Click(object sender, RoutedEventArgs e)

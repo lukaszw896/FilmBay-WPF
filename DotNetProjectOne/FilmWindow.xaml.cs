@@ -140,7 +140,13 @@ namespace DotNetProjectOne
                 dane.title_orginal = NTitle.Text;
                 dane.orginal_language = Language.Text;
                 dane.duration = TimeSpan.Parse(Duration_H.Text+":"+Duration_M.Text+":"+Duration_S.Text);
-                dane.poster_url = Poster;
+                if (Poster == null)
+                {
+                    Poster = "stockphoto.jpg";
+                }
+               
+                    dane.poster_url = Poster;
+               
                 if (Age.SelectedItem != null)
                 {
                     dane.age_restriction = int.Parse(((ComboBoxItem)Age.SelectedItem).Content.ToString());
@@ -166,7 +172,7 @@ namespace DotNetProjectOne
                         actor.actor_name = a.Name;
                         actor.actor_surname = a.Surname;
 
-                        actor.actor_photo_url = APhoto;
+                        actor.actor_photo_url = a.Photo;
                         int actorid;
                         int n;
                         MyLINQDataContext con = new MyLINQDataContext();
@@ -187,8 +193,6 @@ namespace DotNetProjectOne
                             actor_table z = con.actor_tables.AsParallel().Where(s => s.actor_name==a.Name && s.actor_surname==a.Surname).First();
                             n = z.id_actor;
                             actorid = n;
-                          //  MessageBox.Show("Pararelski:"+n.ToString());
-                         //   MessageBox.Show(actorid.ToString());
                         }
                         actor_film_table actorfilmtable = new actor_film_table();
                         actorfilmtable.id_film = filmid;
@@ -217,6 +221,7 @@ namespace DotNetProjectOne
                             writers_table x = con.writers_tables.AsParallel().Where(s => s.writer_name == w.WName && s.writer_surname == w.WSurname).First();
                             writerid = x.id_writer;
                         }
+                  
                         film_writers_table filmwriterstable = new film_writers_table();
                         filmwriterstable.id_film = filmid;
                         //  actorfilmtable.actor_table = actor;
@@ -225,6 +230,10 @@ namespace DotNetProjectOne
                         con.Dispose();
 
                     }
+
+
+
+                    //adding composers to music_creator table and to reference connected table film_music_creator table
                     foreach (Composer c in composers)
                     {
                         music_creator_table composer = new music_creator_table();
@@ -248,14 +257,14 @@ namespace DotNetProjectOne
                         }
                         film_music_creator filmcomposer = new film_music_creator();
                         filmcomposer.id_film = filmid;
-                        //  actorfilmtable.actor_table = actor;
+
                         filmcomposer.id_music_creator = composerid;
                         MainWindow.AddToComposerFilmTable(filmcomposer);
                         con.Dispose();
                     }
 
 
-
+                    //adding producers to the producers table.
                     foreach (Producer p in producers)
                     {
                         producer_table producer = new producer_table();
@@ -265,12 +274,14 @@ namespace DotNetProjectOne
                         MyLINQDataContext con = new MyLINQDataContext();
                       //  bool nameinDB = (from x in con.producer_tables where x.producer_name == p.PName && x.producer_surname == p.PSurname select x).Count() > 0;
                         bool nameinDB = (con.producer_tables.AsParallel().Where(s => s.producer_name == p.PName && s.producer_surname == p.PSurname).Count()) > 0;
-                        //  MessageBox.Show(nameinDB.ToString());
+
                         if (nameinDB == false)
                         {
                             MainWindow.AddProducer(producer);
                         }
                     }
+
+                    //Adding photos to photos table and interconnecting table film_photos_table 
                     foreach (String x in MoviePhotos)
                     {
                         photos_table photos = new photos_table();
@@ -280,7 +291,7 @@ namespace DotNetProjectOne
                         MyLINQDataContext con = new MyLINQDataContext();
                        // bool nameinDB = (from p in con.photos_tables where p.photo_url == x select p).Count() > 0;
                         bool nameinDB = (con.photos_tables.AsParallel().Where(s => s.photo_url == x).Count()) > 0;
-                        //  MessageBox.Show(nameinDB.ToString());
+                 
                         if (nameinDB == false)
                         {
                             MainWindow.AddMPhoto(photos);
@@ -405,6 +416,7 @@ namespace DotNetProjectOne
         {
             public string Name { get; set; }
             public string Surname { get; set; }
+            public string Photo { get; set; }
         }
 
         public class Writer
@@ -433,13 +445,18 @@ namespace DotNetProjectOne
         }
 
 
+        //Adding Actor to actorgrid
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
             Actor a = new Actor();
             a.Name = ActorName.Text;
             a.Surname = ActorSurname.Text;
-
+            if(APhoto!=null)
+            { a.Photo = APhoto; }
+            else
+            { a.Photo = "stockphoto.jpg"; }
+           
             bool alreadyExists = actors.Any(x => x.Name == ActorName.Text && x.Surname == ActorSurname.Text);
             if (alreadyExists == false)
             {
@@ -447,19 +464,23 @@ namespace DotNetProjectOne
                 actors.Add(a);
                 ActorName.Text = "";
                 ActorSurname.Text = "";
+                APhoto = null;
+                ActorPhoto.Source = null;
             }
             else
             {
                 MessageBox.Show("Already added");
                 ActorName.Text = "";
                 ActorSurname.Text = "";
-                APhoto = null;
+               APhoto = null;
+               ActorPhoto.Source = null;
             }
 
 
             //   MainWindow.AddActor(actor);
         }
 
+        //Adding Writers to DataGrid
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Writer w = new Writer();
@@ -505,7 +526,7 @@ namespace DotNetProjectOne
         {
             ProducerPopUp.IsOpen = true;
         }
-
+        //Adding Producers to DataGrid
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
             Producer a = new Producer();
@@ -527,12 +548,12 @@ namespace DotNetProjectOne
             }
 
         }
-
+        
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
             ProducerPopUp.IsOpen = false;
         }
-
+//Adding Composers to DataGrid
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
             Composer c = new Composer();
@@ -564,10 +585,12 @@ namespace DotNetProjectOne
             ComposerrPopUp.IsOpen = true;
         }
 
+
+        //adding an actor Photo
         private void Button_Click_11(object sender, RoutedEventArgs e)
         {
 
-            //MessageBox.Show("You clicked 'New...'");
+  
 
             OpenFileDialog op = new OpenFileDialog();
 
@@ -601,6 +624,7 @@ namespace DotNetProjectOne
             }
         }
 
+        //adding screenshots from the movie
         private void Button_Click_12(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show("You clicked 'New...'");
@@ -660,6 +684,8 @@ namespace DotNetProjectOne
             }
         }
 
+
+        //adding a Poster for the movie
         private void Poster_Click(object sender, RoutedEventArgs e)
         {
 
@@ -721,6 +747,11 @@ namespace DotNetProjectOne
         private void Button_Click_18(object sender, RoutedEventArgs e)
         {
             GenrePopUp.IsOpen=false;
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
