@@ -57,12 +57,244 @@ namespace DotNetProjectOne
 
         }
 
+        public int CreateWriter(String Name, String Surname)
+        {
+            writers_table writer = new writers_table();
+            writer.writer_name = Name;
+            writer.writer_surname = Surname;
+            int writerid;
+            MyLINQDataContext con = new MyLINQDataContext();
+            //    bool nameinDB = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).Count() > 0;
+            bool nameinDB = (con.writers_tables.AsParallel().Where(s => s.writer_name == Name && s.writer_surname == Surname).Count()) > 0;
+
+            if (nameinDB == false)
+            {
+                MainWindow.AddWriter(writer);
+                writerid = writer.id_writer;
+            }
+            else
+            {
+                // writers_table x = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).First();
+                writers_table x = con.writers_tables.AsParallel().Where(s => s.writer_name == Name && s.writer_surname == Surname).First();
+                writerid = x.id_writer;
+            }
+            con.Dispose();
+            return writerid;
+
+
+        }
+
+        public int CreateActor(String Name, String Surname, String Photourl)
+        {
+            actor_table actor = new actor_table();
+            actor.actor_name = Name;
+            actor.actor_surname = Surname;
+
+            actor.actor_photo_url = Photourl;
+            int actorid;
+            int n;
+            MyLINQDataContext con = new MyLINQDataContext();
+            //   bool nameinDB = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).Count() > 0;
+            bool nameinDB = (con.actor_tables.AsParallel().Where(s => s.actor_name == Name && s.actor_surname == Surname).Count()) > 0;
+
+            //  MessageBox.Show(nameinDB.ToString());
+            if (nameinDB == false)
+            {
+                MainWindow.AddActor(actor);
+                actorid = actor.id_actor;
+            }
+            else
+            {
+                actor_table x = new actor_table();
+                //  x = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).First();
+                actor_table z = con.actor_tables.AsParallel().Where(s => s.actor_name == Name && s.actor_surname == Surname).First();
+                n = z.id_actor;
+                actorid = n;
+            }
+            con.Dispose();
+            return actorid;
+
+        }
+
+        public int CreateGenre(String Name)
+        {
+            genere_table tab = new genere_table();
+            tab.genere_name = Name;
+            int genreid;
+            MyLINQDataContext con = new MyLINQDataContext();
+            //   bool nameinDB = (from p in con.genere_tables  where p.genere_name == c.GName select p).Count() > 0;
+            bool nameinDB = (con.genere_tables.AsParallel().Where(s => s.genere_name == Name).Count()) > 0;
+            if (nameinDB == false)
+            {
+                MainWindow.AddGenre(tab);
+                genreid = tab.id_genere;
+            }
+            else
+            {
+                //    genere_table x = (from p in con.genere_tables where p.genere_name == c.GName select p).First();
+                genere_table x = con.genere_tables.AsParallel().Where(s => s.genere_name == Name).First();
+                genreid = x.id_genere;
+            }
+            con.Dispose();
+            return genreid;
+        }
+        public int CreateComposer(String Name, String Surname)
+        {
+            music_creator_table composer = new music_creator_table();
+            composer.music_creator_name = Name;
+            composer.music_creator_surname = Surname;
+            int composerid;
+            MyLINQDataContext con = new MyLINQDataContext();
+            //   bool nameinDB = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).Count() > 0;
+            bool nameinDB = (con.music_creator_tables.AsParallel().Where(s => s.music_creator_name == Name && s.music_creator_surname == Surname).Count()) > 0;
+            //  MessageBox.Show(nameinDB.ToString());
+            if (nameinDB == false)
+            {
+                MainWindow.AddComposer(composer);
+                composerid = composer.id_music_creator;
+            }
+            else
+            {
+                //  music_creator_table x = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).First();
+                music_creator_table x = con.music_creator_tables.AsParallel().Where(s => s.music_creator_name == Name && s.music_creator_surname == Surname).First();
+                composerid = x.id_music_creator;
+            }
+            return composerid;
+
+        }
+        public void CreateFilm()
+        {
+
+        }
+
+        public int CreateLanguage(String Name)
+        {
+            other_language_table tab = new other_language_table();
+            tab.other_language_name = Name;
+            int langid;
+            MyLINQDataContext con = new MyLINQDataContext();
+            //  bool nameinDB = (from p in con.other_language_tables where p.other_language_name == Lang.Name select p).Count() > 0;
+            bool nameinDB = (con.other_language_tables.AsParallel().Where(s => s.other_language_name == Name).Count()) > 0;
+
+            if (nameinDB == false)
+            {
+                MainWindow.AddOLang(tab);
+                langid = tab.id_other_language;
+            }
+            else
+            {
+                // other_language_table x = (from p in con.other_language_tables where p.other_language_name == c.LName select p).First();
+                other_language_table x = con.other_language_tables.AsParallel().Where(s => s.other_language_name == Name).First();
+                langid = x.id_other_language;
+            }
+            return langid;
+
+
+        }
+
+        public int CreatePhoto(String url)
+        {
+            photos_table photos = new photos_table();
+
+            photos.photo_url = url;
+            int photoid;
+            MyLINQDataContext con = new MyLINQDataContext();
+            // bool nameinDB = (from p in con.photos_tables where p.photo_url == x select p).Count() > 0;
+            bool nameinDB = (con.photos_tables.AsParallel().Where(s => s.photo_url == url).Count()) > 0;
+
+            if (nameinDB == false)
+            {
+                MainWindow.AddMPhoto(photos);
+                photoid = photos.id_photo;
+            }
+            else
+            {
+                //  photos_table z = (from p in con.photos_tables where p.photo_url == x select p).First();
+                photos_table z = con.photos_tables.AsParallel().Where(s => s.photo_url == url).First();
+                photoid = z.id_photo;
+            }
+            con.Dispose();
+            return photoid;
+        }
+        public void CreateProducer(String Name, String Surname, int filmid)
+        {
+            producer_table producer = new producer_table();
+            producer.producer_name = Name;
+            producer.producer_surname = Surname;
+            producer.id_film = filmid;
+            MyLINQDataContext con = new MyLINQDataContext();
+            //  bool nameinDB = (from x in con.producer_tables where x.producer_name == p.PName && x.producer_surname == p.PSurname select x).Count() > 0;
+            bool nameinDB = (con.producer_tables.AsParallel().Where(s => s.producer_name == Name && s.producer_surname == Surname).Count()) > 0;
+
+            if (nameinDB == false)
+            {
+                MainWindow.AddProducer(producer);
+            }
+
+        }
+
+
+
+
+        public actor_film_table CreateActorFilmTable(int filmid,int actorid)
+        {
+            actor_film_table table = new actor_film_table();
+            table.id_film = filmid;
+
+            table.id_actor = actorid;
+            return table;
+        }
+
+
+        public film_writers_table CreateWriterFilmTable(int filmid, int writerid)
+        {
+            film_writers_table table = new film_writers_table();
+            table.id_film = filmid;
+            table.id_writer = writerid;
+            return table;
+
+        }
+        public film_music_creator CreateComposerFilmTable(int filmid, int composerid)
+        {
+            film_music_creator table = new film_music_creator();
+            table.id_film = filmid;
+            table.id_music_creator = composerid;
+            return table;
+
+
+
+        }
+        public film_photos_table CreatePhotosFilmTable(int filmid, int photoid)
+        {
+            film_photos_table filmphoto = new film_photos_table();
+            filmphoto.id_film = filmid;
+            filmphoto.id_photo = photoid;
+            return filmphoto;
+        }
+
+        public film_genere_table CreateGenreFilmTable(int filmid, int genreid)
+        {
+            film_genere_table table = new film_genere_table();
+            table.id_film = filmid;
+            table.id_genere = genreid;
+            return table;
+
+
+        }
+        public film_other_language_table CreateFilmLanguageTable(int filmid, int languageid)
+        {
+            film_other_language_table table = new film_other_language_table();
+            table.id_film = filmid;
+            table.id_other_language = languageid;
+            return table;
+
+
+        }
+
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             int value;
-
-
 
 
             if (string.IsNullOrWhiteSpace(this.Title.Text))
@@ -168,200 +400,66 @@ namespace DotNetProjectOne
                     //adding actors from the grid to the list, adding currents film ID to these actors.
                     foreach (Actor a in actors)
                     {
-                        actor_table actor = new actor_table();
-                        actor.actor_name = a.Name;
-                        actor.actor_surname = a.Surname;
-
-                        actor.actor_photo_url = a.Photo;
-                        int actorid;
-                        int n;
-                        MyLINQDataContext con = new MyLINQDataContext();
-                     //   bool nameinDB = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).Count() > 0;
-                      bool nameinDB=  (con.actor_tables.AsParallel().Where(s => s.actor_name == a.Name && s.actor_surname==a.Surname).Count()) >0;
-
-                        //  MessageBox.Show(nameinDB.ToString());
-                        if (nameinDB == false)
-                        {
-                            MainWindow.AddActor(actor);
-                            actorid = actor.id_actor;
-                        }
-                        else
-                        {
-                         //   var matchedStaff = from s  in allStaf where s.Matches(searchString) select s;
-                            actor_table x = new actor_table();
-                          //  x = (from p in con.actor_tables where p.actor_name == a.Name && p.actor_surname == a.Surname select p).First();
-                            actor_table z = con.actor_tables.AsParallel().Where(s => s.actor_name==a.Name && s.actor_surname==a.Surname).First();
-                            n = z.id_actor;
-                            actorid = n;
-                        }
-                        actor_film_table actorfilmtable = new actor_film_table();
-                        actorfilmtable.id_film = filmid;
-
-                        actorfilmtable.id_actor = actorid;
+                        int actorid = CreateActor(a.Name, a.Surname, a.Photo);
+                        actor_film_table actorfilmtable = CreateActorFilmTable(filmid,actorid);
                         MainWindow.AddToActorFilmTable(actorfilmtable);
                     }
+
                     foreach (Writer w in writers)
                     {
-                        writers_table writer = new writers_table();
-                        writer.writer_name = w.WName;
-                        writer.writer_surname = w.WSurname;
-                        int writerid;
-                        MyLINQDataContext con = new MyLINQDataContext();
-                    //    bool nameinDB = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).Count() > 0;
-                        bool nameinDB = (con.writers_tables.AsParallel().Where(s => s.writer_name == w.WName && s.writer_name == w.WSurname).Count()) > 0;
-                        //  MessageBox.Show(nameinDB.ToString());
-                        if (nameinDB == false)
-                        {
-                            MainWindow.AddWriter(writer);
-                            writerid = writer.id_writer;
-                        }
-                        else
-                        {
-                           // writers_table x = (from p in con.writers_tables where p.writer_name == w.WName && p.writer_surname == w.WSurname select p).First();
-                            writers_table x = con.writers_tables.AsParallel().Where(s => s.writer_name == w.WName && s.writer_surname == w.WSurname).First();
-                            writerid = x.id_writer;
-                        }
-                  
-                        film_writers_table filmwriterstable = new film_writers_table();
-                        filmwriterstable.id_film = filmid;
-                        //  actorfilmtable.actor_table = actor;
-                        filmwriterstable.id_writer = writerid;
+
+                        int writerid = CreateWriter(w.WName, w.WSurname);
+
+                        film_writers_table filmwriterstable = CreateWriterFilmTable(filmid, writerid);
+           
                         MainWindow.AddToWriterFilmTable(filmwriterstable);
-                        con.Dispose();
+
 
                     }
-
-
 
                     //adding composers to music_creator table and to reference connected table film_music_creator table
                     foreach (Composer c in composers)
                     {
-                        music_creator_table composer = new music_creator_table();
-                        composer.music_creator_name = c.CName;
-                        composer.music_creator_surname = c.CSurname;
-                        int composerid;
-                        MyLINQDataContext con = new MyLINQDataContext();
-                     //   bool nameinDB = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).Count() > 0;
-                        bool nameinDB = (con.music_creator_tables.AsParallel().Where(s => s.music_creator_name == c.CName && s.music_creator_surname == c.CSurname).Count()) > 0;
-                        //  MessageBox.Show(nameinDB.ToString());
-                        if (nameinDB == false)
-                        {
-                            MainWindow.AddComposer(composer);
-                            composerid = composer.id_music_creator;
-                        }
-                        else
-                        {
-                          //  music_creator_table x = (from p in con.music_creator_tables where p.music_creator_name == c.CName && p.music_creator_surname == c.CSurname select p).First();
-                           music_creator_table x = con.music_creator_tables.AsParallel().Where(s => s.music_creator_name == c.CName && s.music_creator_surname == c.CSurname).First();
-                            composerid = x.id_music_creator;
-                        }
-                        film_music_creator filmcomposer = new film_music_creator();
-                        filmcomposer.id_film = filmid;
-
-                        filmcomposer.id_music_creator = composerid;
+                        int composerid = CreateComposer(c.CName, c.CSurname);
+                        film_music_creator filmcomposer = CreateComposerFilmTable(filmid, composerid);
+                
                         MainWindow.AddToComposerFilmTable(filmcomposer);
-                        con.Dispose();
+          
                     }
 
 
                     //adding producers to the producers table.
                     foreach (Producer p in producers)
                     {
-                        producer_table producer = new producer_table();
-                        producer.producer_name = p.PName;
-                        producer.producer_surname = p.PSurname;
-                        producer.id_film = filmid;
-                        MyLINQDataContext con = new MyLINQDataContext();
-                      //  bool nameinDB = (from x in con.producer_tables where x.producer_name == p.PName && x.producer_surname == p.PSurname select x).Count() > 0;
-                        bool nameinDB = (con.producer_tables.AsParallel().Where(s => s.producer_name == p.PName && s.producer_surname == p.PSurname).Count()) > 0;
-
-                        if (nameinDB == false)
-                        {
-                            MainWindow.AddProducer(producer);
-                        }
+                        CreateProducer(p.PName, p.PSurname, filmid);
                     }
 
                     //Adding photos to photos table and interconnecting table film_photos_table 
                     foreach (String x in MoviePhotos)
                     {
-                        photos_table photos = new photos_table();
-
-                        photos.photo_url = x;
-                        int photoid;
-                        MyLINQDataContext con = new MyLINQDataContext();
-                       // bool nameinDB = (from p in con.photos_tables where p.photo_url == x select p).Count() > 0;
-                        bool nameinDB = (con.photos_tables.AsParallel().Where(s => s.photo_url == x).Count()) > 0;
-                 
-                        if (nameinDB == false)
-                        {
-                            MainWindow.AddMPhoto(photos);
-                            photoid = photos.id_photo;
-                        }
-                        else
-                        {
-                          //  photos_table z = (from p in con.photos_tables where p.photo_url == x select p).First();
-                            photos_table z = con.photos_tables.AsParallel().Where(s => s.photo_url == x).First();
-                            photoid = z.id_photo;
-                        }
-                        film_photos_table filmphoto = new film_photos_table();
-                        filmphoto.id_film = filmid;
-                        filmphoto.id_photo = photoid;
+                        int photoid = CreatePhoto(x);
+                        film_photos_table filmphoto = CreatePhotosFilmTable(filmid, photoid);
+                  
                         MainWindow.AddToFilmPhotosTable(filmphoto);
-                        con.Dispose();
+              
                     }
 
                     foreach (ALanguage c in Languages)
                     {
-                        other_language_table tab = new other_language_table();
-                        tab.other_language_name = c.LName;
-                        int langid;
-                        MyLINQDataContext con = new MyLINQDataContext();
-                      //  bool nameinDB = (from p in con.other_language_tables where p.other_language_name == Lang.Name select p).Count() > 0;
-                        bool nameinDB = (con.other_language_tables.AsParallel().Where(s => s.other_language_name == c.LName ).Count()) > 0;
-                       
-                        if (nameinDB == false)
-                        {
-                            MainWindow.AddOLang(tab);
-                            langid = tab.id_other_language;
-                        }
-                        else
-                        {
-                           // other_language_table x = (from p in con.other_language_tables where p.other_language_name == c.LName select p).First();
-                            other_language_table x = con.other_language_tables.AsParallel().Where(s => s.other_language_name == c.LName).First();
-                            langid = x.id_other_language;
-                        }
-                        film_other_language_table filmotherlanguage = new film_other_language_table();
-                        filmotherlanguage.id_film = filmid;
-                        //  actorfilmtable.actor_table = actor;
-                        filmotherlanguage.id_other_language = langid;
+
+                        int langid = CreateLanguage(c.LName);
+                        film_other_language_table filmotherlanguage = CreateFilmLanguageTable(filmid, langid);
+            
                         MainWindow.AddToFilmOtherLangTable(filmotherlanguage);
-                        con.Dispose();
+                 
                     }
                     foreach (Genre c in genres)
                     {
-                        genere_table tab = new genere_table();
-                        tab.genere_name = c.GName;
-                        int genreid;
-                        MyLINQDataContext con = new MyLINQDataContext();
-                     //   bool nameinDB = (from p in con.genere_tables  where p.genere_name == c.GName select p).Count() > 0;
-                        bool nameinDB = (con.genere_tables.AsParallel().Where(s => s.genere_name == c.GName).Count()) > 0;
-                        if (nameinDB == false)
-                        {
-                            MainWindow.AddGenre(tab);
-                            genreid = tab.id_genere;
-                        }
-                        else
-                        {
-                        //    genere_table x = (from p in con.genere_tables where p.genere_name == c.GName select p).First();
-                            genere_table x = con.genere_tables.AsParallel().Where(s => s.genere_name == c.GName).First();
-                            genreid = x.id_genere;
-                        }
-                        film_genere_table filmgenre = new film_genere_table();
-                        filmgenre.id_film = filmid;
-                        //  actorfilmtable.actor_table = actor;
-                        filmgenre.id_genere= genreid;
+
+                        int genreid = CreateGenre(c.GName);
+                        film_genere_table filmgenre = CreateGenreFilmTable(filmid,genreid);
                        MainWindow.AddToFilmGenre(filmgenre);
-                        con.Dispose();
+                     
                     }
 
 

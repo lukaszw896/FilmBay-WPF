@@ -52,6 +52,99 @@ namespace DotNetProjectOne
             set { _usercomments = value; }
         }
         public user_table Myself = new user_table();
+
+
+
+        public List<actor_table> GetActors()
+        {
+            List<actor_table> Actors = new List<actor_table>();
+            MyLINQDataContext con = new MyLINQDataContext();
+            Actors = (from a in con.actor_tables
+                      join at in con.actor_film_tables on a.id_actor equals at.id_actor
+                      join f in con.film_tables on at.id_film equals f.id_film
+                      where f.id_film == filmid
+                      select a).ToList();
+            con.Dispose();
+            return Actors;
+
+
+        }
+        public List<writers_table> GetWriters()
+        {
+
+            List<writers_table> Writers = new List<writers_table>();
+            MyLINQDataContext con = new MyLINQDataContext();
+            Writers = (from a in con.writers_tables
+                       join at in con.film_writers_tables on a.id_writer equals at.id_writer
+                       join f in con.film_tables on at.id_film equals f.id_film
+                       where f.id_film == filmid
+                       select a).ToList();
+            con.Dispose();
+            return Writers;
+
+
+        }
+        public List<music_creator_table> GetComposers()
+    {
+        MyLINQDataContext con = new MyLINQDataContext();
+        List<music_creator_table> Composers = new List<music_creator_table>();
+        Composers = (from a in con.music_creator_tables
+                     join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
+                     join f in con.film_tables on at.id_film equals f.id_film
+                     where f.id_film == filmid
+                     select a).ToList();
+        con.Dispose();
+        return Composers;
+
+    }
+        public List<producer_table> GetProducers()
+        {
+            List<producer_table> Producers = new List<producer_table>();
+            MyLINQDataContext con = new MyLINQDataContext();
+            Producers = (from a in con.producer_tables
+                         join f in con.film_tables on a.id_film equals f.id_film
+                         where f.id_film == filmid
+                         select a).ToList();
+            con.Dispose();
+            return Producers;
+
+        }
+        public List<photos_table> GetPhotos()
+        {
+            MyLINQDataContext con = new MyLINQDataContext();
+            List<photos_table> Photos = new List<photos_table>();
+            Photos = (from a in con.photos_tables
+                      join at in con.film_photos_tables on a.id_photo equals at.id_photo
+                      join f in con.film_tables on at.id_film equals f.id_film
+                      where f.id_film == filmid
+                      select a).ToList();
+            con.Dispose();
+            return Photos;
+
+        }
+        public List<comment_table> GetComments()
+        {
+            MyLINQDataContext con = new MyLINQDataContext();
+            List<comment_table> Comments = new List<comment_table>();
+            Comments = (from a in con.comment_tables
+                        join u in con.user_tables on a.id_film equals u.id_user
+                        join f in con.film_tables on a.id_film equals f.id_film
+                        where f.id_film == filmid
+                        select a).ToList();
+            con.Dispose();
+            return Comments;
+      
+        }
+        public film_table LoadFilmFromId(int filmid)
+        {
+            MyLINQDataContext con = new MyLINQDataContext();
+            film_table ft;
+            ft = con.film_tables.AsParallel().Where(s => s.id_film == filmid).FirstOrDefault();
+            return ft;
+        }
+
+
+
         public FilmPage()
         {
 
@@ -66,22 +159,14 @@ namespace DotNetProjectOne
             StudioBlock.Text = "";
 
              MyLINQDataContext con = new MyLINQDataContext();
-             film_table ft;
-             ft = con.film_tables.AsParallel().Where(s => s.id_film == filmid).FirstOrDefault();
-
-
+             film_table ft = LoadFilmFromId(filmid);
+     
              string path;
-      
                path=  AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
-          
-           
-
               Poster.Source = new BitmapImage(new Uri(path));
-             List<actor_table> Actors = new List<actor_table>();
-            Actors = (      from a in con.actor_tables
-                           join at in con.actor_film_tables on a.id_actor equals at.id_actor
-                           join f in con.film_tables on at.id_film equals f.id_film
-                           where f.id_film==filmid select a).ToList();
+
+              List<actor_table> Actors = GetActors();
+
                           foreach(actor_table at in Actors)
             {
 
@@ -96,29 +181,19 @@ namespace DotNetProjectOne
                               {
                  apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + "stockphoto.jpg";
                               }
-
-
                 string title = at.actor_name + " "+ at.actor_surname;
                 string director = "";
                 string year = "";
-  
+ 
                 myimage.Source = new BitmapImage(new Uri(path));
-
                 Img img = new Img(apath, year, title, director);
-
                 filmactors.Add(img);
-
 
             }
             // Read Writers from db
 
+            List<writers_table> Writers = GetWriters();
 
-            List<writers_table> Writers = new List<writers_table>();
-
-               Writers = (from a in con.writers_tables
-                 join at in con.film_writers_tables on a.id_writer equals at.id_writer
-                 join f in con.film_tables on at.id_film equals f.id_film
-                 where f.id_film==filmid select a).ToList();
             foreach(writers_table writer in Writers)
             {
                 if (Writers.Count > 1)
@@ -132,13 +207,8 @@ namespace DotNetProjectOne
 
             //Read Composers from DB
 
-
-               List<music_creator_table> Composers = new List<music_creator_table>();
-               Composers = (from a in con.music_creator_tables
-                     join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
-                     join f in con.film_tables on at.id_film equals f.id_film
-                     where f.id_film==filmid
-                     select a).ToList();
+            List<music_creator_table> Composers = GetComposers();
+    
                foreach (music_creator_table composer in Composers)
                {
                    if (Writers.Count > 1)
@@ -150,11 +220,7 @@ namespace DotNetProjectOne
                }
 
             //Read Producers from DB
-               List<producer_table> Producers = new List<producer_table>();
-               Producers = (from a in con.producer_tables
-                     join f in con.film_tables on a.id_film equals f.id_film
-                     where f.id_film==filmid
-                     select a).ToList();
+               List<producer_table> Producers = GetProducers();
             foreach(producer_table p in Producers)
             {
                 if(Producers.Count>1)
@@ -167,12 +233,8 @@ namespace DotNetProjectOne
             }
 
             //List photos from the movie stored in local folder
-             List<photos_table> Photos = new List<photos_table>();
-            Photos = (from a in con.photos_tables
-                         join at in con.film_photos_tables on a.id_photo equals at.id_photo
-                         join f in con.film_tables on at.id_film equals f.id_film
-                         where f.id_film == filmid
-                         select a).ToList();
+            List<photos_table> Photos = GetPhotos();
+          
             foreach(photos_table p in Photos)
             {
                 Image myimage = new Image();
@@ -189,12 +251,7 @@ namespace DotNetProjectOne
 
             //Look for users that added comments, display comments
 
-            List<comment_table> Comments = new List<comment_table>();
-            Comments = (from a in con.comment_tables
-                     join u in con.user_tables on a.id_film equals u.id_user
-                     join f in con.film_tables on a.id_film equals f.id_film
-                      where f.id_film == filmid
-                      select a).ToList();
+            List<comment_table> Comments = GetComments();
             foreach(comment_table comment in Comments)
             {
                 String Comment = comment.comment;
@@ -255,8 +312,7 @@ namespace DotNetProjectOne
         private void vote(int x)
         {
             MyLINQDataContext con = new MyLINQDataContext();
-            film_table ft;
-            ft = con.film_tables.AsParallel().Where(s => s.id_film == filmid).First();
+            film_table ft = LoadFilmFromId(filmid);
 
             if (ft.nuber_of_votes == null)
             {
