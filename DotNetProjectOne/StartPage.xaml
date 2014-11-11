@@ -72,7 +72,7 @@
             </Border>
         </Popup>-->
 
-        <Popup Name="RegisterPopUp"  Width="600" Height="570" Placement="Center" IsEnabled="True" IsOpen="False" >
+        <!--<Popup Name="RegisterPopUp"  Width="600" Height="570" Placement="Center" IsEnabled="True" IsOpen="False" >
             <Border BorderBrush="Black" BorderThickness="3">
                 <ScrollViewer>
                     <Grid Background="#333" Height="1400" >
@@ -146,7 +146,7 @@
                     </Grid>
                 </ScrollViewer>
             </Border>
-        </Popup>
+        </Popup>-->
     </Grid>
    </Border>
     </Grid>

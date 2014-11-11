@@ -19,7 +19,7 @@ namespace DotNetProjectOne
     /// </summary>
     public partial class RegisterWindow : Window
     {
-       
+        RegisterWindow rw;
         private void CheckIfNumeric(TextCompositionEventArgs e)
         {
             int result;
@@ -28,10 +28,12 @@ namespace DotNetProjectOne
                 e.Handled = true;
             }
 
+
         }
         public RegisterWindow()
         {
             InitializeComponent();
+            rw = this;
         }
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
@@ -121,6 +123,24 @@ namespace DotNetProjectOne
         private void Age_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             CheckIfNumeric(e);
+        }
+
+        private void CloseRegisterPopup_Click(object sender, RoutedEventArgs e)
+        {
+            StartWindow.pages.startPage.IsEnabled = true;
+            this.Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
+        private void ScrollViewer_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                rw.DragMove();
         }
     }
 }
