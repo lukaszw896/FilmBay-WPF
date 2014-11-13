@@ -260,7 +260,17 @@ namespace DotNetProjectOne
             StartWindow.SetPage(StartWindow.pages.filmPage);         
             //   MessageBox.Show(ft.title);
 
-        }    
+        } 
+private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+        private void CloseLoginPopup_Click(object sender, RoutedEventArgs e)
+        {
+            StartWindow.pages.startPage.IsEnabled = true;
+            this.Close();
+        }   
 
     }
 }

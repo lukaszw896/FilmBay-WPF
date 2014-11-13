@@ -93,9 +93,5 @@ namespace DotNetProjectOne
             CheckIfNumeric(e);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            StartWindow.SetPage(StartWindow.pages.filmPage);
-        }
     }
 }
