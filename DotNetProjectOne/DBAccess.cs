@@ -607,35 +607,39 @@ namespace DotNetProjectOne
            con.Dispose();
        }
 
-       public static  user_table Userlogin(String login, String password)
+       public static async Task<user_table> Userlogin(String login, String password)
        {
            MyLINQDataContext con = new MyLINQDataContext();
            user_table x = new user_table();
-           bool logininDB = (from p in con.user_tables where p.login == login select p).Count() > 0;
-           if (logininDB == false)
-           {
-               MessageBox.Show("Wrong login");
-           }
-           else if (logininDB == true)
-           {
-               x = (from p in con.user_tables where p.login == login select p).First();
-               if (x.password != password)
+           return await Task.Run(() =>
                {
+                   bool logininDB = (from p in con.user_tables where p.login == login select p).Count() > 0;
+                   if (logininDB == false)
+                   {
+                       MessageBox.Show("Wrong login");
+                   }
+                   else if (logininDB == true)
+                   {
+                       x = (from p in con.user_tables where p.login == login select p).First();
+                       if (x.password != password)
+                       {
 
-                   MessageBox.Show("Wrong Password");
+                           MessageBox.Show("Wrong Password");
+                           x.name = "Wrong";
+                           return x;
+                       }
+                       else
+                       {
+                           MessageBox.Show("Hello!");
+                           return x;
+
+                       }
+
+                   }
                    x.name = "Wrong";
                    return x;
-               }
-               else
-               {
-                   MessageBox.Show("Hello!");
-                   return x;
+               });
 
-               }
-
-           }
-           x.name = "Wrong";
-           return x;
        }
 
        public static user_table CreateUser(string password, string name, string surname, string login, string email, int age)

@@ -38,7 +38,7 @@ namespace DotNetProjectOne
 
 
 
-        private void LoginSignInButton_Click(object sender, RoutedEventArgs e)
+        private async void LoginSignInButton_Click(object sender, RoutedEventArgs e)
         {
             /*
             MyLINQDataContext con = new MyLINQDataContext();
@@ -68,7 +68,7 @@ namespace DotNetProjectOne
             }
             */
             user_table x = new user_table();
-             x = DBAccess.Userlogin(CheckLogin.Text, CheckPassword.Text);
+             x = await DBAccess.Userlogin(CheckLogin.Text, CheckPassword.Text);
             if(x.name!="Wrong")
             {
                 StartWindow.Myself = x;
