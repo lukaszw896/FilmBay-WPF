@@ -29,7 +29,7 @@ namespace DotNetProjectOne
             }
 
         }
-        public  LoginWindow()
+        public LoginWindow()
         {
             InitializeComponent();
             this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;

@@ -37,7 +37,7 @@ namespace DotNetProjectOne
         }
 
 
-        private async void SignUpButton_Click(object sender, RoutedEventArgs e)
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
             //Rejestracja, dodawanie do bazy danych
 /*
@@ -49,7 +49,7 @@ namespace DotNetProjectOne
             con.Dispose();
             */
 
-            string problem = await DBAccess.registercheck(Login.Text, Email.Text);
+            string problem = DBAccess.registercheck(Login.Text, Email.Text);
             if (UserName.Text == "Name")
             {
                 MessageBox.Show("This isn't a name");

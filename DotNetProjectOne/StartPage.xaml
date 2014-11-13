@@ -10,13 +10,12 @@
         <Canvas Panel.ZIndex="3" Background="Gray" Opacity="{Binding ElementName=startPage,Path=IsEnabled,Converter={StaticResource opacityConverter}}" IsHitTestVisible="False"></Canvas>
     <Border BorderBrush="Black" BorderThickness="3" Background="#333">
     <Grid Background="#333">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-            <Button  Grid.Row="0" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Button_Click"></Button>
-            <Label Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35"  Foreground="White">FilmBay</Label>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35"  Foreground="White">FilmBay</Label>
         <controls:MinimizeDisposeControl VerticalAlignment="Top" HorizontalAlignment="Right"></controls:MinimizeDisposeControl>
         <!--Grid with login and register buttons-->
         <Grid Grid.Row="1">
