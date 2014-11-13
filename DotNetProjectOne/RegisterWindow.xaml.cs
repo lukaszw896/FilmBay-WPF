@@ -35,17 +35,21 @@ namespace DotNetProjectOne
             InitializeComponent();
             rw = this;
         }
+
+
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
             //Rejestracja, dodawanie do bazy danych
-
+/*
             MyLINQDataContext con = new MyLINQDataContext();
 
             //check if login in DB
             bool logininDB = (from p in con.user_tables where p.login == Login.Text select p).Count() > 0;
             bool emailinDB = (from p in con.user_tables where p.e_mail == Email.Text select p).Count() > 0;
             con.Dispose();
+            */
 
+            string problem = DBAccess.registercheck(Login.Text, Email.Text);
             if (UserName.Text == "Name")
             {
                 MessageBox.Show("This isn't a name");
@@ -70,11 +74,11 @@ namespace DotNetProjectOne
             {
                 MessageBox.Show("Age is mandatory");
             }
-            else if (logininDB == true)
+            else if (problem=="login")
             {
                 MessageBox.Show("Login in use");
             }
-            else if (emailinDB == true)
+            else if (problem == "email")
             {
                 MessageBox.Show("Email already in use");
             }
@@ -89,15 +93,18 @@ namespace DotNetProjectOne
             }
             else
             {
-                user_table user = new user_table();
-
+                user_table user = DBAccess.CreateUser(Password.Text, UserName.Text, UserSurName.Text, Login.Text,Email.Text, int.Parse(Age.Text));
+                /*
                 user.password = Password.Text;
                 user.name = UserName.Text;
                 user.surname = UserSurName.Text;
                 user.login = Login.Text;
                 user.e_mail = Email.Text;
                 user.age = int.Parse(Age.Text);
-                MainWindow.AddUser(user);
+
+                DBAccess.AddUser(user);
+                */
+
                 UserName.Text = "Name";
                 UserSurName.Text = "Surname";
                 Login.Text = "Login";
@@ -110,16 +117,11 @@ namespace DotNetProjectOne
             }
 
 
-
-
-
-
-            //check if email in db
-
-
-
+            //check if email in d
 
         }
+
+    
         private void Age_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             CheckIfNumeric(e);

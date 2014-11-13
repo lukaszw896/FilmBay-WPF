@@ -49,13 +49,13 @@ namespace DotNetProjectOne
             if (Alreadycommented == true)
             {
                 ct.comment = CommentBox.Text;
-                MainWindow.UpdateComment(ct);
+                DBAccess.UpdateComment(ct);
                 con.Dispose();
             }
             else
             {
                 ct.comment = CommentBox.Text;
-                MainWindow.AddComment(ct);
+                DBAccess.AddComment(ct);
 
                 con.Dispose();
             }

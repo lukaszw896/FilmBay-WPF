@@ -55,94 +55,7 @@ namespace DotNetProjectOne
 
 
 
-        public List<actor_table> GetActors()
-        {
-            List<actor_table> Actors = new List<actor_table>();
-            MyLINQDataContext con = new MyLINQDataContext();
-            Actors = (from a in con.actor_tables
-                      join at in con.actor_film_tables on a.id_actor equals at.id_actor
-                      join f in con.film_tables on at.id_film equals f.id_film
-                      where f.id_film == filmid
-                      select a).ToList();
-            con.Dispose();
-            return Actors;
-
-
-        }
-        public List<writers_table> GetWriters()
-        {
-
-            List<writers_table> Writers = new List<writers_table>();
-            MyLINQDataContext con = new MyLINQDataContext();
-            Writers = (from a in con.writers_tables
-                       join at in con.film_writers_tables on a.id_writer equals at.id_writer
-                       join f in con.film_tables on at.id_film equals f.id_film
-                       where f.id_film == filmid
-                       select a).ToList();
-            con.Dispose();
-            return Writers;
-
-
-        }
-        public List<music_creator_table> GetComposers()
-    {
-        MyLINQDataContext con = new MyLINQDataContext();
-        List<music_creator_table> Composers = new List<music_creator_table>();
-        Composers = (from a in con.music_creator_tables
-                     join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
-                     join f in con.film_tables on at.id_film equals f.id_film
-                     where f.id_film == filmid
-                     select a).ToList();
-        con.Dispose();
-        return Composers;
-
-    }
-        public List<producer_table> GetProducers()
-        {
-            List<producer_table> Producers = new List<producer_table>();
-            MyLINQDataContext con = new MyLINQDataContext();
-            Producers = (from a in con.producer_tables
-                         join f in con.film_tables on a.id_film equals f.id_film
-                         where f.id_film == filmid
-                         select a).ToList();
-            con.Dispose();
-            return Producers;
-
-        }
-        public List<photos_table> GetPhotos()
-        {
-            MyLINQDataContext con = new MyLINQDataContext();
-            List<photos_table> Photos = new List<photos_table>();
-            Photos = (from a in con.photos_tables
-                      join at in con.film_photos_tables on a.id_photo equals at.id_photo
-                      join f in con.film_tables on at.id_film equals f.id_film
-                      where f.id_film == filmid
-                      select a).ToList();
-            con.Dispose();
-            return Photos;
-
-        }
-        public List<comment_table> GetComments()
-        {
-            MyLINQDataContext con = new MyLINQDataContext();
-            List<comment_table> Comments = new List<comment_table>();
-            Comments = (from a in con.comment_tables
-                        join u in con.user_tables on a.id_film equals u.id_user
-                        join f in con.film_tables on a.id_film equals f.id_film
-                        where f.id_film == filmid
-                        select a).ToList();
-            con.Dispose();
-            return Comments;
-      
-        }
-        public film_table LoadFilmFromId(int filmid)
-        {
-            MyLINQDataContext con = new MyLINQDataContext();
-            film_table ft;
-            ft = con.film_tables.AsParallel().Where(s => s.id_film == filmid).FirstOrDefault();
-            return ft;
-        }
-
+    
 
 
         public FilmPage()
@@ -158,14 +71,14 @@ namespace DotNetProjectOne
             ComposerBlock.Text = "";
             StudioBlock.Text = "";
 
-             MyLINQDataContext con = new MyLINQDataContext();
-             film_table ft = LoadFilmFromId(filmid);
+         //    MyLINQDataContext con = new MyLINQDataContext();
+             film_table ft = DBAccess.LoadFilmFromId(filmid);
      
              string path;
                path=  AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
               Poster.Source = new BitmapImage(new Uri(path));
 
-              List<actor_table> Actors = GetActors();
+              List<actor_table> Actors = DBAccess.GetActors(filmid);
 
                           foreach(actor_table at in Actors)
             {
@@ -192,7 +105,7 @@ namespace DotNetProjectOne
             }
             // Read Writers from db
 
-            List<writers_table> Writers = GetWriters();
+            List<writers_table> Writers = DBAccess.GetWriters(filmid);
 
             foreach(writers_table writer in Writers)
             {
@@ -207,7 +120,7 @@ namespace DotNetProjectOne
 
             //Read Composers from DB
 
-            List<music_creator_table> Composers = GetComposers();
+            List<music_creator_table> Composers = DBAccess.GetComposers(filmid);
     
                foreach (music_creator_table composer in Composers)
                {
@@ -220,7 +133,7 @@ namespace DotNetProjectOne
                }
 
             //Read Producers from DB
-               List<producer_table> Producers = GetProducers();
+               List<producer_table> Producers = DBAccess.GetProducers(filmid);
             foreach(producer_table p in Producers)
             {
                 if(Producers.Count>1)
@@ -233,7 +146,7 @@ namespace DotNetProjectOne
             }
 
             //List photos from the movie stored in local folder
-            List<photos_table> Photos = GetPhotos();
+            List<photos_table> Photos = DBAccess.GetPhotos(filmid);
           
             foreach(photos_table p in Photos)
             {
@@ -250,8 +163,8 @@ namespace DotNetProjectOne
             }
 
             //Look for users that added comments, display comments
-
-            List<comment_table> Comments = GetComments();
+            /*
+            List<comment_table> Comments = DBAccess.GetComments(filmid);
             foreach(comment_table comment in Comments)
             {
                 String Comment = comment.comment;
@@ -261,7 +174,7 @@ namespace DotNetProjectOne
                 usercomments.Add(c);
             
             }
-
+            */
             //Post basic info about the movie from the movie table
 
             YearBlock.Text = ft.release_date.Value.ToShortDateString();
@@ -274,7 +187,7 @@ namespace DotNetProjectOne
             { 
              RatingBox.Content = Math.Round(ft.rating.Value,2).ToString() ;
             }
-             con.Dispose();
+ 
         }
 
         private void AddComment_Click(object sender, RoutedEventArgs e)
@@ -285,11 +198,13 @@ namespace DotNetProjectOne
            
             
         }
+      
 
 
         // An event to buy a movie, checks users id and adds the film to users bought movies list
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            /*
             MyLINQDataContext con = new MyLINQDataContext();
             bought_films_table bft = new bought_films_table();
             bool Alreadybought= (con.bought_films_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user==Myself.id_user).Count()) > 0;
@@ -302,55 +217,39 @@ namespace DotNetProjectOne
             { 
             bft.id_film = filmid;
             bft.id_user = Myself.id_user;
-            MainWindow.AddToBoughtFilms(bft);
+            DBAccess.AddToBoughtFilms(bft);
             MessageBox.Show("Have a nice day!");
             con.Dispose();
             }
+             * */
+           DBAccess.BuyFilm(filmid, Myself.id_user);
         }
 
      //Function to vote for the movie, depending on which star you clicked
-        private void vote(int x)
-        {
-            MyLINQDataContext con = new MyLINQDataContext();
-            film_table ft = LoadFilmFromId(filmid);
-
-            if (ft.nuber_of_votes == null)
-            {
-                ft.nuber_of_votes = 1;
-            }
-            else
-            { ft.nuber_of_votes++; }
-            if (ft.rating == null)
-            { ft.rating = x; }
-            else
-            { ft.rating = (ft.rating * (ft.nuber_of_votes - 1) + x) / ft.nuber_of_votes; }
-
-            MainWindow.UpdateRating(ft);
-            con.Dispose();
-        }
+       
         private void FiveStars_Click(object sender, RoutedEventArgs e)
         {
-            vote(5);
+            DBAccess.vote(5,filmid);
         }
 
         private void FourStars_Click(object sender, RoutedEventArgs e)
         {
-            vote(4);
+            DBAccess.vote(4,filmid);
         }
 
         private void ThreeStars_Click(object sender, RoutedEventArgs e)
         {
-            vote(3);
+            DBAccess.vote(3,filmid);
         }
 
         private void TwoStars_Click(object sender, RoutedEventArgs e)
         {
-            vote(2);
+            DBAccess.vote(2,filmid);
         }
 
         private void OneStar_Click(object sender, RoutedEventArgs e)
         {
-            vote(1);
+            DBAccess.vote(1,filmid);
         }
 
         
