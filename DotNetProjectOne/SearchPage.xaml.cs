@@ -50,6 +50,9 @@ namespace DotNetProjectOne
     public static int Chosenfilmid;
   //  List<Img> films = new List<Img>();
 
+  
+
+
         public SearchPage()
         {
             this.DataContext = this;
@@ -57,15 +60,12 @@ namespace DotNetProjectOne
             Myself = StartWindow.Myself;
    
             myid = Myself.id_user;
-            MyLINQDataContext con = new MyLINQDataContext();
-           List< film_table> FilmTables = (from u in con.user_tables join bf in con.bought_films_tables on u.id_user equals bf.id_user 
-                            join f in con.film_tables on bf.id_film equals f.id_film
-                            where bf.id_user==Myself.id_user  select  f).ToList();
    
+            List<film_table> FilmTables = DBAccess.GetBoughtFilms(myid);
 
     foreach (film_table ft in FilmTables)
     {
-        MessageBox.Show("What the fuck");
+
         Image myimage = new Image();
         string path = AppDomain.CurrentDomain.BaseDirectory+"Posters\\"+ft.poster_url;
         string title = ft.title;
@@ -81,7 +81,8 @@ namespace DotNetProjectOne
         }
             
             //filling up our top movies table
-         FilmTables= con.film_tables.AsParallel().Where(s => s.rating > 4 && s.rating <=5).ToList();
+
+    FilmTables = DBAccess.GetTopFilms(4, 5);
           foreach(film_table ft in FilmTables)
           {
               string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
@@ -94,7 +95,7 @@ namespace DotNetProjectOne
           }
             if(topmovies.Count<6)
             {
-                FilmTables = con.film_tables.AsParallel().Where(s => s.rating > 3 && s.rating <= 4).ToList();
+                FilmTables = DBAccess.GetTopFilms(3, 4);
                 foreach (film_table ft in FilmTables)
                 {
                     string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
@@ -107,7 +108,7 @@ namespace DotNetProjectOne
             }
             if (topmovies.Count < 6)
             {
-                FilmTables = con.film_tables.AsParallel().Where(s => s.rating > 2 && s.rating <= 3).ToList();
+                FilmTables = DBAccess.GetTopFilms(2, 3);
                 foreach (film_table ft in FilmTables)
                 {
                     string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
@@ -120,7 +121,7 @@ namespace DotNetProjectOne
             }
             if (topmovies.Count < 6)
             {
-                FilmTables = con.film_tables.AsParallel().Where(s => s.rating > 1 && s.rating <= 2).ToList();
+                FilmTables = DBAccess.GetTopFilms(1, 2);
                 foreach (film_table ft in FilmTables)
                 {
                     string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
@@ -375,16 +376,18 @@ namespace DotNetProjectOne
 
 
     }
+   
+
 
         private void SelectionList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MyLINQDataContext con = new MyLINQDataContext();
+     
             Img x = (Img)SelectionList.SelectedItem;
           
            
           string FilmName = x.Name;
-           film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
-           Chosenfilmid = ft.id_film;
+        //   film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
+          Chosenfilmid = DBAccess.ChosenFilm(FilmName);
            StartWindow.SetPage(StartWindow.pages.filmPage);
 
            SearchPopUp.IsOpen = false;

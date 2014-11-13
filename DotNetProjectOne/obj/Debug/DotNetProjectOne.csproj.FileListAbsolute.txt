@@ -112,3 +112,5 @@ C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\LoginWindow.g.cs
 C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\RegisterWindow.g.cs
 C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\SearchResultsWindow.g.cs
 C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\SearchResultsWindow.baml
+C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\SearchResultsWindow.g.cs
+C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\SearchResultsWindow.baml

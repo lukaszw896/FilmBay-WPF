@@ -47,6 +47,8 @@ namespace DotNetProjectOne
         //public user_table Myself = new user_table();
         int myid;
         public static int Chosenfilmid;
+ 
+
         public SearchResultsWindow(String selected,String Search)
         {
             InitializeComponent();
@@ -58,18 +60,15 @@ namespace DotNetProjectOne
                 searchmovies.Clear();
             }
             MyLINQDataContext con = new MyLINQDataContext();
-
-            
-            
-
-
+       
+      
             if (selected == "Title")
             {
                 string searchedtitle = Search;
 
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from p in con.film_tables where p.title == searchedtitle select p).ToList();
+                FilmTables = DBAccess.SearchedByTitle(searchedtitle);
                 foreach (film_table ft in FilmTables)
                 {
 
@@ -94,13 +93,12 @@ namespace DotNetProjectOne
             if (selected == "Director")
             {
                 String[] split = Search.Split(' ');
+                    string name = split[0];
+                string surname = split[1];
                 // MessageBox.Show(Search.Text);
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from p in con.film_tables
-                              where p.director_name == split[0] && p.director_surname == split[1]
-
-                              select p).ToList();
+                FilmTables = DBAccess.SearchedByDirector(name, surname);
                 foreach (film_table ft in FilmTables)
                 {
                     try
@@ -124,13 +122,11 @@ namespace DotNetProjectOne
             if (selected == "Actor")
             {
                 String[] split = Search.Split(' ');
+                string name = split[0];
+                string surname = split[1];
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from a in con.actor_tables
-                              join at in con.actor_film_tables on a.id_actor equals at.id_actor
-                              join f in con.film_tables on at.id_film equals f.id_film
-                              where a.actor_name == split[0] && a.actor_surname == split[1]
-                              select f).ToList();
+                FilmTables = DBAccess.SearchedByActor(name, surname);
                 foreach (film_table ft in FilmTables)
                 {
                     // MessageBox.Show("LOL");
@@ -155,13 +151,11 @@ namespace DotNetProjectOne
             if (selected == "Writer")
             {
                 String[] split = Search.Split(' ');
+                string name = split[0];
+                string surname = split[1];
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from a in con.writers_tables
-                              join at in con.film_writers_tables on a.id_writer equals at.id_writer
-                              join f in con.film_tables on at.id_film equals f.id_film
-                              where a.writer_name == split[0] && a.writer_surname == split[1]
-                              select f).ToList();
+                FilmTables = DBAccess.SearchedByWriter(name, surname);
                 foreach (film_table ft in FilmTables)
                 {
                     // MessageBox.Show("LOL");
@@ -187,12 +181,11 @@ namespace DotNetProjectOne
             if (selected == "Producer")
             {
                 String[] split = Search.Split(' ');
+                string name = split[0];
+                string surname = split[1];
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from a in con.producer_tables
-                              join f in con.film_tables on a.id_film equals f.id_film
-                              where a.producer_name == split[0] && a.producer_surname == split[1]
-                              select f).ToList();
+                FilmTables = DBAccess.SearchedByProducer(name, surname);
 
                 foreach (film_table ft in FilmTables)
                 {
@@ -218,13 +211,11 @@ namespace DotNetProjectOne
             if (selected == "Composer")
             {
                 String[] split = Search.Split(' ');
+                string name = split[0];
+                string surname = split[1];
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from a in con.music_creator_tables
-                              join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
-                              join f in con.film_tables on at.id_film equals f.id_film
-                              where a.music_creator_name == split[0] && a.music_creator_surname == split[1]
-                              select f).ToList();
+                FilmTables = DBAccess.SearchedByComposer(name, surname);
 
                 foreach (film_table ft in FilmTables)
                 {
@@ -251,13 +242,12 @@ namespace DotNetProjectOne
 
         private void SelectionList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MyLINQDataContext con = new MyLINQDataContext();
             Img x = (Img)SelectionList.SelectedItem;
 
 
             string FilmName = x.Name;
-            film_table ft = con.film_tables.AsParallel().Where(s => s.title == FilmName).First();
-            Chosenfilmid = ft.id_film;
+            //   film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
+            Chosenfilmid = DBAccess.ChosenFilm(FilmName);
             StartWindow.SetPage(StartWindow.pages.filmPage);         
             //   MessageBox.Show(ft.title);
 

@@ -674,8 +674,111 @@ namespace DotNetProjectOne
 
 
        }
+       public static List<film_table> GetBoughtFilms(int id)
+       {
+           MyLINQDataContext con = new MyLINQDataContext();
+           List<film_table> FilmTables = (from u in con.user_tables
+                                          join bf in con.bought_films_tables on u.id_user equals bf.id_user
+                                          join f in con.film_tables on bf.id_film equals f.id_film
+                                          where bf.id_user == id
+                                          select f).ToList();
+           con.Dispose();
+           return FilmTables;
 
 
+       }
+
+       public static List<film_table> GetTopFilms(int low, int top)
+       {
+           MyLINQDataContext con = new MyLINQDataContext();
+           List<film_table> FilmTables = new List<film_table>();
+           FilmTables = con.film_tables.AsParallel().Where(s => s.rating > low && s.rating <= top).ToList();
+           con.Dispose();
+           return FilmTables;
+       }
+
+       public static List<film_table> SearchedByTitle(string searchedtitle)
+       {
+           MyLINQDataContext con = new MyLINQDataContext();
+           List<film_table> FilmTables = new List<film_table>();
+
+           FilmTables = (from p in con.film_tables where p.title == searchedtitle select p).ToList();
+           con.Dispose();
+           return FilmTables;
+       }
+
+       public static List<film_table> SearchedByDirector(string name, string surname)
+       {
+           MyLINQDataContext con = new MyLINQDataContext();
+           List<film_table> FilmTables = new List<film_table>();
+           FilmTables = (from p in con.film_tables
+                         where p.director_name == name && p.director_surname == surname
+
+                         select p).ToList();
+           con.Dispose();
+           return FilmTables;
+       }
+       public static List<film_table> SearchedByActor(string name, string surname)
+       {
+           MyLINQDataContext con = new MyLINQDataContext();
+           List<film_table> FilmTables = new List<film_table>();
+           FilmTables = (from a in con.actor_tables
+                         join at in con.actor_film_tables on a.id_actor equals at.id_actor
+                         join f in con.film_tables on at.id_film equals f.id_film
+                         where a.actor_name == name && a.actor_surname == surname
+                         select f).ToList();
+           con.Dispose();
+           return FilmTables;
+
+       }
+
+       public static List<film_table> SearchedByWriter(string name, string surname)
+       {
+           MyLINQDataContext con = new MyLINQDataContext();
+           List<film_table> FilmTables = new List<film_table>();
+           FilmTables = (from a in con.writers_tables
+                         join at in con.film_writers_tables on a.id_writer equals at.id_writer
+                         join f in con.film_tables on at.id_film equals f.id_film
+                         where a.writer_name == name && a.writer_surname == surname
+                         select f).ToList();
+           con.Dispose();
+           return FilmTables;
+       }
+
+       public static List<film_table> SearchedByProducer(string name, string surname)
+       {
+           MyLINQDataContext con = new MyLINQDataContext();
+           List<film_table> FilmTables = new List<film_table>();
+           FilmTables = (from a in con.producer_tables
+                         join f in con.film_tables on a.id_film equals f.id_film
+                         where a.producer_name == name && a.producer_surname == surname
+                         select f).ToList();
+           con.Dispose();
+           return FilmTables;
+       }
+
+       public static List<film_table> SearchedByComposer(string name, string surname)
+       {
+
+           MyLINQDataContext con = new MyLINQDataContext();
+           List<film_table> FilmTables = new List<film_table>();
+           FilmTables = (from a in con.music_creator_tables
+                         join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
+                         join f in con.film_tables on at.id_film equals f.id_film
+                         where a.music_creator_name == name && a.music_creator_surname == surname
+                         select f).ToList();
+           con.Dispose();
+           return FilmTables;
+       }
+
+
+       public static int ChosenFilm(string FilmName)
+       {
+           MyLINQDataContext con = new MyLINQDataContext();
+           film_table ft = con.film_tables.AsParallel().Where(s => s.title == FilmName).First();
+           con.Dispose();
+           return ft.id_film;
+       }
 
 
 
