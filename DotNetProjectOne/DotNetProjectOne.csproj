@@ -72,6 +72,7 @@
     <Compile Include="CommentWindow.xaml.cs">
       <DependentUpon>CommentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DBAccess.cs" />
     <Compile Include="FilmPage.xaml.cs">
       <DependentUpon>FilmPage.xaml</DependentUpon>
     </Compile>

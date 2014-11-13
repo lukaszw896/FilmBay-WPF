@@ -35,10 +35,14 @@ namespace DotNetProjectOne
             this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
             this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
         }
+
+
+
         private void LoginSignInButton_Click(object sender, RoutedEventArgs e)
         {
+            /*
             MyLINQDataContext con = new MyLINQDataContext();
-            user_table x = new user_table();
+           // user_table x = new user_table();
             bool logininDB = (from p in con.user_tables where p.login == CheckLogin.Text select p).Count() > 0;
             if (logininDB == false)
             {
@@ -48,9 +52,9 @@ namespace DotNetProjectOne
             {
                 x = (from p in con.user_tables where p.login == CheckLogin.Text select p).First();
                 if (x.password != CheckPassword.Text)
+                    MessageBox.Show("Wrong Password");
                 {
 
-                    MessageBox.Show("Wrong Password");
                 }
                 else
                 {
@@ -62,6 +66,18 @@ namespace DotNetProjectOne
 
                 }
             }
+            */
+            user_table x = new user_table();
+             x = DBAccess.Userlogin(CheckLogin.Text, CheckPassword.Text);
+            if(x.name!="Wrong")
+            {
+                StartPage.Myself = x;
+                Pages page = new Pages();
+                StartWindow.SetPage(page.searchPage);
+                this.Close();
+            }
+
+
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {

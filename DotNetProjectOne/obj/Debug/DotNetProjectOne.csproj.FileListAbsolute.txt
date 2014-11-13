@@ -74,6 +74,7 @@ C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\bin\Debug\DNPDB.mdf
 C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\bin\Debug\DNPDB_log.ldf
 C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe
 C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\bin\Debug\DotNetProjectOne.pdb
+C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
 C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\CommentWindow.baml
 C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\FilmWindow.baml
 C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\MainWindow.baml
@@ -105,6 +106,7 @@ C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\LoginWindow.baml
 C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\LoginWindow.g.cs
 C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\RegisterWindow.baml
 C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\RegisterWindow.g.cs
-C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\SearchResultsWindow.g.cs
-C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\SearchResultsWindow.baml
-C:\Users\Łukasz\Desktop\DOTNET 5\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
+C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\LoginWindow.baml
+C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\RegisterWindow.baml
+C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\LoginWindow.g.cs
+C:\Users\Lino\Desktop\DoNet1\DotNetProjectOne\obj\Debug\RegisterWindow.g.cs
