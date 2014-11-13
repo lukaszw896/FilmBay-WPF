@@ -1,0 +1,9 @@
+﻿<Application x:Class="DotNetProjectOne.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DotNetProjectOne"
+             StartupUri="StartWindow.xaml">
+    <Application.Resources>
+        <local:OpacityConverter x:Key="opacityConverter"/>
+    </Application.Resources>
+</Application>

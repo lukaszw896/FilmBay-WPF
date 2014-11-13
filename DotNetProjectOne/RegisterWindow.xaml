@@ -1,0 +1,84 @@
+﻿<Window x:Class="DotNetProjectOne.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RegisterWindow" Height="600" Width="570" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown"  >
+    <Grid  IsEnabled="True"  >
+        <Border BorderBrush="Black" BorderThickness="3">
+                <Grid Background="#333" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="12*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="gray" >
+                        <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Foreground="White">Sign up</Label>
+                        <Button Click="CloseRegisterPopup_Click" BorderThickness="0" Background="Transparent" Height="30" Width="30" VerticalAlignment="Top" HorizontalAlignment="Right" >
+                            <Image Source="/Icons/close_button.png"></Image>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="0,40,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" Margin="20"  BorderBrush="Black" BorderThickness="1">
+                                    <TextBox x:Name="UserName"  Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Name</TextBox>
+                                </Border>
+                                <Border Grid.Column="1" Margin="20"  BorderBrush="Black" BorderThickness="1">
+                                    <TextBox  x:Name="UserSurName" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Surname</TextBox>
+                                </Border>
+                            </Grid>
+
+
+                            <Border Margin="20"  Grid.Row="2" BorderBrush="Black" BorderThickness="1">
+                                <TextBox  x:Name="Login" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Login</TextBox>
+                            </Border>
+                            <Border Margin="20"  Grid.Row="3" BorderBrush="Black" BorderThickness="1">
+                                <TextBox x:Name="Password" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Password</TextBox>
+                            </Border>
+                            <Border Margin="20"  Grid.Row="4" BorderBrush="Black" BorderThickness="1">
+                                <TextBox x:Name ="PasswordConfirm" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Confirm password</TextBox>
+                            </Border>
+                            <Border Margin="20"  Grid.Row="5" BorderBrush="Black" BorderThickness="1">
+                                <TextBox x:Name="Email" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >E-mail</TextBox>
+                            </Border>
+                            <Border Margin="20"  Grid.Row="6" BorderBrush="Black" BorderThickness="1">
+                                <TextBox x:Name="EmailConfirm" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Confirm e-mail</TextBox>
+                            </Border>
+                            <Border Margin="20"  Grid.Row="7" BorderBrush="Black" BorderThickness="1">
+                                <TextBox x:Name="Age" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" PreviewTextInput="Age_PreviewTextInput" >Age</TextBox>
+                            </Border>
+                            <Border Margin="20"  Grid.Row="8" BorderBrush="Black" BorderThickness="1">
+                                <TextBox x:Name="Gender" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" >Gender</TextBox>
+                            </Border>
+                            <Button Margin="20" FontSize="30" Grid.Row="9" Click="SignUpButton_Click">Sign up</Button>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+                </Grid>
+            
+        </Border>
+    </Grid>
+</Window>
