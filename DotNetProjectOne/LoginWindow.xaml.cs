@@ -71,7 +71,7 @@ namespace DotNetProjectOne
              x = DBAccess.Userlogin(CheckLogin.Text, CheckPassword.Text);
             if(x.name!="Wrong")
             {
-                StartPage.Myself = x;
+                StartWindow.Myself = x;
                 Pages page = new Pages();
                 StartWindow.SetPage(page.searchPage);
                 this.Close();
