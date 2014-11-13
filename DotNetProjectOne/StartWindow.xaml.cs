@@ -19,6 +19,7 @@ namespace DotNetProjectOne
     /// </summary>
     public  partial class StartWindow : Window
     {
+        public static user_table Myself = new user_table();
         public static StartPage _startPage = new StartPage();
         public static  StartWindow window;
         public static Pages pages;

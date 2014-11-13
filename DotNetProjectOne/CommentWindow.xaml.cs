@@ -19,7 +19,7 @@ namespace DotNetProjectOne
     /// </summary>
     public partial class CommentWindow : Window
     {
-        user_table Myself = StartPage.Myself;
+        user_table Myself = StartWindow.Myself;
         int filmid = FilmPage.filmid;
         public CommentWindow()
         {

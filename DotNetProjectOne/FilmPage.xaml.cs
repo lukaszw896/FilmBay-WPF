@@ -22,8 +22,8 @@ namespace DotNetProjectOne
     /// 
     public partial class FilmPage : UserControl
     {
-      //public static int filmid =SearchPage.Chosenfilmid;
-       public static int filmid = 1;
+        public static int filmid = SearchResultsWindow.Chosenfilmid;
+      // public static int filmid = 1;
 
 
 
@@ -148,7 +148,7 @@ namespace DotNetProjectOne
         public FilmPage()
         {
 
-            Myself = StartPage.Myself;
+            Myself = StartWindow.Myself;
             this.DataContext = this;
             InitializeComponent();
             DirectorBlock.Text = "";
@@ -251,16 +251,16 @@ namespace DotNetProjectOne
 
             //Look for users that added comments, display comments
 
-            List<comment_table> Comments = GetComments();
-            foreach(comment_table comment in Comments)
-            {
-                String Comment = comment.comment;
-                String Name = comment.user_table.login+":";
+            //List<comment_table> Comments = GetComments();
+            //foreach(comment_table comment in Comments)
+            //{
+            //    String Comment = comment.comment;
+            //    String Name = comment.user_table.login+":";
                
-                UserComment c = new UserComment(Name, Comment);
-                usercomments.Add(c);
+            //    UserComment c = new UserComment(Name, Comment);
+            //    usercomments.Add(c);
             
-            }
+            //}
 
             //Post basic info about the movie from the movie table
 

@@ -54,7 +54,7 @@ namespace DotNetProjectOne
         {
             this.DataContext = this;
             InitializeComponent();
-            Myself = StartPage.Myself;
+            Myself = StartWindow.Myself;
    
             myid = Myself.id_user;
             MyLINQDataContext con = new MyLINQDataContext();
@@ -143,195 +143,197 @@ namespace DotNetProjectOne
               
                     searchmovies.Clear();
             }
-            MyLINQDataContext con = new MyLINQDataContext();
+           // MyLINQDataContext con = new MyLINQDataContext();
             
-            SearchPopUp.IsOpen = true;
+           // SearchPopUp.IsOpen = true;
             string selected = ((ComboBoxItem)SearchCombo.SelectedItem).Content.ToString();
-       
 
-            if (selected=="Title")
-            {
-                string searchedtitle = Search.Text;
+            SearchResultsWindow srw = new SearchResultsWindow(selected, Search.Text);
+            srw.ShowDialog();
 
-                List<film_table> FilmTables = new List<film_table>();
-          //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from p in con.film_tables where p.title == searchedtitle select p).ToList();
-                foreach (film_table ft in FilmTables)
-                {
+          //  if (selected=="Title")
+          //  {
+          //      string searchedtitle = Search.Text;
+
+          //      List<film_table> FilmTables = new List<film_table>();
+          ////      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+          //      FilmTables = (from p in con.film_tables where p.title == searchedtitle select p).ToList();
+          //      foreach (film_table ft in FilmTables)
+          //      {
               
-                    try
-                    {
-                        Image myimage = new Image();
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
-                     //   MessageBox.Show(path);
-                        myimage.Source = new BitmapImage(new Uri(path));
+          //          try
+          //          {
+          //              Image myimage = new Image();
+          //              string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+          //              string title = ft.title;
+          //              string director = ft.director_name + " " + ft.director_surname;
+          //              string year = ft.release_date.Value.ToShortDateString();
+          //           //   MessageBox.Show(path);
+          //              myimage.Source = new BitmapImage(new Uri(path));
 
-                        Img img = new Img(path, year, title, director);
+          //              Img img = new Img(path, year, title, director);
 
-                        searchmovies.Add(img);
-                    }
-                    catch { }
-                }
+          //              searchmovies.Add(img);
+          //          }
+          //          catch { }
+          //      }
 
-            }
-            if (selected == "Director")
-            {
-                String[] split = Search.Text.Split(' ');
-               // MessageBox.Show(Search.Text);
-                List<film_table> FilmTables = new List<film_table>();
-                //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from p in con.film_tables where p.director_name == split[0] && p.director_surname==split[1]
+          //  }
+          //  if (selected == "Director")
+          //  {
+          //      String[] split = Search.Text.Split(' ');
+          //     // MessageBox.Show(Search.Text);
+          //      List<film_table> FilmTables = new List<film_table>();
+          //      //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+          //      FilmTables = (from p in con.film_tables where p.director_name == split[0] && p.director_surname==split[1]
                               
-                              select p).ToList();
-                foreach (film_table ft in FilmTables)
-                {
-                    try
-                    {
-                        Image myimage = new Image();
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
-                      //  MessageBox.Show(path);
-                        myimage.Source = new BitmapImage(new Uri(path));
+          //                    select p).ToList();
+          //      foreach (film_table ft in FilmTables)
+          //      {
+          //          try
+          //          {
+          //              Image myimage = new Image();
+          //              string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+          //              string title = ft.title;
+          //              string director = ft.director_name + " " + ft.director_surname;
+          //              string year = ft.release_date.Value.ToShortDateString();
+          //            //  MessageBox.Show(path);
+          //              myimage.Source = new BitmapImage(new Uri(path));
 
-                        Img img = new Img(path, year, title, director);
+          //              Img img = new Img(path, year, title, director);
 
-                        searchmovies.Add(img);
-                    }
-                    catch { }
-                }
+          //              searchmovies.Add(img);
+          //          }
+          //          catch { }
+          //      }
 
-            }
-            if (selected == "Actor")
-            {
-                String[] split = Search.Text.Split(' ');
-                List<film_table> FilmTables = new List<film_table>();
-                //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from a in con.actor_tables
-                              join at in con.actor_film_tables on a.id_actor equals at.id_actor
-                              join f in con.film_tables on at.id_film equals f.id_film
-                              where a.actor_name == split[0] && a.actor_surname==split[1] 
-                              select f).ToList();
-                foreach (film_table ft in FilmTables)
-                {
-                   // MessageBox.Show("LOL");
-                    try
-                    {
-                        Image myimage = new Image();
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
+          //  }
+          //  if (selected == "Actor")
+          //  {
+          //      String[] split = Search.Text.Split(' ');
+          //      List<film_table> FilmTables = new List<film_table>();
+          //      //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+          //      FilmTables = (from a in con.actor_tables
+          //                    join at in con.actor_film_tables on a.id_actor equals at.id_actor
+          //                    join f in con.film_tables on at.id_film equals f.id_film
+          //                    where a.actor_name == split[0] && a.actor_surname==split[1] 
+          //                    select f).ToList();
+          //      foreach (film_table ft in FilmTables)
+          //      {
+          //         // MessageBox.Show("LOL");
+          //          try
+          //          {
+          //              Image myimage = new Image();
+          //              string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+          //              string title = ft.title;
+          //              string director = ft.director_name + " " + ft.director_surname;
+          //              string year = ft.release_date.Value.ToShortDateString();
          
-                        myimage.Source = new BitmapImage(new Uri(path));
+          //              myimage.Source = new BitmapImage(new Uri(path));
 
-                        Img img = new Img(path, year, title, director);
+          //              Img img = new Img(path, year, title, director);
 
-                        searchmovies.Add(img);
-                    }
-                    catch { }
-                }
+          //              searchmovies.Add(img);
+          //          }
+          //          catch { }
+          //      }
 
-            }
-            if (selected == "Writer")
-            {
-                String[] split = Search.Text.Split(' ');
-                List<film_table> FilmTables = new List<film_table>();
-                //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from a in con.writers_tables
-                              join at in con.film_writers_tables on a.id_writer equals at.id_writer 
-                              join f in con.film_tables on at.id_film equals f.id_film
-                              where a.writer_name == split[0] && a.writer_surname==split[1] 
-                              select f).ToList(); 
-                foreach (film_table ft in FilmTables)
-                {
-                    // MessageBox.Show("LOL");
-                    try
-                    {
-                        Image myimage = new Image();
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
+          //  }
+          //  if (selected == "Writer")
+          //  {
+          //      String[] split = Search.Text.Split(' ');
+          //      List<film_table> FilmTables = new List<film_table>();
+          //      //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+          //      FilmTables = (from a in con.writers_tables
+          //                    join at in con.film_writers_tables on a.id_writer equals at.id_writer 
+          //                    join f in con.film_tables on at.id_film equals f.id_film
+          //                    where a.writer_name == split[0] && a.writer_surname==split[1] 
+          //                    select f).ToList(); 
+          //      foreach (film_table ft in FilmTables)
+          //      {
+          //          // MessageBox.Show("LOL");
+          //          try
+          //          {
+          //              Image myimage = new Image();
+          //              string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+          //              string title = ft.title;
+          //              string director = ft.director_name + " " + ft.director_surname;
+          //              string year = ft.release_date.Value.ToShortDateString();
 
-                        myimage.Source = new BitmapImage(new Uri(path));
+          //              myimage.Source = new BitmapImage(new Uri(path));
 
-                        Img img = new Img(path, year, title, director);
+          //              Img img = new Img(path, year, title, director);
 
-                        searchmovies.Add(img);
-                    }
-                    catch { }
-                }
+          //              searchmovies.Add(img);
+          //          }
+          //          catch { }
+          //      }
 
-            }
+          //  }
       
-            if (selected == "Producer")
-            {
-                String[] split = Search.Text.Split(' ');
-                List<film_table> FilmTables = new List<film_table>();
-                //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from a in con.producer_tables
-                              join f in con.film_tables on a.id_film equals f.id_film
-                              where a.producer_name == split[0] && a.producer_surname==split[1]
-                              select f).ToList();
+          //  if (selected == "Producer")
+          //  {
+          //      String[] split = Search.Text.Split(' ');
+          //      List<film_table> FilmTables = new List<film_table>();
+          //      //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+          //      FilmTables = (from a in con.producer_tables
+          //                    join f in con.film_tables on a.id_film equals f.id_film
+          //                    where a.producer_name == split[0] && a.producer_surname==split[1]
+          //                    select f).ToList();
             
-                foreach (film_table ft in FilmTables)
-                {
-                    // MessageBox.Show("LOL");
-                    try
-                    {
-                        Image myimage = new Image();
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
+          //      foreach (film_table ft in FilmTables)
+          //      {
+          //          // MessageBox.Show("LOL");
+          //          try
+          //          {
+          //              Image myimage = new Image();
+          //              string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+          //              string title = ft.title;
+          //              string director = ft.director_name + " " + ft.director_surname;
+          //              string year = ft.release_date.Value.ToShortDateString();
 
-                        myimage.Source = new BitmapImage(new Uri(path));
+          //              myimage.Source = new BitmapImage(new Uri(path));
 
-                        Img img = new Img(path, year, title, director);
+          //              Img img = new Img(path, year, title, director);
 
-                        searchmovies.Add(img);
-                    }
-                    catch { }
-                }
+          //              searchmovies.Add(img);
+          //          }
+          //          catch { }
+          //      }
 
-            }
-            if (selected == "Composer")
-            {
-                String[] split = Search.Text.Split(' ');
-                List<film_table> FilmTables = new List<film_table>();
-                //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = (from a in con.music_creator_tables
-                              join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
-                              join f in con.film_tables on at.id_film equals f.id_film
-                              where a.music_creator_name == split[0] && a.music_creator_surname==split[1]
-                              select f).ToList();
+          //  }
+          //  if (selected == "Composer")
+          //  {
+          //      String[] split = Search.Text.Split(' ');
+          //      List<film_table> FilmTables = new List<film_table>();
+          //      //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+          //      FilmTables = (from a in con.music_creator_tables
+          //                    join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
+          //                    join f in con.film_tables on at.id_film equals f.id_film
+          //                    where a.music_creator_name == split[0] && a.music_creator_surname==split[1]
+          //                    select f).ToList();
 
-                foreach (film_table ft in FilmTables)
-                {
-                    // MessageBox.Show("LOL");
-                    try
-                    {
-                        Image myimage = new Image();
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
+          //      foreach (film_table ft in FilmTables)
+          //      {
+          //          // MessageBox.Show("LOL");
+          //          try
+          //          {
+          //              Image myimage = new Image();
+          //              string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+          //              string title = ft.title;
+          //              string director = ft.director_name + " " + ft.director_surname;
+          //              string year = ft.release_date.Value.ToShortDateString();
 
-                        myimage.Source = new BitmapImage(new Uri(path));
+          //              myimage.Source = new BitmapImage(new Uri(path));
 
-                        Img img = new Img(path, year, title, director);
+          //              Img img = new Img(path, year, title, director);
 
-                        searchmovies.Add(img);
-                    }
-                    catch { }
-                }
+          //              searchmovies.Add(img);
+          //          }
+          //          catch { }
+          //      }
 
-            }
+          //  }
 
 
 
