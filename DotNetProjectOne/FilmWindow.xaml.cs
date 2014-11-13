@@ -62,7 +62,7 @@ namespace DotNetProjectOne
 
    
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private async void Save_Click(object sender, RoutedEventArgs e)
         {
      
 
@@ -213,7 +213,7 @@ namespace DotNetProjectOne
                     //adding actors from the grid to the list, adding currents film ID to these actors.
                     foreach (Actor a in actors)
                     {
-                        int actorid = DBAccess.CreateActor(a.Name, a.Surname, a.Photo);
+                        int actorid = await DBAccess.CreateActor(a.Name, a.Surname, a.Photo);
                         actor_film_table actorfilmtable = DBAccess.CreateActorFilmTable(filmid,actorid);
 
                     }
@@ -221,7 +221,7 @@ namespace DotNetProjectOne
                     foreach (Writer w in writers)
                     {
 
-                        int writerid = DBAccess.CreateWriter(w.WName, w.WSurname);
+                        int writerid = await DBAccess.CreateWriter(w.WName, w.WSurname);
 
                         film_writers_table filmwriterstable = DBAccess.CreateWriterFilmTable(filmid, writerid);
            
@@ -233,7 +233,7 @@ namespace DotNetProjectOne
                     //adding composers to music_creator table and to reference connected table film_music_creator table
                     foreach (Composer c in composers)
                     {
-                        int composerid = DBAccess.CreateComposer(c.CName, c.CSurname);
+                        int composerid = await DBAccess.CreateComposer(c.CName, c.CSurname);
                         film_music_creator filmcomposer = DBAccess.CreateComposerFilmTable(filmid, composerid);
                 
         
@@ -250,7 +250,7 @@ namespace DotNetProjectOne
                     //Adding photos to photos table and interconnecting table film_photos_table 
                     foreach (String x in MoviePhotos)
                     {
-                        int photoid = DBAccess.CreatePhoto(x);
+                        int photoid = await DBAccess.CreatePhoto(x);
                         film_photos_table filmphoto = DBAccess.CreatePhotosFilmTable(filmid, photoid);
                   
    
@@ -260,7 +260,7 @@ namespace DotNetProjectOne
                     foreach (ALanguage c in Languages)
                     {
 
-                        int langid = DBAccess.CreateLanguage(c.LName);
+                        int langid = await DBAccess.CreateLanguage(c.LName);
                         film_other_language_table filmotherlanguage = DBAccess.CreateFilmLanguageTable(filmid, langid);
 
                  
@@ -268,7 +268,7 @@ namespace DotNetProjectOne
                     foreach (Genre c in genres)
                     {
 
-                        int genreid = DBAccess.CreateGenre(c.GName);
+                        int genreid = await DBAccess.CreateGenre(c.GName);
                         film_genere_table filmgenre = DBAccess.CreateGenreFilmTable(filmid,genreid);
                
                      

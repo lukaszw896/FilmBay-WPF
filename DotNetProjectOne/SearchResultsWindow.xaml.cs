@@ -48,27 +48,23 @@ namespace DotNetProjectOne
         int myid;
         public static int Chosenfilmid;
  
-
-        public SearchResultsWindow(String selected,String Search)
+        public async void start(string selected,string Search)
         {
-            InitializeComponent();
-            this.DataContext = this;
-
             if (searchmovies.Count > 0)
             {
 
                 searchmovies.Clear();
             }
             MyLINQDataContext con = new MyLINQDataContext();
-       
-      
+
+
             if (selected == "Title")
             {
                 string searchedtitle = Search;
 
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = DBAccess.SearchedByTitle(searchedtitle);
+                FilmTables = await DBAccess.SearchedByTitle(searchedtitle);
                 foreach (film_table ft in FilmTables)
                 {
 
@@ -93,12 +89,12 @@ namespace DotNetProjectOne
             if (selected == "Director")
             {
                 String[] split = Search.Split(' ');
-                    string name = split[0];
+                string name = split[0];
                 string surname = split[1];
                 // MessageBox.Show(Search.Text);
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = DBAccess.SearchedByDirector(name, surname);
+                FilmTables = await DBAccess.SearchedByDirector(name, surname);
                 foreach (film_table ft in FilmTables)
                 {
                     try
@@ -126,7 +122,7 @@ namespace DotNetProjectOne
                 string surname = split[1];
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = DBAccess.SearchedByActor(name, surname);
+                FilmTables = await DBAccess.SearchedByActor(name, surname);
                 foreach (film_table ft in FilmTables)
                 {
                     // MessageBox.Show("LOL");
@@ -155,7 +151,7 @@ namespace DotNetProjectOne
                 string surname = split[1];
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = DBAccess.SearchedByWriter(name, surname);
+                FilmTables = await DBAccess.SearchedByWriter(name, surname);
                 foreach (film_table ft in FilmTables)
                 {
                     // MessageBox.Show("LOL");
@@ -185,7 +181,7 @@ namespace DotNetProjectOne
                 string surname = split[1];
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = DBAccess.SearchedByProducer(name, surname);
+                FilmTables = await DBAccess.SearchedByProducer(name, surname);
 
                 foreach (film_table ft in FilmTables)
                 {
@@ -215,7 +211,7 @@ namespace DotNetProjectOne
                 string surname = split[1];
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = DBAccess.SearchedByComposer(name, surname);
+                FilmTables = await DBAccess.SearchedByComposer(name, surname);
 
                 foreach (film_table ft in FilmTables)
                 {
@@ -236,8 +232,21 @@ namespace DotNetProjectOne
                     }
                     catch { }
                 }
-                
+
             }
+
+
+        }
+
+
+
+
+        public SearchResultsWindow(String selected,String Search)
+        {
+            InitializeComponent();
+            this.DataContext = this;
+            this.start(selected, Search);
+           
         }
 
         private void SelectionList_SelectionChanged(object sender, SelectionChangedEventArgs e)

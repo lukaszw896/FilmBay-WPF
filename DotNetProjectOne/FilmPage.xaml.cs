@@ -53,17 +53,9 @@ namespace DotNetProjectOne
         }
         public user_table Myself = new user_table();
 
-
-
-    
-
-
-        public FilmPage()
+        public async void start()
         {
-
-            Myself = StartWindow.Myself;
-            this.DataContext = this;
-            InitializeComponent();
+         
             DirectorBlock.Text = "";
             WriterBlock.Text = "";
             ProducerBlock.Text = "";
@@ -71,33 +63,33 @@ namespace DotNetProjectOne
             ComposerBlock.Text = "";
             StudioBlock.Text = "";
 
-         //    MyLINQDataContext con = new MyLINQDataContext();
-             film_table ft = DBAccess.LoadFilmFromId(filmid);
-     
-             string path;
-               path=  AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
-              Poster.Source = new BitmapImage(new Uri(path));
+            //    MyLINQDataContext con = new MyLINQDataContext();
+            film_table ft = DBAccess.LoadFilmFromId(filmid);
 
-              List<actor_table> Actors = DBAccess.GetActors(filmid);
+            string path;
+            path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+            Poster.Source = new BitmapImage(new Uri(path));
 
-                          foreach(actor_table at in Actors)
+            List<actor_table> Actors = await DBAccess.GetActors(filmid);
+
+            foreach (actor_table at in Actors)
             {
 
                 Image myimage = new Image();
 
                 string apath;
-                              if(at.actor_photo_url!=null)
-                              { 
-                apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + at.actor_photo_url;
-                              }
-                              else
-                              {
-                 apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + "stockphoto.jpg";
-                              }
-                string title = at.actor_name + " "+ at.actor_surname;
+                if (at.actor_photo_url != null)
+                {
+                    apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + at.actor_photo_url;
+                }
+                else
+                {
+                    apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + "stockphoto.jpg";
+                }
+                string title = at.actor_name + " " + at.actor_surname;
                 string director = "";
                 string year = "";
- 
+
                 myimage.Source = new BitmapImage(new Uri(path));
                 Img img = new Img(apath, year, title, director);
                 filmactors.Add(img);
@@ -105,9 +97,9 @@ namespace DotNetProjectOne
             }
             // Read Writers from db
 
-            List<writers_table> Writers = DBAccess.GetWriters(filmid);
+            List<writers_table> Writers = await DBAccess.GetWriters(filmid);
 
-            foreach(writers_table writer in Writers)
+            foreach (writers_table writer in Writers)
             {
                 if (Writers.Count > 1)
                 {
@@ -120,25 +112,25 @@ namespace DotNetProjectOne
 
             //Read Composers from DB
 
-            List<music_creator_table> Composers = DBAccess.GetComposers(filmid);
-    
-               foreach (music_creator_table composer in Composers)
-               {
-                   if (Writers.Count > 1)
-                   {
-                       ComposerBlock.Text = ComposerBlock.Text + " " + composer.music_creator_name + " " + composer.music_creator_surname + ",";
-                   }
-                   else
-                      ComposerBlock.Text = ComposerBlock.Text + " " + composer.music_creator_name + " " + composer.music_creator_surname;
-               }
+            List<music_creator_table> Composers = await DBAccess.GetComposers(filmid);
+
+            foreach (music_creator_table composer in Composers)
+            {
+                if (Writers.Count > 1)
+                {
+                    ComposerBlock.Text = ComposerBlock.Text + " " + composer.music_creator_name + " " + composer.music_creator_surname + ",";
+                }
+                else
+                    ComposerBlock.Text = ComposerBlock.Text + " " + composer.music_creator_name + " " + composer.music_creator_surname;
+            }
 
             //Read Producers from DB
-               List<producer_table> Producers = DBAccess.GetProducers(filmid);
-            foreach(producer_table p in Producers)
+            List<producer_table> Producers =  await DBAccess.GetProducers(filmid);
+            foreach (producer_table p in Producers)
             {
-                if(Producers.Count>1)
+                if (Producers.Count > 1)
                 {
-                    ProducerBlock.Text = ProducerBlock.Text + " " + p.producer_name+ " " + p.producer_surname + ",";
+                    ProducerBlock.Text = ProducerBlock.Text + " " + p.producer_name + " " + p.producer_surname + ",";
                 }
                 else
                     ProducerBlock.Text = ProducerBlock.Text + " " + p.producer_name + " " + p.producer_surname;
@@ -146,13 +138,13 @@ namespace DotNetProjectOne
             }
 
             //List photos from the movie stored in local folder
-            List<photos_table> Photos = DBAccess.GetPhotos(filmid);
-          
-            foreach(photos_table p in Photos)
+            List<photos_table> Photos = await DBAccess.GetPhotos(filmid);
+
+            foreach (photos_table p in Photos)
             {
                 Image myimage = new Image();
                 string apath = AppDomain.CurrentDomain.BaseDirectory + "Photos\\" + p.photo_url;
-           
+
                 //   MessageBox.Show(path);
                 myimage.Source = new BitmapImage(new Uri(path));
 
@@ -179,15 +171,27 @@ namespace DotNetProjectOne
 
             YearBlock.Text = ft.release_date.Value.ToShortDateString();
 
-             Title.Content = ft.title;
-             Story.Text = ft.storyline;
-             StudioBlock.Text = ft.film_studio;
-             DirectorBlock.Text = ft.director_name + " " + ft.director_surname;
-            if(ft.nuber_of_votes>0)
-            { 
-             RatingBox.Content = Math.Round(ft.rating.Value,2).ToString() ;
+            Title.Content = ft.title;
+            Story.Text = ft.storyline;
+            StudioBlock.Text = ft.film_studio;
+            DirectorBlock.Text = ft.director_name + " " + ft.director_surname;
+            if (ft.nuber_of_votes > 0)
+            {
+                RatingBox.Content = Math.Round(ft.rating.Value, 2).ToString();
             }
  
+        }
+
+    
+
+
+        public FilmPage()
+        {
+            Myself = StartWindow.Myself;
+            this.DataContext = this;
+            InitializeComponent();
+            this.start();
+           
         }
 
         private void AddComment_Click(object sender, RoutedEventArgs e)
