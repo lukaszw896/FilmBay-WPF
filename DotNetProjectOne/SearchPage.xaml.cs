@@ -51,7 +51,9 @@ namespace DotNetProjectOne
   //  List<Img> films = new List<Img>();
         public async void start()
     {
-
+        Myself = StartWindow.Myself;
+        myid = Myself.id_user;
+        MessageBox.Show(myid.ToString());
         List<film_table> FilmTables = await DBAccess.GetBoughtFilms(myid);
 
         foreach (film_table ft in FilmTables)
@@ -133,14 +135,13 @@ namespace DotNetProjectOne
             this.DataContext = this;
             InitializeComponent();
             Myself = StartWindow.Myself;
-   
             myid = Myself.id_user;
-            this.start();
     
 
         }
         private void searchButton_Click(object sender, RoutedEventArgs e)
-        {
+        { 
+            this.IsEnabled = false;
             if(searchmovies.Count>0)
             {
               
@@ -152,6 +153,7 @@ namespace DotNetProjectOne
             string selected = ((ComboBoxItem)SearchCombo.SelectedItem).Content.ToString();
 
             SearchResultsWindow srw = new SearchResultsWindow(selected, Search.Text);
+           
             srw.ShowDialog();
 
     
@@ -172,7 +174,7 @@ namespace DotNetProjectOne
           Chosenfilmid = DBAccess.ChosenFilm(FilmName);
            StartWindow.SetPage(StartWindow.pages.filmPage);
 
-           SearchPopUp.IsOpen = false;
+          
          //   MessageBox.Show(ft.title);
         
         }

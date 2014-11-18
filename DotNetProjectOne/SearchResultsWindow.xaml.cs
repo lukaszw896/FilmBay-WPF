@@ -244,6 +244,8 @@ namespace DotNetProjectOne
         public SearchResultsWindow(String selected,String Search)
         {
             InitializeComponent();
+            this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
+            this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
             this.DataContext = this;
             this.start(selected, Search);
            
@@ -257,7 +259,9 @@ namespace DotNetProjectOne
             string FilmName = x.Name;
             //   film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
             Chosenfilmid = DBAccess.ChosenFilm(FilmName);
-            StartWindow.SetPage(StartWindow.pages.filmPage);         
+            StartWindow.SetPage(StartWindow.pages.filmPage);
+            StartWindow.pages.searchPage.IsEnabled = true;
+            this.Close();
             //   MessageBox.Show(ft.title);
 
         } 
@@ -266,9 +270,9 @@ private void Window_MouseDown(object sender, MouseButtonEventArgs e)
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
-        private void CloseLoginPopup_Click(object sender, RoutedEventArgs e)
+        private void CloseSearchPopup_Click(object sender, RoutedEventArgs e)
         {
-            StartWindow.pages.startPage.IsEnabled = true;
+            StartWindow.pages.searchPage.IsEnabled = true;
             this.Close();
         }   
 

@@ -256,6 +256,11 @@ namespace DotNetProjectOne
             DBAccess.vote(1,filmid);
         }
 
+        private void BackToSearchPage_Click(object sender, RoutedEventArgs e)
+        {
+            StartWindow.SetPage(StartWindow.pages.searchPage);
+        }
+
         
     }
 }

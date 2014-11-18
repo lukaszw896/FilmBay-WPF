@@ -7,15 +7,14 @@
              xmlns:c="clr-namespace:DotNetProjectOne"
               xmlns:local="clr-namespace:DotNetProjectOne"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="700"
+             d:DesignHeight="600" d:DesignWidth="700"
+             Name="searchPage"
              >
  
     <Border BorderBrush="Black" BorderThickness="3" Background="#333">
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="174*"/>
-                <ColumnDefinition Width="173*"/>
-            </Grid.ColumnDefinitions>
+            <Canvas Panel.ZIndex="3" Background="Gray" Opacity="{Binding ElementName=searchPage,Path=IsEnabled,Converter={StaticResource opacityConverter}}" IsHitTestVisible="False"></Canvas>
+        <Grid>    
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="2*"/>
@@ -172,6 +171,7 @@
                     </ListView >
                 </Grid>
             </Grid>
+        </Grid>
         </Grid>
     </Border>
 </UserControl>

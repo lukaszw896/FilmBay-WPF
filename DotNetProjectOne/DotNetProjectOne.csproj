@@ -212,6 +212,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>DNPDB.mdf</DependentUpon>
     </Content>
+    <Resource Include="Icons\back_button.png" />
     <Resource Include="Icons\empty_star.png" />
     <Resource Include="Test\Avengers.jpg" />
     <Resource Include="Icons\option_button.png" />

@@ -116,7 +116,7 @@ namespace DotNetProjectOne
 
             }
 
-
+            this.Close();
             //check if email in d
 
         }
