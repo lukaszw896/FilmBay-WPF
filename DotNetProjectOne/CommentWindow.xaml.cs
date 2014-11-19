@@ -21,15 +21,16 @@ namespace DotNetProjectOne
     {
         user_table Myself = StartWindow.Myself;
         int filmid = FilmPage.filmid;
-        public CommentWindow()
+        FilmPage filmPage;
+        public CommentWindow(FilmPage fp)
         {
             InitializeComponent();
-            
+            filmPage = fp;
 
         }
         private void CloseCommentPopup_Click(object sender, RoutedEventArgs e)
         {
-         
+            filmPage.IsEnabled = true;
             this.Close();
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -38,7 +39,7 @@ namespace DotNetProjectOne
                 this.DragMove();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             MyLINQDataContext con = new MyLINQDataContext();
             StartWindow.pages.filmPage.IsEnabled = true;
@@ -59,6 +60,8 @@ namespace DotNetProjectOne
 
                 con.Dispose();
             }
+            filmPage.IsEnabled = true;
+            this.Close();
         }
     }
 }

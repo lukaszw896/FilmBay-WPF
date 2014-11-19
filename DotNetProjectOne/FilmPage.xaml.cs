@@ -240,7 +240,7 @@ namespace DotNetProjectOne
 
         private void AddComment_Click(object sender, RoutedEventArgs e)
         {
-            CommentWindow cw = new CommentWindow();
+            CommentWindow cw = new CommentWindow(this);
             this.IsEnabled = false;
             cw.ShowDialog();
            

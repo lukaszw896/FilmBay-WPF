@@ -16,7 +16,7 @@
             <Border BorderBrush="Black" BorderThickness="3" Grid.Row="1" Margin="10">
                 <TextBox x:Name="CommentBox" BorderThickness="0" Background="Transparent" Foreground="White" FontSize="16" TextWrapping="Wrap"></TextBox>
             </Border>
-            <Button Grid.Row="2" Background="Black" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Foreground="White" FontSize="20" Width="100" Height="40" BorderThickness="0" FontWeight="Light" Click="Button_Click" >Submit</Button>
+            <Button Grid.Row="2" Background="Black" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Foreground="White" FontSize="20" Width="100" Height="40" BorderThickness="0" FontWeight="Light" Click="SubmitButton_Click" >Submit</Button>
         </Grid>
     </Border>
 
