@@ -14,7 +14,7 @@
     <Border BorderBrush="Black" BorderThickness="3" Background="#333">
         <Grid>
             <Canvas Panel.ZIndex="3" Background="Gray" Opacity="{Binding ElementName=searchPage,Path=IsEnabled,Converter={StaticResource opacityConverter}}" IsHitTestVisible="False"></Canvas>
-        <Grid>    
+        <Grid Margin="15,0,0,0" >    
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="2*"/>
@@ -26,13 +26,13 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20*"/>
                     <ColumnDefinition Width="15*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="12*"/>
                 </Grid.ColumnDefinitions>
                 <Border Margin="8" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
                     <TextBox x:Name="Search" BorderThickness="0" Background="#333" VerticalAlignment="Center" Foreground="White" FontWeight="Light" FontSize="20" Margin="10,0,0,0">Type to search</TextBox>
                 </Border>
-                <ComboBox x:Name="SearchCombo" Grid.Column="1"  Background="#333">
+                <ComboBox x:Name="SearchCombo" Grid.Column="1" FontSize="20" VerticalContentAlignment="Center" Margin="0,15"  Background="#333">
                     <ComboBoxItem Content="Title" HorizontalAlignment="Left" Width="206" IsSelected="True"/>
                     <ComboBoxItem Content="Director" HorizontalAlignment="Left" Width="206"/>
                     <ComboBoxItem Content="Writer" HorizontalAlignment="Left" Width="206"/>
@@ -56,10 +56,9 @@
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Your films</Label>
 
-                    <ListView ItemsSource="{Binding Path=mymovies}"  Grid.Row="1" x:Name="MyMoviesList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="27,10,96,29"
-                              >
+                        <ListView ItemsSource="{Binding Path=mymovies}"  Grid.Row="1" x:Name="MyMoviesList" BorderThickness="0"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="27,10,96,29" SelectionChanged="MyMovieList_SelectionChanged">
 
-                        <ListView.ItemTemplate >
+                            <ListView.ItemTemplate >
 
                             <DataTemplate DataType="{x:Type local:Img}" x:Name="mojadata">
                                 <Grid x:Name="DataGrid" >
@@ -91,10 +90,10 @@
                     </ListView >
 
                 </Grid>
-                <Popup Name="SearchPopUp"  Width="600" Height="600" Placement="Center" IsEnabled="True" IsOpen="False" >
+                <!--<Popup Name="SearchPopUp"  Width="600" Height="600" Placement="Center" IsEnabled="True" IsOpen="False" >
                     <Border BorderBrush="Black" BorderThickness="3">
                         <Grid Background="#333" >
-                            <ListView ItemsSource="{Binding Path=searchmovies}"  Grid.Row="1" x:Name="SelectionList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="23,10,131,56" SelectionChanged="SelectionList_SelectionChanged"
+                            <ListView ItemsSource="{Binding Path=searchmovies}"  Grid.Row="1" x:Name="SelectionList" BorderThickness="0"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="23,10,131,56" SelectionChanged="SelectionList_SelectionChanged"
                               >
 
                                 <ListView.ItemTemplate >
@@ -129,18 +128,15 @@
                         </Grid>
                       
                     </Border>
-                </Popup>
+                </Popup>-->
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="6*"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Top 10 films</Label>
-                    <ListView ItemsSource="{Binding Path=topmovies}"  Grid.Row="1" x:Name="TopMoviesList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10,10,81,29"
-                              >
-
-                        <ListView.ItemTemplate >
-
+                        <ListView ItemsSource="{Binding Path=topmovies}"  Grid.Row="1" x:Name="TopMoviesList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10,10,81,29" SelectionChanged="TopMovieList_SelectionChanged">
+                            <ListView.ItemTemplate>
                             <DataTemplate DataType="{x:Type local:Img}" x:Name="mzz">
                                 <Grid x:Name="DataGrid" >
                                     <Grid.ColumnDefinitions>

@@ -23,6 +23,7 @@ namespace DotNetProjectOne
         public static StartPage _startPage = new StartPage();
         public static  StartWindow window;
         public static Pages pages;
+        public static int Chosenfilmid;
         public StartWindow()
         {
             InitializeComponent();

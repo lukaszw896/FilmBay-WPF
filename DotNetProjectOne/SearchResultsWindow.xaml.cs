@@ -41,12 +41,10 @@ namespace DotNetProjectOne
             get { return _topmovies; }
             set { _topmovies = value; }
         }
-
+        SearchPage searchPage;
 
 
         //public user_table Myself = new user_table();
-        int myid;
-        public static int Chosenfilmid;
  
         public async void start(string selected,string Search)
         {
@@ -241,13 +239,15 @@ namespace DotNetProjectOne
 
 
 
-        public SearchResultsWindow(String selected,String Search)
+        public SearchResultsWindow(String selected,String Search,SearchPage sp)
         {
             InitializeComponent();
             this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
             this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
             this.DataContext = this;
             this.start(selected, Search);
+
+            searchPage = sp;
            
         }
 
@@ -258,8 +258,8 @@ namespace DotNetProjectOne
 
             string FilmName = x.Name;
             //   film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
-            Chosenfilmid = DBAccess.ChosenFilm(FilmName);
-            StartWindow.SetPage(StartWindow.pages.filmPage);
+            StartWindow.Chosenfilmid = DBAccess.ChosenFilm(FilmName);
+            StartWindow.SetPage(new FilmPage());
             StartWindow.pages.searchPage.IsEnabled = true;
             this.Close();
             //   MessageBox.Show(ft.title);
@@ -272,7 +272,7 @@ private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         }
         private void CloseSearchPopup_Click(object sender, RoutedEventArgs e)
         {
-            StartWindow.pages.searchPage.IsEnabled = true;
+            searchPage.IsEnabled = true;
             this.Close();
         }   
 

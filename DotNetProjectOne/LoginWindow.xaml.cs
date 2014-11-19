@@ -72,9 +72,10 @@ namespace DotNetProjectOne
             if(x.name!="Wrong")
             {
                 StartWindow.Myself = x;
-                MessageBox.Show(StartWindow.Myself.login);
+                //MessageBox.Show(StartWindow.Myself.login);
                 //Pages page = new Pages();
-                StartWindow.SetPage(StartWindow.pages.searchPage);
+                StartWindow.SetPage(new SearchPage());
+               // StartWindow.pages.searchPage.BeginInit();
                 // !!!!!!!!!!!!!!!!
                 this.Close();
             }

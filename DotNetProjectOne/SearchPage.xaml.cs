@@ -53,7 +53,7 @@ namespace DotNetProjectOne
     {
         Myself = StartWindow.Myself;
         myid = Myself.id_user;
-        MessageBox.Show(myid.ToString());
+        //MessageBox.Show(myid.ToString());
         List<film_table> FilmTables = await DBAccess.GetBoughtFilms(myid);
 
         foreach (film_table ft in FilmTables)
@@ -136,7 +136,7 @@ namespace DotNetProjectOne
             InitializeComponent();
             Myself = StartWindow.Myself;
             myid = Myself.id_user;
-    
+            start();
 
         }
         private void searchButton_Click(object sender, RoutedEventArgs e)
@@ -152,8 +152,7 @@ namespace DotNetProjectOne
            // SearchPopUp.IsOpen = true;
             string selected = ((ComboBoxItem)SearchCombo.SelectedItem).Content.ToString();
 
-            SearchResultsWindow srw = new SearchResultsWindow(selected, Search.Text);
-           
+            SearchResultsWindow srw = new SearchResultsWindow(selected, Search.Text,this);
             srw.ShowDialog();
 
     
@@ -163,20 +162,33 @@ namespace DotNetProjectOne
    
 
 
-        private void SelectionList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MyMovieList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
      
-            Img x = (Img)SelectionList.SelectedItem;
+            Img x = (Img)MyMoviesList.SelectedItem;
           
            
           string FilmName = x.Name;
+          StartWindow.Chosenfilmid = DBAccess.ChosenFilm(FilmName);
         //   film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
           Chosenfilmid = DBAccess.ChosenFilm(FilmName);
-           StartWindow.SetPage(StartWindow.pages.filmPage);
+           StartWindow.SetPage(new FilmPage());
 
           
          //   MessageBox.Show(ft.title);
         
+        }
+
+        private void TopMovieList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Img x = (Img)TopMoviesList.SelectedItem;
+
+
+            string FilmName = x.Name;
+            StartWindow.Chosenfilmid = DBAccess.ChosenFilm(FilmName);
+            //   film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
+            Chosenfilmid = DBAccess.ChosenFilm(FilmName);
+            StartWindow.SetPage(new FilmPage());
         }
 
       

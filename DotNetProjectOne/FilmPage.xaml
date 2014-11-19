@@ -18,7 +18,7 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="70"/>
                         <ColumnDefinition Width="7*"/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Click="BackToSearchPage_Click" BorderThickness="0" Background="Transparent"  VerticalAlignment="Center" HorizontalAlignment="Right" >
@@ -40,7 +40,7 @@
                         <!-- Grid with poster,title and short description -->
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="173"/>
                                 <ColumnDefinition Width="9*"/>
                             </Grid.ColumnDefinitions>
                             <Border Margin="10" Grid.Column="0" BorderBrush="Black" BorderThickness="3">
@@ -52,40 +52,48 @@
                                     <RowDefinition Height="3*"/>
                                 </Grid.RowDefinitions>
                                 <Label x:Name="Title" Margin="10,0,0,0" Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="27" FontWeight="Light" >The Avengers: Age of Ultron (2014)</Label>
-                                <Border Margin="10" Grid.Row="1" BorderBrush="Black" BorderThickness="3">
+                                <Grid Grid.Row="1" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                <Border Margin="10" BorderBrush="Black" BorderThickness="3">
                                     <ScrollViewer VerticalScrollBarVisibility="Auto"  >
                                         <TextBlock x:Name="Story" Margin="10" TextWrapping="Wrap" Foreground="White" FontSize="15">When Tony Stark tries to jumpstart a dormant peacekeeping program, things go awry and it is up to The Avengers to stop the villainous Ultron from enacting his terrible plans.</TextBlock>
                                     </ScrollViewer>
                                 </Border>
+                                    <Button Click="BuyFilm_Click" Grid.Column="1" Background="#3BA800" BorderThickness="0" Margin="10" FontSize="40" Foreground="White" FontWeight="Light">Buy</Button>
                             </Grid>
+                        </Grid>
+                            
                         </Grid>
                         <Border Margin="10" Grid.Row="1" BorderBrush="Black" BorderThickness="3">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
                                     <ColumnDefinition Width="7*"/>
                                 </Grid.ColumnDefinitions>
                                 <Button x:Name="OneStar" Margin="3" Background="Transparent" Grid.Column="0" BorderThickness="0" Click="OneStar_Click">
-                                    <Image Source="/Icons/empty_star.png"></Image>
+                                    <Image x:Name="OneStarImage" Source="/Icons/empty_star.png"></Image>
                                 </Button>
                                 <Button x:Name="TwoStars" Margin="3" Background="Transparent" Grid.Column="1" BorderThickness="0" Click="TwoStars_Click">
-                                    <Image Source="/Icons/empty_star.png"></Image>
+                                    <Image x:Name="TwoStarImage" Source="/Icons/empty_star.png"></Image>
                                 </Button>
 
                                 <Button x:Name="ThreeStars" Margin="3" Background="Transparent" Grid.Column="2" BorderThickness="0" Click="ThreeStars_Click">
-                                    <Image Source="/Icons/empty_star.png"></Image>
+                                    <Image x:Name="ThreeStarImage" Source="/Icons/empty_star.png"></Image>
                                 </Button>
 
                                 <Button x:Name="FourStars" Margin="3" Background="Transparent" Grid.Column="3" BorderThickness="0" Click="FourStars_Click">
-                                    <Image Source="/Icons/empty_star.png"></Image>
+                                    <Image x:Name="FourStarImage" Source="/Icons/empty_star.png"></Image>
                                 </Button>
 
                                 <Button x:Name="FiveStars" Margin="3" Background="Transparent" Grid.Column="4" BorderThickness="0" Click="FiveStars_Click">
-                                    <Image Source="/Icons/empty_star.png"></Image>
+                                    <Image x:Name="FiveStarImage" Source="/Icons/empty_star.png"></Image>
                                 </Button>
                                 <Label x:Name="RatingBox" Grid.Column="5" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light" HorizontalAlignment="Right">Rating</Label>
                             </Grid>
@@ -104,7 +112,7 @@
                                         <RowDefinition Height="9*"/>
                                     </Grid.RowDefinitions>
                                     <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Actors</Label>
-                                    <ListView ItemsSource="{Binding Path=filmactors}"  Grid.Row="1" x:Name="ActorList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
+                                    <ListView ItemsSource="{Binding Path=filmactors}"  Grid.Row="1" x:Name="ActorList" BorderThickness="0" Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
                               >
 
                                         <ListView.ItemTemplate >
@@ -122,7 +130,7 @@
                                                         <RowDefinition Height="23*"/>
                                                     </Grid.RowDefinitions>
 
-                                                    <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="100" MaxWidth="100" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
+                                                    <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="100"  MaxWidth="100" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
                                                         <Image.ToolTip>
                                                             <ToolTip Content="{Binding Name}"/>
                                                         </Image.ToolTip>
@@ -138,7 +146,7 @@
                                 </Grid>
                             </Border>
                             <Border Grid.Column="1" Margin="10" BorderBrush="Black" BorderThickness="3">
-                                <ListView  ItemsSource="{Binding Path=moviephotos}"  Grid.Row="1" x:Name="PhotoList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
+                                <ListView  ItemsSource="{Binding Path=moviephotos}"  Grid.Row="1" x:Name="PhotoList" BorderThickness="0" Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
                               >
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
@@ -206,7 +214,10 @@
                                 </Grid>
                             </Grid>
                         </Border>
+                        
                         <Border Margin="10" Grid.Row="4" BorderBrush="Black" BorderThickness="3">
+                            <Grid>
+                                <Label Background="Gray" VerticalContentAlignment="Center" Panel.ZIndex="3" Opacity="0.9" HorizontalContentAlignment="Center" FontSize="40" Foreground="#333">Will be available in next wersion</Label>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="5*"/>
@@ -214,15 +225,7 @@
                                     <RowDefinition Height="5*"/>
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="30" FontWeight="Light">Comments</Label>
-
-
-
-
-
-
-
-                                <ListView ItemsSource="{Binding Path=usercomments}"  Grid.Row="1" x:Name="CommentrList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
-                              >
+                                <ListView ItemsSource="{Binding Path=usercomments}"  Grid.Row="1" x:Name="CommentrList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10">
 
                                     <ListView.ItemTemplate >
 
@@ -247,7 +250,7 @@
 
 
                                 <Button Click="AddComment_Click" BorderThickness="0" Margin="0,0,20,0" Height="40" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" Background="gray" FontSize="15" >Add comment</Button>
-                                <Button  BorderThickness="0" Margin="0,6,138,5" Height="40" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="White" Background="gray" FontSize="15" Width="56" Click="Button_Click" >Buy</Button>
+                            </Grid>
                             </Grid>
                         </Border>
 

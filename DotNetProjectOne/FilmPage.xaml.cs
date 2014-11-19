@@ -22,7 +22,7 @@ namespace DotNetProjectOne
     /// 
     public partial class FilmPage : UserControl
     {
-        public static int filmid = SearchResultsWindow.Chosenfilmid;
+        public static int filmid;
       // public static int filmid = 1;
 
 
@@ -55,7 +55,7 @@ namespace DotNetProjectOne
 
         public async void start()
         {
-         
+            filmid = StartWindow.Chosenfilmid;
             DirectorBlock.Text = "";
             WriterBlock.Text = "";
             ProducerBlock.Text = "";
@@ -175,9 +175,53 @@ namespace DotNetProjectOne
             Story.Text = ft.storyline;
             StudioBlock.Text = ft.film_studio;
             DirectorBlock.Text = ft.director_name + " " + ft.director_surname;
+            if (ft.rating != null) { 
+            double rating=Double.Parse(Math.Round(ft.rating.Value, 2).ToString());
             if (ft.nuber_of_votes > 0)
             {
-                RatingBox.Content = Math.Round(ft.rating.Value, 2).ToString();
+                RatingBox.Content = rating;
+            }
+
+            if (rating > 1)
+            {
+                OneStarImage.Source =new BitmapImage( new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
+                if (rating > 2)
+                {
+                    TwoStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
+                    if (rating > 3)
+                    {
+                        ThreeStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
+                        if (rating > 4)
+                        {
+                            FourStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
+                            if (rating > 4.75)
+                            {
+                                FiveStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
+                            }
+                            else if (rating > 4.4)
+                            {
+                                FiveStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
+                            }
+                        }
+                        else if (rating > 3.5)
+                        {
+                            FourStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
+                        }
+                    }
+                    else if (rating > 2.5)
+                    {
+                        ThreeStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
+                    }
+                }
+                else if (rating > 1.5)
+                {
+                    TwoStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
+                }
+            }
+            else if (rating > 0.5)
+            {
+                OneStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
+            }
             }
  
         }
@@ -191,6 +235,7 @@ namespace DotNetProjectOne
             this.DataContext = this;
             InitializeComponent();
             this.start();
+
            
         }
 
@@ -206,7 +251,7 @@ namespace DotNetProjectOne
 
 
         // An event to buy a movie, checks users id and adds the film to users bought movies list
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BuyFilm_Click(object sender, RoutedEventArgs e)
         {
             /*
             MyLINQDataContext con = new MyLINQDataContext();
@@ -258,7 +303,7 @@ namespace DotNetProjectOne
 
         private void BackToSearchPage_Click(object sender, RoutedEventArgs e)
         {
-            StartWindow.SetPage(StartWindow.pages.searchPage);
+            StartWindow.SetPage(new SearchPage());
         }
 
         
