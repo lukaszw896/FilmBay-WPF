@@ -163,10 +163,7 @@ namespace DotNetProjectOne
                 return composerid;
             });
         }
-        public static void CreateFilm()
-        {
 
-        }
 
         public async static Task<int> CreateLanguage(String Name)
         {
@@ -636,6 +633,17 @@ namespace DotNetProjectOne
             });
 
         }
+        public async static Task<user_table> LoadUserFromId(int id)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+               user_table tab;
+                tab = con.user_tables.AsParallel().Where(s => s.id_user == id).FirstOrDefault();
+                return tab;
+            });
+
+        }
         public async static Task<actor_table> LoadActorFromId(int id)
         {
             return await Task.Run(() =>
@@ -659,26 +667,28 @@ namespace DotNetProjectOne
 
 
 
-        public static void BuyFilm(int filmid, int userid)
+        public async static Task<bool> BuyFilm(int filmid, int userid)
         {
+            return await Task.Run(() =>
+           {
+               MyLINQDataContext con = new MyLINQDataContext();
+               bought_films_table bft = new bought_films_table();
+               bool Alreadybought = (con.bought_films_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user == userid).Count()) > 0;
+               if (Alreadybought == true)
+               {
+                   con.Dispose();
+                   return true ;
+               }
+               else
+               {
+                   bft.id_film = filmid;
+                   bft.id_user = userid;
+                   DBAccess.AddToBoughtFilms(bft);
+                   con.Dispose();
+                   return false;
+               }
 
-            MyLINQDataContext con = new MyLINQDataContext();
-            bought_films_table bft = new bought_films_table();
-            bool Alreadybought = (con.bought_films_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user == userid).Count()) > 0;
-            if (Alreadybought == true)
-            {
-                MessageBox.Show("You already have this movie!");
-                con.Dispose();
-            }
-            else
-            {
-                bft.id_film = filmid;
-                bft.id_user = userid;
-                DBAccess.AddToBoughtFilms(bft);
-                MessageBox.Show("Have a nice day!");
-                con.Dispose();
-            }
-
+           });
         }
         public async static void vote(int rating, int filmid)
         {
@@ -691,6 +701,7 @@ namespace DotNetProjectOne
             }
             else
             { ft.nuber_of_votes++; }
+
             if (ft.rating == null)
             { ft.rating = rating; }
             else
