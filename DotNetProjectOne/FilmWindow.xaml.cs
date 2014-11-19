@@ -22,15 +22,15 @@ namespace DotNetProjectOne
     {
 
 
-        List<Actor> actors = new List<Actor>();
-        List<Writer> writers = new List<Writer>();
-        List<Producer> producers = new List<Producer>();
-        List<Composer> composers = new List<Composer>();
+        List<DotNetProjectOne.ObjectClasses.Actor> actors = new List<DotNetProjectOne.ObjectClasses.Actor>();
+        List<DotNetProjectOne.ObjectClasses.Writer> writers = new List<DotNetProjectOne.ObjectClasses.Writer>();
+        List<DotNetProjectOne.ObjectClasses.Producer> producers = new List<DotNetProjectOne.ObjectClasses.Producer>();
+        List<DotNetProjectOne.ObjectClasses.Composer> composers = new List<DotNetProjectOne.ObjectClasses.Composer>();
         String APhoto;
         String Poster;
         List<String> MoviePhotos = new List<String>();
-        List<ALanguage> Languages = new List<ALanguage>();
-        List<Genre> genres = new List<Genre>();
+        List<DotNetProjectOne.ObjectClasses.ALanguage> Languages = new List<DotNetProjectOne.ObjectClasses.ALanguage>();
+        List<DotNetProjectOne.ObjectClasses.Genre> genres = new List<DotNetProjectOne.ObjectClasses.Genre>();
         public FilmWindow()
         {
             InitializeComponent();
@@ -211,14 +211,14 @@ namespace DotNetProjectOne
                     //      actorfilmtable.film_table = dane;
 
                     //adding actors from the grid to the list, adding currents film ID to these actors.
-                    foreach (Actor a in actors)
+                    foreach (DotNetProjectOne.ObjectClasses.Actor a in actors)
                     {
                         int actorid = await DBAccess.CreateActor(a.Name, a.Surname, a.Photo);
                         actor_film_table actorfilmtable = DBAccess.CreateActorFilmTable(filmid,actorid);
 
                     }
 
-                    foreach (Writer w in writers)
+                    foreach (DotNetProjectOne.ObjectClasses.Writer w in writers)
                     {
 
                         int writerid = await DBAccess.CreateWriter(w.WName, w.WSurname);
@@ -231,7 +231,7 @@ namespace DotNetProjectOne
                     }
 
                     //adding composers to music_creator table and to reference connected table film_music_creator table
-                    foreach (Composer c in composers)
+                    foreach (DotNetProjectOne.ObjectClasses.Composer c in composers)
                     {
                         int composerid = await DBAccess.CreateComposer(c.CName, c.CSurname);
                         film_music_creator filmcomposer = DBAccess.CreateComposerFilmTable(filmid, composerid);
@@ -242,7 +242,7 @@ namespace DotNetProjectOne
 
 
                     //adding producers to the producers table.
-                    foreach (Producer p in producers)
+                    foreach (DotNetProjectOne.ObjectClasses.Producer p in producers)
                     {
                         DBAccess.CreateProducer(p.PName, p.PSurname, filmid);
                     }
@@ -257,7 +257,7 @@ namespace DotNetProjectOne
               
                     }
 
-                    foreach (ALanguage c in Languages)
+                    foreach (DotNetProjectOne.ObjectClasses.ALanguage c in Languages)
                     {
 
                         int langid = await DBAccess.CreateLanguage(c.LName);
@@ -265,7 +265,7 @@ namespace DotNetProjectOne
 
                  
                     }
-                    foreach (Genre c in genres)
+                    foreach (DotNetProjectOne.ObjectClasses.Genre c in genres)
                     {
 
                         int genreid = await DBAccess.CreateGenre(c.GName);
@@ -322,44 +322,14 @@ namespace DotNetProjectOne
         {
             ActorPopUp.IsOpen = false;
         }
-        public class Actor
-        {
-            public string Name { get; set; }
-            public string Surname { get; set; }
-            public string Photo { get; set; }
-        }
 
-        public class Writer
-        {
-            public string WName { get; set; }
-            public string WSurname { get; set; }
-        }
-        public class Producer
-        {
-            public string PName { get; set; }
-            public string PSurname { get; set; }
-        }
-
-        public class Composer
-        {
-            public string CName { get; set; }
-            public string CSurname { get; set; }
-        }
-        public class ALanguage
-        {
-            public string LName { get; set; }
-        }
-        public class Genre
-        {
-            public string GName { get; set; }
-        }
 
 
         //Adding Actor to actorgrid
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-            Actor a = new Actor();
+            DotNetProjectOne.ObjectClasses.Actor a = new DotNetProjectOne.ObjectClasses.Actor();
             a.Name = ActorName.Text;
             a.Surname = ActorSurname.Text;
             if(APhoto!=null)
@@ -393,7 +363,7 @@ namespace DotNetProjectOne
         //Adding Writers to DataGrid
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Writer w = new Writer();
+            DotNetProjectOne.ObjectClasses.Writer w = new DotNetProjectOne.ObjectClasses.Writer();
             w.WName = WriterName.Text;
             w.WSurname = WriterSurname.Text;
             bool alreadyExists = writers.Any(x => x.WName == WriterName.Text && x.WSurname == WriterSurname.Text);
@@ -439,7 +409,7 @@ namespace DotNetProjectOne
         //Adding Producers to DataGrid
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            Producer a = new Producer();
+            DotNetProjectOne.ObjectClasses.Producer a = new DotNetProjectOne.ObjectClasses.Producer();
             a.PName = ProducerName.Text;
             a.PSurname = ProducerSurname.Text;
             bool alreadyExists = producers.Any(x => x.PName == ProducerName.Text && x.PSurname == ProducerSurname.Text);
@@ -466,7 +436,7 @@ namespace DotNetProjectOne
 //Adding Composers to DataGrid
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
-            Composer c = new Composer();
+            DotNetProjectOne.ObjectClasses.Composer c = new DotNetProjectOne.ObjectClasses.Composer();
             c.CName = ComposerName.Text;
             c.CSurname = ComposerSurname.Text;
             bool alreadyExists = composers.Any(x => x.CName == ComposerName.Text && x.CSurname == ComposerSurname.Text);
@@ -576,7 +546,7 @@ namespace DotNetProjectOne
 
         private void Button_Click_15(object sender, RoutedEventArgs e)
         {
-            ALanguage a = new ALanguage();
+            DotNetProjectOne.ObjectClasses.ALanguage a = new DotNetProjectOne.ObjectClasses.ALanguage();
             a.LName = Lang.Text;
             bool alreadyExists = Languages.Any(x => x.LName == Lang.Text);
             if (alreadyExists == false)
@@ -636,7 +606,7 @@ namespace DotNetProjectOne
 
         private void Button_Click_17(object sender, RoutedEventArgs e)
         {
-            Genre g = new Genre();
+            DotNetProjectOne.ObjectClasses.Genre g = new DotNetProjectOne.ObjectClasses.Genre();
             g.GName= GenreName.Text;
 
             bool alreadyExists = genres.Any(x => x.GName == GenreName.Text);

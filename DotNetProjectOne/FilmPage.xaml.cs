@@ -155,18 +155,17 @@ namespace DotNetProjectOne
             }
 
             //Look for users that added comments, display comments
-            /*
-            List<comment_table> Comments = DBAccess.GetComments(filmid);
-            foreach(comment_table comment in Comments)
+           
+            List<comment_table> Comments = await DBAccess.GetComments(filmid);
+            foreach (comment_table comment in Comments)
             {
-                String Comment = comment.comment;
-                String Name = comment.user_table.login+":";
-               
-            //    UserComment c = new UserComment(Name, Comment);
-            //    usercomments.Add(c);
-            
-            //}
-            */
+
+               String Comment = comment.comment;
+               user_table user = await DBAccess.LoadUserFromId(comment.id_user);
+               String Name = user.login + ":";
+               UserComment c = new UserComment(Name, Comment);
+               usercomments.Add(c);
+            }
             //Post basic info about the movie from the movie table
 
             YearBlock.Text = ft.release_date.Value.ToShortDateString();
@@ -251,7 +250,8 @@ namespace DotNetProjectOne
 
 
         // An event to buy a movie, checks users id and adds the film to users bought movies list
-        private void BuyFilm_Click(object sender, RoutedEventArgs e)
+     
+        private async void  BuyFilm_Click(object sender, RoutedEventArgs e)
         {
             /*
             MyLINQDataContext con = new MyLINQDataContext();
@@ -271,7 +271,14 @@ namespace DotNetProjectOne
             con.Dispose();
             }
              * */
-           DBAccess.BuyFilm(filmid, Myself.id_user);
+            bool check = await DBAccess.BuyFilm(filmid, Myself.id_user);
+            if (check==true)
+            {
+                MessageBox.Show("You already have this movie!");
+            }
+            else
+                MessageBox.Show("Have a nice day!");
+     
         }
 
      //Function to vote for the movie, depending on which star you clicked

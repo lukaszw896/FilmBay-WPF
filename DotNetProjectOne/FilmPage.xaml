@@ -217,7 +217,7 @@
                         
                         <Border Margin="10" Grid.Row="4" BorderBrush="Black" BorderThickness="3">
                             <Grid>
-                                <Label Background="Gray" VerticalContentAlignment="Center" Panel.ZIndex="3" Opacity="0.9" HorizontalContentAlignment="Center" FontSize="40" Foreground="#333">Will be available in next wersion</Label>
+                              <!--  <Label Background="Gray" VerticalContentAlignment="Center" Panel.ZIndex="3" Opacity="0.9" HorizontalContentAlignment="Center" FontSize="40" Foreground="#333">Will be available in next version</Label>-->
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="5*"/>
