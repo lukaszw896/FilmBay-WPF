@@ -7,44 +7,44 @@ using System.Windows;
 
 namespace DotNetProjectOne
 {
-   public static class DBAccess
+    public static class DBAccess
     {
-       public static int CreateFilm(String directorname, String directorsurname, double price, string studio, string story,
-           string title, string originaltitle, string originallanguage, TimeSpan duration, string posterurl,
-           int agerestriction, string publisher, DateTime releasedate)
-       {
-           film_table dane = new film_table();
+        public static int CreateFilm(String directorname, String directorsurname, double price, string studio, string story,
+            string title, string originaltitle, string originallanguage, TimeSpan duration, string posterurl,
+            int agerestriction, string publisher, DateTime releasedate)
+        {
+            film_table dane = new film_table();
 
-           if (studio.Trim() != "")
-           {
-               dane.film_studio = studio;
-           }
-           if (story.Trim() != "")
-           {
-               dane.storyline = story;
-           }
+            if (studio.Trim() != "")
+            {
+                dane.film_studio = studio;
+            }
+            if (story.Trim() != "")
+            {
+                dane.storyline = story;
+            }
 
-           dane.director_name = directorname;
-           dane.director_surname = directorsurname;
-           dane.film_price = price;
+            dane.director_name = directorname;
+            dane.director_surname = directorsurname;
+            dane.film_price = price;
 
-           dane.title = title;
-           dane.title_orginal = originaltitle;
-           dane.orginal_language = originallanguage;
-           dane.duration = duration;
+            dane.title = title;
+            dane.title_orginal = originaltitle;
+            dane.orginal_language = originallanguage;
+            dane.duration = duration;
 
-           if (posterurl == null)
-           {
-               posterurl = "stockphoto.jpg";
-           }
+            if (posterurl == null)
+            {
+                posterurl = "stockphoto.jpg";
+            }
 
-           dane.poster_url = posterurl;
-           dane.age_restriction = agerestriction;
-           dane.publisher = publisher;
-           dane.release_date = releasedate;
-           DBAccess.AddFilm(dane);
-           return dane.id_film;
-       }
+            dane.poster_url = posterurl;
+            dane.age_restriction = agerestriction;
+            dane.publisher = publisher;
+            dane.release_date = releasedate;
+            DBAccess.AddFilm(dane);
+            return dane.id_film;
+        }
 
 
 
@@ -222,7 +222,7 @@ namespace DotNetProjectOne
                 return photoid;
             });
         }
-        public  static void CreateProducer(String Name, String Surname, int filmid)
+        public static void CreateProducer(String Name, String Surname, int filmid)
         {
 
             producer_table producer = new producer_table();
@@ -235,7 +235,7 @@ namespace DotNetProjectOne
 
             if (nameinDB == false)
             {
-               AddProducer(producer);
+                AddProducer(producer);
             }
 
         }
@@ -277,7 +277,7 @@ namespace DotNetProjectOne
 
 
         }
-        public static  film_photos_table CreatePhotosFilmTable(int filmid, int photoid)
+        public static film_photos_table CreatePhotosFilmTable(int filmid, int photoid)
         {
             film_photos_table filmphoto = new film_photos_table();
             filmphoto.id_film = filmid;
@@ -314,7 +314,7 @@ namespace DotNetProjectOne
 
 
         #region
-        public async static void AddFilm(film_table t)
+        public static void AddFilm(film_table t)
         {
             using (MyLINQDataContext conn = new MyLINQDataContext())
             {
@@ -530,31 +530,33 @@ namespace DotNetProjectOne
         }
         public async static Task<List<music_creator_table>> GetComposers(int filmid)
         {
-            return await Task.Run(() =>{
-            MyLINQDataContext con = new MyLINQDataContext();
-            List<music_creator_table> Composers = new List<music_creator_table>();
-            Composers = (from a in con.music_creator_tables
-                         join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
-                         join f in con.film_tables on at.id_film equals f.id_film
-                         where f.id_film == filmid
-                         select a).ToList();
-            con.Dispose();
-            return Composers;
-        });
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                List<music_creator_table> Composers = new List<music_creator_table>();
+                Composers = (from a in con.music_creator_tables
+                             join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
+                             join f in con.film_tables on at.id_film equals f.id_film
+                             where f.id_film == filmid
+                             select a).ToList();
+                con.Dispose();
+                return Composers;
+            });
 
         }
         public async static Task<List<producer_table>> GetProducers(int filmid)
         {
-            return await Task.Run(() =>{
-            List<producer_table> Producers = new List<producer_table>();
-            MyLINQDataContext con = new MyLINQDataContext();
-            Producers = (from a in con.producer_tables
-                         join f in con.film_tables on a.id_film equals f.id_film
-                         where f.id_film == filmid
-                         select a).ToList();
-            con.Dispose();
-            return Producers;
-        });
+            return await Task.Run(() =>
+            {
+                List<producer_table> Producers = new List<producer_table>();
+                MyLINQDataContext con = new MyLINQDataContext();
+                Producers = (from a in con.producer_tables
+                             join f in con.film_tables on a.id_film equals f.id_film
+                             where f.id_film == filmid
+                             select a).ToList();
+                con.Dispose();
+                return Producers;
+            });
 
         }
         public async static Task<List<photos_table>> GetPhotos(int filmid)
@@ -588,16 +590,78 @@ namespace DotNetProjectOne
                 return Comments;
             });
         }
-        public static film_table LoadFilmFromId(int filmid)
+        public async static Task<film_table> LoadFilmFromId(int filmid)
         {
-            MyLINQDataContext con = new MyLINQDataContext();
-            film_table ft;
-            ft = con.film_tables.AsParallel().Where(s => s.id_film == filmid).FirstOrDefault();
-            return ft;
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                film_table ft;
+                ft = con.film_tables.AsParallel().Where(s => s.id_film == filmid).FirstOrDefault();
+                return ft;
+            });
         }
-       public static void BuyFilm(int filmid, int userid)
+
+
+        public async static Task<writers_table> LoadWriterFromId(int writerid)
         {
-          
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                writers_table tab;
+                tab = con.writers_tables.AsParallel().Where(s => s.id_writer == writerid).FirstOrDefault();
+                return tab;
+            });
+
+        }
+
+        public async static Task<genere_table> LoadGenreFromId(int genreid)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                genere_table tab;
+                tab = con.genere_tables.AsParallel().Where(s => s.id_genere == genreid).FirstOrDefault();
+                return tab;
+            });
+
+        }
+        public async static Task<music_creator_table> LoadComposerFromId(int id)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                music_creator_table tab;
+                tab = con.music_creator_tables.AsParallel().Where(s => s.id_music_creator == id).FirstOrDefault();
+                return tab;
+            });
+
+        }
+        public async static Task<actor_table> LoadActorFromId(int id)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                actor_table tab;
+                tab = con.actor_tables.AsParallel().Where(s => s.id_actor == id).FirstOrDefault();
+                return tab;
+            });
+        }
+        public async static Task<other_language_table> LoadLanguageFromId(int id)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                other_language_table tab;
+                tab = con.other_language_tables.AsParallel().Where(s => s.id_other_language == id).FirstOrDefault();
+                return tab;
+            });
+        }
+
+
+
+        public static void BuyFilm(int filmid, int userid)
+        {
+
             MyLINQDataContext con = new MyLINQDataContext();
             bought_films_table bft = new bought_films_table();
             bool Alreadybought = (con.bought_films_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user == userid).Count()) > 0;
@@ -614,230 +678,230 @@ namespace DotNetProjectOne
                 MessageBox.Show("Have a nice day!");
                 con.Dispose();
             }
-      
+
         }
-       public static void vote(int rating, int filmid)
-       {
-           MyLINQDataContext con = new MyLINQDataContext();
-           film_table ft = DBAccess.LoadFilmFromId(filmid);
+        public async static void vote(int rating, int filmid)
+        {
+            MyLINQDataContext con = new MyLINQDataContext();
+            film_table ft = await DBAccess.LoadFilmFromId(filmid);
 
-           if (ft.nuber_of_votes == null)
-           {
-               ft.nuber_of_votes = 1;
-           }
-           else
-           { ft.nuber_of_votes++; }
-           if (ft.rating == null)
-           { ft.rating = rating; }
-           else
-           { ft.rating = (ft.rating * (ft.nuber_of_votes - 1) + rating) / ft.nuber_of_votes; }
+            if (ft.nuber_of_votes == null)
+            {
+                ft.nuber_of_votes = 1;
+            }
+            else
+            { ft.nuber_of_votes++; }
+            if (ft.rating == null)
+            { ft.rating = rating; }
+            else
+            { ft.rating = (ft.rating * (ft.nuber_of_votes - 1) + rating) / ft.nuber_of_votes; }
 
-           DBAccess.UpdateRating(ft);
-           con.Dispose();
-       }
+            DBAccess.UpdateRating(ft);
+            con.Dispose();
+        }
 
-       public static async Task<user_table> Userlogin(String login, String password)
-       {
-           MyLINQDataContext con = new MyLINQDataContext();
-           user_table x = new user_table();
-           return await Task.Run(() =>
-               {
-                   bool logininDB = (from p in con.user_tables where p.login == login select p).Count() > 0;
-                   if (logininDB == false)
-                   {
-                       MessageBox.Show("Wrong login");
-                   }
-                   else if (logininDB == true)
-                   {
-                       x = (from p in con.user_tables where p.login == login select p).First();
-                       if (x.password != password)
-                       {
+        public static async Task<user_table> Userlogin(String login, String password)
+        {
+            MyLINQDataContext con = new MyLINQDataContext();
+            user_table x = new user_table();
+            return await Task.Run(() =>
+            {
+                bool logininDB = (from p in con.user_tables where p.login == login select p).Count() > 0;
+                if (logininDB == false)
+                {
+                    MessageBox.Show("Wrong login");
+                }
+                else if (logininDB == true)
+                {
+                    x = (from p in con.user_tables where p.login == login select p).First();
+                    if (x.password != password)
+                    {
 
-                           MessageBox.Show("Wrong Password");
-                           x.name = "Wrong";
-                           return x;
-                       }
-                       else
-                       {
-                           MessageBox.Show("Hello!");
-                           return x;
+                        MessageBox.Show("Wrong Password");
+                        x.name = "Wrong";
+                        return x;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hello!");
+                        return x;
 
-                       }
+                    }
 
-                   }
-                   x.name = "Wrong";
-                   return x;
-               });
+                }
+                x.name = "Wrong";
+                return x;
+            });
 
-       }
+        }
 
-       public static user_table CreateUser(string password, string name, string surname, string login, string email, int age)
-       {
-           user_table user = new user_table();
-           user.password = password;
-           user.name = name;
-           user.surname = surname;
-           user.login = login;
-           user.e_mail = email;
-           user.age = age;
-           DBAccess.AddUser(user);
-           return user;
+        public static user_table CreateUser(string password, string name, string surname, string login, string email, int age)
+        {
+            user_table user = new user_table();
+            user.password = password;
+            user.name = name;
+            user.surname = surname;
+            user.login = login;
+            user.e_mail = email;
+            user.age = age;
+            DBAccess.AddUser(user);
+            return user;
 
-       }
-       public static  async Task<string> registercheck(string login, string email)
-       {
-           return await Task.Run(() =>
-           {
-               MyLINQDataContext con = new MyLINQDataContext();
+        }
+        public static async Task<string> registercheck(string login, string email)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
 
-               //check if login in DB
-               bool logininDB = (from p in con.user_tables where p.login == login select p).Count() > 0;
-               bool emailinDB = (from p in con.user_tables where p.e_mail == email select p).Count() > 0;
-               string problem = "";
-               con.Dispose();
-               if (logininDB == true)
-               {
-                   problem = "login";
-                   return problem;
-               }
-               else if (emailinDB == true)
-               {
-                   problem = "email";
-                   return problem;
-               }
-               return problem;
-           });
+                //check if login in DB
+                bool logininDB = (from p in con.user_tables where p.login == login select p).Count() > 0;
+                bool emailinDB = (from p in con.user_tables where p.e_mail == email select p).Count() > 0;
+                string problem = "";
+                con.Dispose();
+                if (logininDB == true)
+                {
+                    problem = "login";
+                    return problem;
+                }
+                else if (emailinDB == true)
+                {
+                    problem = "email";
+                    return problem;
+                }
+                return problem;
+            });
 
-       }
-       public async static Task<List<film_table>> GetBoughtFilms(int id)
-       {
-           return await Task.Run(() =>
-       {
-           MyLINQDataContext con = new MyLINQDataContext();
-           List<film_table> FilmTables = (from u in con.user_tables
-                                          join bf in con.bought_films_tables on u.id_user equals bf.id_user
-                                          join f in con.film_tables on bf.id_film equals f.id_film
-                                          where bf.id_user == id
-                                          select f).ToList();
-           con.Dispose();
-           return FilmTables;
-             });
+        }
+        public async static Task<List<film_table>> GetBoughtFilms(int id)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                List<film_table> FilmTables = (from u in con.user_tables
+                                               join bf in con.bought_films_tables on u.id_user equals bf.id_user
+                                               join f in con.film_tables on bf.id_film equals f.id_film
+                                               where bf.id_user == id
+                                               select f).ToList();
+                con.Dispose();
+                return FilmTables;
+            });
 
-       }
+        }
 
-       public async static Task<List<film_table>> GetTopFilms(int low, int top)
-       {
-           return await Task.Run(() =>
-           {
-               MyLINQDataContext con = new MyLINQDataContext();
-               List<film_table> FilmTables = new List<film_table>();
-               FilmTables = con.film_tables.AsParallel().Where(s => s.rating > low && s.rating <= top).ToList();
-               con.Dispose();
-               return FilmTables;
-           });
-       }
+        public async static Task<List<film_table>> GetTopFilms(int low, int top)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                List<film_table> FilmTables = new List<film_table>();
+                FilmTables = con.film_tables.AsParallel().Where(s => s.rating > low && s.rating <= top).ToList();
+                con.Dispose();
+                return FilmTables;
+            });
+        }
 
-       public async static Task<List<film_table>> SearchedByTitle(string searchedtitle)
-       {
-             return await Task.Run(() =>
-                 {
-           MyLINQDataContext con = new MyLINQDataContext();
+        public async static Task<List<film_table>> SearchedByTitle(string searchedtitle)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
 
-           List<film_table> FilmTables = new List<film_table>();
+                List<film_table> FilmTables = new List<film_table>();
 
-           FilmTables = (from p in con.film_tables where p.title == searchedtitle select p).ToList();
-           con.Dispose();
-           return FilmTables;
-       });
-       }
+                FilmTables = (from p in con.film_tables where p.title == searchedtitle select p).ToList();
+                con.Dispose();
+                return FilmTables;
+            });
+        }
 
-       public async static Task<List<film_table>> SearchedByDirector(string name, string surname)
-       {
-           return await Task.Run(() =>
-               {
-                   MyLINQDataContext con = new MyLINQDataContext();
-                   List<film_table> FilmTables = new List<film_table>();
-                   FilmTables = (from p in con.film_tables
-                                 where p.director_name == name && p.director_surname == surname
+        public async static Task<List<film_table>> SearchedByDirector(string name, string surname)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                List<film_table> FilmTables = new List<film_table>();
+                FilmTables = (from p in con.film_tables
+                              where p.director_name == name && p.director_surname == surname
 
-                                 select p).ToList();
-                   con.Dispose();
-                   return FilmTables;
-               });
-       }
-       public async static Task<List<film_table>> SearchedByActor(string name, string surname)
-       {
-           return await Task.Run(() =>
-               {
-                   MyLINQDataContext con = new MyLINQDataContext();
-                   List<film_table> FilmTables = new List<film_table>();
-                   FilmTables = (from a in con.actor_tables
-                                 join at in con.actor_film_tables on a.id_actor equals at.id_actor
-                                 join f in con.film_tables on at.id_film equals f.id_film
-                                 where a.actor_name == name && a.actor_surname == surname
-                                 select f).ToList();
-                   con.Dispose();
-                   return FilmTables;
-               });
+                              select p).ToList();
+                con.Dispose();
+                return FilmTables;
+            });
+        }
+        public async static Task<List<film_table>> SearchedByActor(string name, string surname)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                List<film_table> FilmTables = new List<film_table>();
+                FilmTables = (from a in con.actor_tables
+                              join at in con.actor_film_tables on a.id_actor equals at.id_actor
+                              join f in con.film_tables on at.id_film equals f.id_film
+                              where a.actor_name == name && a.actor_surname == surname
+                              select f).ToList();
+                con.Dispose();
+                return FilmTables;
+            });
 
-       }
+        }
 
-       public async static Task<List<film_table>> SearchedByWriter(string name, string surname)
-       {
-           return await Task.Run(() =>
-           {
+        public async static Task<List<film_table>> SearchedByWriter(string name, string surname)
+        {
+            return await Task.Run(() =>
+            {
 
-               MyLINQDataContext con = new MyLINQDataContext();
-               List<film_table> FilmTables = new List<film_table>();
-               FilmTables = (from a in con.writers_tables
-                             join at in con.film_writers_tables on a.id_writer equals at.id_writer
-                             join f in con.film_tables on at.id_film equals f.id_film
-                             where a.writer_name == name && a.writer_surname == surname
-                             select f).ToList();
-               con.Dispose();
-               return FilmTables;
-           });
-       }
+                MyLINQDataContext con = new MyLINQDataContext();
+                List<film_table> FilmTables = new List<film_table>();
+                FilmTables = (from a in con.writers_tables
+                              join at in con.film_writers_tables on a.id_writer equals at.id_writer
+                              join f in con.film_tables on at.id_film equals f.id_film
+                              where a.writer_name == name && a.writer_surname == surname
+                              select f).ToList();
+                con.Dispose();
+                return FilmTables;
+            });
+        }
 
-       public async static Task<List<film_table>> SearchedByProducer(string name, string surname)
-       {
-           return await Task.Run(() =>
-           {
-               MyLINQDataContext con = new MyLINQDataContext();
-               List<film_table> FilmTables = new List<film_table>();
-               FilmTables = (from a in con.producer_tables
-                             join f in con.film_tables on a.id_film equals f.id_film
-                             where a.producer_name == name && a.producer_surname == surname
-                             select f).ToList();
-               con.Dispose();
-               return FilmTables;
-           });
-       }
+        public async static Task<List<film_table>> SearchedByProducer(string name, string surname)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                List<film_table> FilmTables = new List<film_table>();
+                FilmTables = (from a in con.producer_tables
+                              join f in con.film_tables on a.id_film equals f.id_film
+                              where a.producer_name == name && a.producer_surname == surname
+                              select f).ToList();
+                con.Dispose();
+                return FilmTables;
+            });
+        }
 
-       public async static Task<List<film_table>> SearchedByComposer(string name, string surname)
-       {
-           return await Task.Run(() =>
-           {
-               MyLINQDataContext con = new MyLINQDataContext();
-               List<film_table> FilmTables = new List<film_table>();
-               FilmTables = (from a in con.music_creator_tables
-                             join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
-                             join f in con.film_tables on at.id_film equals f.id_film
-                             where a.music_creator_name == name && a.music_creator_surname == surname
-                             select f).ToList();
-               con.Dispose();
-               return FilmTables;
-           });
-       }
+        public async static Task<List<film_table>> SearchedByComposer(string name, string surname)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                List<film_table> FilmTables = new List<film_table>();
+                FilmTables = (from a in con.music_creator_tables
+                              join at in con.film_music_creators on a.id_music_creator equals at.id_music_creator
+                              join f in con.film_tables on at.id_film equals f.id_film
+                              where a.music_creator_name == name && a.music_creator_surname == surname
+                              select f).ToList();
+                con.Dispose();
+                return FilmTables;
+            });
+        }
 
 
-       public static int ChosenFilm(string FilmName)
-       {
-           MyLINQDataContext con = new MyLINQDataContext();
-           film_table ft = con.film_tables.AsParallel().Where(s => s.title == FilmName).First();
-           con.Dispose();
-           return ft.id_film;
-       }
+        public static int ChosenFilm(string FilmName)
+        {
+            MyLINQDataContext con = new MyLINQDataContext();
+            film_table ft = con.film_tables.AsParallel().Where(s => s.title == FilmName).First();
+            con.Dispose();
+            return ft.id_film;
+        }
 
 
 

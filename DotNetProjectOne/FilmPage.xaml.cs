@@ -64,7 +64,7 @@ namespace DotNetProjectOne
             StudioBlock.Text = "";
 
             //    MyLINQDataContext con = new MyLINQDataContext();
-            film_table ft = DBAccess.LoadFilmFromId(filmid);
+            film_table ft =await DBAccess.LoadFilmFromId(filmid);
 
             string path;
             path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;

@@ -1,0 +1,9 @@
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\obj\Debug\DotNetProjectTest.csprojResolveAssemblyReference.cache
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Debug\DNPDB.mdf
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Debug\DNPDB_log.ldf
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Debug\DotNetProjectTest.dll
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Debug\DotNetProjectTest.pdb
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Debug\DotNetProjectOne.exe
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Debug\DotNetProjectOne.pdb
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\obj\Debug\DotNetProjectTest.dll
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\obj\Debug\DotNetProjectTest.pdb
