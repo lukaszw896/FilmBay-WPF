@@ -85,7 +85,8 @@ namespace DotNetProjectOne
         private void AdminPanelButton_Click(object sender, RoutedEventArgs e)
         {
             FilmWindow w = new FilmWindow();
-            w.Show();
+            startPage.IsEnabled = false;
+            w.ShowDialog();
         }
 
         private void Age_PreviewTextInput(object sender, TextCompositionEventArgs e)

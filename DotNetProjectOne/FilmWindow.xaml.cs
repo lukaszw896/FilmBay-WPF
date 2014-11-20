@@ -34,6 +34,8 @@ namespace DotNetProjectOne
         public FilmWindow()
         {
             InitializeComponent();
+            this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
+            this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
         }
 
         private void CheckIfNumeric(TextCompositionEventArgs e)
@@ -87,19 +89,22 @@ namespace DotNetProjectOne
             {
                 MessageBox.Show("Must Give Price");
             }
-            else if (string.IsNullOrWhiteSpace(this.Duration_M.Text))
+            else if (string.IsNullOrWhiteSpace(Duration_H.Text) || int.Parse(Duration_H.Text) > 23)
             {
-                MessageBox.Show("Must give duration in minutes");
+                MessageBox.Show("Must give duration in HH:MM:SS format and film has to be shorter than 24 hours");
+                Duration_H.Clear();
             }
-            else if (string.IsNullOrWhiteSpace(this.Duration_H.Text))
+            else if (string.IsNullOrWhiteSpace(Duration_M.Text) || int.Parse(Duration_M.Text) > 59)
             {
-                MessageBox.Show("Must give duration in minutes");
+                MessageBox.Show("Must give duration in HH:MM:SS format and film has to and if it's longer than 60 min than change minutes to hours");
+                Duration_M.Clear();
             }
-            else if (string.IsNullOrWhiteSpace(this.Duration_S.Text))
+            else if (string.IsNullOrWhiteSpace(Duration_S.Text) || int.Parse(Duration_S.Text) > 59)
             {
-                MessageBox.Show("Must give duration in minutes");
+                MessageBox.Show("Must give duration in HH:MM:SS format and film has to and SS thextbox cannot have more than 59 seconds");
+                Duration_S.Clear();
             }
-            else if (string.IsNullOrWhiteSpace(this.Day.Text) || string.IsNullOrWhiteSpace(this.Month.Text) || string.IsNullOrWhiteSpace(this.Year.Text))
+            else if (string.IsNullOrWhiteSpace(Day.Text) || string.IsNullOrWhiteSpace(Month.Text) || string.IsNullOrWhiteSpace(Year.Text))
             {
                 MessageBox.Show("Must give date");
             }
@@ -127,10 +132,6 @@ namespace DotNetProjectOne
             */
             else
             {
-                MessageBox.Show("All is fine");
-
-
-
 
                 film_table dane = new film_table();
 
@@ -152,20 +153,28 @@ namespace DotNetProjectOne
                     Poster = "stockphoto.jpg";
                 }
 
-                    posterurl = Poster;
-                    int Ageres = 6;
-                    if (Age.SelectedItem != null)
-                    {
-                        Ageres = int.Parse(((ComboBoxItem)Age.SelectedItem).Content.ToString());
-                    }
-                    string publisher = "";
-                   if (Publisher.Text.Trim() != "")
+                posterurl = Poster;
+                int Ageres = 6;
+                if (Age.SelectedItem != null)
                 {
-                   publisher = Publisher.Text;
+                    Ageres = int.Parse(((ComboBoxItem)Age.SelectedItem).Content.ToString());
                 }
-                   DateTime releasedate = System.DateTime.Parse(Month.Text + "/" + Day.Text + "/" + Year.Text);
-
-                   int filmid = DBAccess.CreateFilm(DName.Text, DSubName.Text, double.Parse(Price.Text), studio, storyline, Title.Text, NTitle.Text, Language.Text, duration, posterurl, Ageres, publisher, releasedate);
+                string publisher = "";
+                if (Publisher.Text.Trim() != "")
+                {
+                    publisher = Publisher.Text;
+                }
+                DateTime releasedate;
+                try { 
+                    releasedate = System.DateTime.Parse(Month.Text + "/" + Day.Text + "/" + Year.Text);
+                }
+                catch
+                {
+                    Month.Clear(); Day.Clear(); Year.Clear();
+                    MessageBox.Show("Please insert proper date");
+                    return;
+                }
+                int filmid = DBAccess.CreateFilm(DName.Text, DSubName.Text, double.Parse(Price.Text), studio, storyline, Title.Text, NTitle.Text, Language.Text, duration, posterurl, Ageres, publisher, releasedate);
 
                 /*
                 dane.director_name = DName.Text;
@@ -204,78 +213,79 @@ namespace DotNetProjectOne
                     DBAccess.AddFilm(dane);
                     int filmid;
                  * */
-             
 
 
 
-                    //      actorfilmtable.film_table = dane;
 
-                    //adding actors from the grid to the list, adding currents film ID to these actors.
-                    foreach (DotNetProjectOne.ObjectClasses.Actor a in actors)
-                    {
-                        int actorid = await DBAccess.CreateActor(a.Name, a.Surname, a.Photo);
-                        actor_film_table actorfilmtable = DBAccess.CreateActorFilmTable(filmid,actorid);
+                //      actorfilmtable.film_table = dane;
 
-                    }
+                //adding actors from the grid to the list, adding currents film ID to these actors.
+                foreach (DotNetProjectOne.ObjectClasses.Actor a in actors)
+                {
+                    int actorid = await DBAccess.CreateActor(a.Name, a.Surname, a.Photo);
+                    actor_film_table actorfilmtable = DBAccess.CreateActorFilmTable(filmid, actorid);
 
-                    foreach (DotNetProjectOne.ObjectClasses.Writer w in writers)
-                    {
+                }
 
-                        int writerid = await DBAccess.CreateWriter(w.WName, w.WSurname);
+                foreach (DotNetProjectOne.ObjectClasses.Writer w in writers)
+                {
 
-                        film_writers_table filmwriterstable = DBAccess.CreateWriterFilmTable(filmid, writerid);
-           
-      
+                    int writerid = await DBAccess.CreateWriter(w.WName, w.WSurname);
 
-
-                    }
-
-                    //adding composers to music_creator table and to reference connected table film_music_creator table
-                    foreach (DotNetProjectOne.ObjectClasses.Composer c in composers)
-                    {
-                        int composerid = await DBAccess.CreateComposer(c.CName, c.CSurname);
-                        film_music_creator filmcomposer = DBAccess.CreateComposerFilmTable(filmid, composerid);
-                
-        
-          
-                    }
+                    film_writers_table filmwriterstable = DBAccess.CreateWriterFilmTable(filmid, writerid);
 
 
-                    //adding producers to the producers table.
-                    foreach (DotNetProjectOne.ObjectClasses.Producer p in producers)
-                    {
-                        DBAccess.CreateProducer(p.PName, p.PSurname, filmid);
-                    }
-
-                    //Adding photos to photos table and interconnecting table film_photos_table 
-                    foreach (String x in MoviePhotos)
-                    {
-                        int photoid = await DBAccess.CreatePhoto(x);
-                        film_photos_table filmphoto = DBAccess.CreatePhotosFilmTable(filmid, photoid);
-                  
-   
-              
-                    }
-
-                    foreach (DotNetProjectOne.ObjectClasses.ALanguage c in Languages)
-                    {
-
-                        int langid = await DBAccess.CreateLanguage(c.LName);
-                        film_other_language_table filmotherlanguage = DBAccess.CreateFilmLanguageTable(filmid, langid);
-
-                 
-                    }
-                    foreach (DotNetProjectOne.ObjectClasses.Genre c in genres)
-                    {
-
-                        int genreid = await DBAccess.CreateGenre(c.GName);
-                        film_genere_table filmgenre = DBAccess.CreateGenreFilmTable(filmid,genreid);
-               
-                     
-                    }
 
 
                 }
+
+                //adding composers to music_creator table and to reference connected table film_music_creator table
+                foreach (DotNetProjectOne.ObjectClasses.Composer c in composers)
+                {
+                    int composerid = await DBAccess.CreateComposer(c.CName, c.CSurname);
+                    film_music_creator filmcomposer = DBAccess.CreateComposerFilmTable(filmid, composerid);
+
+
+
+                }
+
+
+                //adding producers to the producers table.
+                foreach (DotNetProjectOne.ObjectClasses.Producer p in producers)
+                {
+                    DBAccess.CreateProducer(p.PName, p.PSurname, filmid);
+                }
+
+                //Adding photos to photos table and interconnecting table film_photos_table 
+                foreach (String x in MoviePhotos)
+                {
+                    int photoid = await DBAccess.CreatePhoto(x);
+                    film_photos_table filmphoto = DBAccess.CreatePhotosFilmTable(filmid, photoid);
+
+
+
+                }
+
+                foreach (DotNetProjectOne.ObjectClasses.ALanguage c in Languages)
+                {
+
+                    int langid = await DBAccess.CreateLanguage(c.LName);
+                    film_other_language_table filmotherlanguage = DBAccess.CreateFilmLanguageTable(filmid, langid);
+
+
+                }
+                foreach (DotNetProjectOne.ObjectClasses.Genre c in genres)
+                {
+
+                    int genreid = await DBAccess.CreateGenre(c.GName);
+                    film_genere_table filmgenre = DBAccess.CreateGenreFilmTable(filmid, genreid);
+
+
+                }
+
+                MessageBox.Show("All is fine");
+
+            }
 
             }
         
@@ -631,7 +641,13 @@ namespace DotNetProjectOne
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+            StartWindow.pages.startPage.IsEnabled = true;
             this.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            StartWindow.pages.startPage.IsEnabled = true;
         }
     }
 }

@@ -13,7 +13,7 @@
             <Button Click="CloseSearchPopup_Click" BorderThickness="0" Background="Transparent" Height="30" Width="30" VerticalAlignment="Top" HorizontalAlignment="Right" >
                 <Image Source="/Icons/close_button.png"></Image>
             </Button>
-            <ListView Grid.Row="1" ItemsSource="{Binding Path=searchmovies}"  x:Name="SelectionList"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="30" SelectionChanged="SelectionList_SelectionChanged"
+            <ListView Grid.Row="1" ItemsSource="{Binding Path=searchmovies}"  x:Name="SelectionList" BorderThickness="0" Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="30" SelectionChanged="SelectionList_SelectionChanged"
                               >
 
                 <ListView.ItemTemplate >

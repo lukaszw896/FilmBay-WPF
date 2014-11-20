@@ -55,7 +55,6 @@ namespace DotNetProjectOne
         myid = Myself.id_user;
         //MessageBox.Show(myid.ToString());
         List<film_table> FilmTables = await DBAccess.GetBoughtFilms(myid);
-
         foreach (film_table ft in FilmTables)
         {
 
@@ -189,6 +188,29 @@ namespace DotNetProjectOne
             //   film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
             Chosenfilmid = DBAccess.ChosenFilm(FilmName);
             StartWindow.SetPage(new FilmPage());
+        }
+
+        private void searchPage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            disposeControl.logOutButton.Visibility = Visibility.Hidden;
+            disposeControl.visibility = true;
+            
+        }
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Clear();
+            tb.GotFocus -= TextBox_GotFocus;
+        }
+
+        private void SearchWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.Return)
+            {
+                searchButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            }
+
         }
 
       

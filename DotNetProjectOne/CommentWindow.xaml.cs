@@ -25,6 +25,8 @@ namespace DotNetProjectOne
         public CommentWindow(FilmPage fp)
         {
             InitializeComponent();
+            this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
+            this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
             filmPage = fp;
 
         }
@@ -60,8 +62,18 @@ namespace DotNetProjectOne
 
                 con.Dispose();
             }
-            filmPage.IsEnabled = true;
+            StartWindow.SetPage(new FilmPage());
+          //  filmPage.IsEnabled = true;
             this.Close();
+        }
+        private void CommentsWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.Return)
+            {
+                submitButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            }
+
         }
     }
 }

@@ -19,7 +19,7 @@ namespace DotNetProjectOne
     /// </summary>
     public partial class RegisterWindow : Window
     {
-        RegisterWindow rw;
+        RegisterWindow registerWindow;
         private void CheckIfNumeric(TextCompositionEventArgs e)
         {
             int result;
@@ -33,63 +33,66 @@ namespace DotNetProjectOne
         public RegisterWindow()
         {
             InitializeComponent();
-            rw = this;
+            this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
+            this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
+            registerWindow = this;
         }
 
 
         private async void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
             //Rejestracja, dodawanie do bazy danych
-/*
-            MyLINQDataContext con = new MyLINQDataContext();
-
-            //check if login in DB
-            bool logininDB = (from p in con.user_tables where p.login == Login.Text select p).Count() > 0;
-            bool emailinDB = (from p in con.user_tables where p.e_mail == Email.Text select p).Count() > 0;
-            con.Dispose();
-            */
-
             string problem = await DBAccess.registercheck(Login.Text, Email.Text);
             if (UserName.Text == "Name")
             {
                 MessageBox.Show("This isn't a name");
+                return;
             }
             else if (UserSurName.Text == "Name")
             {
                 MessageBox.Show("This isn't a surname");
+                return;
             }
             else if (string.IsNullOrWhiteSpace(this.Login.Text) || Login.Text == "Login")
             {
                 MessageBox.Show("Login is mandatory");
+                return;
             }
             else if (string.IsNullOrWhiteSpace(this.Password.Text) || Password.Text == "Password")
             {
                 MessageBox.Show("Password is mandatory");
+                return;
             }
             else if (string.IsNullOrWhiteSpace(this.Email.Text) || Email.Text == "Email")
             {
                 MessageBox.Show("Email is mandatory");
+                return;
             }
             else if (string.IsNullOrWhiteSpace(this.Age.Text) || Age.Text == "Age")
             {
                 MessageBox.Show("Age is mandatory");
+                return;
             }
             else if (problem=="login")
             {
                 MessageBox.Show("Login in use");
+                return;
             }
             else if (problem == "email")
             {
                 MessageBox.Show("Email already in use");
+                return;
             }
 
             else if (Password.Text != PasswordConfirm.Text)
             {
                 MessageBox.Show("Passwords do not match");
+                return;
             }
             else if (Email.Text != EmailConfirm.Text)
             {
                 MessageBox.Show("Passwords do not match");
+                return;
             }
             else
             {
@@ -115,7 +118,7 @@ namespace DotNetProjectOne
                 Age.Text = "Age";
 
             }
-
+            StartWindow.pages.startPage.IsEnabled = true;
             this.Close();
             //check if email in d
 
@@ -142,7 +145,24 @@ namespace DotNetProjectOne
         private void ScrollViewer_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
-                rw.DragMove();
+                registerWindow.DragMove();
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Clear();
+            tb.GotFocus -= TextBox_GotFocus;
+        }
+
+        private void RegisterWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+     
+              if (e.Key == Key.Return)
+                {
+                    signUpButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                }
+
         }
     }
 }

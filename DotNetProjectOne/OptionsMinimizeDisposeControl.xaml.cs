@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace DotNetProjectOne
 {
@@ -20,18 +21,30 @@ namespace DotNetProjectOne
     /// </summary>
     public partial class OptionsMinimizeDisposeControl : UserControl
     {
+        public bool visibility { get; set;}
         public OptionsMinimizeDisposeControl()
         {
             InitializeComponent();
+            visibility = true;
         }
 
         private void optionsButton_click(object sender, RoutedEventArgs e)
         {
-            OptionPopUp.IsOpen = true;
+            if (visibility == true)
+            {
+                logOutButton.Visibility = Visibility.Visible;
+                visibility = false;
+            }
+            else
+            {
+                logOutButton.Visibility = Visibility.Hidden;
+                visibility = true;
+            }
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
+            
             StartWindow.pages.startPage.IsEnabled = true;
             StartWindow.SetPage(StartWindow.pages.startPage);
         }

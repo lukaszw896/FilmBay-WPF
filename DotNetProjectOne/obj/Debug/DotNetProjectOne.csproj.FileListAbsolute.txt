@@ -124,7 +124,6 @@ C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\DNPDB.mdf
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\DNPDB_log.ldf
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\DotNetProjectOne.pdb
-C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\CommentWindow.baml
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\FilmWindow.baml
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\LoginWindow.baml
@@ -199,3 +198,4 @@ C:\Users\Lino\Desktop\DotNetProject1\DotNetProjectOne\obj\Debug\StartPage.baml
 C:\Users\Lino\Desktop\DotNetProject1\DotNetProjectOne\obj\Debug\DotNetProjectOne.g.resources
 C:\Users\Lino\Desktop\DotNetProject1\DotNetProjectOne\obj\Debug\DotNetProjectOne.Properties.Resources.resources
 C:\Users\Lino\Desktop\DotNetProject1\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache

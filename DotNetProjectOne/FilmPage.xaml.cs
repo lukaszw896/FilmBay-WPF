@@ -286,31 +286,42 @@ namespace DotNetProjectOne
         private void FiveStars_Click(object sender, RoutedEventArgs e)
         {
             DBAccess.vote(5,filmid);
+            StartWindow.SetPage(new FilmPage());
         }
 
         private void FourStars_Click(object sender, RoutedEventArgs e)
         {
             DBAccess.vote(4,filmid);
+            StartWindow.SetPage(new FilmPage());
         }
 
         private void ThreeStars_Click(object sender, RoutedEventArgs e)
         {
             DBAccess.vote(3,filmid);
+            StartWindow.SetPage(new FilmPage());
         }
 
         private void TwoStars_Click(object sender, RoutedEventArgs e)
         {
             DBAccess.vote(2,filmid);
+            StartWindow.SetPage(new FilmPage());
         }
 
         private void OneStar_Click(object sender, RoutedEventArgs e)
         {
             DBAccess.vote(1,filmid);
+            StartWindow.SetPage(new FilmPage());
         }
 
         private void BackToSearchPage_Click(object sender, RoutedEventArgs e)
         {
             StartWindow.SetPage(new SearchPage());
+        }
+
+        private void filmPage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            disposeControl.logOutButton.Visibility = Visibility.Hidden;
+            disposeControl.visibility = true;
         }
 
         

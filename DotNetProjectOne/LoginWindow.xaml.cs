@@ -19,7 +19,6 @@ namespace DotNetProjectOne
     /// </summary>
     public partial class LoginWindow : Window
     {
-        
         private void CheckIfNumeric(TextCompositionEventArgs e)
         {
             int result;
@@ -40,33 +39,7 @@ namespace DotNetProjectOne
 
         private async void LoginSignInButton_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            MyLINQDataContext con = new MyLINQDataContext();
-           // user_table x = new user_table();
-            bool logininDB = (from p in con.user_tables where p.login == CheckLogin.Text select p).Count() > 0;
-            if (logininDB == false)
-            {
-                MessageBox.Show("Wrong login");
-            }
-            else if (logininDB == true)
-            {
-                x = (from p in con.user_tables where p.login == CheckLogin.Text select p).First();
-                if (x.password != CheckPassword.Text)
-                    MessageBox.Show("Wrong Password");
-                {
 
-                }
-                else
-                {
-                    MessageBox.Show("Hello!");
-                    StartWindow.Myself = x;
-                    Pages page = new Pages();
-                    StartWindow.SetPage(page.searchPage);
-                    this.Close();
-
-                }
-            }
-            */
             user_table x = new user_table();
              x = await DBAccess.Userlogin(CheckLogin.Text, CheckPassword.Text);
             if(x.name!="Wrong")
@@ -91,6 +64,21 @@ namespace DotNetProjectOne
         {
             StartWindow.pages.startPage.IsEnabled = true;
             this.Close();
+        }
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Clear();
+            tb.GotFocus -= TextBox_GotFocus;
+        }
+        private void LoginWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.Return)
+            {
+                loginButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            }
+
         }
     }
 }
