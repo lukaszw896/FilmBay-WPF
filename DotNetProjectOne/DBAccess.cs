@@ -579,7 +579,7 @@ namespace DotNetProjectOne
                 MyLINQDataContext con = new MyLINQDataContext();
                 List<comment_table> Comments = new List<comment_table>();
                 Comments = (from a in con.comment_tables
-                            join u in con.user_tables on a.id_film equals u.id_user
+                            join u in con.user_tables on a.id_user equals u.id_user
                             join f in con.film_tables on a.id_film equals f.id_film
                             where f.id_film == filmid
                             select a).ToList();

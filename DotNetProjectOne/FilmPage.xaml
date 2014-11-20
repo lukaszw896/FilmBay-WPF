@@ -44,14 +44,14 @@
                                 <ColumnDefinition Width="9*"/>
                             </Grid.ColumnDefinitions>
                             <Border Margin="10" Grid.Column="0" BorderBrush="Black" BorderThickness="3">
-                                <Image x:Name="Poster"  Source="/Test/Avengers.jpg"></Image>
+                                <Image x:Name="Poster"></Image>
                             </Border>
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1*"/>
                                     <RowDefinition Height="3*"/>
                                 </Grid.RowDefinitions>
-                                <Label x:Name="Title" Margin="10,0,0,0" Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="27" FontWeight="Light" >The Avengers: Age of Ultron (2014)</Label>
+                                <Label x:Name="Title" Margin="10,0,0,0" Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="27" FontWeight="Light" ></Label>
                                 <Grid Grid.Row="1" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
@@ -59,7 +59,7 @@
                                     </Grid.ColumnDefinitions>
                                 <Border Margin="10" BorderBrush="Black" BorderThickness="3">
                                     <ScrollViewer VerticalScrollBarVisibility="Auto"  >
-                                        <TextBlock x:Name="Story" Margin="10" TextWrapping="Wrap" Foreground="White" FontSize="15">When Tony Stark tries to jumpstart a dormant peacekeeping program, things go awry and it is up to The Avengers to stop the villainous Ultron from enacting his terrible plans.</TextBlock>
+                                            <TextBlock x:Name="Story" Margin="10" TextWrapping="Wrap" Foreground="White" FontSize="15"></TextBlock>
                                     </ScrollViewer>
                                 </Border>
                                     <Button Click="BuyFilm_Click" Grid.Column="1" Background="#3BA800" BorderThickness="0" Margin="10" FontSize="40" Foreground="White" FontWeight="Light">Buy</Button>
@@ -101,7 +101,7 @@
                         <!--Grid with list of actors and film photos -->
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="5*" />
                                 <ColumnDefinition Width="6*" />
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0" Margin="10" BorderBrush="Black" BorderThickness="3">
@@ -112,7 +112,7 @@
                                         <RowDefinition Height="9*"/>
                                     </Grid.RowDefinitions>
                                     <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="25" FontWeight="Light">Actors</Label>
-                                    <ListView ItemsSource="{Binding Path=filmactors}"  Grid.Row="1" x:Name="ActorList" BorderThickness="0" Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
+                                    <ListView ItemsSource="{Binding Path=filmactors}"  Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Hidden" x:Name="ActorList" BorderThickness="0" Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.CanContentScroll="False" Margin="10" 
                               >
 
                                         <ListView.ItemTemplate >
@@ -135,7 +135,7 @@
                                                             <ToolTip Content="{Binding Name}"/>
                                                         </Image.ToolTip>
                                                     </Image>
-                                                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}"/>
+                                                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}" Foreground="White" FontSize="20" FontWeight="Light"/>
 
                                                 </Grid>
                                             </DataTemplate>
@@ -241,8 +241,8 @@
                                                     <RowDefinition Height="23*"/>
                                                     <RowDefinition Height="23*"/>
                                                 </Grid.RowDefinitions>
-                                             <Label Grid.Column="0" Grid.Row="0" Content="{Binding Login}" FontSize="16" FontWeight="Light"/>
-                                                <Label Grid.Column="1" Grid.Row="0" Content="{Binding Comment}" FontSize="16" FontWeight="Light"/>
+                                             <Label Grid.Column="0" Grid.Row="0" Content="{Binding Login}" FontSize="16" Foreground="White"  FontWeight="Normal"/>
+                                                <Label Grid.Column="1" Grid.Row="0" Content="{Binding Comment}" FontSize="16" Foreground="White" FontWeight="Light"/>
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\obj\Release\
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\
 DotNetProjectOne
 none
 false
 TRACE
-C:\Users\Łukasz\Desktop\DotNet\DotNetProjectOne\App.xaml
-31528140241
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\App.xaml
+12471749637
 2-775192278
-12-2083976505
+27779583745
 131721740678
-FilmWindow.xaml;MainWindow.xaml;registrationPage.xaml;
+CommentWindow.xaml;FilmPage.xaml;FilmWindow.xaml;LoginWindow.xaml;MainWindow.xaml;OptionsMinimizeDisposeControl.xaml;RegisterWindow.xaml;SearchPage.xaml;SearchResultsWindow.xaml;StartPage.xaml;StartWindow.xaml;MinimizeDisposeControl.xaml;
 
-False
+True
 

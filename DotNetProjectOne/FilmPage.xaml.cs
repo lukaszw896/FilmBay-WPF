@@ -174,55 +174,62 @@ namespace DotNetProjectOne
             Story.Text = ft.storyline;
             StudioBlock.Text = ft.film_studio;
             DirectorBlock.Text = ft.director_name + " " + ft.director_surname;
-            if (ft.rating != null) { 
-            double rating=Double.Parse(Math.Round(ft.rating.Value, 2).ToString());
-            if (ft.nuber_of_votes > 0)
-            {
-                RatingBox.Content = rating;
-            }
 
-            if (rating > 1)
-            {
-                OneStarImage.Source =new BitmapImage( new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
-                if (rating > 2)
-                {
-                    TwoStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
-                    if (rating > 3)
-                    {
-                        ThreeStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
-                        if (rating > 4)
-                        {
-                            FourStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
-                            if (rating > 4.75)
-                            {
-                                FiveStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
-                            }
-                            else if (rating > 4.4)
-                            {
-                                FiveStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
-                            }
-                        }
-                        else if (rating > 3.5)
-                        {
-                            FourStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
-                        }
-                    }
-                    else if (rating > 2.5)
-                    {
-                        ThreeStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
-                    }
-                }
-                else if (rating > 1.5)
-                {
-                    TwoStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
-                }
-            }
-            else if (rating > 0.5)
-            {
-                OneStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
-            }
-            }
+            ratingLoadFunction();
  
+        }
+
+        private async void ratingLoadFunction()
+        {
+            film_table ft = await DBAccess.LoadFilmFromId(filmid);
+            if (ft.rating != null)
+            {
+                double rating = Double.Parse(Math.Round(ft.rating.Value, 2).ToString());
+                if (ft.nuber_of_votes > 0)
+                {
+                    RatingBox.Content = rating;
+                }
+                if (rating > 0.99)
+                {
+                    OneStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
+                    if (rating > 1.99)
+                    {
+                        TwoStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
+                        if (rating > 2.99)
+                        {
+                            ThreeStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
+                            if (rating > 3.99)
+                            {
+                                FourStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
+                                if (rating > 4.75)
+                                {
+                                    FiveStarImage.Source = new BitmapImage(new Uri(@"Icons/fullStar.png", UriKind.RelativeOrAbsolute));
+                                }
+                                else if (rating > 4.4)
+                                {
+                                    FiveStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
+                                }
+                            }
+                            else if (rating > 3.49)
+                            {
+                                FourStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
+                            }
+                        }
+                        else if (rating > 2.49)
+                        {
+                            ThreeStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
+                        }
+                    }
+                    else if (rating > 1.49)
+                    {
+                        TwoStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
+                    }
+                }
+                else if (rating > 0.49)
+                {
+                    OneStarImage.Source = new BitmapImage(new Uri(@"Icons/halfStar.png", UriKind.RelativeOrAbsolute));
+                }
+            }
         }
 
     
@@ -237,6 +244,8 @@ namespace DotNetProjectOne
 
            
         }
+
+
 
         private void AddComment_Click(object sender, RoutedEventArgs e)
         {
@@ -286,30 +295,35 @@ namespace DotNetProjectOne
         private void FiveStars_Click(object sender, RoutedEventArgs e)
         {
             DBAccess.vote(5,filmid);
+            ratingLoadFunction();
             StartWindow.SetPage(new FilmPage());
         }
 
         private void FourStars_Click(object sender, RoutedEventArgs e)
         {
             DBAccess.vote(4,filmid);
+            ratingLoadFunction();
             StartWindow.SetPage(new FilmPage());
         }
 
         private void ThreeStars_Click(object sender, RoutedEventArgs e)
         {
             DBAccess.vote(3,filmid);
+            ratingLoadFunction();
             StartWindow.SetPage(new FilmPage());
         }
 
         private void TwoStars_Click(object sender, RoutedEventArgs e)
         {
             DBAccess.vote(2,filmid);
+            ratingLoadFunction();
             StartWindow.SetPage(new FilmPage());
         }
 
         private void OneStar_Click(object sender, RoutedEventArgs e)
         {
             DBAccess.vote(1,filmid);
+            ratingLoadFunction();
             StartWindow.SetPage(new FilmPage());
         }
 
