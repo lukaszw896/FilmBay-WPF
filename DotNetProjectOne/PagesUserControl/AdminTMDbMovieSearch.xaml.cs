@@ -39,24 +39,44 @@ namespace DotNetProjectOne.PagesUserControl
         {
             movies.Clear();
             List<MovieSearchReturnObject> tmpList = TMDbApi.movieSearch(TextBoxTMDbSearch.Text.ToString());
-            for(int i=0;i<tmpList.Count();i++){
-                movies.Add(tmpList[i]);
+            /*
+             * 
+             * DAŁEM SORTOWANIE POPULARNOŚCI ZA POMOCĄ BUBBLE SORTA. TRZEBA ZMIENIĆ!!!!!
+             * 
+             * */
+            MovieSearchReturnObject tmp;
+            for (int i = 0; i < tmpList.Count(); i++)
+            {
+                for (int j = 0; j < tmpList.Count() - 1; j++)
+                {
+                    if (tmpList[j].popularity < tmpList[j + 1].popularity)
+                    {
+                        tmp = tmpList[j];
+                        tmpList[j] = tmpList[j + 1];
+                        tmpList[j + 1] = tmp;
+                    }
+                }
+
             }
+                for (int i = 0; i < tmpList.Count(); i++)
+                {
+                    movies.Add(tmpList[i]);
+                }
         }
         private void MyMovieList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            //Img x = (Img)MyMoviesList.SelectedItem;
+            MovieSearchReturnObject x = (MovieSearchReturnObject)MyMoviesList.SelectedItem;
+            FilmWindow filmWindow = new FilmWindow(x);
+            filmWindow.ShowDialog();
+        }
+        private void AdminTMDbMovieSearchWindow_KeyDown(object sender, KeyEventArgs e)
+        {
 
-
-            //string FilmName = x.Name;
-            //StartWindow.Chosenfilmid = DBAccess.ChosenFilm(FilmName);
-            ////   film_table ft = con.film_tables.AsParallel().Where(s => s.title==FilmName).First();
-            //Chosenfilmid = DBAccess.ChosenFilm(FilmName);
-            //StartWindow.SetPage(new FilmPage());
-
-
-            //   MessageBox.Show(ft.title);
+            if (e.Key == Key.Return)
+            {
+                searchButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            }
 
         }
     }

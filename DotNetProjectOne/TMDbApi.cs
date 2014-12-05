@@ -27,17 +27,21 @@ namespace DotNetProjectOne
             List<string> moviesTitles;
             List<string> moviesReleaseDate;
             List<string> moviesPosterPath;
+            List<string> moviesOrginalTitle;
+            List<string> moviesPopularity;
 
             moviesIDs = TMDbHelper.FindString(@"""id"":", @",""", responseContent.ToString());
             moviesTitles = TMDbHelper.FindString(@"""title"":""", @""",""", responseContent.ToString());
             moviesReleaseDate = TMDbHelper.FindString(@"""release_date"":", @",""", responseContent.ToString());
             moviesPosterPath = TMDbHelper.FindString(@"""poster_path"":", @",""", responseContent.ToString());
-            
+            moviesOrginalTitle = TMDbHelper.FindString(@"""original_title"":", @",""", responseContent.ToString());
+            moviesPopularity = TMDbHelper.FindString(@"""popularity"":", @",""", responseContent.ToString());
             List<MovieSearchReturnObject> movieSearchResult = new List<MovieSearchReturnObject>();
             for (int i = 0; i < moviesIDs.Count(); i++)
             {
-                String tmp = "http://image.tmdb.org/t/p/w500" + moviesPosterPath[i].Substring(1, moviesPosterPath[i].Length - 2);
-                MovieSearchReturnObject tmpMovieObj =new  MovieSearchReturnObject(int.Parse(moviesIDs[i]),moviesTitles[i],moviesReleaseDate[i],tmp);
+                String posterPath = "http://image.tmdb.org/t/p/w500" + moviesPosterPath[i].Substring(1, moviesPosterPath[i].Length - 2);
+                float popularity = float.Parse(moviesPopularity[i], System.Globalization.CultureInfo.InvariantCulture);
+                MovieSearchReturnObject tmpMovieObj =new  MovieSearchReturnObject(int.Parse(moviesIDs[i]),moviesTitles[i],moviesReleaseDate[i],posterPath,moviesOrginalTitle[i],popularity);
                 movieSearchResult.Add(tmpMovieObj);
             }
             return movieSearchResult;

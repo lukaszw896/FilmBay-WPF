@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using DotNetProjectOne.TMDB_Api_helper_classes;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace DotNetProjectOne
         List<String> MoviePhotos = new List<String>();
         List<DotNetProjectOne.ObjectClasses.ALanguage> Languages = new List<DotNetProjectOne.ObjectClasses.ALanguage>();
         List<DotNetProjectOne.ObjectClasses.Genre> genres = new List<DotNetProjectOne.ObjectClasses.Genre>();
-        public FilmWindow()
+        public FilmWindow(MovieSearchReturnObject movie)
         {
             InitializeComponent();
             this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
