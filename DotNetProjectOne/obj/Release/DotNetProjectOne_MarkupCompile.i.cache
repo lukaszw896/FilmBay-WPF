@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\App.xaml
-12471749637
+13-377903467
 2-775192278
-27779583745
+30-1396384157
 15-1788308579
-CommentWindow.xaml;FilmPage.xaml;FilmWindow.xaml;LoginWindow.xaml;MainWindow.xaml;OptionsMinimizeDisposeControl.xaml;RegisterWindow.xaml;SearchPage.xaml;SearchResultsWindow.xaml;StartPage.xaml;StartWindow.xaml;MinimizeDisposeControl.xaml;
+CommentWindow.xaml;FilmPage.xaml;FilmWindow.xaml;LoginWindow.xaml;MainWindow.xaml;OptionsMinimizeDisposeControl.xaml;PagesUserControl\AdminTMDbMovieSearch.xaml;RegisterWindow.xaml;SearchPage.xaml;SearchResultsWindow.xaml;StartPage.xaml;StartWindow.xaml;MinimizeDisposeControl.xaml;
 
 True
 

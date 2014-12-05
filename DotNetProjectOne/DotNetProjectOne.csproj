@@ -92,6 +92,9 @@
       <DependentUpon>OptionsMinimizeDisposeControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages.cs" />
+    <Compile Include="PagesUserControl\AdminTMDbMovieSearch.xaml.cs">
+      <DependentUpon>AdminTMDbMovieSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
@@ -110,6 +113,8 @@
     <Compile Include="MinimizeDisposeControl.xaml.cs">
       <DependentUpon>MinimizeDisposeControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TMDb Api helper classes\TMDbHelper.cs" />
+    <Compile Include="TMDbApi.cs" />
     <Compile Include="User.cs" />
     <Page Include="CommentWindow.xaml">
       <SubType>Designer</SubType>
@@ -143,6 +148,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="OptionsMinimizeDisposeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PagesUserControl\AdminTMDbMovieSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

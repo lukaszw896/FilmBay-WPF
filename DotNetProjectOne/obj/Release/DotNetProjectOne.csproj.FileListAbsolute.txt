@@ -4,7 +4,6 @@ C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Release\DNPDB.mdf
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Release\DNPDB_log.ldf
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Release\DotNetProjectOne.exe
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Release\DotNetProjectOne.pdb
-C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\DotNetProjectOne.csprojResolveAssemblyReference.cache
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\CommentWindow.baml
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\FilmWindow.baml
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\LoginWindow.baml
@@ -43,3 +42,6 @@ C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\DotNetProjectOne.
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Release\MahApps.Metro.dll
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Release\System.Windows.Interactivity.dll
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Release\MahApps.Metro.xml
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\PagesUserControl\AdminTMDbMovieSearch.baml
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\PagesUserControl\AdminTMDbMovieSearch.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\DotNetProjectOne.csprojResolveAssemblyReference.cache

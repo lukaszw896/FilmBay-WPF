@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotNetProjectOne.PagesUserControl;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -84,9 +85,11 @@ namespace DotNetProjectOne
 
         private void AdminPanelButton_Click(object sender, RoutedEventArgs e)
         {
-            FilmWindow w = new FilmWindow();
+           // FilmWindow w = new FilmWindow();
+            AdminTMDbMovieSearch adminTMDbMovieSearch = new AdminTMDbMovieSearch();
+            StartWindow.SetPage(adminTMDbMovieSearch);
             startPage.IsEnabled = false;
-            w.ShowDialog();
+           // w.ShowDialog();
         }
 
         private void Age_PreviewTextInput(object sender, TextCompositionEventArgs e)

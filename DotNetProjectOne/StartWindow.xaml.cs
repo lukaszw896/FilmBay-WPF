@@ -35,6 +35,7 @@ namespace DotNetProjectOne
             double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
             this.Left = (screenWidth / 2) - (this.Width / 2);
             this.Top = (screenHeight / 2) - (this.Height / 2);
+                
         }
 
         public static void SetPage(UserControl page)
