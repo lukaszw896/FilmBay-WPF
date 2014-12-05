@@ -7,3 +7,6 @@ C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Release\DotNetProjectOne
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\obj\Release\DotNetProjectTest.csprojResolveAssemblyReference.cache
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\obj\Release\DotNetProjectTest.dll
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\obj\Release\DotNetProjectTest.pdb
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Release\MahApps.Metro.dll
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Release\System.Windows.Interactivity.dll
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Release\MahApps.Metro.xml

@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="16*"/>
                 <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
-            <ListView ItemsSource="{Binding Path=movies}"  Grid.Column="1" x:Name="MyMoviesList" BorderThickness="0"  Background="Red" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="False" Margin="20,20,20,20" SelectionChanged="MyMovieList_SelectionChanged">
+            <ListView ItemsSource="{Binding Path=movies}"  Grid.Column="1" x:Name="MyMoviesList" BorderThickness="0"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="False" Margin="20,20,20,20" SelectionChanged="MyMovieList_SelectionChanged">
 
                 <ListView.ItemTemplate >
 

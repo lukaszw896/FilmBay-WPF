@@ -31,6 +31,7 @@ namespace DotNetProjectOne.PagesUserControl
 
         public AdminTMDbMovieSearch()
         {
+            this.DataContext = this;
             InitializeComponent();
         }
 
