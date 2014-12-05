@@ -45,7 +45,7 @@
         </ComboBox>
         <Label Content="Release Date" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="109" Grid.Row="7" Height="26"/>
         <TextBox  MaxLength="2" x:Name="Day" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="33" PreviewTextInput="Month_PreviewTextInput" Grid.Column="1" Grid.Row="7"  />
-        <TextBox  MaxLength="4" x:Name="Year" HorizontalAlignment="Left" Height="23" Margin="127,10,0,0" TextWrapping="Wrap" Text="1111" VerticalAlignment="Top" Width="36" PreviewTextInput="Year_PreviewTextInput" Grid.Column="1" Grid.Row="7" />
+        <TextBox  MaxLength="4" x:Name="Year" HorizontalAlignment="Left" Height="23" Margin="127,10,0,0" TextWrapping="Wrap" Text="1111" VerticalAlignment="Top" Width="45" PreviewTextInput="Year_PreviewTextInput" Grid.Column="1" Grid.Row="7" />
         <TextBox MaxLength="2" x:Name="Month" HorizontalAlignment="Left" Height="23" Margin="63,10,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="33" PreviewTextInput="Day_PreviewTextInput" Grid.Column="1" Grid.Row="7"/>
         <Label Content="Price" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="109" Grid.Row="9" Height="26"/>
         <Label Content="Studio" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="109" Grid.Row="8" Height="26"/>
@@ -55,7 +55,7 @@
         <Button x:Name="Cancel" Content="Resign" HorizontalAlignment="Left" Margin="4,32,0,0" VerticalAlignment="Top" Width="103" Grid.Column="1" Grid.Row="13" Height="22" Click="Cancel_Click"/>
         <Label Content="Duration" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="57" Grid.Row="3" Height="26"/>
         <TextBox MaxLength="2" x:Name="Duration_M" HorizontalAlignment="Left" Height="23" Margin="63,19,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="29" Grid.Column="1" Grid.Row="3"  />
-        <TextBox MaxLength="2" x:Name="Duration_S" HorizontalAlignment="Left" Height="23" Margin="107,19,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="29" Grid.Column="1" Grid.Row="3"  />
+        <TextBox MaxLength="2" x:Name="Duration_S" HorizontalAlignment="Left" Height="23" Margin="107,19,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="47" Grid.Column="1" Grid.Row="3" />
         <TextBox MaxLength="4" x:Name="Duration_H" HorizontalAlignment="Left" Height="23" Margin="21,19,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="29" Grid.Column="1" Grid.Row="3"  />
         <Button x:Name="AddActorButton" Content="Add Actor" HorizontalAlignment="Left" Margin="11,25,0,0" VerticalAlignment="Top" Width="97" Height="25" Click="AddActorButton_Click" Grid.Column="2" Grid.Row="1"/>
 
