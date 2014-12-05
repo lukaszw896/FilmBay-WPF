@@ -37,12 +37,11 @@ namespace DotNetProjectOne.PagesUserControl
 
         private void SearchTMDbMovie_Click(object sender, RoutedEventArgs e)
         {
+            movies.Clear();
             List<MovieSearchReturnObject> tmpList = TMDbApi.movieSearch(TextBoxTMDbSearch.Text.ToString());
             for(int i=0;i<tmpList.Count();i++){
                 movies.Add(tmpList[i]);
-               
             }
-             MyMoviesList = MyMoviesList;
         }
         private void MyMovieList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -30,13 +30,14 @@ namespace DotNetProjectOne
 
             moviesIDs = TMDbHelper.FindString(@"""id"":", @",""", responseContent.ToString());
             moviesTitles = TMDbHelper.FindString(@"""title"":""", @""",""", responseContent.ToString());
-            moviesReleaseDate = TMDbHelper.FindString(@"""release_date"":""", @""",""", responseContent.ToString());
+            moviesReleaseDate = TMDbHelper.FindString(@"""release_date"":", @",""", responseContent.ToString());
             moviesPosterPath = TMDbHelper.FindString(@"""poster_path"":", @",""", responseContent.ToString());
             
             List<MovieSearchReturnObject> movieSearchResult = new List<MovieSearchReturnObject>();
             for (int i = 0; i < moviesIDs.Count(); i++)
             {
-                MovieSearchReturnObject tmpMovieObj =new  MovieSearchReturnObject(int.Parse(moviesIDs[i]),moviesTitles[i],moviesReleaseDate[i],moviesPosterPath[i]);
+                String tmp = "http://image.tmdb.org/t/p/w500" + moviesPosterPath[i].Substring(1, moviesPosterPath[i].Length - 2);
+                MovieSearchReturnObject tmpMovieObj =new  MovieSearchReturnObject(int.Parse(moviesIDs[i]),moviesTitles[i],moviesReleaseDate[i],tmp);
                 movieSearchResult.Add(tmpMovieObj);
             }
             return movieSearchResult;
