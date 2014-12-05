@@ -11,13 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace DotNetProjectOne
 {
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public  partial class StartWindow : Window
+    public  partial class StartWindow : MetroWindow
     {
         public static user_table Myself = new user_table();
         public static StartPage _startPage = new StartPage();
@@ -43,7 +44,13 @@ namespace DotNetProjectOne
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
+                /*
+                 * TRZEBA USUNAC TRY
+                 */
+                try
+                {
+                    this.DragMove();
+                }catch{}
         }
     }
 }

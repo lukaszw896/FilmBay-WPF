@@ -53,6 +53,7 @@ namespace DotNetProjectOne
         }
         public user_table Myself = new user_table();
 
+        /*Functino which loads data from database to filmpage gui  */
         public async void start()
         {
             filmid = StartWindow.Chosenfilmid;
@@ -178,7 +179,7 @@ namespace DotNetProjectOne
             ratingLoadFunction();
  
         }
-
+        /*Function reloading film rating*/
         private async void ratingLoadFunction()
         {
             film_table ft = await DBAccess.LoadFilmFromId(filmid);
@@ -234,7 +235,7 @@ namespace DotNetProjectOne
 
     
 
-
+        /*Constructor*/
         public FilmPage()
         {
             Myself = StartWindow.Myself;
@@ -246,7 +247,7 @@ namespace DotNetProjectOne
         }
 
 
-
+        /*Even handler for add comment button*/
         private void AddComment_Click(object sender, RoutedEventArgs e)
         {
             CommentWindow cw = new CommentWindow(this);
@@ -259,27 +260,8 @@ namespace DotNetProjectOne
 
 
         // An event to buy a movie, checks users id and adds the film to users bought movies list
-     
         private async void  BuyFilm_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            MyLINQDataContext con = new MyLINQDataContext();
-            bought_films_table bft = new bought_films_table();
-            bool Alreadybought= (con.bought_films_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user==Myself.id_user).Count()) > 0;
-            if(Alreadybought==true)
-            {
-                MessageBox.Show("You already have this movie!");
-                     con.Dispose();
-            }
-            else
-            { 
-            bft.id_film = filmid;
-            bft.id_user = Myself.id_user;
-            DBAccess.AddToBoughtFilms(bft);
-            MessageBox.Show("Have a nice day!");
-            con.Dispose();
-            }
-             * */
             bool check = await DBAccess.BuyFilm(filmid, Myself.id_user);
             if (check==true)
             {
@@ -327,11 +309,13 @@ namespace DotNetProjectOne
             StartWindow.SetPage(new FilmPage());
         }
 
+        /* Event handler setting changing window page to search page */
         private void BackToSearchPage_Click(object sender, RoutedEventArgs e)
         {
             StartWindow.SetPage(new SearchPage());
         }
 
+        /*Event handler which caches on page click to hide logout button if it is not hidden yet */
         private void filmPage_MouseDown(object sender, MouseButtonEventArgs e)
         {
             disposeControl.logOutButton.Visibility = Visibility.Hidden;

@@ -40,3 +40,6 @@ C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\DotNetProjectOne.
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\DotNetProjectOne.csproj.GenerateResource.Cache
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\DotNetProjectOne.exe
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Release\DotNetProjectOne.pdb
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Release\MahApps.Metro.dll
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Release\System.Windows.Interactivity.dll
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Release\MahApps.Metro.xml

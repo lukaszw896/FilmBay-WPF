@@ -28,6 +28,7 @@ namespace DotNetProjectOne
             }
 
         }
+        /* Constructor */
         public  LoginWindow()
         {
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace DotNetProjectOne
         }
 
 
-
+        /* Login button event */
         private async void LoginSignInButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -55,22 +56,26 @@ namespace DotNetProjectOne
 
 
         }
+        /*login window dragging event*/
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
+        /* Lgin window closing event */
         private void CloseLoginPopup_Click(object sender, RoutedEventArgs e)
         {
             StartWindow.pages.startPage.IsEnabled = true;
             this.Close();
         }
+        /* ereasing textbox after first entering into in*/
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
             tb.Clear();
             tb.GotFocus -= TextBox_GotFocus;
         }
+        /*window dragging event*/
         private void LoginWindow_KeyDown(object sender, KeyEventArgs e)
         {
 

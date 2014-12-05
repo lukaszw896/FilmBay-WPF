@@ -37,7 +37,7 @@ namespace DotNetProjectOne
             this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
             this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
         }
-
+        //function checking whether input is numeric
         private void CheckIfNumeric(TextCompositionEventArgs e)
         {
             int result;
@@ -48,6 +48,7 @@ namespace DotNetProjectOne
             }
 
         }
+        //checkiing whether input is in letters
         private void CheckIfLetters(TextCompositionEventArgs e)
         {
             int result;
@@ -58,16 +59,10 @@ namespace DotNetProjectOne
             }
 
         }
-
-       
-
-
-   
-
         private async void Save_Click(object sender, RoutedEventArgs e)
         {
      
-
+            //Checking if if information in textbox makes sense
 
             if (string.IsNullOrWhiteSpace(this.Title.Text))
             {
@@ -132,7 +127,7 @@ namespace DotNetProjectOne
             */
             else
             {
-
+                //passing info into a filmtable
                 film_table dane = new film_table();
 
                 String studio = "";
@@ -265,7 +260,7 @@ namespace DotNetProjectOne
 
 
                 }
-
+                //adding languages to language table and reference table
                 foreach (DotNetProjectOne.ObjectClasses.ALanguage c in Languages)
                 {
 
@@ -274,6 +269,7 @@ namespace DotNetProjectOne
 
 
                 }
+                // adding genres to genre table
                 foreach (DotNetProjectOne.ObjectClasses.Genre c in genres)
                 {
 
