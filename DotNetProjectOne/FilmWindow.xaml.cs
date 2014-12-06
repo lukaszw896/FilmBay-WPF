@@ -33,16 +33,23 @@ namespace DotNetProjectOne
         List<DotNetProjectOne.ObjectClasses.ALanguage> Languages = new List<DotNetProjectOne.ObjectClasses.ALanguage>();
         List<DotNetProjectOne.ObjectClasses.Genre> genres = new List<DotNetProjectOne.ObjectClasses.Genre>();
         MovieSearchReturnObject movie;
+        int SearchedMovieId;
+        FoundMovieInfo movieinfo;
         public FilmWindow(MovieSearchReturnObject movie)
         {
             this.movie = movie;
+            this.SearchedMovieId = movie.id;
             InitializeComponent();
-            this.fillEverything();
+            actors = TMDbApi.GetCast(movie.id);
+         this.fillEverything();
             this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
             this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
+          
+
         }
         
         /*  METHOD FILLING ADMIN PANEL WITH DATA */
+      
         private void fillEverything()
         {
             Title.Text = movie.title;
@@ -50,6 +57,13 @@ namespace DotNetProjectOne
             Day.Text = movie.releaseDate.Substring(9, 2);
             Month.Text = movie.releaseDate.Substring(6, 2);
             Year.Text = movie.releaseDate.Substring(1, 4);
+         //   Studio.Text = movieinfo.studio;
+         //   Storyline.Text = movieinfo.storyline;
+           // MessageBox.Show(movie.id.ToString());
+            foreach (DotNetProjectOne.ObjectClasses.Actor a in actors)
+            {
+                ActorsGrid.Items.Add(a);
+            }
         }
         //function checking whether input is numeric
         private void CheckIfNumeric(TextCompositionEventArgs e)
