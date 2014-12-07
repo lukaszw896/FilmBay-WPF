@@ -322,13 +322,21 @@ namespace DotNetProjectOne
                 }
 
                 //Adding photos to photos table and interconnecting table film_photos_table 
+                List<int> photoIdTmpList = new List<int>();
                 foreach (String x in MoviePhotos)
                 {
+                    bool b = true;
                     int photoid = await DBAccess.CreatePhoto(x);
-                    film_photos_table filmphoto = DBAccess.CreatePhotosFilmTable(filmid, photoid);
+                    foreach(int id in photoIdTmpList)
+                    {
+                        if (id == photoid) { b = false; }
+                    }
+                    if (b == true)
+                    {
+                        photoIdTmpList.Add(photoid);
+                        film_photos_table filmphoto = DBAccess.CreatePhotosFilmTable(filmid, photoid);
 
-
-
+                    }
                 }
                 //adding languages to language table and reference table
                 foreach (ALanguage c in Languages)

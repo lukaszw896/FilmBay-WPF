@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -9,6 +10,9 @@ namespace DotNetProjectOne
 {
     public static class DBAccess
     {
+        public static Semaphore photoSem = new Semaphore(1, 1);
+
+
         public static int CreateFilm(String directorname, String directorsurname, double price, string studio, string story,
             string title, string originaltitle, string originallanguage, TimeSpan duration, string posterurl,
             int agerestriction, string publisher, DateTime releasedate)
@@ -196,6 +200,7 @@ namespace DotNetProjectOne
         {
             return await Task.Run(() =>
             {
+                photoSem.WaitOne();
                 photos_table photos = new photos_table();
 
                 photos.photo_url = url;
@@ -216,6 +221,7 @@ namespace DotNetProjectOne
                     photoid = z.id_photo;
                 }
                 con.Dispose();
+                photoSem.Release();
                 return photoid;
             });
         }
@@ -276,6 +282,7 @@ namespace DotNetProjectOne
         }
         public static film_photos_table CreatePhotosFilmTable(int filmid, int photoid)
         {
+            
             film_photos_table filmphoto = new film_photos_table();
             filmphoto.id_film = filmid;
             filmphoto.id_photo = photoid;

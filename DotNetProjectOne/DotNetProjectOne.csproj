@@ -86,6 +86,7 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ObjectClasses.cs" />
     <Compile Include="OpacityConverter.cs" />
     <Compile Include="OptionsMinimizeDisposeControl.xaml.cs">
       <DependentUpon>OptionsMinimizeDisposeControl.xaml</DependentUpon>
