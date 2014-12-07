@@ -31,9 +31,12 @@ namespace DotNetProjectOne
             List<string> moviesPopularity;
 
             moviesIDs = TMDbHelper.FindString(@"""id"":", @",""", responseContent.ToString());
+     
+
             moviesTitles = TMDbHelper.FindString(@"""title"":""", @""",""", responseContent.ToString());
             moviesReleaseDate = TMDbHelper.FindString(@"""release_date"":", @",""", responseContent.ToString());
             moviesPosterPath = TMDbHelper.FindString(@"""poster_path"":", @",""", responseContent.ToString());
+            //"original_title":"The Avengers"
             moviesOrginalTitle = TMDbHelper.FindString(@"""original_title"":", @",""", responseContent.ToString());
             moviesPopularity = TMDbHelper.FindString(@"""popularity"":", @",""", responseContent.ToString());
             List<MovieSearchReturnObject> movieSearchResult = new List<MovieSearchReturnObject>();
@@ -45,6 +48,85 @@ namespace DotNetProjectOne
                 movieSearchResult.Add(tmpMovieObj);
             }
             return movieSearchResult;
+
+
         }
+        /*movie details accepts movie id which has been found by movie search function and returns informations such as generes,overview(storyline),
+        *production_companies,runtime,spoken languages
+         *sample request:http://api.themoviedb.org/3/movie/120?api_key=7b5e30851a9285340e78c201c4e4ab99
+        */
+        public static FoundMovieDetails movieDetails(int id)
+        {
+            var request = System.Net.WebRequest.Create("http://api.themoviedb.org/3/movie/"+id+"?api_key=7b5e30851a9285340e78c201c4e4ab99") as System.Net.HttpWebRequest;
+            request.KeepAlive = true;
+            request.Method = "GET";
+            request.Accept = "application/json";
+            request.ContentLength = 0;
+            string responseContent=null;
+            using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+            using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+                 responseContent = reader.ReadToEnd();
+                 }
+            }
+            List<string> genres;
+            string storyline;
+           // string studio;
+            List<string> languages;
+            string duration;
+
+            // string title = TMDbHelper.FindSingleString(@"""title"":""", @""",""", responseContent.ToString());
+            //"genres":[{"id":28,"name":"Action"}]
+            genres = TMDbHelper.FindStringWithOneUknownWord(@"{""id"":", @",""name"":""", @"""}", responseContent.ToString());   
+            storyline = TMDbHelper.FindSingleString(@"""overview"":""", @""",""", responseContent.ToString());
+            //studio = TMDbHelper.FindSingleString(@"""production_companies"":""", @""",""", responseContent.ToString());
+            languages= TMDbHelper.FindString(@"""spoken_languages"":[", @"}]", responseContent.ToString());
+            duration = TMDbHelper.FindSingleString(@"""runtime"":", @",""", responseContent.ToString());
+            
+           return new FoundMovieDetails(genres,storyline,int.Parse(duration),languages);
+        }
+        public static List<Actor> GetActors(int id)
+        {
+            var request = System.Net.WebRequest.Create("http://api.themoviedb.org/3/movie/" + id +"/credits?api_key=7b5e30851a9285340e78c201c4e4ab99") as System.Net.HttpWebRequest;
+            request.KeepAlive = true;
+            request.Method = "GET";
+            request.Accept = "application/json";
+            request.ContentLength = 0;
+            string responseContent = null;
+            using (var response = request.GetResponse() as System.Net.HttpWebResponse)
+            {
+                using (var reader = new System.IO.StreamReader(response.GetResponseStream()))
+                {
+                    responseContent = reader.ReadToEnd();
+                }
+            }
+            /*character string consists of name and profile pic (which might be null)*/
+            List<string> characterStringList = TMDbHelper.FindString(@"""character"":""", @"}", responseContent.ToString());
+            List<Actor> actors = new List<Actor>();
+            foreach(string characterString in characterStringList)
+            {
+                Actor a = new Actor();
+                String fullname = TMDbHelper.FindSingleString(@"""name"":""", @""",""", characterString);
+                String photoPath = TMDbHelper.FindSingleString(@"profile_path"":""", @"""", characterString);
+                if(photoPath!="null")
+                {
+                    if(photoPath!=null)
+                    a.photoPath="http://image.tmdb.org/t/p/w500" + photoPath;
+                    
+                    
+                }
+                String[] split = fullname.Split(' ');
+                string name = split[0];
+                string surname = "";
+                if(split.Count()>=2)
+                 surname = split[1];
+                a.Name = name;
+                a.Surname = surname;
+                actors.Add(a);
+            }
+            return actors;
+
+        }
+   
+
     }
 }

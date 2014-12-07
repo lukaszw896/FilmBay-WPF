@@ -199,3 +199,8 @@ C:\Users\Lino\Desktop\DotNetProject1\DotNetProjectOne\obj\Debug\DotNetProjectOne
 C:\Users\Lino\Desktop\DotNetProject1\DotNetProjectOne\obj\Debug\DotNetProjectOne.Properties.Resources.resources
 C:\Users\Lino\Desktop\DotNetProject1\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\MahApps.Metro.dll
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\MahApps.Metro.xml
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\PagesUserControl\AdminTMDbMovieSearch.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\PagesUserControl\AdminTMDbMovieSearch.baml

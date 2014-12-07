@@ -10,3 +10,15 @@ C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\obj\Release\DotNetProjectTes
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Release\MahApps.Metro.dll
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Release\System.Windows.Interactivity.dll
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectTest\bin\Release\MahApps.Metro.xml
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Release\DNPDB.mdf
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Release\DNPDB_log.ldf
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Release\DotNetProjectTest.dll
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Release\DotNetProjectTest.pdb
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Release\DotNetProjectOne.exe
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Release\MahApps.Metro.dll
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Release\System.Windows.Interactivity.dll
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Release\DotNetProjectOne.pdb
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Release\MahApps.Metro.xml
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\obj\Release\DotNetProjectTest.csprojResolveAssemblyReference.cache
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\obj\Release\DotNetProjectTest.dll
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\obj\Release\DotNetProjectTest.pdb
