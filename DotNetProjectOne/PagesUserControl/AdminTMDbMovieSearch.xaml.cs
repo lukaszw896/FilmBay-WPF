@@ -79,5 +79,12 @@ namespace DotNetProjectOne.PagesUserControl
             }
 
         }
+
+        private void backToLoginWindow_Click(object sender, RoutedEventArgs e)
+        {
+            StartWindow.pages.startPage.IsEnabled = true;
+            StartWindow.SetPage(StartWindow.pages.startPage);
+            
+        }
     }
 }

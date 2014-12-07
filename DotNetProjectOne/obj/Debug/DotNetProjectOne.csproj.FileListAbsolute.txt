@@ -198,7 +198,6 @@ C:\Users\Lino\Desktop\DotNetProject1\DotNetProjectOne\obj\Debug\StartPage.baml
 C:\Users\Lino\Desktop\DotNetProject1\DotNetProjectOne\obj\Debug\DotNetProjectOne.g.resources
 C:\Users\Lino\Desktop\DotNetProject1\DotNetProjectOne\obj\Debug\DotNetProjectOne.Properties.Resources.resources
 C:\Users\Lino\Desktop\DotNetProject1\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
-C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\MahApps.Metro.dll
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\MahApps.Metro.xml

@@ -90,16 +90,31 @@ namespace DotNetProjectOne.TMDB_Api_helper_classes
         public List<string> genres { get; set; }
         public string storyline { get; set; }
 
-        //public string studio { get; set; }
+        public string studio { get; set; }
         public int duration { get; set; }
         public List<string> languages { get; set; }
-        public FoundMovieDetails( List<string> genres, string storyline, int duration, List<string> languages)
+        public string ageRestriction { get; set; }
+        public FoundMovieDetails( List<string> genres, string storyline, int duration, List<string> languages ,string ageRestriction, string studio)
         {
             this.genres = genres;
             this.storyline = storyline;
-           // this.studio = studio;
+            this.studio = studio;
             this.duration = duration;
             this.languages = languages;
+            this.ageRestriction = ageRestriction;
+        }
+    }
+    public class CastInformation
+    {
+        public List<string> writers { get; set; }
+        public List<string> producers { get; set; }
+        public List<string> composers { get; set; }
+
+        public CastInformation(List<string> writers, List<string> producers, List<string> composers)
+        {
+            this.writers = writers;
+            this.producers = producers;
+            this.composers = composers;
         }
     }
     public class Actor

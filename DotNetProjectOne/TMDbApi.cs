@@ -70,19 +70,22 @@ namespace DotNetProjectOne
             }
             List<string> genres;
             string storyline;
-           // string studio;
+            string studio;
             List<string> languages;
             string duration;
+            string ageRestriction;
+            
 
             // string title = TMDbHelper.FindSingleString(@"""title"":""", @""",""", responseContent.ToString());
             //"genres":[{"id":28,"name":"Action"}]
             genres = TMDbHelper.FindStringWithOneUknownWord(@"{""id"":", @",""name"":""", @"""}", responseContent.ToString());   
             storyline = TMDbHelper.FindSingleString(@"""overview"":""", @""",""", responseContent.ToString());
-            //studio = TMDbHelper.FindSingleString(@"""production_companies"":""", @""",""", responseContent.ToString());
+            studio = TMDbHelper.FindSingleString(@"""production_companies"":[{""name"":""", @""",""", responseContent.ToString());
             languages= TMDbHelper.FindString(@"""spoken_languages"":[", @"}]", responseContent.ToString());
             duration = TMDbHelper.FindSingleString(@"""runtime"":", @",""", responseContent.ToString());
+            ageRestriction = TMDbHelper.FindSingleString(@"""adult"":", @",""", responseContent.ToString());
             
-           return new FoundMovieDetails(genres,storyline,int.Parse(duration),languages);
+           return new FoundMovieDetails(genres,storyline,int.Parse(duration),languages,ageRestriction,studio);
         }
         public static List<Actor> GetActors(int id)
         {
@@ -126,7 +129,67 @@ namespace DotNetProjectOne
             return actors;
 
         }
-   
 
+        public static CastInformation getCast(int id){
+            var request = System.Net.WebRequest.Create("http://api.themoviedb.org/3/movie/" + id + "/credits?api_key=7b5e30851a9285340e78c201c4e4ab99") as System.Net.HttpWebRequest;
+            request.KeepAlive = true;
+            request.Method = "GET";
+            request.Accept = "application/json";
+            request.ContentLength = 0;
+            string responseContent = null;
+            using (var response = request.GetResponse() as System.Net.HttpWebResponse)
+            {
+                using (var reader = new System.IO.StreamReader(response.GetResponseStream()))
+                {
+                    responseContent = reader.ReadToEnd();
+                }
+            }
+
+            List<string> writers = new List<string>();
+            List<string> producers = new List<string>();
+            List<string> composers = new List<string>();
+
+            writers = TMDbHelper.FindString(@"""Screenplay"",""name"":""", @""",""", responseContent.ToString());
+            producers = TMDbHelper.FindString(@"""Producer"",""name"":""", @""",""", responseContent.ToString());
+            composers = TMDbHelper.FindString(@"""Original Music Composer"",""name"":""", @""",""", responseContent.ToString());
+
+            return new CastInformation(writers, producers, composers);
+
+        }
+
+        public static List<string> getFilmPictures(int id)
+        {
+            var request = System.Net.WebRequest.Create("http://api.themoviedb.org/3/movie/" + id + "/images?api_key=7b5e30851a9285340e78c201c4e4ab99") as System.Net.HttpWebRequest;
+            request.KeepAlive = true;
+            request.Method = "GET";
+            request.Accept = "application/json";
+            request.ContentLength = 0;
+            string responseContent = null;
+            using (var response = request.GetResponse() as System.Net.HttpWebResponse)
+            {
+                using (var reader = new System.IO.StreamReader(response.GetResponseStream()))
+                {
+                    responseContent = reader.ReadToEnd();
+                }
+            }
+            List<string> picturesPaths = new List<string>();
+            picturesPaths = TMDbHelper.FindString(@"""file_path"":""", @""",""", responseContent.ToString());
+          
+            for (int i = 0; i < picturesPaths.Count;i++)
+            {
+                picturesPaths[i] = "http://image.tmdb.org/t/p/w500" + picturesPaths[i];
+                i++;
+            }
+            return picturesPaths;
+            
+        }
+
+
+
+
+        
+
+       
+      
     }
 }

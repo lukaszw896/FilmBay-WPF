@@ -56,6 +56,8 @@ namespace DotNetProjectOne
             Month.Text = movie.releaseDate.Substring(6, 2);
             Year.Text = movie.releaseDate.Substring(1, 4);
 
+            PosterImage.Source = new BitmapImage(new Uri(movie.posterPath));
+            Poster = movie.posterPath;
             foundMovieDetails = TMDbApi.movieDetails(movie.id);
             /* TEMPORARLY I'M EREASING  GENRE NAME WHICH IS LONGER THAN 30, IS SHOULD WORK ALL THE TIME BUT WE HAVE TO CHANGE THIS BEFORE HANDING THE PROJECT */
             for (int i = 0; i < foundMovieDetails.genres.Count; i++)
@@ -87,12 +89,67 @@ namespace DotNetProjectOne
             Duration_H.Text = (foundMovieDetails.duration / 60).ToString();
             Duration_M.Text = (foundMovieDetails.duration % 60).ToString();
             Duration_S.Text = "0";
+            /*age restriction*/
+           // if (foundMovieDetails.ageRestriction == "true") { Age.SelectedIndex = 1; } else Age.SelectedIndex = 0;
+           /* Studio */
+            Studio.Text = foundMovieDetails.studio;
             /* adding actors */
             actors = TMDbApi.GetActors(movie.id);
             foreach (Actor a in actors)
             {
                 ActorsGrid.Items.Add(a);
             }
+
+            /*
+             * adding writers composers and producers        
+             */
+            CastInformation castInformation = TMDbApi.getCast(movie.id);
+
+            foreach (string writer in castInformation.writers)
+            {
+                String[] split = writer.Split(' ');
+                string name = split[0];
+                string surname = "";
+                if(split.Count()>=2)
+                 surname = split[1];
+                Writer tmpWriter = new Writer() { WName = name, WSurname = surname };
+                WriterGrid.Items.Add(tmpWriter);
+                writers.Add(tmpWriter);
+            }
+            foreach(string composer in castInformation.composers )
+            {
+                String[] split = composer.Split(' ');
+                string name = split[0];
+                string surname = "";
+                if (split.Count() >= 2)
+                    surname = split[1];
+                Composer tmpComposer = new Composer() { CName = name, CSurname = surname };
+                ComposerGrid.Items.Add(tmpComposer);
+                composers.Add(tmpComposer);
+            }
+
+            foreach (string producer in castInformation.producers)
+            {
+                String[] split = producer.Split(' ');
+                string name = split[0];
+                string surname = "";
+                if (split.Count() >= 2)
+                    surname = split[1];
+                Producer tmpProducer = new Producer() { PName = name, PSurname = surname };
+                producers.Add(tmpProducer);
+                ProducerGrid.Items.Add(tmpProducer);
+            }
+
+            /* Adding photos to gallery  */
+
+            List<string> photosPaths = new List<string>();
+            photosPaths = TMDbApi.getFilmPictures(movie.id);
+            foreach(string path in photosPaths)
+            {
+                MoviePhotos.Add(path);
+            }
+
+
         }
         //function checking whether input is numeric
         private void CheckIfNumeric(TextCompositionEventArgs e)
@@ -228,50 +285,6 @@ namespace DotNetProjectOne
                 }
                 int filmid = DBAccess.CreateFilm(DName.Text, DSubName.Text, double.Parse(Price.Text), studio, storyline, Title.Text, NTitle.Text, Language.Text, duration, posterurl, Ageres, publisher, releasedate);
 
-                /*
-                dane.director_name = DName.Text;
-                dane.director_surname = DSubName.Text;
-                dane.film_price = double.Parse(Price.Text);
-                if (Studio.Text.Trim() != "")
-                {
-                    dane.film_studio = Studio.Text;
-                }
-                if (Storyline.Text.Trim() != "")
-                {
-                    dane.storyline = Storyline.Text;
-                }
-                dane.title = Title.Text;
-                dane.title_orginal = NTitle.Text;
-                dane.orginal_language = Language.Text;
-                dane.duration = TimeSpan.Parse(Duration_H.Text+":"+Duration_M.Text+":"+Duration_S.Text);
-                if (Poster == null)
-                {
-                    Poster = "stockphoto.jpg";
-                }
-                    dane.poster_url = Poster;
-               
-                if (Age.SelectedItem != null)
-                {
-                    dane.age_restriction = int.Parse(((ComboBoxItem)Age.SelectedItem).Content.ToString());
-                }
-                if (Publisher.Text.Trim() != "")
-                {
-                    dane.publisher = Publisher.Text;
-                }
-                    if (Month.Text.Trim() != "" && Day.Text.Trim() != "" && Year.Text.Trim() != "")
-                    {
-                        dane.release_date = System.DateTime.Parse(Month.Text + "/" + Day.Text + "/" + Year.Text);
-                    }
-                    DBAccess.AddFilm(dane);
-                    int filmid;
-                 * */
-
-
-
-
-                //      actorfilmtable.film_table = dane;
-
-                //adding actors from the grid to the list, adding currents film ID to these actors.
                 foreach (Actor a in actors)
                 {
                     int actorid = await DBAccess.CreateActor(a.Name, a.Surname, a.photoPath);
@@ -568,7 +581,7 @@ namespace DotNetProjectOne
         }
 
         //adding screenshots from the movie
-        private void Button_Click_12(object sender, RoutedEventArgs e)
+        private void addGallery_Click(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show("You clicked 'New...'");
 

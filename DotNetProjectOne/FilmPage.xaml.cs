@@ -68,7 +68,7 @@ namespace DotNetProjectOne
             film_table ft =await DBAccess.LoadFilmFromId(filmid);
 
             string path;
-            path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+            path = ft.poster_url;
             Poster.Source = new BitmapImage(new Uri(path));
 
             List<actor_table> Actors = await DBAccess.GetActors(filmid);
@@ -81,7 +81,7 @@ namespace DotNetProjectOne
                 string apath;
                 if (at.actor_photo_url != null)
                 {
-                    apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + at.actor_photo_url;
+                    apath = at.actor_photo_url;
                 }
                 else
                 {
@@ -144,7 +144,7 @@ namespace DotNetProjectOne
             foreach (photos_table p in Photos)
             {
                 Image myimage = new Image();
-                string apath = AppDomain.CurrentDomain.BaseDirectory + "Photos\\" + p.photo_url;
+                string apath = p.photo_url;
 
                 //   MessageBox.Show(path);
                 myimage.Source = new BitmapImage(new Uri(path));
