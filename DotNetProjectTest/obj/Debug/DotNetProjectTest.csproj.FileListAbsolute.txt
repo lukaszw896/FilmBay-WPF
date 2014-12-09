@@ -28,3 +28,5 @@ C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Debug\System.Windows.Interac
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Debug\DotNetProjectOne.pdb
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Debug\MahApps.Metro.xml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\obj\Debug\DotNetProjectTest.pdb
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Debug\Facebook.dll
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Debug\Facebook.xml

@@ -751,6 +751,30 @@ namespace DotNetProjectOne
             });
 
         }
+        public static async Task<user_table> FBlogin( String name, String surname, String email)
+        {
+            MyLINQDataContext con = new MyLINQDataContext();
+            user_table x = new user_table();
+            return await Task.Run(() =>
+            {
+                bool logininDB = (from p in con.user_tables where p.e_mail == email select p).Count() > 0;
+                if (logininDB == false)
+                {
+
+                   x = CreateFBuser(email, name, surname);
+                   return x;
+                }
+                else 
+                {
+                    x = (from p in con.user_tables where p.e_mail == email select p).FirstOrDefault();
+                    return x;
+                }
+                return x;
+            });
+
+        }
+
+
 
         public static user_table CreateUser(string password, string name, string surname, string login, string email, int age)
         {
@@ -761,6 +785,16 @@ namespace DotNetProjectOne
             user.login = login;
             user.e_mail = email;
             user.age = age;
+            DBAccess.AddUser(user);
+            return user;
+
+        }
+        public static user_table CreateFBuser( string name, string surname, string email)
+        {
+            user_table user = new user_table();
+            user.name = name;
+            user.surname = surname;
+            user.e_mail = email;
             DBAccess.AddUser(user);
             return user;
 

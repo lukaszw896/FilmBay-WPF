@@ -248,3 +248,8 @@ C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe.config
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DotNetProjectOne.pdb
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\FacebookLogin.baml
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\FacebookLogin.g.cs
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\Facebook.dll
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\Facebook.xml
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache

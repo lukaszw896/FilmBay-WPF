@@ -197,6 +197,7 @@ namespace DotNetProjectOne
                         Img img = new Img(path, year, title, director);
 
                         searchmovies.Add(img);
+                  
                     }
                     catch { }
                 }

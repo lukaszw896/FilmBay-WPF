@@ -59,7 +59,7 @@ namespace DotNetProjectOne
         {
 
             Image myimage = new Image();
-            string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+            string path = ft.poster_url;
             string title = ft.title;
             string director = ft.director_name + " " + ft.director_surname;
             string year = ft.release_date.Value.ToShortDateString();
@@ -77,7 +77,7 @@ namespace DotNetProjectOne
         FilmTables = await DBAccess.GetTopFilms(4, 5);
         foreach (film_table ft in FilmTables)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+            string path = ft.poster_url;
             string title = ft.title;
             string director = ft.director_name + " " + ft.director_surname;
             string year = ft.release_date.Value.ToShortDateString();
