@@ -204,11 +204,68 @@ C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\MahApps.Metro.xml
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\PagesUserControl\AdminTMDbMovieSearch.g.cs
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\PagesUserControl\AdminTMDbMovieSearch.baml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DNPDB.mdf
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe.config
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\DNPDB.mdf
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\DNPDB_log.ldf
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\DotNetProjectOne.pdb
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\Facebook.dll
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\MahApps.Metro.dll
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\Facebook.xml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\MahApps.Metro.xml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\CommentWindow.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\FacebookLogin.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\FilmWindow.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\LoginWindow.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\MainWindow.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\RegisterWindow.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\StartWindow.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\MinimizeDisposeControl.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\CommentWindow.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\FacebookLogin.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\FilmPage.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\FilmWindow.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\LoginWindow.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\MainWindow.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\OptionsMinimizeDisposeControl.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\PagesUserControl\AdminTMDbMovieSearch.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\RegisterWindow.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\SearchPage.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\SearchResultsWindow.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\StartPage.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\StartWindow.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\MinimizeDisposeControl.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\App.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne_Content.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne_MarkupCompile.cache
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne_MarkupCompile.lref
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\App.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\FilmPage.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\OptionsMinimizeDisposeControl.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\PagesUserControl\AdminTMDbMovieSearch.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\SearchPage.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\SearchResultsWindow.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\StartPage.baml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.g.resources
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.Properties.Resources.resources
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DNPDB_log.ldf
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe.config
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DotNetProjectOne.pdb
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\Facebook.dll
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\MahApps.Metro.dll
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\Facebook.xml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\MahApps.Metro.xml
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\CommentWindow.baml
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\FacebookLogin.baml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\FilmWindow.baml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\LoginWindow.baml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\MainWindow.baml
@@ -216,6 +273,7 @@ C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\RegisterWindow.baml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\StartWindow.baml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\MinimizeDisposeControl.baml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\CommentWindow.g.cs
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\FacebookLogin.g.cs
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\FilmPage.g.cs
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\FilmWindow.g.cs
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\LoginWindow.g.cs
@@ -245,11 +303,3 @@ C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.Proper
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
-C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe.config
-C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe
-C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DotNetProjectOne.pdb
-C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\FacebookLogin.baml
-C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\FacebookLogin.g.cs
-C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\Facebook.dll
-C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\Facebook.xml
-C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache

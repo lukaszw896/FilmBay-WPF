@@ -104,7 +104,7 @@ namespace DotNetProjectTest
             DateTime releasedate = System.DateTime.Parse("12" + "/" + "12" + "/" + "1900");
             int filmid = DBAccess.CreateFilm(Name, SurName, 10,
                 "studio", "storyline", "Title", "NTitle", "Language", duration,
-                "posterurl", 13, "publisher", releasedate);
+                "posterurl", 13, "publisher", releasedate).Result;
             film_table sample = new film_table();
             sample = DBAccess.LoadFilmFromId(filmid).Result;
                 return filmid;
@@ -121,7 +121,7 @@ namespace DotNetProjectTest
             DateTime releasedate = System.DateTime.Parse("12" + "/" + "12" + "/" + "1900");
             int filmid = DBAccess.CreateFilm(Name, SurName, 10,
                 "studio", "storyline", "Title", "NTitle", "Language", duration,
-                "posterurl", 13, "publisher", releasedate);
+                "posterurl", 13, "publisher", releasedate).Result;
             film_table sample = new film_table();
             sample = DBAccess.LoadFilmFromId(filmid).Result;
             Assert.AreEqual(Name, "G");

@@ -69,6 +69,8 @@ namespace DotNetProjectOne.PagesUserControl
             MovieSearchReturnObject x = (MovieSearchReturnObject)MyMoviesList.SelectedItem;
             FilmWindow filmWindow = new FilmWindow(x);
             filmWindow.ShowDialog();
+
+            
         }
         private void AdminTMDbMovieSearchWindow_KeyDown(object sender, KeyEventArgs e)
         {

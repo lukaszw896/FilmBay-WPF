@@ -66,7 +66,7 @@ namespace DotNetProjectOne
                 foreach (film_table ft in FilmTables)
                 {
 
-                    try
+                //    try
                     {
                         Image myimage = new Image();
                         string path = ft.poster_url;
@@ -80,7 +80,7 @@ namespace DotNetProjectOne
 
                         searchmovies.Add(img);
                     }
-                    catch { }
+                //    catch { }
                 }
 
             }
@@ -89,16 +89,16 @@ namespace DotNetProjectOne
                 String[] split = Search.Split(' ');
                 string name = split[0];
                 string surname = split[1];
-                // MessageBox.Show(Search.Text);
+                MessageBox.Show(name + " "+ surname);
                 List<film_table> FilmTables = new List<film_table>();
                 //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
                 FilmTables = await DBAccess.SearchedByDirector(name, surname);
                 foreach (film_table ft in FilmTables)
                 {
-                    try
+                 //   try
                     {
                         Image myimage = new Image();
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+                        string path =  ft.poster_url;
                         string title = ft.title;
                         string director = ft.director_name + " " + ft.director_surname;
                         string year = ft.release_date.Value.ToShortDateString();
@@ -109,7 +109,7 @@ namespace DotNetProjectOne
 
                         searchmovies.Add(img);
                     }
-                    catch { }
+               //     catch { }
                 }
 
             }
@@ -124,10 +124,10 @@ namespace DotNetProjectOne
                 foreach (film_table ft in FilmTables)
                 {
                     // MessageBox.Show("LOL");
-                    try
+                 //   try
                     {
                         Image myimage = new Image();
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+                        string path =  ft.poster_url;
                         string title = ft.title;
                         string director = ft.director_name + " " + ft.director_surname;
                         string year = ft.release_date.Value.ToShortDateString();
@@ -138,7 +138,7 @@ namespace DotNetProjectOne
 
                         searchmovies.Add(img);
                     }
-                    catch { }
+                  //  catch { }
                 }
 
             }
@@ -153,10 +153,10 @@ namespace DotNetProjectOne
                 foreach (film_table ft in FilmTables)
                 {
                     // MessageBox.Show("LOL");
-                    try
+                  //  try
                     {
                         Image myimage = new Image();
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+                        string path =  ft.poster_url;
                         string title = ft.title;
                         string director = ft.director_name + " " + ft.director_surname;
                         string year = ft.release_date.Value.ToShortDateString();
@@ -167,7 +167,7 @@ namespace DotNetProjectOne
 
                         searchmovies.Add(img);
                     }
-                    catch { }
+                  //  catch { }
                 }
 
             }
@@ -184,10 +184,10 @@ namespace DotNetProjectOne
                 foreach (film_table ft in FilmTables)
                 {
                     // MessageBox.Show("LOL");
-                    try
+                //    try
                     {
                         Image myimage = new Image();
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+                        string path =  ft.poster_url;
                         string title = ft.title;
                         string director = ft.director_name + " " + ft.director_surname;
                         string year = ft.release_date.Value.ToShortDateString();
@@ -199,7 +199,7 @@ namespace DotNetProjectOne
                         searchmovies.Add(img);
                   
                     }
-                    catch { }
+              //      catch { }
                 }
 
             }
@@ -214,11 +214,11 @@ namespace DotNetProjectOne
 
                 foreach (film_table ft in FilmTables)
                 {
-                    // MessageBox.Show("LOL");
-                    try
+                 
+                //    try
                     {
                         Image myimage = new Image();
-                        string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+                        string path = ft.poster_url;
                         string title = ft.title;
                         string director = ft.director_name + " " + ft.director_surname;
                         string year = ft.release_date.Value.ToShortDateString();
@@ -229,7 +229,7 @@ namespace DotNetProjectOne
 
                         searchmovies.Add(img);
                     }
-                    catch { }
+             //       catch { }
                 }
 
             }

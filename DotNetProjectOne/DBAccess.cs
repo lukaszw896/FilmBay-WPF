@@ -13,10 +13,12 @@ namespace DotNetProjectOne
         public static Semaphore photoSem = new Semaphore(1, 1);
 
 
-        public static int CreateFilm(String directorname, String directorsurname, double price, string studio, string story,
+        public async static Task<int> CreateFilm(String directorname, String directorsurname, double price, string studio, string story,
             string title, string originaltitle, string originallanguage, TimeSpan duration, string posterurl,
             int agerestriction, string publisher, DateTime releasedate)
         {
+               return await Task.Run(() =>
+            {
             film_table dane = new film_table();
 
             if (studio.Trim() != "")
@@ -48,6 +50,7 @@ namespace DotNetProjectOne
             dane.release_date = releasedate;
             DBAccess.AddFilm(dane);
             return dane.id_film;
+            });
         }
 
 
@@ -876,7 +879,6 @@ namespace DotNetProjectOne
                 List<film_table> FilmTables = new List<film_table>();
                 FilmTables = (from p in con.film_tables
                               where p.director_name == name && p.director_surname == surname
-
                               select p).ToList();
                 con.Dispose();
                 return FilmTables;
