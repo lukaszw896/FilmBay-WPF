@@ -1,7 +1,11 @@
-﻿<Window x:Class="DotNetProjectOne.FilmWindow"
+﻿<Controls:MetroWindow x:Class="DotNetProjectOne.FilmWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="FilmWindow" Height="1000" Width="700" ResizeMode="NoResize" Closing="Window_Closing" >
+        Title="FilmWindow" Height="1000" Width="700" ResizeMode="NoResize" Closing="Window_Closing" Loaded="MetroWindow_Loaded">
+    <Grid>
+        <Canvas Panel.ZIndex="2" x:Name="canvasName" Background="White"></Canvas>
+        <Controls:ProgressRing Panel.ZIndex="3" Height="200" Width="200" x:Name="progressRing" IsActive="True" Foreground="{DynamicResource AccentColorBrush}"/>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="91*"/>
@@ -308,4 +312,5 @@ Grid.Column="1" HorizontalAlignment="Left" Click="Button_Click_18"    />
         <TextBox x:Name="Storyline" HorizontalAlignment="Left" Height="67" Grid.Row="12" TextWrapping="Wrap" Text="Enter Storyline" VerticalAlignment="Top" Width="193" Grid.Column="1"/>
         <Label Content="Story" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="12" VerticalAlignment="Top" Width="65"/>
     </Grid>
-</Window>
+    </Grid>
+</Controls:MetroWindow>

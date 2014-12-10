@@ -1,4 +1,5 @@
 ﻿using DotNetProjectOne.TMDB_Api_helper_classes;
+using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace DotNetProjectOne
     /// <summary>
     /// Interaction logic for FilmWindow.xaml
     /// </summary>
-    public partial class FilmWindow : Window
+    public partial class FilmWindow : MetroWindow
     {
 
 
@@ -35,120 +36,130 @@ namespace DotNetProjectOne
         //searching movie variables
         MovieSearchReturnObject movie;
         FoundMovieDetails foundMovieDetails;
-        public FilmWindow(MovieSearchReturnObject movie)
+        public  FilmWindow(MovieSearchReturnObject movie)
         {
             this.movie = movie;
             InitializeComponent();
-            this.fillEverything();
             this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
             this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
-          
-
         }
         
         /*  METHOD FILLING ADMIN PANEL WITH DATA */
-      
-        private void fillEverything()
+
+        public async void method()
         {
-            Title.Text = movie.title;
-            NTitle.Text = movie.orginalTitle;
-            Day.Text = movie.releaseDate.Substring(9, 2);
-            Month.Text = movie.releaseDate.Substring(6, 2);
-            Year.Text = movie.releaseDate.Substring(1, 4);
+            await fillEverything();
+        }
+        public async Task fillEverything()
+        {
+              await Task.Run(() =>
+             {
+                 /* TEMPORARLY I'M EREASING  GENRE NAME WHICH IS LONGER THAN 30, IS SHOULD WORK ALL THE TIME BUT WE HAVE TO CHANGE THIS BEFORE HANDING THE PROJECT */
+                 foundMovieDetails = TMDbApi.movieDetails(movie.id);
+                 for (int i = 0; i < foundMovieDetails.genres.Count; i++)
+                 {
+                     if (foundMovieDetails.genres[i].Length > 30)
+                     {
+                         foundMovieDetails.genres.RemoveAt(i);
+                     }
+                 }
+                 for (int i = 0; i < foundMovieDetails.languages.Count; i++)
+                 {
+                     foundMovieDetails.languages[i] = TMDbHelper.FindSingleString(@"""name"":""", @"""", foundMovieDetails.languages[i]);
+                 }
+                 /* adding actors */
+                 actors = TMDbApi.GetActors(movie.id);
 
-            PosterImage.Source = new BitmapImage(new Uri(movie.posterPath));
-            Poster = movie.posterPath;
-            foundMovieDetails = TMDbApi.movieDetails(movie.id);
-            /* TEMPORARLY I'M EREASING  GENRE NAME WHICH IS LONGER THAN 30, IS SHOULD WORK ALL THE TIME BUT WE HAVE TO CHANGE THIS BEFORE HANDING THE PROJECT */
-            for (int i = 0; i < foundMovieDetails.genres.Count; i++)
-            {
-                if (foundMovieDetails.genres[i].Length > 30)
-                {
-                    foundMovieDetails.genres.RemoveAt(i);
-                }
-            }
-            for (int i = 0; i < foundMovieDetails.languages.Count; i++)
-            {               
-                foundMovieDetails.languages[i] = TMDbHelper.FindSingleString(@"""name"":""", @"""", foundMovieDetails.languages[i]);
-            }
+                 CastInformation castInformation = TMDbApi.getCast(movie.id);
+                 List<string> photosPaths = new List<string>();
+                 photosPaths = TMDbApi.getFilmPictures(movie.id);
+                 this.Dispatcher.BeginInvoke(new Action(() =>
+                 {
+                     Title.Text = movie.title;
+                     NTitle.Text = movie.orginalTitle;
+                     Day.Text = movie.releaseDate.Substring(9, 2);
+                     Month.Text = movie.releaseDate.Substring(6, 2);
+                     Year.Text = movie.releaseDate.Substring(1, 4);
 
-            /*adding spoken languages*/
-            foreach (string a in foundMovieDetails.languages)
-            {
-                LanguageGrid.Items.Add(new ALanguage() { LName = a });
-            }
+                     PosterImage.Source = new BitmapImage(new Uri(movie.posterPath));
+                     Poster = movie.posterPath;
 
-            /* adding genres to GenreGrid*/
-            foreach (string a in foundMovieDetails.genres)
-            {
-                GenreGrid.Items.Add(new Genre() { GName = a });
-            }
-            /* adding storyline */
-            Storyline.Text = foundMovieDetails.storyline;
-            /*adding duration (THERE IS NO SECONDS SO WE HAVE TO GET RID OF THIS */
-            Duration_H.Text = (foundMovieDetails.duration / 60).ToString();
-            Duration_M.Text = (foundMovieDetails.duration % 60).ToString();
-            Duration_S.Text = "0";
-            /*age restriction*/
-           // if (foundMovieDetails.ageRestriction == "true") { Age.SelectedIndex = 1; } else Age.SelectedIndex = 0;
-           /* Studio */
-            Studio.Text = foundMovieDetails.studio;
-            /* adding actors */
-            actors = TMDbApi.GetActors(movie.id);
-            foreach (Actor a in actors)
-            {
-                ActorsGrid.Items.Add(a);
-            }
+                     /*adding spoken languages*/
+                     foreach (string a in foundMovieDetails.languages)
+                     {
+                         LanguageGrid.Items.Add(new ALanguage() { LName = a });
+                     }
 
-            /*
-             * adding writers composers and producers        
-             */
-            CastInformation castInformation = TMDbApi.getCast(movie.id);
+                     /* adding genres to GenreGrid*/
+                     foreach (string a in foundMovieDetails.genres)
+                     {
+                         GenreGrid.Items.Add(new Genre() { GName = a });
+                     }
+                     /* adding storyline */
+                     Storyline.Text = foundMovieDetails.storyline;
+                     /*adding duration (THERE IS NO SECONDS SO WE HAVE TO GET RID OF THIS */
+                     Duration_H.Text = (foundMovieDetails.duration / 60).ToString();
+                     Duration_M.Text = (foundMovieDetails.duration % 60).ToString();
+                     Duration_S.Text = "0";
+                     /*age restriction*/
+                     // if (foundMovieDetails.ageRestriction == "true") { Age.SelectedIndex = 1; } else Age.SelectedIndex = 0;
+                     /* Studio */
+                     Studio.Text = foundMovieDetails.studio;
+                     /* adding actors */
+                     foreach (Actor a in actors)
+                     {
+                         ActorsGrid.Items.Add(a);
+                     }
 
-            foreach (string writer in castInformation.writers)
-            {
-                String[] split = writer.Split(' ');
-                string name = split[0];
-                string surname = "";
-                if(split.Count()>=2)
-                 surname = split[1];
-                Writer tmpWriter = new Writer() { WName = name, WSurname = surname };
-                WriterGrid.Items.Add(tmpWriter);
-                writers.Add(tmpWriter);
-            }
-            foreach(string composer in castInformation.composers )
-            {
-                String[] split = composer.Split(' ');
-                string name = split[0];
-                string surname = "";
-                if (split.Count() >= 2)
-                    surname = split[1];
-                Composer tmpComposer = new Composer() { CName = name, CSurname = surname };
-                ComposerGrid.Items.Add(tmpComposer);
-                composers.Add(tmpComposer);
-            }
+                     /*
+                      * adding writers composers and producers        
+                      */
 
-            foreach (string producer in castInformation.producers)
-            {
-                String[] split = producer.Split(' ');
-                string name = split[0];
-                string surname = "";
-                if (split.Count() >= 2)
-                    surname = split[1];
-                Producer tmpProducer = new Producer() { PName = name, PSurname = surname };
-                producers.Add(tmpProducer);
-                ProducerGrid.Items.Add(tmpProducer);
-            }
+                     foreach (string writer in castInformation.writers)
+                     {
+                         String[] split = writer.Split(' ');
+                         string name = split[0];
+                         string surname = "";
+                         if (split.Count() >= 2)
+                             surname = split[1];
+                         Writer tmpWriter = new Writer() { WName = name, WSurname = surname };
+                         WriterGrid.Items.Add(tmpWriter);
+                         writers.Add(tmpWriter);
+                     }
+                     foreach (string composer in castInformation.composers)
+                     {
+                         String[] split = composer.Split(' ');
+                         string name = split[0];
+                         string surname = "";
+                         if (split.Count() >= 2)
+                             surname = split[1];
+                         Composer tmpComposer = new Composer() { CName = name, CSurname = surname };
+                         ComposerGrid.Items.Add(tmpComposer);
+                         composers.Add(tmpComposer);
+                     }
 
-            /* Adding photos to gallery  */
+                     foreach (string producer in castInformation.producers)
+                     {
+                         String[] split = producer.Split(' ');
+                         string name = split[0];
+                         string surname = "";
+                         if (split.Count() >= 2)
+                             surname = split[1];
+                         Producer tmpProducer = new Producer() { PName = name, PSurname = surname };
+                         producers.Add(tmpProducer);
+                         ProducerGrid.Items.Add(tmpProducer);
+                     }
 
-            List<string> photosPaths = new List<string>();
-            photosPaths = TMDbApi.getFilmPictures(movie.id);
-            foreach(string path in photosPaths)
-            {
-                MoviePhotos.Add(path);
-            }
+                     /* Adding photos to gallery  */
 
+                     foreach (string path in photosPaths)
+                     {
+                         MoviePhotos.Add(path);
+                     }
+                     progressRing.IsActive=false;
+                     canvasName.Visibility = Visibility.Hidden;
+                 }));
+             });
 
         }
         //function checking whether input is numeric
@@ -722,6 +733,10 @@ namespace DotNetProjectOne
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             StartWindow.pages.startPage.IsEnabled = true;
+        }
+        private async void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            await fillEverything();  
         }
     }
 }

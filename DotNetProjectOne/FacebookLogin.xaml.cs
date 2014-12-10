@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Facebook;
 using System.Windows.Navigation;
+using System.ComponentModel;
 namespace DotNetProjectOne
 {
     /// <summary>
@@ -83,6 +84,13 @@ namespace DotNetProjectOne
                 // MessageBox.Show("To create a new account go to www.facebook.com", "Could Not Create Account", MessageBoxButton.OK, MessageBoxImage.Error);
                 //  e.Cancel = true;
             }
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            StartWindow.pages.startPage.IsEnabled = true;
+            base.OnClosing(e);
+            //Do whatever you want here..
         }
     }
 }
