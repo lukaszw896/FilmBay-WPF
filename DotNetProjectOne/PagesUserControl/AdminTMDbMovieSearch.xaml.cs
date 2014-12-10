@@ -35,10 +35,17 @@ namespace DotNetProjectOne.PagesUserControl
             InitializeComponent();
         }
 
-        private void SearchTMDbMovie_Click(object sender, RoutedEventArgs e)
+        private async void SearchTMDbMovie_Click(object sender, RoutedEventArgs e)
         {
-            movies.Clear();
-            List<MovieSearchReturnObject> tmpList = TMDbApi.movieSearch(TextBoxTMDbSearch.Text.ToString());
+             movies.Clear();
+             String search = TextBoxTMDbSearch.Text.ToString();
+             canvasName.Visibility = Visibility.Visible;
+             progressRing.IsActive = true;
+                
+             await Task.Run(() =>
+            {
+               
+            List<MovieSearchReturnObject> tmpList = TMDbApi.movieSearch(search);
             /*
              * 
              * DAŁEM SORTOWANIE POPULARNOŚCI ZA POMOCĄ BUBBLE SORTA. TRZEBA ZMIENIĆ!!!!!
@@ -58,17 +65,28 @@ namespace DotNetProjectOne.PagesUserControl
                 }
 
             }
+                 this.Dispatcher.BeginInvoke(new Action(() =>
+                 {
                 for (int i = 0; i < tmpList.Count(); i++)
                 {
                     movies.Add(tmpList[i]);
                 }
+                canvasName.Visibility = Visibility.Hidden;
+                progressRing.IsActive = false;
+                 }));
+            });
+
         }
         private void MyMovieList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
             MovieSearchReturnObject x = (MovieSearchReturnObject)MyMoviesList.SelectedItem;
+            if (x != null)
+            { 
             FilmWindow filmWindow = new FilmWindow(x);
             filmWindow.ShowDialog();
+            }
+            MyMoviesList.UnselectAll();
 
             
         }

@@ -294,7 +294,7 @@ namespace DotNetProjectOne
                     MessageBox.Show("Please insert proper date");
                     return;
                 }
-                int filmid = DBAccess.CreateFilm(DName.Text, DSubName.Text, double.Parse(Price.Text), studio, storyline, Title.Text, NTitle.Text, Language.Text, duration, posterurl, Ageres, publisher, releasedate);
+                int filmid = await DBAccess.CreateFilm(DName.Text, DSubName.Text, double.Parse(Price.Text), studio, storyline, Title.Text, NTitle.Text, Language.Text, duration, posterurl, Ageres, publisher, releasedate);
 
                 foreach (Actor a in actors)
                 {
@@ -497,12 +497,12 @@ namespace DotNetProjectOne
             CheckIfLetters(e);
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        private void ProducerPopUpOpen(object sender, RoutedEventArgs e)
         {
             ProducerPopUp.IsOpen = true;
         }
         //Adding Producers to DataGrid
-        private void Button_Click_6(object sender, RoutedEventArgs e)
+        private void AddProducer(object sender, RoutedEventArgs e)
         {
             Producer a = new Producer();
             a.PName = ProducerName.Text;
@@ -524,12 +524,12 @@ namespace DotNetProjectOne
 
         }
         
-        private void Button_Click_7(object sender, RoutedEventArgs e)
+        private void AddProducerPopUpClose(object sender, RoutedEventArgs e)
         {
             ProducerPopUp.IsOpen = false;
         }
 //Adding Composers to DataGrid
-        private void Button_Click_8(object sender, RoutedEventArgs e)
+        private void AddComposerButton(object sender, RoutedEventArgs e)
         {
             Composer c = new Composer();
             c.CName = ComposerName.Text;
@@ -550,19 +550,19 @@ namespace DotNetProjectOne
             }
         }
 
-        private void Button_Click_9(object sender, RoutedEventArgs e)
+        private void ComposerPopUpClose(object sender, RoutedEventArgs e)
         {
             ComposerrPopUp.IsOpen = false;
         }
 
-        private void Button_Click_10(object sender, RoutedEventArgs e)
+        private void ComposerPopUpOpen(object sender, RoutedEventArgs e)
         {
             ComposerrPopUp.IsOpen = true;
         }
 
 
         //adding an actor Photo
-        private void Button_Click_11(object sender, RoutedEventArgs e)
+        private void AddActorPhoto(object sender, RoutedEventArgs e)
         {
 
   
@@ -593,7 +593,7 @@ namespace DotNetProjectOne
                     }
                     catch
                     {
-
+                        MessageBox.Show("Please choose correct actor image");
                     }
                 }
             }
@@ -616,24 +616,18 @@ namespace DotNetProjectOne
                 string[] filePath = op.SafeFileNames;
                 foreach (string name in op.SafeFileNames)
                 {
-                    try
-                    {
-                        MoviePhotos.Add(name);
-                    }
-                    catch
-                    {
 
-                    }
+                    MoviePhotos.Add(name);
                 }
             }
         }
 
-        private void Button_Click_13(object sender, RoutedEventArgs e)
+        private void AddLanguagePopUpOpen(object sender, RoutedEventArgs e)
         {
             LanguagePopUp.IsOpen = true;
         }
 
-        private void Button_Click_14(object sender, RoutedEventArgs e)
+        private void AddLanguagePopUpClose(object sender, RoutedEventArgs e)
         {
             LanguagePopUp.IsOpen = false;
         }
@@ -687,19 +681,19 @@ namespace DotNetProjectOne
                     }
                     catch
                     {
-
+                        MessageBox.Show("Please choose correct poster image");
                     }
                 }
             }
 
         }
 
-        private void Button_Click_16(object sender, RoutedEventArgs e)
+        private void GenreMenuClick(object sender, RoutedEventArgs e)
         {
             GenrePopUp.IsOpen=true;
         }
 
-        private void Button_Click_17(object sender, RoutedEventArgs e)
+        private void AddGenre(object sender, RoutedEventArgs e)
         {
             Genre g = new Genre();
             g.GName= GenreName.Text;
@@ -719,7 +713,7 @@ namespace DotNetProjectOne
             }
         }
 
-        private void Button_Click_18(object sender, RoutedEventArgs e)
+        private void AddGenreClose(object sender, RoutedEventArgs e)
         {
             GenrePopUp.IsOpen=false;
         }
