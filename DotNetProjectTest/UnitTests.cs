@@ -44,7 +44,7 @@ namespace DotNetProjectTest
             tab = DBAccess.CreateComposerFilmTable(filmid, sample.id_music_creator);
 
             Assert.AreEqual(tab.id_film, filmid);
-            Assert.AreEqual(tab.id_film, sample.id_music_creator);
+            Assert.AreEqual(tab.id_music_creator, sample.id_music_creator);
 
         }
         [TestMethod]
@@ -62,7 +62,7 @@ namespace DotNetProjectTest
             tab = DBAccess.CreateActorFilmTable(filmid, sample.id_actor);
 
             Assert.AreEqual(tab.id_film, filmid);
-            Assert.AreEqual(tab.id_film, sample.id_actor);
+            Assert.AreEqual(tab.id_actor, sample.id_actor);
         }
         [TestMethod]
         public void AddLanguageTest()
@@ -78,7 +78,7 @@ namespace DotNetProjectTest
             tab = DBAccess.CreateFilmLanguageTable(filmid, sample.id_other_language);
 
             Assert.AreEqual(tab.id_film, filmid);
-            Assert.AreEqual(tab.id_film, sample.id_other_language);
+            Assert.AreEqual(tab.id_other_language, sample.id_other_language);
         }
         [TestMethod]
         public void AddGenreTest()
@@ -94,7 +94,7 @@ namespace DotNetProjectTest
             tab = DBAccess.CreateGenreFilmTable(filmid, sample.id_genere);
 
             Assert.AreEqual(tab.id_film, filmid);
-            Assert.AreEqual(tab.id_film, sample.id_genere);
+            Assert.AreEqual(tab.id_genere, sample.id_genere);
         }
         public int SampleFilm()
         {
