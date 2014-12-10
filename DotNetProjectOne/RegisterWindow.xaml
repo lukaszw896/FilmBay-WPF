@@ -1,5 +1,6 @@
 ﻿<Window x:Class="DotNetProjectOne.RegisterWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="RegisterWindow" Height="600" Width="570" WindowStyle="None" AllowsTransparency="True" MouseDown="Window_MouseDown" KeyDown="RegisterWindow_KeyDown" ResizeMode="NoResize" >
     <Grid  IsEnabled="True"  >
@@ -34,7 +35,8 @@
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="2*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*" />
+                                
                             </Grid.RowDefinitions>
 
 
@@ -44,36 +46,34 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Border Grid.Column="0" Margin="20"  BorderBrush="Black" BorderThickness="1">
-                                    <TextBox x:Name="UserName"  Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" GotFocus="TextBox_GotFocus">Name</TextBox>
+                                    <TextBox Style="{StaticResource textBoxRegisterStyle}"  x:Name="UserName"  Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" Controls:TextBoxHelper.Watermark="Name" GotFocus="TextBox_GotFocus"></TextBox>
                                 </Border>
                                 <Border Grid.Column="1" Margin="20"  BorderBrush="Black" BorderThickness="1">
-                                    <TextBox  x:Name="UserSurName" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" GotFocus="TextBox_GotFocus" >Surname</TextBox>
+                                    <TextBox x:Name="UserSurName" Controls:TextBoxHelper.Watermark="Surname" Style="{StaticResource textBoxRegisterStyle}" GotFocus="TextBox_GotFocus" ></TextBox>
                                 </Border>
                             </Grid>
-
-
                             <Border Margin="20"  Grid.Row="2" BorderBrush="Black" BorderThickness="1">
-                                <TextBox  x:Name="Login" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" GotFocus="TextBox_GotFocus">Login</TextBox>
+                                <TextBox  x:Name="Login" Controls:TextBoxHelper.Watermark="Login" Style="{StaticResource textBoxRegisterStyle}" GotFocus="TextBox_GotFocus"></TextBox>
                             </Border>
                             <Border Margin="20"  Grid.Row="3" BorderBrush="Black" BorderThickness="1">
-                                <TextBox x:Name="Password" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" GotFocus="TextBox_GotFocus">Password</TextBox>
+                                <TextBox Controls:TextBoxHelper.Watermark="Password" x:Name="Password" Style="{StaticResource textBoxRegisterStyle}" GotFocus="TextBox_GotFocus"></TextBox>
                             </Border>
                             <Border Margin="20"  Grid.Row="4" BorderBrush="Black" BorderThickness="1">
-                                <TextBox x:Name ="PasswordConfirm" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" GotFocus="TextBox_GotFocus">Confirm password</TextBox>
+                                <TextBox x:Name ="PasswordConfirm" Controls:TextBoxHelper.Watermark="Confirm Password" Style="{StaticResource textBoxRegisterStyle}" GotFocus="TextBox_GotFocus"></TextBox>
                             </Border>
                             <Border Margin="20"  Grid.Row="5" BorderBrush="Black" BorderThickness="1">
-                                <TextBox x:Name="Email" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" GotFocus="TextBox_GotFocus">E-mail</TextBox>
+                                <TextBox x:Name="Email" Controls:TextBoxHelper.Watermark="E-mail" Style="{StaticResource textBoxRegisterStyle}" GotFocus="TextBox_GotFocus"></TextBox>
                             </Border>
                             <Border Margin="20"  Grid.Row="6" BorderBrush="Black" BorderThickness="1">
-                                <TextBox x:Name="EmailConfirm" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" GotFocus="TextBox_GotFocus">Confirm e-mail</TextBox>
+                                <TextBox x:Name="EmailConfirm" Controls:TextBoxHelper.Watermark="Confirm E-mail" Style="{StaticResource textBoxRegisterStyle}" GotFocus="TextBox_GotFocus"></TextBox>
                             </Border>
                             <Border Margin="20"  Grid.Row="7" BorderBrush="Black" BorderThickness="1">
-                                <TextBox x:Name="Age" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" PreviewTextInput="Age_PreviewTextInput" GotFocus="TextBox_GotFocus">Age</TextBox>
+                                <TextBox x:Name="Age" Controls:TextBoxHelper.Watermark="Age" Style="{StaticResource textBoxRegisterStyle}" PreviewTextInput="Age_PreviewTextInput" GotFocus="TextBox_GotFocus"></TextBox>
                             </Border>
                             <Border Margin="20"  Grid.Row="8" BorderBrush="Black" BorderThickness="1">
-                                <TextBox x:Name="Gender" Margin="20" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="30" GotFocus="TextBox_GotFocus">Gender</TextBox>
+                                <TextBox x:Name="Gender" Controls:TextBoxHelper.Watermark="Gender" Style="{StaticResource textBoxRegisterStyle}" GotFocus="TextBox_GotFocus"></TextBox>
                             </Border>
-                            <Button x:Name="signUpButton" Margin="20,10,20,10" FontSize="30" Grid.Row="9" Click="SignUpButton_Click">Sign up</Button>
+                            <Button x:Name="signUpButton" Margin="20,10,20,10" FontSize="30" Height="70" Grid.Row="9" Click="SignUpButton_Click">Sign up</Button>
                         </Grid>
                     </ScrollViewer>
                 </Grid>

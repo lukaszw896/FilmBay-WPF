@@ -81,7 +81,7 @@ namespace DotNetProjectOne
 
             else if (problem == "email")
             {
-                MessageBox.Show("Email already in use");
+                MessageBox.Show("E-mail already in use");
                 return;
             }
 
@@ -92,7 +92,7 @@ namespace DotNetProjectOne
             }
             else if (Email.Text != EmailConfirm.Text)
             {
-                MessageBox.Show("Passwords do not match");
+                MessageBox.Show("E-mails do not match");
                 return;
             }
             else

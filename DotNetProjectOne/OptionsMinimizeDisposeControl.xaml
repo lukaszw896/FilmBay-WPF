@@ -5,21 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:controls="clr-namespace:DotNetProjectOne"
              mc:Ignorable="d" 
-             d:DesignHeight="60" d:DesignWidth="105">
+             d:DesignHeight="80" d:DesignWidth="105">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-    <Grid MaxHeight="30" MaxWidth="105">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
+         <Grid MaxHeight="40" Width="105" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
             <Button BorderThickness="0" Grid.Column="0" Background="Transparent" Click="optionsButton_click">
-                <Image Grid.Column="1" Source="/Icons/option_button.png"/>
+                <Image Grid.Column="0" Source="/Icons/option_button.png"/>
             </Button>
-            <controls:MinimizeDisposeControl x:Name="DisposeControl" Grid.Column="1"></controls:MinimizeDisposeControl>
+            <!--<controls:MinimizeDisposeControl x:Name="DisposeControl" Grid.Column="1"></controls:MinimizeDisposeControl>-->
         </Grid>
         <Button Grid.Row="1" x:Name="logOutButton" Background="#333" MaxWidth="105" Foreground="White" Visibility="Hidden"  Click="LogOutButton_Click"  >Logout</Button>
     </Grid>
