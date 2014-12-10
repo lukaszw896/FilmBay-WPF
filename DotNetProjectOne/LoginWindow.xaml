@@ -1,5 +1,6 @@
 ﻿<Window x:Class="DotNetProjectOne.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="LoginWindow" Width="450" Height="450" WindowStyle="None" AllowsTransparency="True" IsEnabled="True" MouseDown="Window_MouseDown" KeyDown="LoginWindow_KeyDown" ResizeMode="NoResize">
     <Border BorderBrush="Black" BorderThickness="3">
@@ -28,11 +29,11 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Border Margin="20" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
-                        <TextBox x:Name="CheckLogin"  Margin="5" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="25" GotFocus="TextBox_GotFocus" >Login</TextBox>
+                    <Border Margin="17" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                        <TextBox x:Name="CheckLogin"  Controls:TextBoxHelper.Watermark="Login" Style="{StaticResource textBoxRegisterStyle}" Margin="5" GotFocus="TextBox_GotFocus" ></TextBox>
                     </Border>
-                    <Border Margin="20"  Grid.Row="2" BorderBrush="Black" BorderThickness="1">
-                        <TextBox x:Name="CheckPassword" Margin="5" BorderThickness="0" Foreground="White" Background="#333" VerticalAlignment="Center" FontSize="25" GotFocus="TextBox_GotFocus" >Password</TextBox>
+                    <Border Margin="17"  Grid.Row="2" BorderBrush="Black" BorderThickness="1">
+                        <TextBox x:Name="CheckPassword" Controls:TextBoxHelper.Watermark="Password" Style="{StaticResource textBoxRegisterStyle}" Margin="5" GotFocus="TextBox_GotFocus" ></TextBox>
                     </Border>
                     <Button x:Name="loginButton" Margin="20" FontSize="30" Grid.Row="3" Click="LoginSignInButton_Click">Sign in</Button>
                 </Grid>

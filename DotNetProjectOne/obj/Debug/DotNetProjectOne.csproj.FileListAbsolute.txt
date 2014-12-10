@@ -215,7 +215,6 @@ C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\MahApps.Metro.dll
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\Facebook.xml
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\MahApps.Metro.xml
-C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\CommentWindow.baml
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\FacebookLogin.baml
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\FilmWindow.baml
