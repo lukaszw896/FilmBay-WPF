@@ -43,227 +43,251 @@ namespace DotNetProjectOne
         }
         SearchPage searchPage;
 
+        string selected;
+        string Search;
 
         //public user_table Myself = new user_table();
  
-        public async void start(string selected,string Search)
+        public async Task start(string selected,string Search)
         {
-            if (searchmovies.Count > 0)
+            canvasName.Visibility = Visibility.Visible;
+
+           await  Task.Run(async () =>
             {
-
-                searchmovies.Clear();
-            }
-            MyLINQDataContext con = new MyLINQDataContext();
-
-
-            if (selected == "Title")
-            {
-                string searchedtitle = Search;
-
-                List<film_table> FilmTables = new List<film_table>();
-                //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = await DBAccess.SearchedByTitle(searchedtitle);
-                foreach (film_table ft in FilmTables)
+                if (searchmovies.Count > 0)
                 {
 
-                //    try
-                    {
-                        Image myimage = new Image();
-                        string path = ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
-                        //   MessageBox.Show(path);
-                        myimage.Source = new BitmapImage(new Uri(path));
-
-                        Img img = new Img(path, year, title, director);
-
-                        searchmovies.Add(img);
-                    }
-                //    catch { }
+                    searchmovies.Clear();
                 }
+                MyLINQDataContext con = new MyLINQDataContext();
 
-            }
-            if (selected == "Director")
-            {
-                String[] split = Search.Split(' ');
-                string name = split[0];
-                string surname = split[1];
-                MessageBox.Show(name + " "+ surname);
-                List<film_table> FilmTables = new List<film_table>();
-                //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = await DBAccess.SearchedByDirector(name, surname);
-                foreach (film_table ft in FilmTables)
+
+                if (selected == "Title")
                 {
-                 //   try
-                    {
-                        Image myimage = new Image();
-                        string path =  ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
-                        //  MessageBox.Show(path);
-                        myimage.Source = new BitmapImage(new Uri(path));
+                    string searchedtitle = Search;
 
-                        Img img = new Img(path, year, title, director);
+                    List<film_table> FilmTables = new List<film_table>();
+                    //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+                    FilmTables = await DBAccess.SearchedByTitle(searchedtitle);
+                    await this.Dispatcher.BeginInvoke(new Action(() =>
+                   {
+                     foreach (film_table ft in FilmTables)
+                     {
 
-                        searchmovies.Add(img);
-                    }
-               //     catch { }
+                         //    try
+                         {
+                             Image myimage = new Image();
+                             string path = ft.poster_url;
+                             string title = ft.title;
+                             string director = ft.director_name + " " + ft.director_surname;
+                             string year = ft.release_date.Value.ToShortDateString();
+                             //   MessageBox.Show(path);
+                             myimage.Source = new BitmapImage(new Uri(path));
+
+                             Img img = new Img(path, year, title, director);
+
+                             searchmovies.Add(img);
+                         }
+                         //    catch { }
+                     }
+                 }));
+
                 }
-
-            }
-            if (selected == "Actor")
-            {
-                String[] split = Search.Split(' ');
-                string name = split[0];
-                string surname = split[1];
-                List<film_table> FilmTables = new List<film_table>();
-                //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = await DBAccess.SearchedByActor(name, surname);
-                foreach (film_table ft in FilmTables)
+                if (selected == "Director")
                 {
-                    // MessageBox.Show("LOL");
-                 //   try
-                    {
-                        Image myimage = new Image();
-                        string path =  ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
+                    String[] split = Search.Split(' ');
+                    string name = split[0];
+                    string surname = split[1];
+                    MessageBox.Show(name + " " + surname);
+                    List<film_table> FilmTables = new List<film_table>();
+                    //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+                    FilmTables = await DBAccess.SearchedByDirector(name, surname);
+                    await this.Dispatcher.BeginInvoke(new Action(() =>
+                   {
+                       foreach (film_table ft in FilmTables)
+                       {
+                           //   try
+                           {
+                               Image myimage = new Image();
+                               string path = ft.poster_url;
+                               string title = ft.title;
+                               string director = ft.director_name + " " + ft.director_surname;
+                               string year = ft.release_date.Value.ToShortDateString();
+                               //  MessageBox.Show(path);
+                               myimage.Source = new BitmapImage(new Uri(path));
 
-                        myimage.Source = new BitmapImage(new Uri(path));
+                               Img img = new Img(path, year, title, director);
 
-                        Img img = new Img(path, year, title, director);
+                               searchmovies.Add(img);
+                           }
+                           //     catch { }
+                       }
+                   }));
 
-                        searchmovies.Add(img);
-                    }
-                  //  catch { }
                 }
-
-            }
-            if (selected == "Writer")
-            {
-                String[] split = Search.Split(' ');
-                string name = split[0];
-                string surname = split[1];
-                List<film_table> FilmTables = new List<film_table>();
-                //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = await DBAccess.SearchedByWriter(name, surname);
-                foreach (film_table ft in FilmTables)
+                if (selected == "Actor")
                 {
-                    // MessageBox.Show("LOL");
-                  //  try
-                    {
-                        Image myimage = new Image();
-                        string path =  ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
+                    String[] split = Search.Split(' ');
+                    string name = split[0];
+                    string surname = split[1];
+                    List<film_table> FilmTables = new List<film_table>();
+                    //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+                    FilmTables = await DBAccess.SearchedByActor(name, surname);
+                    await this.Dispatcher.BeginInvoke(new Action(() =>
+                   {
+                       foreach (film_table ft in FilmTables)
+                       {
+                           // MessageBox.Show("LOL");
+                           //   try
+                           {
+                               Image myimage = new Image();
+                               string path = ft.poster_url;
+                               string title = ft.title;
+                               string director = ft.director_name + " " + ft.director_surname;
+                               string year = ft.release_date.Value.ToShortDateString();
 
-                        myimage.Source = new BitmapImage(new Uri(path));
+                               myimage.Source = new BitmapImage(new Uri(path));
 
-                        Img img = new Img(path, year, title, director);
+                               Img img = new Img(path, year, title, director);
 
-                        searchmovies.Add(img);
-                    }
-                  //  catch { }
+                               searchmovies.Add(img);
+                           }
+                           //  catch { }
+                       }
+                   }));
+
                 }
-
-            }
-
-            if (selected == "Producer")
-            {
-                String[] split = Search.Split(' ');
-                string name = split[0];
-                string surname = split[1];
-                List<film_table> FilmTables = new List<film_table>();
-                //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = await DBAccess.SearchedByProducer(name, surname);
-
-                foreach (film_table ft in FilmTables)
+                if (selected == "Writer")
                 {
-                    // MessageBox.Show("LOL");
-                //    try
-                    {
-                        Image myimage = new Image();
-                        string path =  ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
+                    String[] split = Search.Split(' ');
+                    string name = split[0];
+                    string surname = split[1];
+                    List<film_table> FilmTables = new List<film_table>();
+                    //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+                    FilmTables = await DBAccess.SearchedByWriter(name, surname);
+                    await this.Dispatcher.BeginInvoke(new Action(() =>
+                   {
+                       foreach (film_table ft in FilmTables)
+                       {
+                           // MessageBox.Show("LOL");
+                           //  try
+                           {
+                               Image myimage = new Image();
+                               string path = ft.poster_url;
+                               string title = ft.title;
+                               string director = ft.director_name + " " + ft.director_surname;
+                               string year = ft.release_date.Value.ToShortDateString();
 
-                        myimage.Source = new BitmapImage(new Uri(path));
+                               myimage.Source = new BitmapImage(new Uri(path));
 
-                        Img img = new Img(path, year, title, director);
+                               Img img = new Img(path, year, title, director);
 
-                        searchmovies.Add(img);
-                  
-                    }
-              //      catch { }
+                               searchmovies.Add(img);
+                           }
+                           //  catch { }
+                       }
+                   }));
+
                 }
 
-            }
-            if (selected == "Composer")
-            {
-                String[] split = Search.Split(' ');
-                string name = split[0];
-                string surname = split[1];
-                List<film_table> FilmTables = new List<film_table>();
-                //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
-                FilmTables = await DBAccess.SearchedByComposer(name, surname);
-
-                foreach (film_table ft in FilmTables)
+                if (selected == "Producer")
                 {
-                 
-                //    try
-                    {
-                        Image myimage = new Image();
-                        string path = ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
+                    String[] split = Search.Split(' ');
+                    string name = split[0];
+                    string surname = split[1];
+                    List<film_table> FilmTables = new List<film_table>();
+                    //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+                    FilmTables = await DBAccess.SearchedByProducer(name, surname);
+                    await this.Dispatcher.BeginInvoke(new Action(() =>
+                   {
+                       foreach (film_table ft in FilmTables)
+                       {
+                           // MessageBox.Show("LOL");
+                           //    try
+                           {
+                               Image myimage = new Image();
+                               string path = ft.poster_url;
+                               string title = ft.title;
+                               string director = ft.director_name + " " + ft.director_surname;
+                               string year = ft.release_date.Value.ToShortDateString();
 
-                        myimage.Source = new BitmapImage(new Uri(path));
+                               myimage.Source = new BitmapImage(new Uri(path));
 
-                        Img img = new Img(path, year, title, director);
+                               Img img = new Img(path, year, title, director);
 
-                        searchmovies.Add(img);
-                    }
-             //       catch { }
+                               searchmovies.Add(img);
+
+                           }
+                           //      catch { }
+                       }
+                   }));
+
+                }
+                if (selected == "Composer")
+                {
+                    String[] split = Search.Split(' ');
+                    string name = split[0];
+                    string surname = split[1];
+                    List<film_table> FilmTables = new List<film_table>();
+                    //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
+                    FilmTables = await DBAccess.SearchedByComposer(name, surname);
+                    await this.Dispatcher.BeginInvoke(new Action(() =>
+                   {
+                       foreach (film_table ft in FilmTables)
+                       {
+
+                           //    try
+                           {
+                               Image myimage = new Image();
+                               string path = ft.poster_url;
+                               string title = ft.title;
+                               string director = ft.director_name + " " + ft.director_surname;
+                               string year = ft.release_date.Value.ToShortDateString();
+
+                               myimage.Source = new BitmapImage(new Uri(path));
+
+                               Img img = new Img(path, year, title, director);
+
+                               searchmovies.Add(img);
+                           }
+                           //       catch { }
+                       }
+                   }));
+
                 }
 
-            }
-
-            if (selected == "Genre")
-            {
-
-                string name = Search;       
-                List<film_table> FilmTables = new List<film_table>();
-        
-                FilmTables = await DBAccess.SearchedByGenre(name);
-
-                foreach (film_table ft in FilmTables)
+                if (selected == "Genre")
                 {
 
-                    //    try
-                    {
-                        Image myimage = new Image();
-                        string path = ft.poster_url;
-                        string title = ft.title;
-                        string director = ft.director_name + " " + ft.director_surname;
-                        string year = ft.release_date.Value.ToShortDateString();
+                    string name = Search;
+                    List<film_table> FilmTables = new List<film_table>();
 
-                        myimage.Source = new BitmapImage(new Uri(path));
+                    FilmTables = await DBAccess.SearchedByGenre(name);
+                    await this.Dispatcher.BeginInvoke(new Action(() =>
+                   {
+                       foreach (film_table ft in FilmTables)
+                       {
 
-                        Img img = new Img(path, year, title, director);
+                           //    try
+                           {
+                               Image myimage = new Image();
+                               string path = ft.poster_url;
+                               string title = ft.title;
+                               string director = ft.director_name + " " + ft.director_surname;
+                               string year = ft.release_date.Value.ToShortDateString();
 
-                        searchmovies.Add(img);
-                    }
-                    //       catch { }
+                               myimage.Source = new BitmapImage(new Uri(path));
+
+                               Img img = new Img(path, year, title, director);
+
+                               searchmovies.Add(img);
+                           }
+                           //       catch { }
+                       }
+                   }));
+
                 }
-
-            }
-
+            });
         }
 
 
@@ -275,8 +299,8 @@ namespace DotNetProjectOne
             this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
             this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
             this.DataContext = this;
-            this.start(selected, Search);
-
+            this.selected=selected;
+            this.Search=Search;
             searchPage = sp;
            
         }
@@ -304,6 +328,11 @@ private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             searchPage.IsEnabled = true;
             this.Close();
+        }
+
+        private async void SearchPopUp_Loaded(object sender, RoutedEventArgs e)
+        {
+            await start(selected,Search);
         }   
 
     }

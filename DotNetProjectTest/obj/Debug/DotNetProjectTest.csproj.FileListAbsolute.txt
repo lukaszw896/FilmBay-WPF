@@ -30,3 +30,17 @@ C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\bin\Debug\Facebook.xml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\obj\Debug\DotNetProjectTest.csprojResolveAssemblyReference.cache
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\obj\Debug\DotNetProjectTest.dll
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectTest\obj\Debug\DotNetProjectTest.pdb
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\bin\Debug\DNPDB.mdf
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\bin\Debug\DNPDB_log.ldf
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\bin\Debug\DotNetProjectTest.dll
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\bin\Debug\DotNetProjectTest.pdb
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\bin\Debug\DotNetProjectOne.exe
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\bin\Debug\MahApps.Metro.dll
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\bin\Debug\Facebook.dll
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\bin\Debug\DotNetProjectOne.pdb
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\bin\Debug\MahApps.Metro.xml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\bin\Debug\Facebook.xml
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\obj\Debug\DotNetProjectTest.csprojResolveAssemblyReference.cache
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\obj\Debug\DotNetProjectTest.dll
+C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectTest\obj\Debug\DotNetProjectTest.pdb
