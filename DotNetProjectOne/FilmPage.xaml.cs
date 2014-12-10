@@ -284,7 +284,7 @@ namespace DotNetProjectOne
             }
             else
             {
-                MessageBox.Show(canvote.ToString());
+
                 DBAccess.vote(5, filmid, canvote);
                 ratingLoadFunction();
                 StartWindow.SetPage(new FilmPage());
@@ -301,7 +301,7 @@ namespace DotNetProjectOne
             }
             else
             {
-                MessageBox.Show(canvote.ToString());
+            
              DBAccess.vote(4,filmid, canvote);
             ratingLoadFunction();
             StartWindow.SetPage(new FilmPage());
@@ -337,7 +337,7 @@ namespace DotNetProjectOne
             }
             else
             {
-                MessageBox.Show("Canvote: " +canvote.ToString());
+                MessageBox.Show("Canvote:ddd " +canvote.ToString());
                 DBAccess.vote(2, filmid, canvote);
                 ratingLoadFunction();
                 StartWindow.SetPage(new FilmPage());
@@ -354,7 +354,7 @@ namespace DotNetProjectOne
             }
             else
             {
-                MessageBox.Show("Canvote: " + canvote.ToString());
+                MessageBox.Show("Canvote to be transmitted: " + canvote.ToString());
                 DBAccess.vote(1, filmid, canvote);
                 ratingLoadFunction();
                 StartWindow.SetPage(new FilmPage());
