@@ -761,7 +761,7 @@ namespace DotNetProjectOne
                 if (logininDB == false)
                 {
 
-                   x = CreateFBuser(email, name, surname);
+                   x = CreateFBuser(name, surname, email);
                    return x;
                 }
                 else 
@@ -791,10 +791,12 @@ namespace DotNetProjectOne
         }
         public static user_table CreateFBuser( string name, string surname, string email)
         {
+            string login = name + surname;
             user_table user = new user_table();
             user.name = name;
             user.surname = surname;
             user.e_mail = email;
+            user.login = login;
             DBAccess.AddUser(user);
             return user;
 
