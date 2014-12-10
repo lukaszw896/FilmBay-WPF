@@ -6,7 +6,7 @@
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
               xmlns:local="clr-namespace:DotNetProjectOne.TMDB_Api_helper_classes"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="700" KeyDown="AdminTMDbMovieSearchWindow_KeyDown">
+             d:DesignHeight="300" d:DesignWidth="700" KeyDown="AdminTMDbMovieSearchWindow_KeyDown" Background="#333">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"></RowDefinition>
@@ -28,6 +28,8 @@
                 <ColumnDefinition Width="16*"/>
                 <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
+            <Canvas Panel.ZIndex="2" Grid.Column="1" x:Name="canvasName" Background="#333" Visibility="Hidden"></Canvas>
+            <Controls:ProgressRing Grid.Column="1" Panel.ZIndex="3" Height="200" Width="200" x:Name="progressRing" IsActive="False" Foreground="{DynamicResource AccentColorBrush}"/>
             <ListView ItemsSource="{Binding Path=movies}"  Grid.Column="1" x:Name="MyMoviesList" BorderThickness="0"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="False" Margin="20,20,20,20" SelectionChanged="MyMovieList_SelectionChanged">
                 <ListView.ItemTemplate >
                     <DataTemplate DataType="{x:Type local:MovieSearchReturnObject}" x:Name="mojadata">

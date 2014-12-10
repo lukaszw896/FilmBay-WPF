@@ -41,7 +41,8 @@
                     <ComboBoxItem Content="Producer" HorizontalAlignment="Left" Width="206"/>
                     <ComboBoxItem Content="Actor" HorizontalAlignment="Left" Width="206"/>
                     <ComboBoxItem Content="Composer" HorizontalAlignment="Left" Width="206"/>
-                </ComboBox>
+                    <ComboBoxItem Content="Genre" HorizontalAlignment="Left" Width="206"/>
+                    </ComboBox>
                 <Button x:Name="searchButton" Grid.Column="2" BorderThickness="0" Background="Transparent" Click="searchButton_Click">
                     <Image Margin="8" Grid.Column="2" Source="/Icons/search.png"/>
                 </Button>

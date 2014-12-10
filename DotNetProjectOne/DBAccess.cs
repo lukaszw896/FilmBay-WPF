@@ -900,6 +900,22 @@ namespace DotNetProjectOne
             });
 
         }
+        public async static Task<List<film_table>> SearchedByGenre(string name)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                List<film_table> FilmTables = new List<film_table>();
+                FilmTables = (from a in con.genere_tables
+                              join at in con.film_genere_tables on a.id_genere equals at.id_genere
+                              join f in con.film_tables on at.id_film equals f.id_film
+                              where a.genere_name == name
+                              select f).ToList();
+                con.Dispose();
+                return FilmTables;
+            });
+
+        }
 
         public async static Task<List<film_table>> SearchedByWriter(string name, string surname)
         {

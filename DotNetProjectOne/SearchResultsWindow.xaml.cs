@@ -234,6 +234,35 @@ namespace DotNetProjectOne
 
             }
 
+            if (selected == "Genre")
+            {
+
+                string name = Search;       
+                List<film_table> FilmTables = new List<film_table>();
+        
+                FilmTables = await DBAccess.SearchedByGenre(name);
+
+                foreach (film_table ft in FilmTables)
+                {
+
+                    //    try
+                    {
+                        Image myimage = new Image();
+                        string path = ft.poster_url;
+                        string title = ft.title;
+                        string director = ft.director_name + " " + ft.director_surname;
+                        string year = ft.release_date.Value.ToShortDateString();
+
+                        myimage.Source = new BitmapImage(new Uri(path));
+
+                        Img img = new Img(path, year, title, director);
+
+                        searchmovies.Add(img);
+                    }
+                    //       catch { }
+                }
+
+            }
 
         }
 
