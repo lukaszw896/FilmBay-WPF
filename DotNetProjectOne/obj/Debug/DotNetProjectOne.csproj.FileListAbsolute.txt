@@ -301,4 +301,3 @@ C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.Proper
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
-C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache

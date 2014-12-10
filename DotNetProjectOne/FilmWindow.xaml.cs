@@ -305,10 +305,24 @@ namespace DotNetProjectOne
                 }
                 int filmid = await DBAccess.CreateFilm(DName.Text, DSubName.Text, double.Parse(Price.Text), studio, storyline, Title.Text, NTitle.Text, Language.Text, duration, posterurl, Ageres, publisher, releasedate);
 
+                List<int> actortmplist = new List<int>();
                 foreach (Actor a in actors)
                 {
+                    bool b = true;
                     int actorid = await DBAccess.CreateActor(a.Name, a.Surname, a.photoPath);
-                    actor_film_table actorfilmtable = DBAccess.CreateActorFilmTable(filmid, actorid);
+                    foreach (int id in actortmplist)
+                    {
+                        if (id == actorid) { b = false; }
+                    }
+                    if (b == true)
+                    {
+
+                        actortmplist.Add(actorid);
+                        actor_film_table actorfilmtable = DBAccess.CreateActorFilmTable(filmid, actorid);
+
+                    }
+                    
+
 
                 }
 

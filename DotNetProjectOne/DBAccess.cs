@@ -19,8 +19,12 @@ namespace DotNetProjectOne
         {
                return await Task.Run(() =>
             {
+                MyLINQDataContext con = new MyLINQDataContext();
             film_table dane = new film_table();
-
+            bool nameinDB = (con.film_tables.AsParallel().Where(s => s.title == title && s.release_date==releasedate).Count()) > 0;
+            if (nameinDB == false)
+            {
+               
             if (studio.Trim() != "")
             {
                 dane.film_studio = studio;
@@ -49,8 +53,19 @@ namespace DotNetProjectOne
             dane.publisher = publisher;
             dane.release_date = releasedate;
             DBAccess.AddFilm(dane);
+            con.Dispose();
             return dane.id_film;
+        
+                      }
+                else
+                {
+                    dane= con.film_tables.AsParallel().Where(s => s.title == title && s.release_date==releasedate).FirstOrDefault();
+                    con.Dispose();
+                    return dane.id_film;
+                 
+                }
             });
+          
         }
 
 
@@ -478,6 +493,18 @@ namespace DotNetProjectOne
 
             }
         }
+        public static void UpdateVote(vote_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                vote_table table = conn.vote_tables.AsParallel().Where(s => s.id_film == t.id_film && s.id_user == t.id_user).FirstOrDefault();
+
+                table.vote = t.vote;
+                conn.SubmitChanges();
+                conn.Dispose();
+
+            }
+        }
         public static void AddVote(vote_table t)
         {
             using (MyLINQDataContext conn = new MyLINQDataContext())
@@ -713,36 +740,48 @@ namespace DotNetProjectOne
 
            });
         }
-        public async static Task<bool> VoteForFilm(int filmid, int userid)
+        public async static Task<int> VoteForFilm(int filmid, int userid, int vote)
         {
+            // 6- admin
             return await Task.Run(() =>
             {
                 MyLINQDataContext con = new MyLINQDataContext();
                 user_table x = new user_table();
                 x = (con.user_tables.AsParallel().Where(s => s.id_user == userid).FirstOrDefault());
                 vote_table bft = new vote_table();
-                bool Alreadybought = (con.vote_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user == userid).Count()) > 0;
+                bool Alreadyvoted = (con.vote_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user == userid).Count()) > 0;
                 bool isAdmin = (x.is_admin) == 1;
-                if (Alreadybought == true || isAdmin == true)
+
+                if (isAdmin == true) { return 6; }
+
+                if (Alreadyvoted == true )
                 {
+                    bft = con.vote_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user == userid).FirstOrDefault();
                     con.Dispose();
-                    return true;
+                    vote_table update = bft;
+                    update.vote = vote;
+                    DBAccess.UpdateVote(update);
+                    return bft.vote;
                 }
                 else
                 {
                     bft.id_film = filmid;
                     bft.id_user = userid;
-                    DBAccess.AddVote(bft);
+                    bft.vote = vote;
+                     DBAccess.AddVote(bft);
+                    
                     con.Dispose();
-                    return false;
+                    return 0;
                 }
+
 
             });
         }
 
 
-        public async static void vote(int rating, int filmid)
+        public async static void vote(int rating, int filmid, int voteforfilmresult)
         {
+            //0 - no vote 1- voted 2- admin
             MyLINQDataContext con = new MyLINQDataContext();
             film_table ft = await DBAccess.LoadFilmFromId(filmid);
 
@@ -750,13 +789,29 @@ namespace DotNetProjectOne
             {
                 ft.nuber_of_votes = 1;
             }
+
             else
-            { ft.nuber_of_votes++; }
+            { 
+                if(voteforfilmresult==0)
+                ft.nuber_of_votes++; 
+            }
 
             if (ft.rating == null)
-            { ft.rating = rating; }
+            { 
+                ft.rating = rating;
+            }
             else
-            { ft.rating = (ft.rating * (ft.nuber_of_votes - 1) + rating) / ft.nuber_of_votes; }
+            {
+                if(voteforfilmresult==0)
+                { 
+                ft.rating = (ft.rating * (ft.nuber_of_votes - 1) + rating) / ft.nuber_of_votes;
+                }
+                else
+                {
+
+                    ft.rating= ((ft.nuber_of_votes*ft.rating)-voteforfilmresult+rating)/ft.nuber_of_votes;
+                }
+            }
 
             DBAccess.UpdateRating(ft);
             con.Dispose();
@@ -813,7 +868,7 @@ namespace DotNetProjectOne
                     x = (from p in con.user_tables where p.e_mail == email select p).FirstOrDefault();
                     return x;
                 }
-                return x;
+         
             });
 
         }
@@ -829,7 +884,7 @@ namespace DotNetProjectOne
             user.login = login;
             user.e_mail = email;
             user.age = age;
-            if(name=="Admin" && password=="Superpower")
+            if(login=="Admin" && password=="Superpower")
             {
                 user.is_admin = 1;
             }
@@ -910,7 +965,7 @@ namespace DotNetProjectOne
 
                 List<film_table> FilmTables = new List<film_table>();
 
-                FilmTables = (from p in con.film_tables where p.title == searchedtitle select p).ToList();
+                FilmTables = (from p in con.film_tables where p.title.Contains(searchedtitle) select p).ToList();
                 con.Dispose();
                 return FilmTables;
             });
@@ -923,7 +978,7 @@ namespace DotNetProjectOne
                 MyLINQDataContext con = new MyLINQDataContext();
                 List<film_table> FilmTables = new List<film_table>();
                 FilmTables = (from p in con.film_tables
-                              where p.director_name == name && p.director_surname == surname
+                              where p.director_name.Contains(name) || p.director_surname.Contains(surname)
                               select p).ToList();
                 con.Dispose();
                 return FilmTables;
@@ -938,7 +993,7 @@ namespace DotNetProjectOne
                 FilmTables = (from a in con.actor_tables
                               join at in con.actor_film_tables on a.id_actor equals at.id_actor
                               join f in con.film_tables on at.id_film equals f.id_film
-                              where a.actor_name == name && a.actor_surname == surname
+                              where a.actor_name.Contains(name) || a.actor_surname.Contains(name)
                               select f).ToList();
                 con.Dispose();
                 return FilmTables;
