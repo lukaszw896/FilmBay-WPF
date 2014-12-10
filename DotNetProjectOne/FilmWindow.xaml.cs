@@ -258,6 +258,9 @@ namespace DotNetProjectOne
             */
             else
             {
+                canvasName.Visibility = Visibility.Visible;
+                canvasName.Opacity = 0.8;
+                progressRing.IsActive = true;
                 //passing info into a filmtable
                 film_table dane = new film_table();
 
@@ -373,9 +376,12 @@ namespace DotNetProjectOne
 
 
                 }
-
+                progressRing.IsActive = false;
                 MessageBox.Show("All is fine");
-
+                canvasName.Visibility = Visibility.Hidden;
+                canvasName.Opacity = 1;
+                this.Close();
+                
             }
 
             }
