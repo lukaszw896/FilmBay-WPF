@@ -78,6 +78,7 @@ namespace DotNetProjectOne
                 MessageBox.Show("Login in use");
                 return;
             }
+
             else if (problem == "email")
             {
                 MessageBox.Show("Email already in use");

@@ -276,71 +276,88 @@ namespace DotNetProjectOne
        
         private async void FiveStars_Click(object sender, RoutedEventArgs e)
         {
-           Boolean canvote =await DBAccess.VoteForFilm(filmid,Myself.id_user);
-            if(canvote==false){
-            DBAccess.vote(5,filmid);
-            ratingLoadFunction();
-            StartWindow.SetPage(new FilmPage());
-        }
+            //0 - no vote 1- voted 2- admin
+            int canvote = await DBAccess.VoteForFilm(filmid, Myself.id_user,5);
+            if (canvote == 6)
+            {
+                MessageBox.Show("Admin can't vote");
+            }
             else
             {
-                MessageBox.Show("You can't vote");
+                MessageBox.Show(canvote.ToString());
+                DBAccess.vote(5, filmid, canvote);
+                ratingLoadFunction();
+                StartWindow.SetPage(new FilmPage());
             }
         }
 
         private async  void FourStars_Click(object sender, RoutedEventArgs e)
         {
-                     Boolean canvote =await DBAccess.VoteForFilm(filmid,Myself.id_user);
-            if(canvote==false){
-            DBAccess.vote(4,filmid);
-            ratingLoadFunction();
-            StartWindow.SetPage(new FilmPage());
-        }
+            //0 - no vote 1- voted 2- admin
+                    int canvote =await DBAccess.VoteForFilm(filmid,Myself.id_user,4);
+            if(canvote==6)
+            {
+         MessageBox.Show("Admin can't vote");
+            }
             else
             {
-                MessageBox.Show("You can't vote");
+                MessageBox.Show(canvote.ToString());
+             DBAccess.vote(4,filmid, canvote);
+            ratingLoadFunction();
+            StartWindow.SetPage(new FilmPage());
             }
+
+          
         }
 
         private async void ThreeStars_Click(object sender, RoutedEventArgs e)
         {
-                     Boolean canvote =await DBAccess.VoteForFilm(filmid,Myself.id_user);
-            if(canvote==false){
-            DBAccess.vote(3,filmid);
-            ratingLoadFunction();
-            StartWindow.SetPage(new FilmPage());
-        }
+            //0 - no vote 1- voted 2- admin
+            int canvote = await DBAccess.VoteForFilm(filmid, Myself.id_user,3);
+            if (canvote == 6)
+            {
+                MessageBox.Show("Admin can't vote");
+            }
             else
             {
-                MessageBox.Show("You can't vote");
+                MessageBox.Show("Canvote: " + canvote.ToString());
+                DBAccess.vote(3, filmid, canvote);
+                ratingLoadFunction();
+                StartWindow.SetPage(new FilmPage());
             }
         }
 
         private async  void TwoStars_Click(object sender, RoutedEventArgs e)
         {
-                      Boolean canvote =await DBAccess.VoteForFilm(filmid,Myself.id_user);
-            if(canvote==false){
-            DBAccess.vote(2,filmid);
-            ratingLoadFunction();
-            StartWindow.SetPage(new FilmPage());
-        }
+            //0 - no vote 1- voted 2- admin
+            int canvote = await DBAccess.VoteForFilm(filmid, Myself.id_user,2);
+            if (canvote == 6)
+            {
+                MessageBox.Show("Admin can't vote");
+            }
             else
             {
-                MessageBox.Show("You can't vote");
+                MessageBox.Show("Canvote: " +canvote.ToString());
+                DBAccess.vote(2, filmid, canvote);
+                ratingLoadFunction();
+                StartWindow.SetPage(new FilmPage());
             }
         }
 
         private async void OneStar_Click(object sender, RoutedEventArgs e)
         {
-                   Boolean canvote =await DBAccess.VoteForFilm(filmid,Myself.id_user);
-            if(canvote==false){
-            DBAccess.vote(1,filmid);
-            ratingLoadFunction();
-            StartWindow.SetPage(new FilmPage());
-        }
+            //0 - no vote 1- voted 2- admin
+            int canvote = await DBAccess.VoteForFilm(filmid, Myself.id_user,1);
+            if (canvote == 6)
+            {
+                MessageBox.Show("Admin can't vote");
+            }
             else
             {
-                MessageBox.Show("You can't vote");
+                MessageBox.Show("Canvote: " + canvote.ToString());
+                DBAccess.vote(1, filmid, canvote);
+                ratingLoadFunction();
+                StartWindow.SetPage(new FilmPage());
             }
         }
 

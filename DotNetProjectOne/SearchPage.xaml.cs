@@ -90,7 +90,7 @@ namespace DotNetProjectOne
             FilmTables = await DBAccess.GetTopFilms(3, 4);
             foreach (film_table ft in FilmTables)
             {
-                string path = AppDomain.CurrentDomain.BaseDirectory + "Posters\\" + ft.poster_url;
+                string path = ft.poster_url;
                 string title = ft.title;
                 string director = ft.director_name + " " + ft.director_surname;
                 string year = ft.release_date.Value.ToShortDateString();
