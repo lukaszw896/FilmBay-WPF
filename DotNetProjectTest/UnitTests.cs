@@ -268,17 +268,76 @@ namespace DotNetProjectTest
             int Counter = 0;
             foreach (Actor a in StarWarsActors)
             {
+                if (a.Name.Contains("Mark") && a.Surname.Contains("Hamil"))
+                {
+                    Counter++;
+                }
                 if (a.Name.Contains("Harrison") && a.Surname.Contains("Ford"))
                 {
                     Counter++;
                 }
-              
+                if (a.Name.Contains("Carrie") && a.Surname.Contains("Fisher"))
+                {
+                    Counter++;
+                }
+
                 Console.Write(a.Name);
-                Assert.AreEqual(3, Counter);
             }
+            
+                  Assert.AreEqual(3, Counter);
 
         }
+         [TestMethod]
+        public void GetMoviesFromWebTest()
+        {
+             //This test will see if we returned star wars movies correctly
+            string title = "Star Wars";
+            List<MovieSearchReturnObject> StarWarsMovies = new List<MovieSearchReturnObject>();
+            StarWarsMovies = TMDbApi.movieSearch(title);
+            int Counter=0;
+             foreach(MovieSearchReturnObject movie in StarWarsMovies)
+             {
+                 if(movie.title.Contains("Star Wars"))
+                 {
+                     Counter++;
+                 }
+
+             }
+             //We check if search correctly looks for movies with phrase Star Wars in it and if it is greater than zero, obviously.
+             Assert.AreEqual(StarWarsMovies.Count, Counter);
+             Assert.IsTrue(Counter > 0);
+
+
+        }
+         [TestMethod]
+        public void MovieDetailsTest()
+         {
+             //Again Star Wars for testing the API [{"id":28,"name":"Action"},{"id":12,"name":"Adventure"},{"id":878,"name":"Science Fiction"}]
+             int id = 11;
+             FoundMovieDetails StarWarsDetails =TMDbApi.movieDetails(id);
+             List<string> Genres = new List<string>();
+             int counter=0;
+             Genres.Add("Action"); Genres.Add("Adventure"); Genres.Add("Science Fiction");
+             string story = "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take "
+             +"over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to " 
+             +"rescue the beautiful princess and restore peace and justice in the Empire";
+
+                 if (StarWarsDetails.genres.Contains("Adventure"))
+                     counter++;
+                 if (StarWarsDetails.genres.Contains("Action"))
+                     counter++;
+                 if (StarWarsDetails.genres.Contains("Science Fiction"))
+                     counter++;
+             
+             if(StarWarsDetails.storyline.Contains(story))
+             {
+             counter++;
+             }
+             Assert.AreEqual(4,counter);
+         }
+
     }
+
 }
     
     

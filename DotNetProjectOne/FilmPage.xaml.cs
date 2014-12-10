@@ -265,7 +265,7 @@ namespace DotNetProjectOne
             bool check = await DBAccess.BuyFilm(filmid, Myself.id_user);
             if (check==true)
             {
-                MessageBox.Show("You already have this movie!");
+                MessageBox.Show("You can't buy this movie");
             }
             else
                 MessageBox.Show("Have a nice day!");
@@ -274,39 +274,74 @@ namespace DotNetProjectOne
 
      //Function to vote for the movie, depending on which star you clicked
        
-        private void FiveStars_Click(object sender, RoutedEventArgs e)
+        private async void FiveStars_Click(object sender, RoutedEventArgs e)
         {
+           Boolean canvote =await DBAccess.VoteForFilm(filmid,Myself.id_user);
+            if(canvote==false){
             DBAccess.vote(5,filmid);
             ratingLoadFunction();
             StartWindow.SetPage(new FilmPage());
         }
+            else
+            {
+                MessageBox.Show("You can't vote");
+            }
+        }
 
-        private void FourStars_Click(object sender, RoutedEventArgs e)
+        private async  void FourStars_Click(object sender, RoutedEventArgs e)
         {
+                     Boolean canvote =await DBAccess.VoteForFilm(filmid,Myself.id_user);
+            if(canvote==false){
             DBAccess.vote(4,filmid);
             ratingLoadFunction();
             StartWindow.SetPage(new FilmPage());
         }
+            else
+            {
+                MessageBox.Show("You can't vote");
+            }
+        }
 
-        private void ThreeStars_Click(object sender, RoutedEventArgs e)
+        private async void ThreeStars_Click(object sender, RoutedEventArgs e)
         {
+                     Boolean canvote =await DBAccess.VoteForFilm(filmid,Myself.id_user);
+            if(canvote==false){
             DBAccess.vote(3,filmid);
             ratingLoadFunction();
             StartWindow.SetPage(new FilmPage());
         }
+            else
+            {
+                MessageBox.Show("You can't vote");
+            }
+        }
 
-        private void TwoStars_Click(object sender, RoutedEventArgs e)
+        private async  void TwoStars_Click(object sender, RoutedEventArgs e)
         {
+                      Boolean canvote =await DBAccess.VoteForFilm(filmid,Myself.id_user);
+            if(canvote==false){
             DBAccess.vote(2,filmid);
             ratingLoadFunction();
             StartWindow.SetPage(new FilmPage());
         }
+            else
+            {
+                MessageBox.Show("You can't vote");
+            }
+        }
 
-        private void OneStar_Click(object sender, RoutedEventArgs e)
+        private async void OneStar_Click(object sender, RoutedEventArgs e)
         {
+                   Boolean canvote =await DBAccess.VoteForFilm(filmid,Myself.id_user);
+            if(canvote==false){
             DBAccess.vote(1,filmid);
             ratingLoadFunction();
             StartWindow.SetPage(new FilmPage());
+        }
+            else
+            {
+                MessageBox.Show("You can't vote");
+            }
         }
 
         /* Event handler setting changing window page to search page */
