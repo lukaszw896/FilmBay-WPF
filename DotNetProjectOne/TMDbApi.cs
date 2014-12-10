@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using DotNetProjectOne.TMDB_Api_helper_classes;
 namespace DotNetProjectOne
 {
-    class TMDbApi
+    public static class TMDbApi
     {
         //method for searching movies by title in TMDb database
         public static List<MovieSearchReturnObject> movieSearch(String title)

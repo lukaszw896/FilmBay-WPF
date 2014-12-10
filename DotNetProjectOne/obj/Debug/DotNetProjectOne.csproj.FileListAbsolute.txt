@@ -203,7 +203,6 @@ C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\System.Windows.Inte
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\bin\Debug\MahApps.Metro.xml
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\PagesUserControl\AdminTMDbMovieSearch.g.cs
 C:\Users\Łukasz\Desktop\Dotnet 6\DotNetProjectOne\obj\Debug\PagesUserControl\AdminTMDbMovieSearch.baml
-C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DNPDB.mdf
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe.config
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
@@ -254,6 +253,7 @@ C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\StartPage.baml
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.g.resources
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.Properties.Resources.resources
 C:\Users\Łukasz\Desktop\Dotnet 7\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DNPDB.mdf
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DNPDB_log.ldf
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe.config
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\DotNetProjectOne.exe
@@ -263,7 +263,6 @@ C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\MahApps.Metro.dll
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\Facebook.xml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\bin\Debug\MahApps.Metro.xml
-C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\CommentWindow.baml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\FacebookLogin.baml
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\FilmWindow.baml
@@ -303,3 +302,4 @@ C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.Proper
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.exe
 C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.pdb
+C:\Users\Lino\Desktop\Dotnet2\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache

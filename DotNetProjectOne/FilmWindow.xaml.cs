@@ -88,12 +88,18 @@ namespace DotNetProjectOne
                      foreach (string a in foundMovieDetails.languages)
                      {
                          LanguageGrid.Items.Add(new ALanguage() { LName = a });
+                         ALanguage l = new ALanguage();
+                         l.LName = a;
+                         Languages.Add(l);
                      }
 
                      /* adding genres to GenreGrid*/
                      foreach (string a in foundMovieDetails.genres)
                      {
                          GenreGrid.Items.Add(new Genre() { GName = a });
+                         Genre g = new Genre();
+                         g.GName = a;
+                         genres.Add(g);
                      }
                      /* adding storyline */
                      Storyline.Text = foundMovieDetails.storyline;

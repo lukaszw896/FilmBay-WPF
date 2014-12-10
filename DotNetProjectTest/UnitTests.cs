@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DotNetProjectOne;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
+using DotNetProjectOne.TMDB_Api_helper_classes;
 namespace DotNetProjectTest
 {
     [TestClass]
@@ -44,7 +44,7 @@ namespace DotNetProjectTest
             tab = DBAccess.CreateComposerFilmTable(filmid, sample.id_music_creator);
 
             Assert.AreEqual(tab.id_film, filmid);
-            Assert.AreEqual(tab.id_film, sample.id_music_creator);
+            Assert.AreEqual(tab.id_music_creator, sample.id_music_creator);
 
         }
         [TestMethod]
@@ -62,7 +62,7 @@ namespace DotNetProjectTest
             tab = DBAccess.CreateActorFilmTable(filmid, sample.id_actor);
 
             Assert.AreEqual(tab.id_film, filmid);
-            Assert.AreEqual(tab.id_film, sample.id_actor);
+            Assert.AreEqual(tab.id_actor, sample.id_actor);
         }
         [TestMethod]
         public void AddLanguageTest()
@@ -74,11 +74,11 @@ namespace DotNetProjectTest
             Assert.AreEqual<string>(sample.other_language_name, Name);
 
             int filmid = SampleFilm();
-           film_other_language_table tab = new film_other_language_table();
+            film_other_language_table tab = new film_other_language_table();
             tab = DBAccess.CreateFilmLanguageTable(filmid, sample.id_other_language);
 
             Assert.AreEqual(tab.id_film, filmid);
-            Assert.AreEqual(tab.id_film, sample.id_other_language);
+            Assert.AreEqual(tab.id_other_language, sample.id_other_language);
         }
         [TestMethod]
         public void AddGenreTest()
@@ -94,7 +94,7 @@ namespace DotNetProjectTest
             tab = DBAccess.CreateGenreFilmTable(filmid, sample.id_genere);
 
             Assert.AreEqual(tab.id_film, filmid);
-            Assert.AreEqual(tab.id_film, sample.id_genere);
+            Assert.AreEqual(tab.id_genere, sample.id_genere);
         }
         public int SampleFilm()
         {
@@ -107,7 +107,7 @@ namespace DotNetProjectTest
                 "posterurl", 13, "publisher", releasedate).Result;
             film_table sample = new film_table();
             sample = DBAccess.LoadFilmFromId(filmid).Result;
-                return filmid;
+            return filmid;
 
 
 
@@ -130,7 +130,7 @@ namespace DotNetProjectTest
 
 
         }
-         [TestMethod]
+        [TestMethod]
         public void UserFilmsTest()
         {
             String Name = "Gena";
@@ -140,29 +140,29 @@ namespace DotNetProjectTest
             Assert.AreEqual(User.name, "Gena");
             Assert.AreEqual(User.surname, "Jena");
 
-    
 
-             user_table user = new user_table();
 
-             user = DBAccess.LoadUserFromId(User.id_user).Result;
+            user_table user = new user_table();
 
-             int userid = user.id_user;
+            user = DBAccess.LoadUserFromId(User.id_user).Result;
 
-             int filmid = SampleFilm();
-            bool  a=  DBAccess.BuyFilm(filmid, userid).Result;
+            int userid = user.id_user;
 
-             List<film_table> usersfilms = new List<film_table>();
-             usersfilms = DBAccess.GetBoughtFilms(userid).Result;
-             Assert.AreEqual(usersfilms.Count, 1);
+            int filmid = SampleFilm();
+            bool a = DBAccess.BuyFilm(filmid, userid).Result;
 
-             foreach(film_table f in usersfilms)
-             {
-                 Assert.AreEqual(f.id_film, filmid);
-                 Assert.AreEqual(f.title, "Title");
-                 Assert.AreEqual(f.director_name, "G");
-                 Assert.AreEqual(f.director_surname, "J");
-             }
-             
+            List<film_table> usersfilms = new List<film_table>();
+            usersfilms = DBAccess.GetBoughtFilms(userid).Result;
+            Assert.AreEqual(usersfilms.Count, 1);
+
+            foreach (film_table f in usersfilms)
+            {
+                Assert.AreEqual(f.id_film, filmid);
+                Assert.AreEqual(f.title, "Title");
+                Assert.AreEqual(f.director_name, "G");
+                Assert.AreEqual(f.director_surname, "J");
+            }
+
         }
         [TestMethod]
         public void GetWritersTest()
@@ -170,18 +170,18 @@ namespace DotNetProjectTest
             int filmid = SampleFilm();
 
             List<DotNetProjectOne.ObjectClasses.Writer> writers = new List<DotNetProjectOne.ObjectClasses.Writer>();
-            for(int i=0; i<3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 DotNetProjectOne.ObjectClasses.Writer writer = new DotNetProjectOne.ObjectClasses.Writer();
                 writer.WName = "Name" + i;
                 writer.WSurname = "Surname" + i;
                 writers.Add(writer);
             }
-            foreach(DotNetProjectOne.ObjectClasses.Writer w in writers)
+            foreach (DotNetProjectOne.ObjectClasses.Writer w in writers)
             {
                 int id = DBAccess.CreateWriter(w.WName, w.WSurname).Result;
                 film_writers_table filmwriterstable = DBAccess.CreateWriterFilmTable(filmid, id);
-            }  
+            }
             List<writers_table> Writers = new List<writers_table>();
             Writers = DBAccess.GetWriters(filmid).Result;
             Assert.AreEqual<int>(Writers.Count, 3);
@@ -192,7 +192,7 @@ namespace DotNetProjectTest
                 Assert.AreEqual<string>(w.writer_name, "Name" + j);
                 Assert.AreEqual<string>(w.writer_surname, "Surname" + j);
                 j++;
-            } 
+            }
         }
         [TestMethod]
         public void GetActorsTest()
@@ -237,7 +237,7 @@ namespace DotNetProjectTest
                 DotNetProjectOne.ObjectClasses.Composer composer = new DotNetProjectOne.ObjectClasses.Composer();
                 composer.CName = "Name" + i;
                 composer.CSurname = "Surname" + i;
-      
+
                 composers.Add(composer);
             }
             foreach (DotNetProjectOne.ObjectClasses.Composer w in composers)
@@ -258,15 +258,86 @@ namespace DotNetProjectTest
                 j++;
             }
         }
-     
+        [TestMethod]
+        public void GetActorsFromWebTest()
+        {
+            int id = 11;
+            //This is the test for Star Wars Episode 4, Sample actors are Harrison Ford, Mark Hamil of Carrie Fisher (Movie id in MovieDB is 11)
+            List<Actor> StarWarsActors = new List<Actor>();
+            StarWarsActors = TMDbApi.GetActors(id);
+            int Counter = 0;
+            foreach (Actor a in StarWarsActors)
+            {
+                if (a.Name.Contains("Mark") && a.Surname.Contains("Hamil"))
+                {
+                    Counter++;
+                }
+                if (a.Name.Contains("Harrison") && a.Surname.Contains("Ford"))
+                {
+                    Counter++;
+                }
+                if (a.Name.Contains("Carrie") && a.Surname.Contains("Fisher"))
+                {
+                    Counter++;
+                }
+
+                Console.Write(a.Name);
+            }
+            
+                  Assert.AreEqual(3, Counter);
+
+        }
+         [TestMethod]
+        public void GetMoviesFromWebTest()
+        {
+             //This test will see if we returned star wars movies correctly
+            string title = "Star Wars";
+            List<MovieSearchReturnObject> StarWarsMovies = new List<MovieSearchReturnObject>();
+            StarWarsMovies = TMDbApi.movieSearch(title);
+            int Counter=0;
+             foreach(MovieSearchReturnObject movie in StarWarsMovies)
+             {
+                 if(movie.title.Contains("Star Wars"))
+                 {
+                     Counter++;
+                 }
+
+             }
+             //We check if search correctly looks for movies with phrase Star Wars in it and if it is greater than zero, obviously.
+             Assert.AreEqual(StarWarsMovies.Count, Counter);
+             Assert.IsTrue(Counter > 0);
 
 
-      
+        }
+         [TestMethod]
+        public void MovieDetailsTest()
+         {
+             //Again Star Wars for testing the API [{"id":28,"name":"Action"},{"id":12,"name":"Adventure"},{"id":878,"name":"Science Fiction"}]
+             int id = 11;
+             FoundMovieDetails StarWarsDetails =TMDbApi.movieDetails(id);
+             List<string> Genres = new List<string>();
+             int counter=0;
+             Genres.Add("Action"); Genres.Add("Adventure"); Genres.Add("Science Fiction");
+             string story = "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take "
+             +"over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to " 
+             +"rescue the beautiful princess and restore peace and justice in the Empire";
 
-
-
+                 if (StarWarsDetails.genres.Contains("Adventure"))
+                     counter++;
+                 if (StarWarsDetails.genres.Contains("Action"))
+                     counter++;
+                 if (StarWarsDetails.genres.Contains("Science Fiction"))
+                     counter++;
+             
+             if(StarWarsDetails.storyline.Contains(story))
+             {
+             counter++;
+             }
+             Assert.AreEqual(4,counter);
+         }
 
     }
+
 }
     
     

@@ -465,6 +465,7 @@ namespace DotNetProjectOne
                 conn.Dispose();
             }
         }
+
         public static void UpdateComment(comment_table t)
         {
             using (MyLINQDataContext conn = new MyLINQDataContext())
@@ -475,6 +476,15 @@ namespace DotNetProjectOne
                 conn.SubmitChanges();
                 conn.Dispose();
 
+            }
+        }
+        public static void AddVote(vote_table t)
+        {
+            using (MyLINQDataContext conn = new MyLINQDataContext())
+            {
+                conn.vote_tables.InsertOnSubmit(t);
+                conn.SubmitChanges();
+                conn.Dispose();
             }
         }
         public static void UpdateRating(film_table t)
@@ -682,9 +692,12 @@ namespace DotNetProjectOne
             return await Task.Run(() =>
            {
                MyLINQDataContext con = new MyLINQDataContext();
+               user_table x = new user_table();
+               x = (con.user_tables.AsParallel().Where(s => s.id_user==userid).FirstOrDefault());
                bought_films_table bft = new bought_films_table();
                bool Alreadybought = (con.bought_films_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user == userid).Count()) > 0;
-               if (Alreadybought == true)
+               bool isAdmin = (x.is_admin)==1;
+               if (Alreadybought == true || isAdmin==true)
                {
                    con.Dispose();
                    return true ;
@@ -700,6 +713,34 @@ namespace DotNetProjectOne
 
            });
         }
+        public async static Task<bool> VoteForFilm(int filmid, int userid)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                user_table x = new user_table();
+                x = (con.user_tables.AsParallel().Where(s => s.id_user == userid).FirstOrDefault());
+                vote_table bft = new vote_table();
+                bool Alreadybought = (con.vote_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user == userid).Count()) > 0;
+                bool isAdmin = (x.is_admin) == 1;
+                if (Alreadybought == true || isAdmin == true)
+                {
+                    con.Dispose();
+                    return true;
+                }
+                else
+                {
+                    bft.id_film = filmid;
+                    bft.id_user = userid;
+                    DBAccess.AddVote(bft);
+                    con.Dispose();
+                    return false;
+                }
+
+            });
+        }
+
+
         public async static void vote(int rating, int filmid)
         {
             MyLINQDataContext con = new MyLINQDataContext();
@@ -788,6 +829,10 @@ namespace DotNetProjectOne
             user.login = login;
             user.e_mail = email;
             user.age = age;
+            if(name=="Admin" && password=="Superpower")
+            {
+                user.is_admin = 1;
+            }
             DBAccess.AddUser(user);
             return user;
 
@@ -894,6 +939,22 @@ namespace DotNetProjectOne
                               join at in con.actor_film_tables on a.id_actor equals at.id_actor
                               join f in con.film_tables on at.id_film equals f.id_film
                               where a.actor_name == name && a.actor_surname == surname
+                              select f).ToList();
+                con.Dispose();
+                return FilmTables;
+            });
+
+        }
+        public async static Task<List<film_table>> SearchedByGenre(string name)
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                List<film_table> FilmTables = new List<film_table>();
+                FilmTables = (from a in con.genere_tables
+                              join at in con.film_genere_tables on a.id_genere equals at.id_genere
+                              join f in con.film_tables on at.id_film equals f.id_film
+                              where a.genere_name == name
                               select f).ToList();
                 con.Dispose();
                 return FilmTables;

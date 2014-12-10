@@ -33,9 +33,6 @@ namespace DotNetProjectOne
     partial void Insertwriters_table(writers_table instance);
     partial void Updatewriters_table(writers_table instance);
     partial void Deletewriters_table(writers_table instance);
-    partial void Insertuser_table(user_table instance);
-    partial void Updateuser_table(user_table instance);
-    partial void Deleteuser_table(user_table instance);
     partial void Insertproducer_table(producer_table instance);
     partial void Updateproducer_table(producer_table instance);
     partial void Deleteproducer_table(producer_table instance);
@@ -87,6 +84,12 @@ namespace DotNetProjectOne
     partial void Insertfilm_table(film_table instance);
     partial void Updatefilm_table(film_table instance);
     partial void Deletefilm_table(film_table instance);
+    partial void Insertuser_table(user_table instance);
+    partial void Updateuser_table(user_table instance);
+    partial void Deleteuser_table(user_table instance);
+    partial void Insertvote_table(vote_table instance);
+    partial void Updatevote_table(vote_table instance);
+    partial void Deletevote_table(vote_table instance);
     #endregion
 		
 		public MyLINQDataContext() : 
@@ -124,14 +127,6 @@ namespace DotNetProjectOne
 			get
 			{
 				return this.GetTable<writers_table>();
-			}
-		}
-		
-		public System.Data.Linq.Table<user_table> user_tables
-		{
-			get
-			{
-				return this.GetTable<user_table>();
 			}
 		}
 		
@@ -268,6 +263,22 @@ namespace DotNetProjectOne
 			get
 			{
 				return this.GetTable<film_table>();
+			}
+		}
+		
+		public System.Data.Linq.Table<user_table> user_tables
+		{
+			get
+			{
+				return this.GetTable<user_table>();
+			}
+		}
+		
+		public System.Data.Linq.Table<vote_table> vote_tables
+		{
+			get
+			{
+				return this.GetTable<vote_table>();
 			}
 		}
 	}
@@ -407,344 +418,6 @@ namespace DotNetProjectOne
 		{
 			this.SendPropertyChanging();
 			entity.writers_table = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_table")]
-	public partial class user_table : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_user;
-		
-		private string _login;
-		
-		private string _password;
-		
-		private string _name;
-		
-		private string _surname;
-		
-		private int _age;
-		
-		private string _gender;
-		
-		private string _e_mail;
-		
-		private string _is_premium;
-		
-		private EntitySet<favourites_films_table> _favourites_films_tables;
-		
-		private EntitySet<comment_table> _comment_tables;
-		
-		private EntitySet<bought_films_table> _bought_films_tables;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_userChanging(int value);
-    partial void Onid_userChanged();
-    partial void OnloginChanging(string value);
-    partial void OnloginChanged();
-    partial void OnpasswordChanging(string value);
-    partial void OnpasswordChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnsurnameChanging(string value);
-    partial void OnsurnameChanged();
-    partial void OnageChanging(int value);
-    partial void OnageChanged();
-    partial void OngenderChanging(string value);
-    partial void OngenderChanged();
-    partial void One_mailChanging(string value);
-    partial void One_mailChanged();
-    partial void Onis_premiumChanging(string value);
-    partial void Onis_premiumChanged();
-    #endregion
-		
-		public user_table()
-		{
-			this._favourites_films_tables = new EntitySet<favourites_films_table>(new Action<favourites_films_table>(this.attach_favourites_films_tables), new Action<favourites_films_table>(this.detach_favourites_films_tables));
-			this._comment_tables = new EntitySet<comment_table>(new Action<comment_table>(this.attach_comment_tables), new Action<comment_table>(this.detach_comment_tables));
-			this._bought_films_tables = new EntitySet<bought_films_table>(new Action<bought_films_table>(this.attach_bought_films_tables), new Action<bought_films_table>(this.detach_bought_films_tables));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_user
-		{
-			get
-			{
-				return this._id_user;
-			}
-			set
-			{
-				if ((this._id_user != value))
-				{
-					this.Onid_userChanging(value);
-					this.SendPropertyChanging();
-					this._id_user = value;
-					this.SendPropertyChanged("id_user");
-					this.Onid_userChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_login", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string login
-		{
-			get
-			{
-				return this._login;
-			}
-			set
-			{
-				if ((this._login != value))
-				{
-					this.OnloginChanging(value);
-					this.SendPropertyChanging();
-					this._login = value;
-					this.SendPropertyChanged("login");
-					this.OnloginChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string password
-		{
-			get
-			{
-				return this._password;
-			}
-			set
-			{
-				if ((this._password != value))
-				{
-					this.OnpasswordChanging(value);
-					this.SendPropertyChanging();
-					this._password = value;
-					this.SendPropertyChanged("password");
-					this.OnpasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_surname", DbType="NVarChar(50)")]
-		public string surname
-		{
-			get
-			{
-				return this._surname;
-			}
-			set
-			{
-				if ((this._surname != value))
-				{
-					this.OnsurnameChanging(value);
-					this.SendPropertyChanging();
-					this._surname = value;
-					this.SendPropertyChanged("surname");
-					this.OnsurnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_age", DbType="Int NOT NULL")]
-		public int age
-		{
-			get
-			{
-				return this._age;
-			}
-			set
-			{
-				if ((this._age != value))
-				{
-					this.OnageChanging(value);
-					this.SendPropertyChanging();
-					this._age = value;
-					this.SendPropertyChanged("age");
-					this.OnageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gender", DbType="NVarChar(50)")]
-		public string gender
-		{
-			get
-			{
-				return this._gender;
-			}
-			set
-			{
-				if ((this._gender != value))
-				{
-					this.OngenderChanging(value);
-					this.SendPropertyChanging();
-					this._gender = value;
-					this.SendPropertyChanged("gender");
-					this.OngenderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_e_mail", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string e_mail
-		{
-			get
-			{
-				return this._e_mail;
-			}
-			set
-			{
-				if ((this._e_mail != value))
-				{
-					this.One_mailChanging(value);
-					this.SendPropertyChanging();
-					this._e_mail = value;
-					this.SendPropertyChanged("e_mail");
-					this.One_mailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_is_premium", DbType="NChar(10)")]
-		public string is_premium
-		{
-			get
-			{
-				return this._is_premium;
-			}
-			set
-			{
-				if ((this._is_premium != value))
-				{
-					this.Onis_premiumChanging(value);
-					this.SendPropertyChanging();
-					this._is_premium = value;
-					this.SendPropertyChanged("is_premium");
-					this.Onis_premiumChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_favourites_films_table", Storage="_favourites_films_tables", ThisKey="id_user", OtherKey="id_user")]
-		public EntitySet<favourites_films_table> favourites_films_tables
-		{
-			get
-			{
-				return this._favourites_films_tables;
-			}
-			set
-			{
-				this._favourites_films_tables.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_comment_table", Storage="_comment_tables", ThisKey="id_user", OtherKey="id_user")]
-		public EntitySet<comment_table> comment_tables
-		{
-			get
-			{
-				return this._comment_tables;
-			}
-			set
-			{
-				this._comment_tables.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_bought_films_table", Storage="_bought_films_tables", ThisKey="id_user", OtherKey="id_user")]
-		public EntitySet<bought_films_table> bought_films_tables
-		{
-			get
-			{
-				return this._bought_films_tables;
-			}
-			set
-			{
-				this._bought_films_tables.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_favourites_films_tables(favourites_films_table entity)
-		{
-			this.SendPropertyChanging();
-			entity.user_table = this;
-		}
-		
-		private void detach_favourites_films_tables(favourites_films_table entity)
-		{
-			this.SendPropertyChanging();
-			entity.user_table = null;
-		}
-		
-		private void attach_comment_tables(comment_table entity)
-		{
-			this.SendPropertyChanging();
-			entity.user_table = this;
-		}
-		
-		private void detach_comment_tables(comment_table entity)
-		{
-			this.SendPropertyChanging();
-			entity.user_table = null;
-		}
-		
-		private void attach_bought_films_tables(bought_films_table entity)
-		{
-			this.SendPropertyChanging();
-			entity.user_table = this;
-		}
-		
-		private void detach_bought_films_tables(bought_films_table entity)
-		{
-			this.SendPropertyChanging();
-			entity.user_table = null;
 		}
 	}
 	
@@ -1947,9 +1620,9 @@ namespace DotNetProjectOne
 		
 		private int _id_user;
 		
-		private EntityRef<user_table> _user_table;
-		
 		private EntityRef<film_table> _film_table;
+		
+		private EntityRef<user_table> _user_table;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1963,8 +1636,8 @@ namespace DotNetProjectOne
 		
 		public favourites_films_table()
 		{
-			this._user_table = default(EntityRef<user_table>);
 			this._film_table = default(EntityRef<film_table>);
+			this._user_table = default(EntityRef<user_table>);
 			OnCreated();
 		}
 		
@@ -2016,40 +1689,6 @@ namespace DotNetProjectOne
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_favourites_films_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
-		public user_table user_table
-		{
-			get
-			{
-				return this._user_table.Entity;
-			}
-			set
-			{
-				user_table previousValue = this._user_table.Entity;
-				if (((previousValue != value) 
-							|| (this._user_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._user_table.Entity = null;
-						previousValue.favourites_films_tables.Remove(this);
-					}
-					this._user_table.Entity = value;
-					if ((value != null))
-					{
-						value.favourites_films_tables.Add(this);
-						this._id_user = value.id_user;
-					}
-					else
-					{
-						this._id_user = default(int);
-					}
-					this.SendPropertyChanged("user_table");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_favourites_films_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
 		public film_table film_table
 		{
@@ -2080,6 +1719,40 @@ namespace DotNetProjectOne
 						this._id_film = default(int);
 					}
 					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_favourites_films_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
+		public user_table user_table
+		{
+			get
+			{
+				return this._user_table.Entity;
+			}
+			set
+			{
+				user_table previousValue = this._user_table.Entity;
+				if (((previousValue != value) 
+							|| (this._user_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_table.Entity = null;
+						previousValue.favourites_films_tables.Remove(this);
+					}
+					this._user_table.Entity = value;
+					if ((value != null))
+					{
+						value.favourites_films_tables.Add(this);
+						this._id_user = value.id_user;
+					}
+					else
+					{
+						this._id_user = default(int);
+					}
+					this.SendPropertyChanged("user_table");
 				}
 			}
 		}
@@ -2117,9 +1790,9 @@ namespace DotNetProjectOne
 		
 		private string _comment;
 		
-		private EntityRef<user_table> _user_table;
-		
 		private EntityRef<film_table> _film_table;
+		
+		private EntityRef<user_table> _user_table;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2135,8 +1808,8 @@ namespace DotNetProjectOne
 		
 		public comment_table()
 		{
-			this._user_table = default(EntityRef<user_table>);
 			this._film_table = default(EntityRef<film_table>);
+			this._user_table = default(EntityRef<user_table>);
 			OnCreated();
 		}
 		
@@ -2208,40 +1881,6 @@ namespace DotNetProjectOne
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_comment_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
-		public user_table user_table
-		{
-			get
-			{
-				return this._user_table.Entity;
-			}
-			set
-			{
-				user_table previousValue = this._user_table.Entity;
-				if (((previousValue != value) 
-							|| (this._user_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._user_table.Entity = null;
-						previousValue.comment_tables.Remove(this);
-					}
-					this._user_table.Entity = value;
-					if ((value != null))
-					{
-						value.comment_tables.Add(this);
-						this._id_user = value.id_user;
-					}
-					else
-					{
-						this._id_user = default(int);
-					}
-					this.SendPropertyChanged("user_table");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_comment_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
 		public film_table film_table
 		{
@@ -2272,6 +1911,40 @@ namespace DotNetProjectOne
 						this._id_film = default(int);
 					}
 					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_comment_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
+		public user_table user_table
+		{
+			get
+			{
+				return this._user_table.Entity;
+			}
+			set
+			{
+				user_table previousValue = this._user_table.Entity;
+				if (((previousValue != value) 
+							|| (this._user_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_table.Entity = null;
+						previousValue.comment_tables.Remove(this);
+					}
+					this._user_table.Entity = value;
+					if ((value != null))
+					{
+						value.comment_tables.Add(this);
+						this._id_user = value.id_user;
+					}
+					else
+					{
+						this._id_user = default(int);
+					}
+					this.SendPropertyChanged("user_table");
 				}
 			}
 		}
@@ -2609,9 +2282,9 @@ namespace DotNetProjectOne
 		
 		private int _id_user;
 		
-		private EntityRef<user_table> _user_table;
-		
 		private EntityRef<film_table> _film_table;
+		
+		private EntityRef<user_table> _user_table;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2625,8 +2298,8 @@ namespace DotNetProjectOne
 		
 		public bought_films_table()
 		{
-			this._user_table = default(EntityRef<user_table>);
 			this._film_table = default(EntityRef<film_table>);
+			this._user_table = default(EntityRef<user_table>);
 			OnCreated();
 		}
 		
@@ -2678,40 +2351,6 @@ namespace DotNetProjectOne
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_bought_films_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
-		public user_table user_table
-		{
-			get
-			{
-				return this._user_table.Entity;
-			}
-			set
-			{
-				user_table previousValue = this._user_table.Entity;
-				if (((previousValue != value) 
-							|| (this._user_table.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._user_table.Entity = null;
-						previousValue.bought_films_tables.Remove(this);
-					}
-					this._user_table.Entity = value;
-					if ((value != null))
-					{
-						value.bought_films_tables.Add(this);
-						this._id_user = value.id_user;
-					}
-					else
-					{
-						this._id_user = default(int);
-					}
-					this.SendPropertyChanged("user_table");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_bought_films_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
 		public film_table film_table
 		{
@@ -2742,6 +2381,40 @@ namespace DotNetProjectOne
 						this._id_film = default(int);
 					}
 					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_bought_films_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
+		public user_table user_table
+		{
+			get
+			{
+				return this._user_table.Entity;
+			}
+			set
+			{
+				user_table previousValue = this._user_table.Entity;
+				if (((previousValue != value) 
+							|| (this._user_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_table.Entity = null;
+						previousValue.bought_films_tables.Remove(this);
+					}
+					this._user_table.Entity = value;
+					if ((value != null))
+					{
+						value.bought_films_tables.Add(this);
+						this._id_user = value.id_user;
+					}
+					else
+					{
+						this._id_user = default(int);
+					}
+					this.SendPropertyChanged("user_table");
 				}
 			}
 		}
@@ -3269,6 +2942,8 @@ namespace DotNetProjectOne
 		
 		private EntitySet<film_photos_table> _film_photos_tables;
 		
+		private EntitySet<vote_table> _vote_tables;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3319,6 +2994,7 @@ namespace DotNetProjectOne
 			this._actor_film_tables = new EntitySet<actor_film_table>(new Action<actor_film_table>(this.attach_actor_film_tables), new Action<actor_film_table>(this.detach_actor_film_tables));
 			this._bought_films_tables = new EntitySet<bought_films_table>(new Action<bought_films_table>(this.attach_bought_films_tables), new Action<bought_films_table>(this.detach_bought_films_tables));
 			this._film_photos_tables = new EntitySet<film_photos_table>(new Action<film_photos_table>(this.attach_film_photos_tables), new Action<film_photos_table>(this.detach_film_photos_tables));
+			this._vote_tables = new EntitySet<vote_table>(new Action<vote_table>(this.attach_vote_tables), new Action<vote_table>(this.detach_vote_tables));
 			OnCreated();
 		}
 		
@@ -3772,6 +3448,19 @@ namespace DotNetProjectOne
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_vote_table", Storage="_vote_tables", ThisKey="id_film", OtherKey="id_film")]
+		public EntitySet<vote_table> vote_tables
+		{
+			get
+			{
+				return this._vote_tables;
+			}
+			set
+			{
+				this._vote_tables.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3910,6 +3599,576 @@ namespace DotNetProjectOne
 		{
 			this.SendPropertyChanging();
 			entity.film_table = null;
+		}
+		
+		private void attach_vote_tables(vote_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.film_table = this;
+		}
+		
+		private void detach_vote_tables(vote_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.film_table = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_table")]
+	public partial class user_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_user;
+		
+		private string _login;
+		
+		private string _password;
+		
+		private string _name;
+		
+		private string _surname;
+		
+		private System.Nullable<int> _age;
+		
+		private string _gender;
+		
+		private string _e_mail;
+		
+		private System.Nullable<int> _is_admin;
+		
+		private EntitySet<favourites_films_table> _favourites_films_tables;
+		
+		private EntitySet<comment_table> _comment_tables;
+		
+		private EntitySet<bought_films_table> _bought_films_tables;
+		
+		private EntitySet<vote_table> _vote_tables;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_userChanging(int value);
+    partial void Onid_userChanged();
+    partial void OnloginChanging(string value);
+    partial void OnloginChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnsurnameChanging(string value);
+    partial void OnsurnameChanged();
+    partial void OnageChanging(System.Nullable<int> value);
+    partial void OnageChanged();
+    partial void OngenderChanging(string value);
+    partial void OngenderChanged();
+    partial void One_mailChanging(string value);
+    partial void One_mailChanged();
+    partial void Onis_adminChanging(System.Nullable<int> value);
+    partial void Onis_adminChanged();
+    #endregion
+		
+		public user_table()
+		{
+			this._favourites_films_tables = new EntitySet<favourites_films_table>(new Action<favourites_films_table>(this.attach_favourites_films_tables), new Action<favourites_films_table>(this.detach_favourites_films_tables));
+			this._comment_tables = new EntitySet<comment_table>(new Action<comment_table>(this.attach_comment_tables), new Action<comment_table>(this.detach_comment_tables));
+			this._bought_films_tables = new EntitySet<bought_films_table>(new Action<bought_films_table>(this.attach_bought_films_tables), new Action<bought_films_table>(this.detach_bought_films_tables));
+			this._vote_tables = new EntitySet<vote_table>(new Action<vote_table>(this.attach_vote_tables), new Action<vote_table>(this.detach_vote_tables));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_user
+		{
+			get
+			{
+				return this._id_user;
+			}
+			set
+			{
+				if ((this._id_user != value))
+				{
+					this.Onid_userChanging(value);
+					this.SendPropertyChanging();
+					this._id_user = value;
+					this.SendPropertyChanged("id_user");
+					this.Onid_userChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_login", DbType="NVarChar(50)")]
+		public string login
+		{
+			get
+			{
+				return this._login;
+			}
+			set
+			{
+				if ((this._login != value))
+				{
+					this.OnloginChanging(value);
+					this.SendPropertyChanging();
+					this._login = value;
+					this.SendPropertyChanged("login");
+					this.OnloginChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="NVarChar(50)")]
+		public string password
+		{
+			get
+			{
+				return this._password;
+			}
+			set
+			{
+				if ((this._password != value))
+				{
+					this.OnpasswordChanging(value);
+					this.SendPropertyChanging();
+					this._password = value;
+					this.SendPropertyChanged("password");
+					this.OnpasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_surname", DbType="NVarChar(50)")]
+		public string surname
+		{
+			get
+			{
+				return this._surname;
+			}
+			set
+			{
+				if ((this._surname != value))
+				{
+					this.OnsurnameChanging(value);
+					this.SendPropertyChanging();
+					this._surname = value;
+					this.SendPropertyChanged("surname");
+					this.OnsurnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_age", DbType="Int")]
+		public System.Nullable<int> age
+		{
+			get
+			{
+				return this._age;
+			}
+			set
+			{
+				if ((this._age != value))
+				{
+					this.OnageChanging(value);
+					this.SendPropertyChanging();
+					this._age = value;
+					this.SendPropertyChanged("age");
+					this.OnageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gender", DbType="NVarChar(50)")]
+		public string gender
+		{
+			get
+			{
+				return this._gender;
+			}
+			set
+			{
+				if ((this._gender != value))
+				{
+					this.OngenderChanging(value);
+					this.SendPropertyChanging();
+					this._gender = value;
+					this.SendPropertyChanged("gender");
+					this.OngenderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_e_mail", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string e_mail
+		{
+			get
+			{
+				return this._e_mail;
+			}
+			set
+			{
+				if ((this._e_mail != value))
+				{
+					this.One_mailChanging(value);
+					this.SendPropertyChanging();
+					this._e_mail = value;
+					this.SendPropertyChanged("e_mail");
+					this.One_mailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_is_admin", DbType="Int")]
+		public System.Nullable<int> is_admin
+		{
+			get
+			{
+				return this._is_admin;
+			}
+			set
+			{
+				if ((this._is_admin != value))
+				{
+					this.Onis_adminChanging(value);
+					this.SendPropertyChanging();
+					this._is_admin = value;
+					this.SendPropertyChanged("is_admin");
+					this.Onis_adminChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_favourites_films_table", Storage="_favourites_films_tables", ThisKey="id_user", OtherKey="id_user")]
+		public EntitySet<favourites_films_table> favourites_films_tables
+		{
+			get
+			{
+				return this._favourites_films_tables;
+			}
+			set
+			{
+				this._favourites_films_tables.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_comment_table", Storage="_comment_tables", ThisKey="id_user", OtherKey="id_user")]
+		public EntitySet<comment_table> comment_tables
+		{
+			get
+			{
+				return this._comment_tables;
+			}
+			set
+			{
+				this._comment_tables.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_bought_films_table", Storage="_bought_films_tables", ThisKey="id_user", OtherKey="id_user")]
+		public EntitySet<bought_films_table> bought_films_tables
+		{
+			get
+			{
+				return this._bought_films_tables;
+			}
+			set
+			{
+				this._bought_films_tables.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_vote_table", Storage="_vote_tables", ThisKey="id_user", OtherKey="id_user")]
+		public EntitySet<vote_table> vote_tables
+		{
+			get
+			{
+				return this._vote_tables;
+			}
+			set
+			{
+				this._vote_tables.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_favourites_films_tables(favourites_films_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_table = this;
+		}
+		
+		private void detach_favourites_films_tables(favourites_films_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_table = null;
+		}
+		
+		private void attach_comment_tables(comment_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_table = this;
+		}
+		
+		private void detach_comment_tables(comment_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_table = null;
+		}
+		
+		private void attach_bought_films_tables(bought_films_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_table = this;
+		}
+		
+		private void detach_bought_films_tables(bought_films_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_table = null;
+		}
+		
+		private void attach_vote_tables(vote_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_table = this;
+		}
+		
+		private void detach_vote_tables(vote_table entity)
+		{
+			this.SendPropertyChanging();
+			entity.user_table = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vote_table")]
+	public partial class vote_table : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_film;
+		
+		private int _id_user;
+		
+		private int _vote;
+		
+		private EntityRef<film_table> _film_table;
+		
+		private EntityRef<user_table> _user_table;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_filmChanging(int value);
+    partial void Onid_filmChanged();
+    partial void Onid_userChanging(int value);
+    partial void Onid_userChanged();
+    partial void OnvoteChanging(int value);
+    partial void OnvoteChanged();
+    #endregion
+		
+		public vote_table()
+		{
+			this._film_table = default(EntityRef<film_table>);
+			this._user_table = default(EntityRef<user_table>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_film", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_film
+		{
+			get
+			{
+				return this._id_film;
+			}
+			set
+			{
+				if ((this._id_film != value))
+				{
+					if (this._film_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_filmChanging(value);
+					this.SendPropertyChanging();
+					this._id_film = value;
+					this.SendPropertyChanged("id_film");
+					this.Onid_filmChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_user", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id_user
+		{
+			get
+			{
+				return this._id_user;
+			}
+			set
+			{
+				if ((this._id_user != value))
+				{
+					if (this._user_table.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_userChanging(value);
+					this.SendPropertyChanging();
+					this._id_user = value;
+					this.SendPropertyChanged("id_user");
+					this.Onid_userChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_vote", DbType="Int NOT NULL")]
+		public int vote
+		{
+			get
+			{
+				return this._vote;
+			}
+			set
+			{
+				if ((this._vote != value))
+				{
+					this.OnvoteChanging(value);
+					this.SendPropertyChanging();
+					this._vote = value;
+					this.SendPropertyChanged("vote");
+					this.OnvoteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="film_table_vote_table", Storage="_film_table", ThisKey="id_film", OtherKey="id_film", IsForeignKey=true)]
+		public film_table film_table
+		{
+			get
+			{
+				return this._film_table.Entity;
+			}
+			set
+			{
+				film_table previousValue = this._film_table.Entity;
+				if (((previousValue != value) 
+							|| (this._film_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._film_table.Entity = null;
+						previousValue.vote_tables.Remove(this);
+					}
+					this._film_table.Entity = value;
+					if ((value != null))
+					{
+						value.vote_tables.Add(this);
+						this._id_film = value.id_film;
+					}
+					else
+					{
+						this._id_film = default(int);
+					}
+					this.SendPropertyChanged("film_table");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_table_vote_table", Storage="_user_table", ThisKey="id_user", OtherKey="id_user", IsForeignKey=true)]
+		public user_table user_table
+		{
+			get
+			{
+				return this._user_table.Entity;
+			}
+			set
+			{
+				user_table previousValue = this._user_table.Entity;
+				if (((previousValue != value) 
+							|| (this._user_table.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user_table.Entity = null;
+						previousValue.vote_tables.Remove(this);
+					}
+					this._user_table.Entity = value;
+					if ((value != null))
+					{
+						value.vote_tables.Add(this);
+						this._id_user = value.id_user;
+					}
+					else
+					{
+						this._id_user = default(int);
+					}
+					this.SendPropertyChanged("user_table");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

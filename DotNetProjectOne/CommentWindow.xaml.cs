@@ -68,6 +68,7 @@ namespace DotNetProjectOne
 
                 con.Dispose();
             }
+            con.Dispose();
             StartWindow.SetPage(new FilmPage());
           //  filmPage.IsEnabled = true;
             this.Close();
