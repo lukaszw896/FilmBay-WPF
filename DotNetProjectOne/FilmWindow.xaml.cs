@@ -336,6 +336,9 @@ namespace DotNetProjectOne
                 {
                     Month.Clear(); Day.Clear(); Year.Clear();
                     MessageBox.Show("Please insert proper date");
+                    progressRing.IsActive = false;
+                    canvasName.Visibility = Visibility.Hidden;
+                    canvasName.Opacity = 1;
                     return;
                 }
                 int filmid = await DBAccess.CreateFilm(DName.Text, DSubName.Text, double.Parse(Price.Text), studio, storyline, Title.Text, NTitle.Text, Language.Text, duration, posterurl, Ageres, publisher, releasedate);
