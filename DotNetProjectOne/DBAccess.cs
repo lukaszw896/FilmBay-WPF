@@ -763,11 +763,14 @@ namespace DotNetProjectOne
                 if (Alreadyvoted == true )
                 {
                     bft = con.vote_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user == userid).FirstOrDefault();
+                    int old = bft.vote;
+         
                     con.Dispose();
                     vote_table update = bft;
                     update.vote = vote;
                     DBAccess.UpdateVote(update);
-                    return bft.vote;
+      
+                    return old;
                 }
                 else
                 {
@@ -805,22 +808,30 @@ namespace DotNetProjectOne
             if (ft.rating == null)
             { 
                 ft.rating = rating;
+              //  MessageBox.Show("ftrating is null");
             }
             else
             {
                 if(voteforfilmresult==0)
                 { 
                 ft.rating = (ft.rating * (ft.nuber_of_votes - 1) + rating) / ft.nuber_of_votes;
+              //  MessageBox.Show("DUPA:" +ft.rating.ToString());
+                DBAccess.UpdateRating(ft);
+                con.Dispose();
                 }
                 else
                 {
-
+                 //   MessageBox.Show(voteforfilmresult.ToString());
                     ft.rating= ((ft.nuber_of_votes*ft.rating)-voteforfilmresult+rating)/ft.nuber_of_votes;
-                }
-            }
+                   // MessageBox.Show("Poprawnosc!:" +ft.rating.ToString());
+                    DBAccess.UpdateRating(ft);
+                    con.Dispose();
 
+                }
+               
+            }
             DBAccess.UpdateRating(ft);
-            con.Dispose();
+            
         }
 
         public static async Task<user_table> Userlogin(String login, String password)
@@ -1015,7 +1026,7 @@ namespace DotNetProjectOne
                 FilmTables = (from a in con.genere_tables
                               join at in con.film_genere_tables on a.id_genere equals at.id_genere
                               join f in con.film_tables on at.id_film equals f.id_film
-                              where a.genere_name == name
+                              where a.genere_name.Contains(name)
                               select f).ToList();
                 con.Dispose();
                 return FilmTables;

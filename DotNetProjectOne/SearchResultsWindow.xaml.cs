@@ -97,7 +97,7 @@ namespace DotNetProjectOne
                 {
                     String[] split = Search.Split(' ');
                     string name = split[0];
-                    string surname = split[1];
+                    string surname = split[split.Count()];
                     MessageBox.Show(name + " " + surname);
                     List<film_table> FilmTables = new List<film_table>();
                     //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
@@ -129,7 +129,7 @@ namespace DotNetProjectOne
                 {
                     String[] split = Search.Split(' ');
                     string name = split[0];
-                    string surname = split[1];
+                    string surname = split[split.Count()];
                     List<film_table> FilmTables = new List<film_table>();
                     //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
                     FilmTables = await DBAccess.SearchedByActor(name, surname);
@@ -161,7 +161,7 @@ namespace DotNetProjectOne
                 {
                     String[] split = Search.Split(' ');
                     string name = split[0];
-                    string surname = split[1];
+                    string surname = split[split.Count()];
                     List<film_table> FilmTables = new List<film_table>();
                     //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
                     FilmTables = await DBAccess.SearchedByWriter(name, surname);
@@ -194,7 +194,7 @@ namespace DotNetProjectOne
                 {
                     String[] split = Search.Split(' ');
                     string name = split[0];
-                    string surname = split[1];
+                    string surname = split[split.Count()];
                     List<film_table> FilmTables = new List<film_table>();
                     //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
                     FilmTables = await DBAccess.SearchedByProducer(name, surname);
@@ -227,7 +227,7 @@ namespace DotNetProjectOne
                 {
                     String[] split = Search.Split(' ');
                     string name = split[0];
-                    string surname = split[1];
+                    string surname = split[split.Count()];
                     List<film_table> FilmTables = new List<film_table>();
                     //      FilmTables = con.film_tables.AsParallel().Where(s => s.title == Search.Text).ToList();
                     FilmTables = await DBAccess.SearchedByComposer(name, surname);
