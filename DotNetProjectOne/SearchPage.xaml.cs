@@ -64,17 +64,15 @@ namespace DotNetProjectOne
             string director = ft.director_name + " " + ft.director_surname;
             string year = ft.release_date.Value.ToShortDateString();
             myimage.Source = new BitmapImage(new Uri(path));
-
             Img img = new Img(path, year, title, director);
 
             _mymovies.Add(img);
-
-
         }
 
         //filling up our top movies table
 
-        FilmTables = await DBAccess.GetTopFilms(4, 5);
+        FilmTables = await DBAccess.GetAllFilms();
+            
         foreach (film_table ft in FilmTables)
         {
             string path = ft.poster_url;
@@ -85,6 +83,7 @@ namespace DotNetProjectOne
 
             topmovies.Add(film);
         }
+            /*
         if (topmovies.Count < 6)
         {
             FilmTables = await DBAccess.GetTopFilms(3, 4);
@@ -124,7 +123,7 @@ namespace DotNetProjectOne
                 topmovies.Add(film);
             }
         }
-
+            */
     }
   
 

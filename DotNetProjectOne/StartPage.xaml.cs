@@ -64,9 +64,11 @@ namespace DotNetProjectOne
         private void AdminPanelButton_Click(object sender, RoutedEventArgs e)
         {
            // FilmWindow w = new FilmWindow();
-            AdminTMDbMovieSearch adminTMDbMovieSearch = new AdminTMDbMovieSearch();
-            StartWindow.SetPage(adminTMDbMovieSearch);
+            AdminLogin admin = new AdminLogin();
+            admin.Show();
             startPage.IsEnabled = false;
+           
+     //       startPage.IsEnabled = false;
            // w.ShowDialog();
         }
 

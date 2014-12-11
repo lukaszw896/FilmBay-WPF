@@ -85,7 +85,7 @@ namespace DotNetProjectOne
             languages= TMDbHelper.FindString(@"""spoken_languages"":[", @"}]", responseContent.ToString());
             duration = TMDbHelper.FindSingleString(@"""runtime"":", @",""", responseContent.ToString());
             ageRestriction = TMDbHelper.FindSingleString(@"""adult"":", @",""", responseContent.ToString());
-            
+            if (studio == null) { studio = ""; }
            return new FoundMovieDetails(genres,storyline,int.Parse(duration),languages,ageRestriction,studio);
         }
         public static List<Actor> GetActors(int id)

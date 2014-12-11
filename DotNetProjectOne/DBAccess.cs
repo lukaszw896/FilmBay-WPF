@@ -16,7 +16,7 @@ namespace DotNetProjectOne
 
         public async static Task<int> CreateFilm(String directorname, String directorsurname, double price, string studio, string story,
             string title, string originaltitle, string originallanguage, TimeSpan duration, string posterurl,
-            int agerestriction, string publisher, DateTime releasedate,FilmWindow filmWindow)
+            int agerestriction, string publisher, DateTime releasedate)
         {
                return await Task.Run( () =>
             {
@@ -973,6 +973,33 @@ namespace DotNetProjectOne
                 return FilmTables;
             });
         }
+                public async static Task<List<film_table>> GetAllFilms()
+        {
+            return await Task.Run(() =>
+            {
+                MyLINQDataContext con = new MyLINQDataContext();
+                List<film_table> FilmTables = new List<film_table>();
+                FilmTables = con.film_tables.ToList();
+                con.Dispose();
+                return FilmTables;
+            });
+        }
+                public async static Task<List<film_table>> GetAllFilms2()
+                {
+                    return await Task.Run(() =>
+                    {
+                        MyLINQDataContext con = new MyLINQDataContext();
+                        List<film_table> FilmTables = new List<film_table>();
+                        FilmTables = con.film_tables.ToList();
+
+                        con.Dispose();
+                        return FilmTables;
+                    });
+                }
+
+
+
+
 
         public async static Task<List<film_table>> SearchedByTitle(string searchedtitle)
         {

@@ -303,7 +303,7 @@ namespace DotNetProjectOne
                     MessageBox.Show("Please insert proper date");
                     return;
                 }
-                int filmid = await DBAccess.CreateFilm(DName.Text, DSubName.Text, double.Parse(Price.Text), studio, storyline, Title.Text, NTitle.Text, Language.Text, duration, posterurl, Ageres, publisher, releasedate,this);
+                int filmid = await DBAccess.CreateFilm(DName.Text, DSubName.Text, double.Parse(Price.Text), studio, storyline, Title.Text, NTitle.Text, Language.Text, duration, posterurl, Ageres, publisher, releasedate);
                 /* 
                  * CreateFilm function returns -1 if a film is already in the database.  
                  */
