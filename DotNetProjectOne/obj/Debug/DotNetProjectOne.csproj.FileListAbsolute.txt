@@ -314,7 +314,6 @@ h:\Windows7\Desktop\dotnet\DotNetProjectOne\bin\Debug\MahApps.Metro.dll
 h:\Windows7\Desktop\dotnet\DotNetProjectOne\bin\Debug\System.Windows.Interactivity.dll
 h:\Windows7\Desktop\dotnet\DotNetProjectOne\bin\Debug\Facebook.xml
 h:\Windows7\Desktop\dotnet\DotNetProjectOne\bin\Debug\MahApps.Metro.xml
-h:\Windows7\Desktop\dotnet\DotNetProjectOne\obj\Debug\DotNetProjectOne.csprojResolveAssemblyReference.cache
 h:\Windows7\Desktop\dotnet\DotNetProjectOne\obj\Debug\CommentWindow.baml
 h:\Windows7\Desktop\dotnet\DotNetProjectOne\obj\Debug\FacebookLogin.baml
 h:\Windows7\Desktop\dotnet\DotNetProjectOne\obj\Debug\FilmWindow.baml
@@ -352,3 +351,5 @@ h:\Windows7\Desktop\dotnet\DotNetProjectOne\obj\Debug\StartPage.baml
 h:\Windows7\Desktop\dotnet\DotNetProjectOne\obj\Debug\DotNetProjectOne.g.resources
 h:\Windows7\Desktop\dotnet\DotNetProjectOne\obj\Debug\DotNetProjectOne.Properties.Resources.resources
 h:\Windows7\Desktop\dotnet\DotNetProjectOne\obj\Debug\DotNetProjectOne.csproj.GenerateResource.Cache
+h:\Windows7\Desktop\dotnet\DotNetProjectOne\obj\Debug\AdminLogin.baml
+h:\Windows7\Desktop\dotnet\DotNetProjectOne\obj\Debug\AdminLogin.g.cs

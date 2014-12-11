@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 h:\Windows7\Desktop\dotnet\DotNetProjectOne\App.xaml
-14-1491408109
+15-1698618674
 2-775192278
-31-1300438248
+32-615405070
 1669878071
-CommentWindow.xaml;FacebookLogin.xaml;FilmPage.xaml;FilmWindow.xaml;LoginWindow.xaml;MainWindow.xaml;OptionsMinimizeDisposeControl.xaml;PagesUserControl\AdminTMDbMovieSearch.xaml;RegisterWindow.xaml;SearchPage.xaml;SearchResultsWindow.xaml;StartPage.xaml;StartWindow.xaml;MinimizeDisposeControl.xaml;
+AdminLogin.xaml;CommentWindow.xaml;FacebookLogin.xaml;FilmPage.xaml;FilmWindow.xaml;LoginWindow.xaml;MainWindow.xaml;OptionsMinimizeDisposeControl.xaml;PagesUserControl\AdminTMDbMovieSearch.xaml;RegisterWindow.xaml;SearchPage.xaml;SearchResultsWindow.xaml;StartPage.xaml;StartWindow.xaml;MinimizeDisposeControl.xaml;
 
-True
+False
 

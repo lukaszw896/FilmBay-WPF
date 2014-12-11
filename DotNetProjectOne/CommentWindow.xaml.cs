@@ -54,24 +54,34 @@ namespace DotNetProjectOne
             comment_table ct = new comment_table();
             ct.id_film = filmid;
             ct.id_user = Myself.id_user;
+        
             bool Alreadycommented = (con.comment_tables.AsParallel().Where(s => s.id_film == filmid && s.id_user == Myself.id_user).Count()) > 0;
-            if (Alreadycommented == true)
+            if (Myself.is_admin == 1)
             {
-                ct.comment = CommentBox.Text;
-                DBAccess.UpdateComment(ct);
-                con.Dispose();
+                MessageBox.Show("Admins don't comment");
+                StartWindow.SetPage(new FilmPage());
+                this.Close();
             }
             else
             {
-                ct.comment = CommentBox.Text;
-                DBAccess.AddComment(ct);
+                if (Alreadycommented == true)
+                {
+                    ct.comment = CommentBox.Text;
+                    DBAccess.UpdateComment(ct);
+                    con.Dispose();
+                }
+                else
+                {
+                    ct.comment = CommentBox.Text;
+                    DBAccess.AddComment(ct);
 
+                    con.Dispose();
+                }
                 con.Dispose();
+                StartWindow.SetPage(new FilmPage());
+                //  filmPage.IsEnabled = true;
+                this.Close();
             }
-            con.Dispose();
-            StartWindow.SetPage(new FilmPage());
-          //  filmPage.IsEnabled = true;
-            this.Close();
         }
 
         /* invoking submitButton event with enter click -- posting comment */

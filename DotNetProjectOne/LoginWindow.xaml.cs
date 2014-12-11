@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotNetProjectOne.PagesUserControl;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,14 +44,13 @@ namespace DotNetProjectOne
 
             user_table x = new user_table();
              x = await DBAccess.Userlogin(CheckLogin.Text, CheckPassword.Text);
-            if(x.name!="Wrong")
+            if(x.name!="Wrong" )
             {
                 StartWindow.Myself = x;
                 //MessageBox.Show(StartWindow.Myself.login);
                 //Pages page = new Pages();
+
                 StartWindow.SetPage(new SearchPage());
-               // StartWindow.pages.searchPage.BeginInit();
-                // !!!!!!!!!!!!!!!!
                 this.Close();
             }
 
