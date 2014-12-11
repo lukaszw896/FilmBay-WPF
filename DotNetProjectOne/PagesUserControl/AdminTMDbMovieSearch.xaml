@@ -15,6 +15,7 @@
         <Button  x:Name="backButton" Height="50" Width="50" VerticalAlignment="Top" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Click="backToLoginWindow_Click">
             <Image Source="/Icons/back_button.png"></Image>
         </Button>
+        <Button Width="130" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" FontSize="15" Click="adminSearchPanelButton_Click">Search Panel</Button>
         <Grid Margin="100,0,100,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"></ColumnDefinition>

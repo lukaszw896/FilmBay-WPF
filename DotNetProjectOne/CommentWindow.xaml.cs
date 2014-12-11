@@ -27,8 +27,16 @@ namespace DotNetProjectOne
         public CommentWindow(FilmPage fp)
         {
             InitializeComponent();
-            this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
-            this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
+            if (StartWindow.window.WindowState == WindowState.Maximized)
+            {
+                this.Left = (System.Windows.SystemParameters.PrimaryScreenWidth - this.Width) / 2;
+                this.Top = (System.Windows.SystemParameters.PrimaryScreenHeight - this.Height) / 2;
+            }
+            else
+            {
+                this.Left = StartWindow.window.Left + (StartWindow.window.Width - this.Width) / 2;
+                this.Top = StartWindow.window.Top + (StartWindow.window.Height - this.Height) / 2;
+            }
             filmPage = fp;
 
         }
