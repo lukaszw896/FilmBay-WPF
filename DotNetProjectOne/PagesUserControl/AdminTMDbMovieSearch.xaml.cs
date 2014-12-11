@@ -109,8 +109,6 @@ namespace DotNetProjectOne.PagesUserControl
 
         private void adminSearchPanelButton_Click(object sender, RoutedEventArgs e)
         {
-           
-
             StartWindow.SetPage(new SearchPage());
         }
     }

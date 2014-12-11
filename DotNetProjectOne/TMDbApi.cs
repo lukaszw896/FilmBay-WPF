@@ -149,12 +149,13 @@ namespace DotNetProjectOne
             List<string> writers = new List<string>();
             List<string> producers = new List<string>();
             List<string> composers = new List<string>();
-
+            string director = "";
             writers = TMDbHelper.FindString(@"""Screenplay"",""name"":""", @""",""", responseContent.ToString());
             producers = TMDbHelper.FindString(@"""Producer"",""name"":""", @""",""", responseContent.ToString());
             composers = TMDbHelper.FindString(@"""Original Music Composer"",""name"":""", @""",""", responseContent.ToString());
+            director = TMDbHelper.FindSingleString(@"""Director"",""name"":""", @""",""", responseContent.ToString());
 
-            return new CastInformation(writers, producers, composers);
+            return new CastInformation(writers, producers, composers,director);
 
         }
 

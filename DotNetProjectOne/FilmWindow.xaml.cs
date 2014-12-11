@@ -73,6 +73,7 @@ namespace DotNetProjectOne
                  CastInformation castInformation = TMDbApi.getCast(movie.id);
                  List<string> photosPaths = new List<string>();
                  photosPaths = TMDbApi.getFilmPictures(movie.id);
+               
                  this.Dispatcher.BeginInvoke(new Action(() =>
                  {
                      Title.Text = movie.title;
@@ -80,7 +81,14 @@ namespace DotNetProjectOne
                      Day.Text = movie.releaseDate.Substring(9, 2);
                      Month.Text = movie.releaseDate.Substring(6, 2);
                      Year.Text = movie.releaseDate.Substring(1, 4);
-
+                     string tmpDirector = castInformation.director;
+                     String[] tsplit = tmpDirector.Split(' ');
+                     string tname = tsplit[0];
+                     string tsurname = "";
+                     if (tsplit.Count() >= 2)
+                         tsurname = tsplit[1];
+                     DSubName.Text = tsurname;
+                     DName.Text = tname;
                      PosterImage.Source = new BitmapImage(new Uri(movie.posterPath));
                      Poster = movie.posterPath;
 
@@ -198,41 +206,68 @@ namespace DotNetProjectOne
             if (string.IsNullOrWhiteSpace(this.Title.Text))
             {
                 MessageBox.Show("TextBox is empty");
+                progressRing.IsActive = false;
+                canvasName.Visibility = Visibility.Hidden;
+                canvasName.Opacity = 1;
             }
             else if (string.IsNullOrWhiteSpace(this.DName.Text))
             {
                 MessageBox.Show("Must give name of Director!");
+                progressRing.IsActive = false;
+                canvasName.Visibility = Visibility.Hidden;
+                canvasName.Opacity = 1;
             }
             else if (string.IsNullOrWhiteSpace(this.DSubName.Text))
             {
                 MessageBox.Show("Must give subname of Director!");
+                progressRing.IsActive = false;
+                canvasName.Visibility = Visibility.Hidden;
+                canvasName.Opacity = 1;
             }
             else if (string.IsNullOrWhiteSpace(this.Language.Text))
             {
                 MessageBox.Show("Language is important");
+                progressRing.IsActive = false;
+                canvasName.Visibility = Visibility.Hidden;
+                canvasName.Opacity = 1;
             }
             else if (string.IsNullOrWhiteSpace(this.Price.Text))
             {
                 MessageBox.Show("Must Give Price");
+                progressRing.IsActive = false;
+                canvasName.Visibility = Visibility.Hidden;
+                canvasName.Opacity = 1;
             }
             else if (string.IsNullOrWhiteSpace(Duration_H.Text) || int.Parse(Duration_H.Text) > 23)
             {
                 MessageBox.Show("Must give duration in HH:MM:SS format and film has to be shorter than 24 hours");
+                progressRing.IsActive = false;
+                canvasName.Visibility = Visibility.Hidden;
+                canvasName.Opacity = 1;
                 Duration_H.Clear();
             }
             else if (string.IsNullOrWhiteSpace(Duration_M.Text) || int.Parse(Duration_M.Text) > 59)
             {
                 MessageBox.Show("Must give duration in HH:MM:SS format and film has to and if it's longer than 60 min than change minutes to hours");
+                progressRing.IsActive = false;
+                canvasName.Visibility = Visibility.Hidden;
+                canvasName.Opacity = 1;
                 Duration_M.Clear();
             }
             else if (string.IsNullOrWhiteSpace(Duration_S.Text) || int.Parse(Duration_S.Text) > 59)
             {
                 MessageBox.Show("Must give duration in HH:MM:SS format and film has to and SS thextbox cannot have more than 59 seconds");
+                progressRing.IsActive = false;
+                canvasName.Visibility = Visibility.Hidden;
+                canvasName.Opacity = 1;
                 Duration_S.Clear();
             }
             else if (string.IsNullOrWhiteSpace(Day.Text) || string.IsNullOrWhiteSpace(Month.Text) || string.IsNullOrWhiteSpace(Year.Text))
             {
                 MessageBox.Show("Must give date");
+                progressRing.IsActive = false;
+                canvasName.Visibility = Visibility.Hidden;
+                canvasName.Opacity = 1;
             }
             /*
              if (int.TryParse(Price.Text, out value))

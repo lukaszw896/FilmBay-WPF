@@ -109,12 +109,14 @@ namespace DotNetProjectOne.TMDB_Api_helper_classes
         public List<string> writers { get; set; }
         public List<string> producers { get; set; }
         public List<string> composers { get; set; }
-
-        public CastInformation(List<string> writers, List<string> producers, List<string> composers)
+        
+        public string director {get; set;}
+        public CastInformation(List<string> writers, List<string> producers, List<string> composers, string director)
         {
             this.writers = writers;
             this.producers = producers;
             this.composers = composers;
+            this.director = director;
         }
     }
     public class Actor

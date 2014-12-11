@@ -98,7 +98,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="6*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="35" FontWeight="Light">Top 10 films</Label>
+                    <Label Grid.Row="0" VerticalAlignment="Center" Foreground="White" FontSize="35" FontWeight="Light">All films</Label>
                     <ListView ItemsSource="{Binding Path=topmovies}"  Grid.Row="1" x:Name="TopMoviesList" BorderThickness="0"  Background="Transparent" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Hidden"  ScrollViewer.CanContentScroll="False" Margin="20,20,20,20" SelectionChanged="TopMovieList_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate DataType="{x:Type local:Img}" x:Name="mzz">
