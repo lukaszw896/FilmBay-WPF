@@ -123,7 +123,7 @@
                                             <DataTemplate DataType="{x:Type local:Img}" >
                                                 <Grid x:Name="DataGrid" >
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="150*"/>
+                                                        <ColumnDefinition Width="130"/>
                                                         <ColumnDefinition Width="100*"/>
 
                                                     </Grid.ColumnDefinitions>
@@ -133,12 +133,12 @@
                                                         <RowDefinition Height="23*"/>
                                                     </Grid.RowDefinitions>
 
-                                                    <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="100"  MaxWidth="100" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
+                                                    <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="150"  MaxWidth="100"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
                                                         <Image.ToolTip>
                                                             <ToolTip Content="{Binding Name}"/>
                                                         </Image.ToolTip>
                                                     </Image>
-                                                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}" Foreground="White" FontSize="20" FontWeight="Light"/>
+                                                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Name}" Foreground="White" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Light"/>
 
                                                 </Grid>
                                             </DataTemplate>
@@ -170,7 +170,7 @@
 
                                                 </Grid.RowDefinitions>
 
-                                                <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="300" MaxWidth="300" Opacity="0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="1">
+                                                <Image  x:Name="obraz" Grid.RowSpan="3"  Grid.Column="0" Source="{Binding Str}" MaxHeight="220" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="1">
                                                 </Image>
 
 

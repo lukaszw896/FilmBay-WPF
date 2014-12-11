@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using DotNetProjectOne.TMDB_Api_helper_classes;
+using System.Globalization;
 namespace DotNetProjectOne
 {
     public static class TMDbApi
@@ -172,15 +173,23 @@ namespace DotNetProjectOne
                     responseContent = reader.ReadToEnd();
                 }
             }
+            
             List<string> picturesPaths = new List<string>();
+            List<string> picturesRatio = new List<string>();
+            List<string> picturesPathsFinal = new List<string>();
             picturesPaths = TMDbHelper.FindString(@"""file_path"":""", @""",""", responseContent.ToString());
-          
+            picturesRatio = TMDbHelper.FindString(@"""aspect_ratio"":", @",""", responseContent.ToString());
             for (int i = 0; i < picturesPaths.Count;i++)
             {
-                picturesPaths[i] = "http://image.tmdb.org/t/p/w500" + picturesPaths[i];
+                string tmpString = picturesRatio[i].ToString();
+                Double tmp = Double.Parse(tmpString, CultureInfo.InvariantCulture);
+                if (tmp > 1.2)
+                {
+                    picturesPathsFinal.Add("http://image.tmdb.org/t/p/w500" + picturesPaths[i]);
+                }
                 i++;
             }
-            return picturesPaths;
+            return picturesPathsFinal;
             
         }
 
