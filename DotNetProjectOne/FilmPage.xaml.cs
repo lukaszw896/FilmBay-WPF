@@ -57,127 +57,139 @@ namespace DotNetProjectOne
         public async void start()
         {
             filmid = StartWindow.Chosenfilmid;
-            DirectorBlock.Text = "";
-            WriterBlock.Text = "";
-            ProducerBlock.Text = "";
-            YearBlock.Text = "";
-            ComposerBlock.Text = "";
-            StudioBlock.Text = "";
-
-            //    MyLINQDataContext con = new MyLINQDataContext();
-            film_table ft =await DBAccess.LoadFilmFromId(filmid);
-
-            string path;
-            path = ft.poster_url;
-            Poster.Source = new BitmapImage(new Uri(path));
-
-            List<actor_table> Actors = await DBAccess.GetActors(filmid);
-
-            foreach (actor_table at in Actors)
-            {
-
-                Image myimage = new Image();
-
-                string apath;
-                if (at.actor_photo_url != null)
-                {
-                    apath = at.actor_photo_url;
-                }
-                else
-                {
-                    apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + "stockphoto.jpg";
-                }
-                string title = at.actor_name + " " + at.actor_surname;
-                string director = "";
-                string year = "";
-
-                myimage.Source = new BitmapImage(new Uri(path));
-                Img img = new Img(apath, year, title, director);
-                filmactors.Add(img);
-
-            }
-            // Read Writers from db
-
-            List<writers_table> Writers = await DBAccess.GetWriters(filmid);
-
-            foreach (writers_table writer in Writers)
-            {
-                if (Writers.Count > 1)
-                {
-                    WriterBlock.Text = WriterBlock.Text + " " + writer.writer_name + " " + writer.writer_surname + ",";
-                }
-                else
-                    WriterBlock.Text = WriterBlock.Text + " " + writer.writer_name + " " + writer.writer_surname;
-            }
-
-
-            //Read Composers from DB
-
-            List<music_creator_table> Composers = await DBAccess.GetComposers(filmid);
-
-            foreach (music_creator_table composer in Composers)
-            {
-                if (Writers.Count > 1)
-                {
-                    ComposerBlock.Text = ComposerBlock.Text + " " + composer.music_creator_name + " " + composer.music_creator_surname + ",";
-                }
-                else
-                    ComposerBlock.Text = ComposerBlock.Text + " " + composer.music_creator_name + " " + composer.music_creator_surname;
-            }
-
-            //Read Producers from DB
-            List<producer_table> Producers =  await DBAccess.GetProducers(filmid);
-            foreach (producer_table p in Producers)
-            {
-                if (Producers.Count > 1)
-                {
-                    ProducerBlock.Text = ProducerBlock.Text + " " + p.producer_name + " " + p.producer_surname + ",";
-                }
-                else
-                    ProducerBlock.Text = ProducerBlock.Text + " " + p.producer_name + " " + p.producer_surname;
-
-            }
-
-            //List photos from the movie stored in local folder
-            List<photos_table> Photos = await DBAccess.GetPhotos(filmid);
-
-            foreach (photos_table p in Photos)
-            {
-                Image myimage = new Image();
-                string apath = p.photo_url;
-
-                //   MessageBox.Show(path);
-                myimage.Source = new BitmapImage(new Uri(path));
-
-                Img img = new Img(apath, "", "", "");
-
-                moviephotos.Add(img);
-
-            }
-
-            //Look for users that added comments, display comments
-           
+            canvasName.Visibility = Visibility.Visible;
+            progressRing.IsActive = true;
             List<comment_table> Comments = await DBAccess.GetComments(filmid);
+            //Look for users that added comments, display comments
+
             foreach (comment_table comment in Comments)
             {
 
-               String Comment = comment.comment;
-               user_table user = await DBAccess.LoadUserFromId(comment.id_user);
-               String Name = user.login + ":";
-               UserComment c = new UserComment(Name, Comment);
-               usercomments.Add(c);
+                String Comment = comment.comment;
+                user_table user = await DBAccess.LoadUserFromId(comment.id_user);
+                String Name = user.login + ":";
+                UserComment c = new UserComment(Name, Comment);
+                usercomments.Add(c);
             }
-            //Post basic info about the movie from the movie table
+            await  Task.Run(async()=>
+            {
+           
 
-            YearBlock.Text = ft.release_date.Value.ToShortDateString();
+            //    MyLINQDataContext con = new MyLINQDataContext();
+            film_table ft =await DBAccess.LoadFilmFromId(filmid);
+            List<actor_table> Actors = await DBAccess.GetActors(filmid);
+            List<writers_table> Writers = await DBAccess.GetWriters(filmid);
 
-            Title.Content = ft.title;
-            Story.Text = ft.storyline;
-            StudioBlock.Text = ft.film_studio;
-            DirectorBlock.Text = ft.director_name + " " + ft.director_surname;
+            List<music_creator_table> Composers = await DBAccess.GetComposers(filmid);
+            List<producer_table> Producers = await DBAccess.GetProducers(filmid);
+            List<photos_table> Photos = await DBAccess.GetPhotos(filmid);
+           
 
-            ratingLoadFunction();
- 
+               await this.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    DirectorBlock.Text = "";
+                    WriterBlock.Text = "";
+                    ProducerBlock.Text = "";
+                    YearBlock.Text = "";
+                    ComposerBlock.Text = "";
+                    StudioBlock.Text = "";
+                    string path;
+                    path = ft.poster_url;
+                    Poster.Source = new BitmapImage(new Uri(path));
+
+                    
+                    foreach (actor_table at in Actors)
+                    {
+
+                        Image myimage = new Image();
+
+                        string apath;
+                        if (at.actor_photo_url != null)
+                        {
+                            apath = at.actor_photo_url;
+                        }
+                        else
+                        {
+                            apath = AppDomain.CurrentDomain.BaseDirectory + "ActorPhotos\\" + "stockphoto.jpg";
+                        }
+                        string title = at.actor_name + " " + at.actor_surname;
+                        string director = "";
+                        string year = "";
+
+                        myimage.Source = new BitmapImage(new Uri(path));
+                        Img img = new Img(apath, year, title, director);
+                        filmactors.Add(img);
+
+                    }
+                    // Read Writers from db
+
+                    foreach (writers_table writer in Writers)
+                    {
+                        if (Writers.Count > 1)
+                        {
+                            WriterBlock.Text = WriterBlock.Text + " " + writer.writer_name + " " + writer.writer_surname + ",";
+                        }
+                        else
+                            WriterBlock.Text = WriterBlock.Text + " " + writer.writer_name + " " + writer.writer_surname;
+                    }
+
+
+                    //Read Composers from DB
+
+
+                    foreach (music_creator_table composer in Composers)
+                    {
+                        if (Writers.Count > 1)
+                        {
+                            ComposerBlock.Text = ComposerBlock.Text + " " + composer.music_creator_name + " " + composer.music_creator_surname + ",";
+                        }
+                        else
+                            ComposerBlock.Text = ComposerBlock.Text + " " + composer.music_creator_name + " " + composer.music_creator_surname;
+                    }
+
+                    //Read Producers from DB
+                    foreach (producer_table p in Producers)
+                    {
+                        if (Producers.Count > 1)
+                        {
+                            ProducerBlock.Text = ProducerBlock.Text + " " + p.producer_name + " " + p.producer_surname + ",";
+                        }
+                        else
+                            ProducerBlock.Text = ProducerBlock.Text + " " + p.producer_name + " " + p.producer_surname;
+
+                    }
+
+                    //List photos from the movie stored in local folder
+
+                    foreach (photos_table p in Photos)
+                    {
+                        Image myimage = new Image();
+                        string apath = p.photo_url;
+
+                        //   MessageBox.Show(path);
+                        myimage.Source = new BitmapImage(new Uri(path));
+
+                        Img img = new Img(apath, "", "", "");
+
+                        moviephotos.Add(img);
+
+                    }
+
+                   
+                    //Post basic info about the movie from the movie table
+
+                    YearBlock.Text = ft.release_date.Value.ToShortDateString();
+
+                    Title.Content = ft.title;
+                    Story.Text = ft.storyline;
+                    StudioBlock.Text = ft.film_studio;
+                    DirectorBlock.Text = ft.director_name + " " + ft.director_surname;
+
+                    ratingLoadFunction();
+                    canvasName.Visibility = Visibility.Hidden;
+                    progressRing.IsActive = false;
+                }));
+            });
         }
         /*Function reloading film rating*/
         private async void ratingLoadFunction()
