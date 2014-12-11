@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace DotNetProjectOne
 {
@@ -15,9 +16,9 @@ namespace DotNetProjectOne
 
         public async static Task<int> CreateFilm(String directorname, String directorsurname, double price, string studio, string story,
             string title, string originaltitle, string originallanguage, TimeSpan duration, string posterurl,
-            int agerestriction, string publisher, DateTime releasedate)
+            int agerestriction, string publisher, DateTime releasedate,FilmWindow filmWindow)
         {
-               return await Task.Run(() =>
+               return await Task.Run( () =>
             {
                 MyLINQDataContext con = new MyLINQDataContext();
             film_table dane = new film_table();
@@ -59,9 +60,14 @@ namespace DotNetProjectOne
                       }
                 else
                 {
-                    dane= con.film_tables.AsParallel().Where(s => s.title == title && s.release_date==releasedate).FirstOrDefault();
+                   /* dane= con.film_tables.AsParallel().Where(s => s.title == title && s.release_date==releasedate).FirstOrDefault();
                     con.Dispose();
-                    return dane.id_film;
+                    return dane.id_film;*/
+                     con.Dispose();
+                MessageBox.Show("A film you are trying to add already exist in the database. Our system doesn't allow to alter or modify already existing films (Avaliable in next version)");
+
+               
+                        return -1;
                  
                 }
             });

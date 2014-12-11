@@ -303,8 +303,11 @@ namespace DotNetProjectOne
                     MessageBox.Show("Please insert proper date");
                     return;
                 }
-                int filmid = await DBAccess.CreateFilm(DName.Text, DSubName.Text, double.Parse(Price.Text), studio, storyline, Title.Text, NTitle.Text, Language.Text, duration, posterurl, Ageres, publisher, releasedate);
-
+                int filmid = await DBAccess.CreateFilm(DName.Text, DSubName.Text, double.Parse(Price.Text), studio, storyline, Title.Text, NTitle.Text, Language.Text, duration, posterurl, Ageres, publisher, releasedate,this);
+                /* 
+                 * CreateFilm function returns -1 if a film is already in the database.  
+                 */
+                if (filmid == -1) { this.Close(); return; }
                 List<int> actortmplist = new List<int>();
                 foreach (Actor a in actors)
                 {
@@ -312,7 +315,7 @@ namespace DotNetProjectOne
                     int actorid = await DBAccess.CreateActor(a.Name, a.Surname, a.photoPath);
                     foreach (int id in actortmplist)
                     {
-                        if (id == actorid) { b = false; }
+                        if (id == actorid) { b = false; break; }
                     }
                     if (b == true)
                     {
@@ -363,7 +366,7 @@ namespace DotNetProjectOne
                     int photoid = await DBAccess.CreatePhoto(x);
                     foreach(int id in photoIdTmpList)
                     {
-                        if (id == photoid) { b = false; }
+                        if (id == photoid) { b = false; break; }
                     }
                     if (b == true)
                     {

@@ -32,7 +32,7 @@
                     <ColumnDefinition Width="12*"/>
                 </Grid.ColumnDefinitions>
                 <Border Margin="8" Grid.Column="0" BorderBrush="Black" BorderThickness="1">
-                    <TextBox x:Name="Search" Controls:TextBoxHelper.Watermark="Password" BorderThickness="0" Background="#333" VerticalAlignment="Center" Foreground="White" FontWeight="Light" FontSize="20" Margin="10,0,0,0" GotFocus="TextBox_GotFocus"></TextBox>
+                    <TextBox x:Name="Search" Controls:TextBoxHelper.Watermark="Type to search" BorderThickness="0" Background="#333" VerticalAlignment="Center" Foreground="White" FontWeight="Light" FontSize="20" Margin="10,0,0,0" GotFocus="TextBox_GotFocus"></TextBox>
                 </Border>
                 <ComboBox x:Name="SearchCombo" Grid.Column="1" FontSize="20" VerticalContentAlignment="Center" Margin="0,12"  Background="#333">
                     <ComboBoxItem Content="Title" HorizontalAlignment="Left" Width="206" IsSelected="True"/>
